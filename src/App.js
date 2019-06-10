@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoaderAlt from "./components/shared/LoaderAlt";
 
 import Dashboard from "./container/dashboard/Dashboard.container";
+import Order from "./container/order/Order.container";
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ class App extends Component {
       <Suspense fallback={<LoaderAlt />}>
         <Switch>
           <Route exact path="/" component={Dashboard} />
+          <Route exact path="/order" component={Order} />
           <Route component={Page404} />
         </Switch>
       </Suspense>

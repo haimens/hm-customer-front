@@ -2,20 +2,19 @@ import React, { Component } from "react";
 import Nav from "../../components/nav/Nav.component";
 import "./Dashboard.css";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import moment from "moment";
 import { DatePicker, TimePicker } from "antd";
 import GAutoComplete from "../../components/shared/GAutoComplete";
 import { saveDate, saveTime, savePassenger } from "../../actions/location.action";
 import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pickup: "",
-      dropoff: "",
-      date: "",
-      time: ""
+      passenger: 1
     };
   }
 
@@ -29,6 +28,15 @@ class Dashboard extends Component {
 
   onTimeChange = date => {
     console.log(date);
+  };
+
+  handlePassengerChange = e => {
+    console.log(e.target.value);
+    this.setState({ passenger: e.target.value });
+  };
+
+  handleSumbitOrder = () => {
+    this.props.history.push("/order");
   };
 
   render() {
@@ -88,12 +96,18 @@ class Dashboard extends Component {
                     <input
                       className="form-control passenger-input font-weight-bold haimens-main-text-14 border-left-0"
                       placeholder="PASSENGER"
+                      value={this.state.passenger}
+                      onChange={this.handlePassengerChange}
                       type="number"
                     />
                   </div>
 
                   <div className="mt-3">
-                    <button type="button" className="btn p-2 text-white w-100 haimens-main-bgColor">
+                    <button
+                      type="button"
+                      className="btn p-2 text-white w-100 haimens-main-bgColor"
+                      onClick={this.handleSumbitOrder}
+                    >
                       GET PRICE QUOTE
                     </button>
                   </div>
@@ -102,6 +116,7 @@ class Dashboard extends Component {
             </div>
           </div>
         </section>
+
         <section>
           <h1 className="haimens-main-textColor header-text-sub my-2">Why choose us</h1>
           <div className="card-margin-top">
@@ -160,8 +175,8 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
-          <Footer />
         </section>
+        <Footer />
       </main>
     );
   }
@@ -181,4 +196,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dashboard);
+)(withRouter(Dashboard));
