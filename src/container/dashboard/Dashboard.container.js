@@ -48,7 +48,7 @@ class Dashboard extends Component {
                 <h1 className="text-white header-text">Pickup & Go</h1>
               </div>
 
-              <div className="col-10 ml-auto mr-auto ml-sm-none mr-sm-none col-sm-12 col-lg-6 ">
+              <div className=" ml-auto mr-auto ml-sm-none mr-sm-none col-sm-12 col-lg-6 ">
                 <div className="col-lg-9 col-12 dashboard-form rounded p-4">
                   <h3 className="haimens-main-textColor font-weight-bold ">BOOK A TRIP NOW</h3>
                   <div className="mt-4">
