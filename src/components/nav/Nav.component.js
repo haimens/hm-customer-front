@@ -3,7 +3,10 @@ import "./Nav.css";
 class Nav extends Component {
   render() {
     return (
-      <nav className={`navbar navbar-expand-lg navbar-light nav-bg p-3 ${this.props.outerClass}`} style={{ zIndex: 1 }}>
+      <nav
+        className={`navbar navbar-expand-lg navbar-light nav-bg p-3 mobile-nav-bacground ${this.props.outerClass}`}
+        style={{ zIndex: 1 }}
+      >
         <button
           className="navbar-toggler"
           type="button"
