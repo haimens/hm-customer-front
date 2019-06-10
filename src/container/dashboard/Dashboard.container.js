@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from "../../components/nav/Nav.component";
-import "./Dashboard.css";
+import "./Dashboard.container.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import moment from "moment";
@@ -9,11 +9,14 @@ import GAutoComplete from "../../components/shared/GAutoComplete";
 import { saveDate, saveTime, savePassenger } from "../../actions/location.action";
 import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
+import alertify from "alertifyjs";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      date: "",
+      time: "",
       passenger: 1
     };
   }
@@ -23,24 +26,31 @@ class Dashboard extends Component {
   };
 
   onDateChange = date => {
-    console.log(date);
+    this.setState({ date });
   };
 
-  onTimeChange = date => {
-    console.log(date);
+  onTimeChange = time => {
+    this.setState({ time });
   };
 
   handlePassengerChange = e => {
-    console.log(e.target.value);
     this.setState({ passenger: e.target.value });
   };
 
-  handleSumbitOrder = () => {
-    this.props.history.push("/order");
+  handleSumbitOrder = async () => {
+    const { pickup_location, dropoff_location } = this.props;
+    const { date, time, passenger } = this.state;
+    if (date && time && passenger && pickup_location.location && dropoff_location.location) {
+      await this.props.saveDate(date);
+      await this.props.saveTime(time);
+      await this.props.savePassenger(passenger);
+      this.props.history.push("/order");
+    } else {
+      alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
+    }
   };
 
   render() {
-    console.log(this.props);
     return (
       <main>
         <section className="header-container">

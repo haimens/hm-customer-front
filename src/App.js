@@ -5,7 +5,6 @@ import LoaderAlt from "./components/shared/LoaderAlt";
 
 import Dashboard from "./container/dashboard/Dashboard.container";
 import Order from "./container/order/Order.container";
-
 class App extends Component {
   componentDidMount() {
     Promise.all([
@@ -19,7 +18,7 @@ class App extends Component {
   }
   render() {
     alertify.defaults.transition = "zoom";
-    alertify.defaults.theme.ok = "btn st-bg-green text-white";
+    alertify.defaults.theme.ok = "btn haimens-main-bgColor text-white";
     alertify.defaults.theme.cancel = "btn btn-danger";
     alertify.defaults.theme.input = "form-control";
 

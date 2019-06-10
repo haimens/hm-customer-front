@@ -12,7 +12,7 @@
 
  .ant-calendar-picker-input, .ant-time-picker-input, .passenger-input {
   background-color: white !important;
-  font-size: 16px;
+  font-size: 14px !important;
   font-weight: bold;
   border-left: none !important;
   border-top-left-radius: 0% !important;
@@ -22,12 +22,7 @@
   height: 40px !important;
 }
 
-.ant-time-picker, .ant-time-picker-input{
-  width: 100% !important;
-  vertical-align: middle !important;  
-}
-
-.ant-calendar-picker, .ant-calendar-picker-input{
+.ant-calendar-picker, .ant-calendar-picker-input, .ant-time-picker, .ant-time-picker-input{
   width: 100% !important;
   vertical-align: middle !important;  
 }
