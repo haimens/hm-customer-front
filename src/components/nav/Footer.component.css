@@ -1,0 +1,10 @@
+.footer-index{
+z-index: 1;
+height: 38px;
+background-color: #fff;
+}
+.footer-text{
+  margin-top: -10px;
+  margin-right: 50px;
+  font-size: 12px;
+}

@@ -7,7 +7,7 @@ import { DatePicker, TimePicker } from "antd";
 import GAutoComplete from "../../components/shared/GAutoComplete";
 import { saveDate, saveTime, savePassenger } from "../../actions/location.action";
 import MainCard from "../../components/shared/MainCard";
-
+import Footer from '../../components/nav/Footer.component';
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -132,6 +132,7 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
+          <Footer />
         </section>
       </main>
     );
