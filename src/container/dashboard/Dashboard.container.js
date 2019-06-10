@@ -36,7 +36,11 @@ class Dashboard extends Component {
     return (
       <main>
         <section className="header-container">
-          <img src={`${process.env.PUBLIC_URL}/img/haimensMain.png`} alt="main-bg" style={{ width: "100%" }} />
+          <img
+            src={`${process.env.PUBLIC_URL}/img/haimensMain.png`}
+            alt="main-bg"
+            style={{ width: "100%", height: "700px" }}
+          />
           <Nav outerClass={"main-nav"} />
           <div className="container-fluid main-info">
             <div className="row">
@@ -44,7 +48,7 @@ class Dashboard extends Component {
                 <h1 className="text-white header-text">Pickup & Go</h1>
               </div>
 
-              <div className="col-12 col-lg-6 ">
+              <div className="col-10 ml-auto mr-auto ml-sm-none mr-sm-none col-sm-12 col-lg-6 ">
                 <div className="col-lg-9 col-12 dashboard-form rounded p-4">
                   <h3 className="haimens-main-textColor font-weight-bold ">BOOK A TRIP NOW</h3>
                   <div className="mt-4">
@@ -103,7 +107,7 @@ class Dashboard extends Component {
           <div className="card-margin-top">
             <div className="container">
               <div className="row">
-                <div className="col-4 px-5">
+                <div className="col-12 col-md-4 mt-3 px-5">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"TO AIRPORT: ON TIME GUARANTEED PICKUP"}
@@ -112,14 +116,14 @@ class Dashboard extends Component {
                     }
                   />
                 </div>
-                <div className="col-4 px-5">
+                <div className="col-12 col-md-4 mt-3 px-5">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"FROM AIRPORT: LESS WAIT TIME AT THE CURB"}
                     paragraph={"90% of our customers wait 10 minutes or less at the curb."}
                   />
                 </div>
-                <div className="col-4 px-5">
+                <div className="col-12 col-md-4 mt-3 px-5">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"PHONE SUPPORT"}
@@ -128,7 +132,7 @@ class Dashboard extends Component {
                 </div>
               </div>
               <div className="row card-margin-fix-sub">
-                <div className="col-4 px-5">
+                <div className="col-12 col-md-4 mt-3 px-5">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"HOURLY CHARTER"}
@@ -137,14 +141,14 @@ class Dashboard extends Component {
                     }
                   />
                 </div>
-                <div className="col-4 px-5">
+                <div className="col-12 col-md-4 mt-3 px-5">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"QUALITY"}
                     paragraph={"Clean, comfortable, and safe vehicles that meet your travel needs."}
                   />
                 </div>
-                <div className="col-4 px-5">
+                <div className="col-12 col-md-4 mt-3 px-5">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"PROFESSIONAL DRIVERS"}
