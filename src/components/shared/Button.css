@@ -1,0 +1,120 @@
+
+.reusables-button{
+    padding:4px 12px;
+    background-color:#ffffff;
+    color:#ffffff;
+    margin:10px 2px;
+    cursor: pointer;
+    opacity: 1;
+    border-radius: 5px;
+    height:35px;
+}
+
+.reusables-button:focus{
+    outline: none
+}
+
+.reusables-button:hover{
+    opacity:0.5
+}
+
+.reusables-button:disabled{
+    opacity:0.4 !important;
+    background-color:#ffffff;
+    color:grey;
+}
+
+.round{
+    border-radius:20px
+}
+.big{
+    width:150px;
+}
+.medium{
+    width:100px;
+}
+.small{
+    width:50px;
+}
+.full{
+    width:100%
+}
+
+.clear{
+    background-color: inherit;
+    border: 1px solid #b5b5b5;
+    cursor: pointer;
+}
+.white{
+    background-color:#ffffff;
+    border: 1px solid #979797;
+    color:rgba(0, 0, 0, 0.9) !important
+}
+
+.purple{
+    background-color:#514a9d;
+    border: 1px solid #514a9d
+}
+
+.grey{
+    background-color:#979797;
+    border: 1px solid #979797
+}
+
+.red{
+    background-color:#ef5757;
+    border: 1px solid #ff0202;
+    color:#ffffff !important;
+}
+
+.green{
+    background-color:#60D395;
+    color:#ffffff;
+    border:0 !important;
+}
+
+.blue {
+    background-color:#4a90e2
+}
+
+.greenColor {
+    color:rgb(123, 162, 123);
+}
+
+.greyColor{
+    color:rgba(15,15,15,1) !important
+}
+
+.redColor{
+    color:#ff0202 !important
+}
+
+.whiteColor {
+    color:rgb(255, 255, 255);
+}
+
+.blueColor {
+    color:#659cda;
+}
+
+.login-mobile-btn{
+    color:black;
+}
+
+.withdraw-btn {
+    margin: 5px 0px !important
+}
+
+.extraWide {
+    padding: 0px 10px;
+}
+
+@media screen and (max-width: 701px){
+    .responsive-btn {
+        font-size:10px;
+        padding:10px 8px;
+        color:rgb(0,0,0);
+    }
+}
+
+

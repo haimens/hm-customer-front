@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width:100%;
+  height:100%;
+  min-width:320px;
+  background: #fff !important;
+}
+
+*{
+  font-size:14px;
+  box-sizing:border-box;
+}
+
+@media screen and (max-width: 1000px) {
+  *{
+    font-size:12px;
+  }
+}
+
+html{
+  width:100%;
+  height:100%
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#root {
+  width:100%;
+  height:100%
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size:0.8rem;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size:0.8rem;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size:0.8rem;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-size:0.8rem;
+}
+
+
+.avatar-icon {
+  width: 45px;
+  height: 45px;
+}
+
+.avatar-icon-lg {
+  width: 80px;
+  height: 80px;
+}
+
+.avatar-icon-sm {
+  width: 25px;
+  height: 25px;
+}
+
+.avatar-icon-xs {
+  width:20px;
+  height:20px;
+}
+
+
+/* This is for table item align and vertical */
+@media screen and (max-width: 1000px) {
+  .text-position{
+    text-align: right;
+  }
+}
+
+a.no-underline:hover,a.no-underline:focus {
+  text-decoration: none;
+}
+
+button.no-underline:hover,button.no-underline:focus{
+  text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6,h7 {
+  margin-bottom:0 !important;
+}
+
+button{
+  border:0;
+  background-color:#fff
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle !important;
+  cursor: pointer;
+}
+
+.haimens-main-textColor {
+  color: #10086b !important
+}
+
+.haimens-main-bgColor {
+  background-color: #10086b !important;
+}
+
+.haimens-main-button-outline {
+  border: 1px solid #10086b !important
+}
+
+.haimens-main-text-14 {
+  font-size: 14px !important;
+  font-weight: bold !important;
+  letter-spacing: 1px;
+}

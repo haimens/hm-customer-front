@@ -1,0 +1,15 @@
+.image-button:hover {
+  background-color:#d1cece;
+}
+
+.image-button:active {
+  background-color:#fff
+}
+
+a.no-underline:hover,a.no-underline:focus {
+  text-decoration: none;
+}
+
+button.no-underline:hover,button.no-underline:focus{
+  text-decoration: none;
+}

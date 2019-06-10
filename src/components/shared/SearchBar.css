@@ -1,0 +1,33 @@
+.filter-item-container {
+  position: relative;
+  max-height: 40px;
+  width:100%;
+  border-radius:5px;
+}
+.filter-item-container input {
+  padding: 5px 20px 5px 35px;
+  border-radius: 5px;
+  height: 33px;
+  border: 0;
+  width: 100%;
+
+}
+
+#filter-item-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+}
+
+#filter-item-icon-reverse {
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  right: 5px;
+  opacity:0.5;
+}
+#filter-item-icon-reverse:hover{
+  opacity:1
+}
+

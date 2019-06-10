@@ -1,0 +1,75 @@
+.header-text{
+  margin-right: 20% !important;
+  margin-top: 300px;
+  text-align: right;
+  font-size: 65px;
+}
+
+.dashboard-form{
+  margin-top: 160px;
+  background-color: rgb(255, 255, 255, 0.4)
+}
+
+.ant-calendar-picker-input, .ant-time-picker-input, .passenger-input {
+  background-color: white !important;
+  font-size: 16px;
+  font-weight: bold;
+  border-left: none !important;
+  border-top-left-radius: 0% !important;
+  border-bottom-left-radius: 0% !important;
+  width: 100%;
+  vertical-align: middle;
+  height: 40px !important;
+}
+
+.ant-time-picker, .ant-time-picker-input{
+  width: 100% !important;
+  vertical-align: middle !important;  
+}
+
+.time-clock{
+  margin-top: 1px;
+}
+
+.ant-calendar-picker-input::placeholder,.ant-time-picker-input::placeholder, .passenger-input::placeholder{
+  color: #636c72 !important;
+}
+
+.ant-calendar-picker-icon{
+  float: left !important;
+}
+.ant-calendar-picker-icon, .ant-time-picker-icon{
+  display: none !important;
+}
+
+.main-addon{
+  border-top-right-radius: 0% !important;
+  border-bottom-right-radius: 0% !important;
+}
+
+
+.addon-color{
+  color: #d6a748 !important;
+}
+
+.header-container{
+  position: relative;
+  color: white;
+}
+.main-nav{
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.main-info{
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+}
+
+.header-text-sub{
+  text-align: center;
+  font-size: 60px;
+}

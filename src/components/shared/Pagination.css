@@ -1,0 +1,30 @@
+.pagination {
+  display:flex !important;
+  flex-direction: row;
+  justify-content:flex-end;
+  margin-bottom:0 !important;
+  padding:10px;
+  padding-right:0
+
+}
+
+.pagination>li {
+  padding: 2px 10px;
+  border:solid 0.5px #f0f0f0 
+}
+.pagination a{
+  color: grey
+}
+
+.pagination-active{
+  background-color: #0CC1A8
+}
+.pagination-active a{
+  color:#fff;
+  text-decoration: none;
+}
+.pagination-active a:hover{
+  color:#fff;
+  text-decoration: none;
+
+}
