@@ -112,18 +112,22 @@ class Dashboard extends Component {
                   paragraph={"90% of our customers wait 10 minutes or less at the curb."} />
                 </div>
                 <div className="col-4 px-5">
-                  <MainCard img={"haimensMain.png"} title={"PHONE SUPPORT"} paragraph={"Feel free to call us for any question you may have before, on or after the trip."} />
+                  <MainCard img={"haimensMain.png"} title={"PHONE SUPPORT"} 
+                  paragraph={"Feel free to call us for any question you may have before, on or after the trip."} />
                 </div>
               </div>
               <div className="row card-margin-fix-sub">
-                <div className="col-4 px-5">
-                  <MainCard img={"haimensMain.png"} title={"title"} paragraph={"Iam Lebron James"} />
+              <div className="col-4 px-5">
+                  <MainCard img={"haimensMain.png"} title={"HOURLY CHARTER"} 
+                  paragraph={"Our Customer directed hourly charter service puts a chauffeur at your disposal for as long as you desire."} />
                 </div>
                 <div className="col-4 px-5">
-                  <MainCard img={"haimensMain.png"} title={"title"} paragraph={"Iam Lebron James"} />
+                  <MainCard img={"haimensMain.png"} title={"QUALITY"} 
+                  paragraph={"Clean, comfortable, and safe vehicles that meet your travel needs."} />
                 </div>
                 <div className="col-4 px-5">
-                  <MainCard img={"haimensMain.png"} title={"title"} paragraph={"Iam Lebron James"} />
+                  <MainCard img={"haimensMain.png"} title={"PROFESSIONAL DRIVERS"} 
+                  paragraph={"Experienced, Friendly, and service oriented drivers are ready to serve you in higher standard."} />
                 </div>
               </div>
             </div>
