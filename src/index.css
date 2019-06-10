@@ -116,6 +116,10 @@ button{
 
 .haimens-main-text-14 {
   font-size: 14px !important;
-  font-weight: bold !important;
+  letter-spacing: 1px;
+}
+
+.haimens-main-text-18 {
+  font-size: 18px !important;
   letter-spacing: 1px;
 }

@@ -99,18 +99,31 @@ class Dashboard extends Component {
           </div>
         </section>
         <section>
-          <h1 className="haimens-main-textColor header-text-sub mt-2">Why choose us</h1>
-          <div className="mt-3">
+          <h1 className="haimens-main-textColor header-text-sub my-2">Why choose us</h1>
+          <div className="card-margin-top">
             <div className="container">
               <div className="row">
-                <div className="col-4">
-                  <MainCard />
+                <div className="col-4 px-5">
+                  <MainCard img={"haimensMain.png"} title={"TO AIRPORT: ON TIME GUARANTEED PICKUP"} 
+                  paragraph={"We Guarantee the driver will come to pick you up within the specified time frame for your airport drop off."} />
                 </div>
-                <div className="col-4">
-                  <MainCard />
+                <div className="col-4 px-5">
+                  <MainCard img={"haimensMain.png"} title={"FROM AIRPORT: LESS WAIT TIME AT THE CURB"} 
+                  paragraph={"90% of our customers wait 10 minutes or less at the curb."} />
                 </div>
-                <div className="col-4">
-                  <MainCard />
+                <div className="col-4 px-5">
+                  <MainCard img={"haimensMain.png"} title={"PHONE SUPPORT"} paragraph={"Feel free to call us for any question you may have before, on or after the trip."} />
+                </div>
+              </div>
+              <div className="row card-margin-fix-sub">
+                <div className="col-4 px-5">
+                  <MainCard img={"haimensMain.png"} title={"title"} paragraph={"Iam Lebron James"} />
+                </div>
+                <div className="col-4 px-5">
+                  <MainCard img={"haimensMain.png"} title={"title"} paragraph={"Iam Lebron James"} />
+                </div>
+                <div className="col-4 px-5">
+                  <MainCard img={"haimensMain.png"} title={"title"} paragraph={"Iam Lebron James"} />
                 </div>
               </div>
             </div>

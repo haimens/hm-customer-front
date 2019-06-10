@@ -1,3 +1,16 @@
 .card{
   text-align: center;
 }
+.card-size{
+  height: 80px;
+  width: 80px;
+
+}
+.card-margin-top{
+  margin-top: 70px !important;
+}
+
+.card-margin-fix-sub{
+  margin-top: 134px !important;
+  margin-bottom: 134px !important;
+}
