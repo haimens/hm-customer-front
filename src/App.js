@@ -6,6 +6,7 @@ import LoaderAlt from "./components/shared/LoaderAlt";
 import Dashboard from "./container/dashboard/Dashboard.container";
 import Order from "./container/order/Order.container";
 import About from "./container/about/About.container";
+import Account from "./container/account/Account.container";
 import Main from "./components/main/Main.container";
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
           <Main>
             <Route exact path="/order" component={Order} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/account" component={Account} />
           </Main>
           <Route component={Page404} />
         </Switch>

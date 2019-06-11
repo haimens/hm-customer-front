@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./Nav.css";
 class Nav extends Component {
+  signIn = () => {
+    console.log("hi");
+    this.props.history.push("/account");
+  };
   render() {
     return (
       <nav
@@ -43,6 +47,7 @@ class Nav extends Component {
             <li className="nav-item mr-5">
               <button
                 className={`btn ${this.props.outlineButton} px-4 haimens-main-text-14 ${this.props.navTextColor}`}
+                onClick={this.signIn}
               >
                 Sign In
               </button>
