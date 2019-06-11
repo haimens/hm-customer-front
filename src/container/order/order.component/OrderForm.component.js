@@ -3,7 +3,7 @@ import GAutoComplete from "../../../components/shared/GAutoComplete";
 import { DatePicker, TimePicker } from "antd";
 import moment from "moment";
 
-export default class OrderDetail extends Component {
+export default class OrderForm extends Component {
   state = {
     passenger: 1,
     flight: ""
@@ -12,6 +12,12 @@ export default class OrderDetail extends Component {
   handleInputChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
+    if (id === "passenger") {
+      this.props.updatePassenger(value);
+    }
+    if (id === "flight") {
+      this.props.updateFlight(value);
+    }
   };
   render() {
     const { onDateChange, onTimeChange } = this.props;
@@ -76,7 +82,7 @@ export default class OrderDetail extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="passenger">
             Passenger
           </label>
           <div className="d-flex">
@@ -93,7 +99,7 @@ export default class OrderDetail extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="flight">
             Flight Number
           </label>
           <div className="d-flex">
