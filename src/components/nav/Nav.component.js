@@ -9,7 +9,7 @@ class Nav extends Component {
         style={{ zIndex: 1 }}
       >
         <button
-          className="navbar-toggler"
+          className="navbar-toggler bg-white"
           type="button"
           data-toggle="collapse"
           data-target="#navbarTogglerDemo03"
@@ -42,7 +42,7 @@ class Nav extends Component {
             </li>
             <li className="nav-item mr-5">
               <button
-                className={`btn haimens-main-button-outline px-4 haimens-main-text-14 ${this.props.navTextColor}`}
+                className={`btn ${this.props.outlineButton} px-4 haimens-main-text-14 ${this.props.navTextColor}`}
               >
                 Sign In
               </button>

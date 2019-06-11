@@ -6,7 +6,7 @@ class Main extends Component {
     return (
       <section>
         <div>
-          <Nav outerClass={"haimens-main-bgColor"} navTextColor={"text-white"} />
+          <Nav outerClass={"haimens-main-bgColor"}  navTextColor={"text-white"} outlineButton={`haimens-main-button-white-outline`} />
         </div>
         <div>{this.props.children}</div>
         <div>
