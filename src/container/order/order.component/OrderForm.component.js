@@ -5,7 +5,11 @@ import moment from "moment";
 
 export default class OrderForm extends Component {
   state = {
-    passenger: 1,
+    pickup_location: "",
+    dropoff_location: "",
+    pickup_date: "",
+    pickup_time: "",
+    passenger_amount: 1,
     flight: ""
   };
 
@@ -19,35 +23,56 @@ export default class OrderForm extends Component {
       this.props.updateFlight(value);
     }
   };
+
+  static getDerivedStateFromProps(props, state) {
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = props.parentProps;
+    if (
+      state.pickup_location !== pickup_location.location &&
+      state.dropoff_location !== dropoff_location.location &&
+      state.pickup_date !== pickup_date.date &&
+      state.pickup_time !== pickup_time.time &&
+      state.passenger_amount !== passenger_amount
+    ) {
+      return {
+        pickup_location: pickup_location.location,
+        dropoff_location: dropoff_location.location,
+        pickup_date: pickup_date.date,
+        pickup_time: pickup_time.time,
+        passenger_amount: passenger_amount.number
+      };
+    }
+    return null;
+  }
+
   render() {
     const { onDateChange, onTimeChange } = this.props;
-    const { pickup_location, dropoff_location } = this.props.parentProps;
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = this.state;
     return (
       <div className="row">
         <div className="col-6">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="pickup_location">
             Pickup Location
           </label>
           <GAutoComplete
             placeholder={this.props.pickup}
             disablePlaceHolder={true}
-            defaultValue={pickup_location.location}
+            defaultValue={pickup_location}
             inputClass={"border-left-0"}
           />
         </div>
         <div className="col-6">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="dropoff_location">
             Dropoff Location
           </label>
           <GAutoComplete
             placeholder={this.props.dropoff}
             disablePlaceHolder={true}
-            defaultValue={dropoff_location.location}
+            defaultValue={dropoff_location}
             inputClass={"border-left-0"}
           />
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="pickup_date">
             Date
           </label>
           <div className="d-flex">
@@ -57,6 +82,7 @@ export default class OrderForm extends Component {
             <DatePicker
               onChange={onDateChange}
               disabledDate={this.disabledDate}
+              defaultValue={moment(pickup_date)}
               id="date"
               size="large"
               placeholder={""}
@@ -64,7 +90,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="pickup_time">
             Time
           </label>
           <div className="d-flex">
@@ -74,6 +100,7 @@ export default class OrderForm extends Component {
             <TimePicker
               onChange={onTimeChange}
               defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+              defaultValue={moment(pickup_time)}
               placeholder={""}
               size="large"
               format="HH:mm"
@@ -82,7 +109,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="passenger">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="passenger_amount">
             Passenger
           </label>
           <div className="d-flex">
@@ -91,10 +118,10 @@ export default class OrderForm extends Component {
             </span>
             <input
               type="number"
-              id="passenger"
+              id="passenger_amount"
               className="form-control haimens-input-height border-left-0"
               onChange={this.handleInputChange}
-              value={this.state.passenger}
+              value={passenger_amount}
             />
           </div>
         </div>
@@ -111,7 +138,7 @@ export default class OrderForm extends Component {
               id="flight"
               className="form-control haimens-input-height border-left-0"
               onChange={this.handleInputChange}
-              value={this.state.flight}
+              value={flight}
             />
           </div>
         </div>

@@ -1,16 +1,36 @@
 import constants from "../constant/constant";
 
 const initialState = {
-  pickup_location: "",
-  pickup_location_again: "",
-  dropoff_location: "",
-  dropoff_location_again: "",
-  pickup_date: "",
-  pickup_date_again: "",
-  pickup_time: "",
-  pickup_time_again: "",
-  passenger_amount: "",
-  passenger_amount_again: ""
+  pickup_location: {
+    location: ""
+  },
+  pickup_location_again: {
+    location: ""
+  },
+  dropoff_location: {
+    location: ""
+  },
+  dropoff_location_again: {
+    location: ""
+  },
+  pickup_date: {
+    date: ""
+  },
+  pickup_date_again: {
+    date: ""
+  },
+  pickup_time: {
+    time: ""
+  },
+  pickup_time_again: {
+    time: ""
+  },
+  passenger_amount: {
+    number: ""
+  },
+  passenger_amount_again: {
+    number: ""
+  }
 };
 
 export default (state = initialState, action) => {

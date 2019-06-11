@@ -58,7 +58,16 @@ class OrderStepFirst extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = this.props;
+    if (
+      pickup_location.location === "" ||
+      dropoff_location.location === "" ||
+      pickup_date.date === "" ||
+      pickup_time.time === "" ||
+      passenger_amount.number === ""
+    ) {
+      this.props.history.push("/");
+    }
   }
   render() {
     const { roundedTrip } = this.state;

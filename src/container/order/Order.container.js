@@ -10,6 +10,7 @@ class Order extends Component {
   handleChangePosition = position => {
     this.setState(states => ({ position: states.position + position }));
   };
+
   render() {
     const { position } = this.state;
     return (

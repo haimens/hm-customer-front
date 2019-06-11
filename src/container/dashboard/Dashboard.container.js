@@ -24,11 +24,11 @@ class Dashboard extends Component {
   }
 
   onDateChange = date => {
-    this.setState({ date: moment(date).format("LL") });
+    this.setState({ date: moment(date) });
   };
 
   onTimeChange = time => {
-    this.setState({ time: moment(time).format("hh:mm a") });
+    this.setState({ time: moment(time) });
   };
 
   handlePassengerChange = e => {
@@ -38,7 +38,6 @@ class Dashboard extends Component {
   handleSubmitOrder = async () => {
     const { pickup_location, dropoff_location } = this.props;
     const { date, time, passenger } = this.state;
-    console.log(this.state);
     if (date && time && passenger && pickup_location.location && dropoff_location.location) {
       await this.props.saveDate(date);
       await this.props.saveTime(time);
