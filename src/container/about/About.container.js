@@ -34,10 +34,26 @@ class About extends Component {
         </div>
 
         <div className="col-10 mx-auto my-5">
-         <Card number={1} title={"For airport drop off:"} paragraph={'We guarantee we will pick you up at specified time frame.'} />
-         <Card number={2} title={"For airport pickup:"} paragraph={'Non stop coming back home. 90% of our customers wait 10 minutes or less at the curb.'} />
-         <Card number={3} title={"Phone Support:"} paragraph={'Feel free to call us for questions you may have before, on or after the trip.'} />
-         <Card number={4} title={"Reliable and Safe:"} paragraph={'Experienced and service oriented drivers serving you with higher standards.'} />
+          <Card
+            number={1}
+            title={"For airport drop off:"}
+            paragraph={"We guarantee we will pick you up at specified time frame."}
+          />
+          <Card
+            number={2}
+            title={"For airport pickup:"}
+            paragraph={"Non stop coming back home. 90% of our customers wait 10 minutes or less at the curb."}
+          />
+          <Card
+            number={3}
+            title={"Phone Support:"}
+            paragraph={"Feel free to call us for questions you may have before, on or after the trip."}
+          />
+          <Card
+            number={4}
+            title={"Reliable and Safe:"}
+            paragraph={"Experienced and service oriented drivers serving you with higher standards."}
+          />
         </div>
       </section>
     );
