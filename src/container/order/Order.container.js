@@ -7,7 +7,7 @@ class Order extends Component {
   state = {
     position: 0
   };
-  handlePositionChange = position => {
+  handleChangePosition = position => {
     this.setState(states => ({ position: states.position + position }));
   };
   render() {
@@ -15,10 +15,10 @@ class Order extends Component {
     return (
       <section>
         <div className="col-10 mx-auto order-header-margin">
-          <OrderPagination position={this.handlePositionChange} />
+          <OrderPagination position={position} />
         </div>
         <hr className="haimens-main-bgColor" />
-        {position === 0 && <OrderStepFirstComponent />}
+        {position === 0 && <OrderStepFirstComponent handleChangePosition={this.handleChangePosition} />}
       </section>
     );
   }

@@ -53,6 +53,10 @@ class OrderStepFirst extends Component {
     await this.setState(states => ({ roundedTrip: !states.roundedTrip }));
   };
 
+  handleChangePosition = () => {
+    this.props.handleChangePosition(1);
+  };
+
   componentDidMount() {
     console.log(this.props);
   }
@@ -104,7 +108,7 @@ class OrderStepFirst extends Component {
               <button
                 type="button"
                 className="btn haimens-main-bgColor text-white w-100 haimens-input-height"
-                onClick={this.handleSubmitPrice}
+                onClick={this.handleChangePosition}
               >
                 Get Price
               </button>
