@@ -1,0 +1,12 @@
+.order-badge-border-inactive{
+  border: 1px solid #979797 !important;
+  color:  #979797 !important;
+}
+.order-badge-text-inactive{
+  color:  #979797 !important;
+}
+
+.order-header-margin{
+  margin-top: 56px;
+  margin-bottom: 58px;
+}

@@ -6,7 +6,9 @@ class About extends Component {
     return (
       <section>
         <div className="col-10 mx-auto">
-          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center py-4">About Us</h1>
+          <h1 className="haimens-main-text-60 haimens-header-margin haimens-main-textColor align-items-center">
+            About Us
+          </h1>
         </div>
         <hr className="haimens-main-bgColor" />
         <div className="col-10 mx-auto my-5">

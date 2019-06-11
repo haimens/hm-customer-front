@@ -31,11 +31,13 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Main>
-            <Route exact path="/order" component={Order} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/account" component={Account} />
+            <Switch>
+              <Route exact path="/order" component={Order} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/account" component={Account} />
+              <Route component={Page404} />
+            </Switch>
           </Main>
-          <Route component={Page404} />
         </Switch>
       </Suspense>
     );
