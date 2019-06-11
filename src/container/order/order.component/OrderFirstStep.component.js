@@ -19,29 +19,29 @@ export default class OrderDetail extends Component {
     return (
       <div className="row">
         <div className="col-6">
-          <label className="account-marginTop font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
             Pickup Location
           </label>
           <GAutoComplete
-            placeholder={"PICKUP"}
+            placeholder={this.props.pickup}
             disablePlaceHolder={true}
             defaultValue={pickup_location.location}
             inputClass={"border-left-0"}
           />
         </div>
         <div className="col-6">
-          <label className="account-marginTop font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
             Dropoff Location
           </label>
           <GAutoComplete
-            placeholder={"DROPOFF"}
+            placeholder={this.props.dropoff}
             disablePlaceHolder={true}
             defaultValue={dropoff_location.location}
             inputClass={"border-left-0"}
           />
         </div>
         <div className="col-3">
-          <label className="account-marginTop font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
             Date
           </label>
           <div className="d-flex">
@@ -58,7 +58,7 @@ export default class OrderDetail extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="account-marginTop font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
             Time
           </label>
           <div className="d-flex">
@@ -76,7 +76,7 @@ export default class OrderDetail extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="account-marginTop font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
             Passenger
           </label>
           <div className="d-flex">
@@ -93,7 +93,7 @@ export default class OrderDetail extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="account-marginTop font-weight-bold" htmlFor="email">
+          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="email">
             Flight Number
           </label>
           <div className="d-flex">
