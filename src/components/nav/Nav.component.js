@@ -23,7 +23,7 @@ class Nav extends Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <a className={`navbar-brand ${this.props.navTextColor}`} href="#">
+        <a className={`navbar-brand ${this.props.navTextColor}`} href="/">
           Sunshire Logo
         </a>
 
@@ -40,7 +40,7 @@ class Nav extends Component {
               </a>
             </li>
             <li className="nav-item mr-5">
-              <a className={`nav-link haimens-main-text-14 ${this.props.navTextColor}`} href="#">
+              <a className={`nav-link haimens-main-text-14 ${this.props.navTextColor}`} href="/contact">
                 Contact Us
               </a>
             </li>
