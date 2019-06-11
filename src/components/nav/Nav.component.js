@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./Nav.css";
 class Nav extends Component {
   render() {
@@ -30,7 +31,7 @@ class Nav extends Component {
               </a>
             </li>
             <li className="nav-item mr-5">
-              <a className={`nav-link haimens-main-text-14 ${this.props.navTextColor}`} href="#">
+              <a className={`nav-link haimens-main-text-14 ${this.props.navTextColor}`} href="/about">
                 About Us
               </a>
             </li>
@@ -53,4 +54,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

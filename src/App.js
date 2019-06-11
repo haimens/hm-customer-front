@@ -5,6 +5,9 @@ import LoaderAlt from "./components/shared/LoaderAlt";
 
 import Dashboard from "./container/dashboard/Dashboard.container";
 import Order from "./container/order/Order.container";
+import About from "./container/about/About.container";
+import Main from "./components/main/Main.container";
+
 class App extends Component {
   componentDidMount() {
     Promise.all([
@@ -26,7 +29,10 @@ class App extends Component {
       <Suspense fallback={<LoaderAlt />}>
         <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route exact path="/order" component={Order} />
+          <Main>
+            <Route exact path="/order" component={Order} />
+            <Route exact path="/about" component={About} />
+          </Main>
           <Route component={Page404} />
         </Switch>
       </Suspense>
