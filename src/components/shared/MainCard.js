@@ -9,7 +9,7 @@ export default class mainCard extends Component {
           alt="head"
           className="card-size rounded-circle ml-auto mr-auto"
         />
-        <p1 className="mt-4 haimens-main-textColor haimens-main-text-18 ">{this.props.title}</p1>
+        <p className="mt-4 haimens-main-textColor haimens-main-text-18 ">{this.props.title}</p>
         <p className="mt-2 haimens-main-text-14">{this.props.paragraph}</p>
       </div>
     );

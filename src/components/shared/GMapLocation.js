@@ -34,7 +34,6 @@ const MapWithADirectionsRenderer = compose(
   lifecycle({
     componentDidMount() {
       const DirectionsService = new window.google.maps.DirectionsService();
-      console.log(this.props);
       DirectionsService.route(
         {
           origin: new window.google.maps.LatLng(this.props.position.origin.lat, this.props.position.origin.lng),

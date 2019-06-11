@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { savePickUp, saveDropOff } from "../../actions/location.action";
+import { savePickUp, saveDropOff, savePickUpAgain, saveDropOffAgain } from "../../actions/location.action";
 import "./GAutoComplete.css";
 class GAutoComplete extends Component {
   constructor(props) {
@@ -17,6 +17,12 @@ class GAutoComplete extends Component {
     if (this.props.placeholder === "DROPOFF") {
       this.props.saveDropOff(address);
     }
+    if (this.props.placeholder === "PICKUPAGAIN") {
+      this.props.savePickUpAgain(address);
+    }
+    if (this.props.placeholder === "DROPOFFAGAIN") {
+      this.props.saveDropOffAgain(address);
+    }
   };
 
   render() {
@@ -25,6 +31,8 @@ class GAutoComplete extends Component {
         _getAddress={this._getAddress}
         inputClass={this.props.inputClass}
         placeholder={this.props.placeholder}
+        disablePlaceHolder={this.props.disablePlaceHolder}
+        defaultValue={this.props.defaultValue}
       />
     );
   }
@@ -32,7 +40,7 @@ class GAutoComplete extends Component {
 
 export default connect(
   null,
-  { savePickUp, saveDropOff }
+  { savePickUp, saveDropOff, savePickUpAgain, saveDropOffAgain }
 )(GAutoComplete);
 
 const { compose, withProps, lifecycle } = require("recompose");
@@ -70,7 +78,6 @@ const PlacesWithStandaloneSearchBox = compose(
 )(props => (
   <>
     {props.places[0] && props._getAddress(props.places[0].formatted_address)}
-
     <StandaloneSearchBox ref={props.onSearchBoxMounted} bounds={props.bounds} onPlacesChanged={props.onPlacesChanged}>
       <div className="input-group mb-3 ">
         <div className="input-group-prepend ">
@@ -79,11 +86,12 @@ const PlacesWithStandaloneSearchBox = compose(
           </span>
         </div>
         <input
-          className={`form-control p-1 GAuto-input font-weight-bold haimens-main-text-14 border-left-0 haimens-input-height ${
+          className={`form-control p-1 GAuto-input font-weight-bold haimens-main-text-14 haimens-input-height ${
             props.inputClass
           }`}
           type="text"
-          placeholder={props.placeholder || ""}
+          placeholder={props.disablePlaceHolder ? "" : props.placeholder}
+          defaultValue={props.defaultValue}
         />
       </div>
     </StandaloneSearchBox>

@@ -24,25 +24,26 @@ class Dashboard extends Component {
   }
 
   onDateChange = date => {
-    this.setState({ date });
+    this.setState({ date: moment(date).format("LL") });
   };
 
   onTimeChange = time => {
-    this.setState({ time });
+    this.setState({ time: moment(time).format("hh:mm a") });
   };
 
   handlePassengerChange = e => {
     this.setState({ passenger: e.target.value });
   };
 
-  handleSumbitOrder = async () => {
+  handleSubmitOrder = async () => {
     const { pickup_location, dropoff_location } = this.props;
     const { date, time, passenger } = this.state;
+    console.log(this.state);
     if (date && time && passenger && pickup_location.location && dropoff_location.location) {
       await this.props.saveDate(date);
       await this.props.saveTime(time);
       await this.props.savePassenger(passenger);
-      this.props.history.push("/order");
+      await this.props.history.push("/order");
     } else {
       alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
     }
@@ -64,7 +65,11 @@ class Dashboard extends Component {
             alt="main-bg"
             style={{ width: "100%", height: "700px" }}
           />
-          <Nav outerClass={"main-nav"} navTextColor={"haimens-main-textColor"} outlineButton={`haimens-main-button-outline`} />
+          <Nav
+            outerClass={"main-nav"}
+            navTextColor={"haimens-main-textColor"}
+            outlineButton={`haimens-main-button-outline`}
+          />
           <div className="container-fluid main-info">
             <div className="row">
               <div className="col-md-6 d-none d-lg-block">
@@ -75,10 +80,10 @@ class Dashboard extends Component {
                 <div className="col-lg-9 col-12 dashboard-form rounded p-4">
                   <h3 className="haimens-main-textColor font-weight-bold ">BOOK A TRIP NOW</h3>
                   <div className="mt-4">
-                    <GAutoComplete placeholder={"PICKUP"} />
+                    <GAutoComplete placeholder={"PICKUP"} inputClass={"border-left-0"} />
                   </div>
                   <div className="mt-3">
-                    <GAutoComplete placeholder={"DROPOFF"} />
+                    <GAutoComplete placeholder={"DROPOFF"} inputClass={"border-left-0"} />
                   </div>
 
                   <div className="mt-3">
@@ -127,7 +132,7 @@ class Dashboard extends Component {
                     <button
                       type="button"
                       className="btn p-2 text-white w-100 haimens-main-bgColor"
-                      onClick={this.handleSumbitOrder}
+                      onClick={this.handleSubmitOrder}
                     >
                       GET PRICE QUOTE
                     </button>
@@ -210,9 +215,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return { saveDate, saveTime, savePassenger };
-};
+const mapDispatchToProps = { saveDate, saveTime, savePassenger };
 
 export default connect(
   mapStateToProps,
