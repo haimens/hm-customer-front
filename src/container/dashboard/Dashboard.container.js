@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import Nav from "../../components/nav/Nav.component";
-import "./Dashboard.container.css";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import moment from "moment";
 import { DatePicker, TimePicker } from "antd";
+import alertify from "alertifyjs";
+import moment from "moment";
+
+import "./Dashboard.container.css";
+
 import GAutoComplete from "../../components/shared/GAutoComplete";
+import Nav from "../../components/nav/Nav.component";
 import { saveDate, saveTime, savePassenger } from "../../actions/location.action";
 import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
-import alertify from "alertifyjs";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -20,10 +22,6 @@ class Dashboard extends Component {
       passenger: 1
     };
   }
-
-  _getAddress = type => address => {
-    console.log(type);
-  };
 
   onDateChange = date => {
     this.setState({ date });
@@ -49,6 +47,13 @@ class Dashboard extends Component {
       alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
     }
   };
+
+  disabledDate(current) {
+    // Can not select days before today and today
+    let date = new Date();
+    date.setDate(date.getDate() - 1);
+    return current && current.valueOf() < date;
+  }
 
   render() {
     return (
@@ -82,7 +87,13 @@ class Dashboard extends Component {
                         <span className="input-group-text bg-white border-right-0 main-addon">
                           <i className="far fa-calendar-times addon-color" />
                         </span>
-                        <DatePicker onChange={this.onDateChange} id="date" size="large" placeholder={"DATE"} />
+                        <DatePicker
+                          onChange={this.onDateChange}
+                          disabledDate={this.disabledDate}
+                          id="date"
+                          size="large"
+                          placeholder={"DATE"}
+                        />
                       </div>
                       <div className="d-flex col-6">
                         <span className="input-group-text bg-white border-right-0 main-addon">
