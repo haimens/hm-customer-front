@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./Order.container.css";
 import OrderPagination from "./order.component/OrderPagination.component";
-import OrderDetail from "./order.component/OrderDetail.component";
+import OrderFirstStep from "./order.component/OrderFirstStep.component";
 import { saveDate, saveTime, savePassenger } from "../../actions/location.action";
 import moment from "moment";
 
@@ -33,7 +33,32 @@ class Order extends Component {
         <hr className="haimens-main-bgColor" />
         <div className="col-10 mx-auto my-5">
           <h3>Trip Detail</h3>
-          <OrderDetail parentProps={this.props} onDateChange={this.onDateChange} onTimeChange={this.onTimeChange} />
+          {this.state.position === 0 ? (
+            <OrderFirstStep
+              parentProps={this.props}
+              onDateChange={this.onDateChange}
+              onTimeChange={this.onTimeChange}
+            />
+          ) : (
+            ""
+          )}
+          <div className="row my-5">
+            <div className="col-4">
+              <button type="button" className="btn haimens-main-button-outline w-100 haimens-input-height">
+                Round Trip
+              </button>
+            </div>
+            <div className="col-4">
+              <button type="button" className="btn haimens-button-bgColor-sub text-white w-100 haimens-input-height">
+                Contact Sales
+              </button>
+            </div>
+            <div className="col-4">
+              <button type="button" className="btn haimens-main-bgColor text-white w-100 haimens-input-height">
+                Get Price
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     );

@@ -143,3 +143,6 @@ button{
 .haimens-input-height{
   height: 48px !important;
 }
+.haimens-button-bgColor-sub {
+  background-color: #d6a748 !important;
+}
