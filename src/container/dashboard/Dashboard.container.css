@@ -14,12 +14,9 @@
   background-color: white !important;
   font-size: 14px !important;
   font-weight: bold;
-  border-left: none !important;
-  border-top-left-radius: 0% !important;
-  border-bottom-left-radius: 0% !important;
   width: 100 !important;
   vertical-align: middle;
-  height: 40px !important;
+  height: 48px !important;
 }
 
 .ant-calendar-picker, .ant-calendar-picker-input, .ant-time-picker, .ant-time-picker-input{

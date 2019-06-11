@@ -29,11 +29,11 @@ class Account extends Component {
               <label className="account-marginTop font-weight-bold" for="email">
                 Email
               </label>
-              <input type="email" id="email" class="form-control mt-1 account-input" />
+              <input type="email" id="email" class="form-control mt-1 haimens-input-height" />
               <label className="account-marginTop font-weight-bold" for="password">
                 Password
               </label>
-              <input type="password" id="password" class="form-control mt-1 account-input" />
+              <input type="password" id="password" class="form-control mt-1 haimens-input-height" />
               <div className="col-8 p-0">
                 <button className="mt-5 account-marginBottom text-white haimens-main-bgColor p-3 w-100">Login</button>
               </div>

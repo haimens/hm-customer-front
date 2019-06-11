@@ -20,7 +20,13 @@ class GAutoComplete extends Component {
   };
 
   render() {
-    return <PlacesWithStandaloneSearchBox _getAddress={this._getAddress} placeholder={this.props.placeholder} />;
+    return (
+      <PlacesWithStandaloneSearchBox
+        _getAddress={this._getAddress}
+        inputClass={this.props.inputClass}
+        placeholder={this.props.placeholder}
+      />
+    );
   }
 }
 
@@ -66,16 +72,18 @@ const PlacesWithStandaloneSearchBox = compose(
     {props.places[0] && props._getAddress(props.places[0].formatted_address)}
 
     <StandaloneSearchBox ref={props.onSearchBoxMounted} bounds={props.bounds} onPlacesChanged={props.onPlacesChanged}>
-      <div className="input-group mb-3 shadow ">
+      <div className="input-group mb-3 ">
         <div className="input-group-prepend ">
           <span className="input-group-text bg-white " id="basic-addon1">
             <i className="fas fa-map-marker-alt addon-color" />
           </span>
         </div>
         <input
-          className="form-control p-1 GAuto-input font-weight-bold haimens-main-text-14 border-left-0"
+          className={`form-control p-1 GAuto-input font-weight-bold haimens-main-text-14 border-left-0 haimens-input-height ${
+            props.inputClass
+          }`}
           type="text"
-          placeholder={props.placeholder}
+          placeholder={props.placeholder || ""}
         />
       </div>
     </StandaloneSearchBox>
