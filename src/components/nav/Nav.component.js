@@ -18,29 +18,31 @@ class Nav extends Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <a className="navbar-brand haimens-main-textColor" href="#">
+        <a className={`navbar-brand ${this.props.navTextColor}`} href="#">
           Sunshire Logo
         </a>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
             <li className="nav-item mr-5">
-              <a className="nav-link haimens-main-textColor haimens-main-text-14 " href="#">
+              <a className={`nav-link haimens-main-text-14 ${this.props.navTextColor}`} href="#">
                 Book A Trip
               </a>
             </li>
             <li className="nav-item mr-5">
-              <a className="nav-link haimens-main-textColor haimens-main-text-14 " href="#">
+              <a className={`nav-link haimens-main-text-14 ${this.props.navTextColor}`} href="#">
                 About Us
               </a>
             </li>
             <li className="nav-item mr-5">
-              <a className="nav-link haimens-main-textColor haimens-main-text-14 " href="#">
+              <a className={`nav-link haimens-main-text-14 ${this.props.navTextColor}`} href="#">
                 Contact Us
               </a>
             </li>
             <li className="nav-item mr-5">
-              <button className="btn haimens-main-button-outline haimens-main-textColor px-4 haimens-main-text-14">
+              <button
+                className={`btn haimens-main-button-outline px-4 haimens-main-text-14 ${this.props.navTextColor}`}
+              >
                 Sign In
               </button>
             </li>

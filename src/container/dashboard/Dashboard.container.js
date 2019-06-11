@@ -64,7 +64,7 @@ class Dashboard extends Component {
             alt="main-bg"
             style={{ width: "100%", height: "700px" }}
           />
-          <Nav outerClass={"main-nav"} />
+          <Nav outerClass={"main-nav"} navTextColor={"haimens-main-textColor"} />
           <div className="container-fluid main-info">
             <div className="row">
               <div className="col-md-6 d-none d-lg-block">
