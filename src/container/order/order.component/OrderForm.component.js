@@ -4,14 +4,24 @@ import { DatePicker, TimePicker } from "antd";
 import moment from "moment";
 
 export default class OrderForm extends Component {
-  state = {
-    pickup_location: "",
-    dropoff_location: "",
-    pickup_date: "",
-    pickup_time: "",
-    passenger_amount: 1,
-    flight: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      pickup_location: "",
+      dropoff_location: "",
+      pickup_date: "",
+      pickup_time: "",
+      passenger_amount: 1,
+      flight: "",
+      roundTrip: false
+    };
+  }
+
+  disabledDate(current) {
+    let date = new Date();
+    date.setDate(date.getDate() - 1);
+    return current && current.valueOf() < date;
+  }
 
   handleInputChange = e => {
     const { id, value } = e.target;
@@ -25,6 +35,11 @@ export default class OrderForm extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
+    if (props.pickup === "PICKUPAGAIN" || props.dropoff === "DROPOFFAGAIN") {
+      return {
+        roundTrip: true
+      };
+    }
     const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = props.parentProps;
     if (
       state.pickup_location !== pickup_location.location &&
@@ -46,7 +61,15 @@ export default class OrderForm extends Component {
 
   render() {
     const { onDateChange, onTimeChange } = this.props;
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = this.state;
+    const {
+      pickup_location,
+      dropoff_location,
+      pickup_date,
+      pickup_time,
+      passenger_amount,
+      flight,
+      roundTrip
+    } = this.state;
     return (
       <div className="row">
         <div className="col-6">
@@ -79,14 +102,24 @@ export default class OrderForm extends Component {
             <span className="input-group-text bg-white border-right-0 main-addon">
               <i className="far fa-calendar-times addon-color" />
             </span>
-            <DatePicker
-              onChange={onDateChange}
-              disabledDate={this.disabledDate}
-              defaultValue={moment(pickup_date)}
-              id="date"
-              size="large"
-              placeholder={""}
-            />
+            {roundTrip ? (
+              <DatePicker
+                onChange={onDateChange}
+                disabledDate={this.disabledDate}
+                id="date"
+                size="large"
+                placeholder={""}
+              />
+            ) : (
+              <DatePicker
+                onChange={onDateChange}
+                disabledDate={this.disabledDate}
+                defaultValue={moment(pickup_date)}
+                id="date"
+                size="large"
+                placeholder={""}
+              />
+            )}
           </div>
         </div>
         <div className="col-3">
@@ -97,15 +130,26 @@ export default class OrderForm extends Component {
             <span className="input-group-text bg-white border-right-0 main-addon">
               <i className="far fa-clock addon-color time-clock" />
             </span>
-            <TimePicker
-              onChange={onTimeChange}
-              defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-              defaultValue={moment(pickup_time)}
-              placeholder={""}
-              size="large"
-              format="HH:mm"
-              id="time"
-            />
+            {roundTrip ? (
+              <TimePicker
+                onChange={onTimeChange}
+                defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+                placeholder={""}
+                size="large"
+                format="HH:mm"
+                id="time"
+              />
+            ) : (
+              <TimePicker
+                onChange={onTimeChange}
+                defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+                defaultValue={moment(pickup_time)}
+                placeholder={""}
+                size="large"
+                format="HH:mm"
+                id="time"
+              />
+            )}
           </div>
         </div>
         <div className="col-3">

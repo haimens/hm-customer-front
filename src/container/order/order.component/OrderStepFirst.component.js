@@ -91,8 +91,8 @@ class OrderStepFirst extends Component {
                 pickup={"PICKUPAGAIN"}
                 dropoff={"DROPOFFAGAIN"}
                 parentProps={this.props}
-                onDateChange={this.onDateChange}
-                onTimeChange={this.onTimeChange}
+                onDateChange={this.onDateChangeAgain}
+                onTimeChange={this.onTimeChangeAgain}
                 updatePassenger={this.updatePassengerAgain}
                 updateFlight={this.updateFlightAgain}
               />
