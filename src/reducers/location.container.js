@@ -36,6 +36,9 @@ const initialState = {
   },
   flight_again: {
     flight_number: ""
+  },
+  roundTrip: {
+    boolean: false
   }
 };
 
@@ -65,6 +68,8 @@ export default (state = initialState, action) => {
       return { ...state, flight: action };
     case constants.FLIGHT_AGAIN:
       return { ...state, flight_again: action };
+    case constants.ROUND_TRIP:
+      return { ...state, roundTrip: action };
     default:
       return state;
   }

@@ -30,19 +30,15 @@ class OrderStepSecond extends Component {
       pickup_date_again: "",
       pickup_time_again: "",
       passenger_amount_again: 1,
-      flight: "",
-      roundTrip: false
+      flight: ""
     };
   }
 
-  componentDidMount() {
-    if (this.props.pickup_location_again.location !== "") {
-      this.setState({ roundTrip: true });
-    }
-  }
+  handleChangePosition = page => {
+    this.props.handleChangePosition(page);
+  };
 
   render() {
-    const { roundTrip } = this.state;
     const {
       pickup_location,
       dropoff_location,
@@ -53,7 +49,8 @@ class OrderStepSecond extends Component {
       dropoff_location_again,
       pickup_date_again,
       pickup_time_again,
-      passenger_amount_again
+      passenger_amount_again,
+      roundTrip
     } = this.props;
     return (
       <section className="pt-4 pb-4">
@@ -62,7 +59,7 @@ class OrderStepSecond extends Component {
             trip={1}
             parentProps={{ pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount }}
           />
-          {roundTrip && (
+          {roundTrip.boolean && (
             <OrderMapDetail
               trip={2}
               parentProps={{
@@ -74,6 +71,32 @@ class OrderStepSecond extends Component {
               }}
             />
           )}
+
+          <div className="row py-5">
+            <div className="col-4">
+              <button
+                type="button"
+                className="btn haimens-main-button-outline w-100 haimens-input-height"
+                onClick={() => this.handleChangePosition(-1)}
+              >
+                Back
+              </button>
+            </div>
+            <div className="col-4">
+              <button type="button" className="btn haimens-button-bgColor-sub text-white w-100 haimens-input-height">
+                Contact Sales
+              </button>
+            </div>
+            <div className="col-4">
+              <button
+                type="button"
+                className="btn haimens-main-bgColor text-white w-100 haimens-input-height"
+                onClick={() => this.handleChangePosition(1)}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     );
@@ -91,7 +114,8 @@ const mapStateToProps = state => {
     passenger_amount: state.locationReducer.passenger_amount,
     pickup_date_again: state.locationReducer.pickup_date_again,
     pickup_time_again: state.locationReducer.pickup_time_again,
-    passenger_amount_again: state.locationReducer.passenger_amount_again
+    passenger_amount_again: state.locationReducer.passenger_amount_again,
+    roundTrip: state.locationReducer.roundTrip
   };
 };
 

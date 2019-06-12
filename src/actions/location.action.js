@@ -129,3 +129,14 @@ export const saveFlightAgain = flight_number => async dispatch => {
     console.log(err);
   }
 };
+
+export const saveRoundTrip = boolean => async dispatch => {
+  try {
+    await dispatch({
+      type: constants.ROUND_TRIP,
+      boolean
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -12,12 +12,13 @@ import {
   saveTimeAgain,
   savePassengerAgain,
   saveFlight,
-  saveFlightAgain
+  saveFlightAgain,
+  saveRoundTrip
 } from "../../../actions/location.action";
 
 class OrderStepFirst extends Component {
   state = {
-    roundedTrip: false,
+    roundTrip: false,
     pickup_date: "",
     pickup_time: "",
     passenger_amount: 1,
@@ -54,6 +55,7 @@ class OrderStepFirst extends Component {
   };
 
   updatePassengerAgain = passenger_amount_again => {
+    console.log(passenger_amount_again);
     this.setState({ passenger_amount_again });
   };
 
@@ -62,7 +64,7 @@ class OrderStepFirst extends Component {
   };
 
   handleTripType = async () => {
-    await this.setState(states => ({ roundedTrip: !states.roundedTrip }));
+    await this.setState(states => ({ roundTrip: !states.roundTrip }));
   };
 
   handleChangePosition = async () => {
@@ -75,19 +77,18 @@ class OrderStepFirst extends Component {
       pickup_time_again,
       passenger_amount_again,
       flight_again,
-      roundedTrip
+      roundTrip
     } = this.state;
 
     const { pickup_location, dropoff_location, pickup_location_again, dropoff_location_again } = this.props;
-
-    if (roundedTrip) {
+    if (roundTrip) {
       if (
-        pickup_date.date !== "" &&
-        pickup_time.time !== "" &&
-        passenger_amount.number !== "" &&
-        pickup_date_again.date !== "" &&
-        pickup_time_again.time !== "" &&
-        passenger_amount_again.number !== "" &&
+        pickup_date !== "" &&
+        pickup_time !== "" &&
+        passenger_amount !== "" &&
+        pickup_date_again !== "" &&
+        pickup_time_again !== "" &&
+        passenger_amount_again !== "" &&
         pickup_location.location !== "" &&
         dropoff_location.location !== "" &&
         pickup_location_again.location !== "" &&
@@ -102,14 +103,16 @@ class OrderStepFirst extends Component {
           this.props.saveDateAgain(pickup_date_again),
           this.props.saveTimeAgain(pickup_time_again),
           this.props.savePassengerAgain(passenger_amount_again),
-          this.props.saveFlightAgain(flight_again)
+          this.props.saveFlightAgain(flight_again),
+
+          this.props.saveRoundTrip(true)
         ]);
         this.props.handleChangePosition(1);
       } else {
         alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
       }
     }
-    if (!roundedTrip) {
+    if (!roundTrip) {
       if (
         pickup_date.date !== "" &&
         pickup_time.time !== "" &&
@@ -121,7 +124,8 @@ class OrderStepFirst extends Component {
           this.props.saveDate(pickup_date),
           this.props.saveTime(pickup_time),
           this.props.savePassenger(passenger_amount),
-          this.props.saveFlight(flight)
+          this.props.saveFlight(flight),
+          this.props.saveRoundTrip(false)
         ]);
         this.props.handleChangePosition(1);
       } else {
@@ -130,7 +134,7 @@ class OrderStepFirst extends Component {
     }
   };
 
-  componentDidMount() {
+  componentDidMount = async () => {
     const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = this.props;
     if (
       pickup_location.location === "" ||
@@ -140,17 +144,34 @@ class OrderStepFirst extends Component {
       passenger_amount.number === ""
     ) {
       this.props.history.push("/");
-    } else {
-      this.setState({
+    }
+    await this.setState({
+      pickup_date_again: "",
+      pickup_time_again: "",
+      passenger_amount_again: 1,
+      flight_again: ""
+    });
+  };
+
+  static getDerivedStateFromProps(props, state) {
+    const { pickup_date, pickup_time, passenger_amount, roundTrip } = props;
+    if (
+      state.pickup_date !== pickup_date.date &&
+      state.pickup_time !== pickup_time.time &&
+      state.passenger_amount !== passenger_amount
+    ) {
+      return {
         pickup_date: pickup_date.date,
         pickup_time: pickup_time.time,
-        passenger_amount: passenger_amount.number
-      });
+        passenger_amount: passenger_amount.number,
+        roundTrip: roundTrip.boolean
+      };
     }
+    return null;
   }
 
   render() {
-    const { roundedTrip } = this.state;
+    const { roundTrip } = this.state;
     return (
       <section>
         <div className="col-10 mx-auto my-5">
@@ -164,7 +185,7 @@ class OrderStepFirst extends Component {
             updatePassenger={this.updatePassenger}
             updateFlight={this.updateFlight}
           />
-          {roundedTrip && (
+          {roundTrip && (
             <div>
               <hr className="haimens-margin-top-35" />
               <OrderForm
@@ -185,7 +206,7 @@ class OrderStepFirst extends Component {
                 className="btn haimens-main-button-outline w-100 haimens-input-height"
                 onClick={this.handleTripType}
               >
-                {roundedTrip ? "One Way" : "Round Trip"}
+                {roundTrip ? "One Way" : "Round Trip"}
               </button>
             </div>
             <div className="col-4">
@@ -217,7 +238,11 @@ const mapStateToProps = state => {
     dropoff_location_again: state.locationReducer.dropoff_location_again,
     pickup_date: state.locationReducer.pickup_date,
     pickup_time: state.locationReducer.pickup_time,
-    passenger_amount: state.locationReducer.passenger_amount
+    passenger_amount: state.locationReducer.passenger_amount,
+    pickup_date_again: state.locationReducer.pickup_date_again,
+    pickup_time_again: state.locationReducer.pickup_time_again,
+    passenger_amount_again: state.locationReducer.passenger_amount_again,
+    roundTrip: state.locationReducer.roundTrip
   };
 };
 
@@ -229,7 +254,8 @@ const mapDispatchToProps = {
   saveTimeAgain,
   savePassengerAgain,
   saveFlight,
-  saveFlightAgain
+  saveFlightAgain,
+  saveRoundTrip
 };
 
 export default connect(
