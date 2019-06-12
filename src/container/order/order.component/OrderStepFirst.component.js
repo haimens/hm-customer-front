@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import OrderForm from "./OrderForm.component";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import moment from "moment";
+import alertify from "alertifyjs";
+import OrderForm from "./OrderForm.component";
 import {
   saveDate,
   saveTime,
@@ -12,8 +14,6 @@ import {
   saveFlight,
   saveFlightAgain
 } from "../../../actions/location.action";
-import moment from "moment";
-import alertify from "alertifyjs";
 
 class OrderStepFirst extends Component {
   state = {
@@ -71,7 +71,6 @@ class OrderStepFirst extends Component {
       pickup_time,
       passenger_amount,
       flight,
-
       pickup_date_again,
       pickup_time_again,
       passenger_amount_again,
