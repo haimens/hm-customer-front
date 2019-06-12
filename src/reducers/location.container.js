@@ -49,7 +49,6 @@ export default (state = initialState, action) => {
       return { ...state, pickup_date: action };
     case constants.PICKUP_DATE_AGAIN:
       return { ...state, pickup_date_again: action };
-
     case constants.PICKUP_TIME:
       return { ...state, pickup_time: action };
     case constants.PICKUP_TIME_AGAIN:

@@ -105,6 +105,9 @@ button{
 .haimens-main-textColor {
   color: #10086b !important
 }
+.haimens-main-textColor-sub {
+  color: #d6a748 !important;
+}
 
 .haimens-main-bgColor {
   background-color: #10086b !important;

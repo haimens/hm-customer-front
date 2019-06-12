@@ -94,7 +94,7 @@ class OrderStepFirst extends Component {
         dropoff_location_again.location !== ""
       ) {
         await Promise.all([
-          this.props.saveDate(pickup_date.date),
+          this.props.saveDate(pickup_date),
           this.props.saveTime(pickup_time),
           this.props.savePassenger(passenger_amount),
           this.props.saveFlight(flight),
@@ -118,7 +118,7 @@ class OrderStepFirst extends Component {
         dropoff_location.location !== ""
       ) {
         await Promise.all([
-          this.props.saveDate(pickup_date.date),
+          this.props.saveDate(pickup_date),
           this.props.saveTime(pickup_time),
           this.props.savePassenger(passenger_amount),
           this.props.saveFlight(flight)

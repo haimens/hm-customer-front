@@ -59,6 +59,7 @@ const MapWithADirectionsRenderer = compose(
   <GoogleMap
     defaultZoom={14}
     defaultCenter={new window.google.maps.LatLng(props.position.center.lat, props.position.center.lng)}
+    options={{ disableDefaultUI: true }}
   >
     {props.directions && props._getResult(props.directions.routes[0].legs[0])}
     {props.directions && <DirectionsRenderer directions={props.directions} />}
