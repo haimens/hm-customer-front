@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import GAutoComplete from "../../../components/shared/GAutoComplete";
-import { DatePicker, TimePicker } from "antd";
 import moment from "moment";
+import { DatePicker, TimePicker } from "antd";
+import GAutoComplete from "../../../components/shared/GAutoComplete";
 
 export default class OrderForm extends Component {
   constructor(props) {
