@@ -82,17 +82,19 @@ class OrderStepFirst extends Component {
       flight_again,
       roundedTrip
     } = this.state;
-
+    const { pickup_location, dropoff_location, pickup_location_again, dropoff_location_again } = this.props;
     if (roundedTrip) {
       if (
         pickup_date.date &&
         pickup_time.time &&
         passenger_amount.number &&
-        flight.flight_number &&
         pickup_date_again.date &&
         pickup_time_again.time &&
         passenger_amount_again.number &&
-        flight_again.flight_number
+        pickup_location.location &&
+        dropoff_location.location &&
+        pickup_location_again.location &&
+        dropoff_location_again.location
       ) {
         await Promise.all([
           this.props.saveDate(pickup_date.date),
@@ -106,7 +108,27 @@ class OrderStepFirst extends Component {
           this.props.saveFlightAgain(flight_again)
         ]);
         this.props.handleChangePosition(1);
+      }
+    } else {
+      alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
+    }
+    if (!roundedTrip) {
+      if (
+        pickup_date.date &&
+        pickup_time.time &&
+        passenger_amount.number &&
+        pickup_location.location &&
+        dropoff_location.location
+      ) {
+        await Promise.all([
+          this.props.saveDate(pickup_date.date),
+          this.props.saveTime(pickup_time),
+          this.props.savePassenger(passenger_amount),
+          this.props.saveFlight(flight)
+        ]);
+        this.props.handleChangePosition(1);
       } else {
+        alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
       }
     }
   };
@@ -187,6 +209,8 @@ const mapStateToProps = state => {
   return {
     pickup_location: state.locationReducer.pickup_location,
     dropoff_location: state.locationReducer.dropoff_location,
+    pickup_location_again: state.locationReducer.pickup_location_again,
+    dropoff_location_again: state.locationReducer.dropoff_location_again,
     pickup_date: state.locationReducer.pickup_date,
     pickup_time: state.locationReducer.pickup_time,
     passenger_amount: state.locationReducer.passenger_amount
