@@ -1,140 +1,140 @@
 import constants from "../constant/constant";
 
-export const savePickUp = location => async dispatch => {
+export const savePickUp = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.PICKUP_LOCATION,
-      location
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
-export const savePickUpAgain = location => async dispatch => {
+export const savePickUpAgain = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.PICKUP_LOCATION_AGAIN,
-      location
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
-export const saveDropOff = location => async dispatch => {
+export const saveDropOff = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.DROPOFF_LOCATION,
-      location
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveDropOffAgain = location => async dispatch => {
+export const saveDropOffAgain = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.DROPOFF_LOCATION_AGAIN,
-      location
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveDate = date => async dispatch => {
+export const saveDate = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.PICKUP_DATE,
-      date
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveDateAgain = date => async dispatch => {
+export const saveDateAgain = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.PICKUP_DATE_AGAIN,
-      date
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveTime = time => async dispatch => {
+export const saveTime = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.PICKUP_TIME,
-      time
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveTimeAgain = time => async dispatch => {
+export const saveTimeAgain = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.PICKUP_TIME_AGAIN,
-      time
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const savePassenger = number => async dispatch => {
+export const savePassenger = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.PASSENGER_AMOUNT,
-      number
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const savePassengerAgain = number => async dispatch => {
+export const savePassengerAgain = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.PASSENGER_AMOUNT_AGAIN,
-      number
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveFlight = flight_number => async dispatch => {
+export const saveFlight = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.FLIGHT,
-      flight_number
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveFlightAgain = flight_number => async dispatch => {
+export const saveFlightAgain = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.FLIGHT_AGAIN,
-      flight_number
+      payload
     });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveRoundTrip = boolean => async dispatch => {
+export const saveRoundTrip = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.ROUND_TRIP,
-      boolean
+      payload
     });
   } catch (err) {
     console.log(err);

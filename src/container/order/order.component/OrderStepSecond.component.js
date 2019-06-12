@@ -2,47 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import OrderMapDetail from "./OrderMapDetail.component";
-import {
-  saveDate,
-  saveTime,
-  savePassenger,
-  saveDateAgain,
-  saveTimeAgain,
-  savePassengerAgain,
-  saveFlight,
-  saveFlightAgain
-} from "../../../actions/location.action";
 
 class OrderStepSecond extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pickup_location: "",
-      dropoff_location: "",
-      pickup_date: "",
-      pickup_time: "",
-      passenger_amount: 1,
-
-      pickup_location_again: "",
-      dropoff_location_again: "",
-      pickup_date_again: "",
-      pickup_time_again: "",
-      passenger_amount_again: 1,
-      flight: ""
-    };
-  }
-
   handleChangePosition = page => {
     this.props.handleChangePosition(page);
   };
 
   render() {
-    const { firstTrip, seconTrip, roundTrip } = this.props;
+    const { firstTrip, secondTrip, roundTrip } = this.props;
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
           <OrderMapDetail trip={1} parentProps={firstTrip} />
-          {roundTrip.boolean && <OrderMapDetail trip={2} parentProps={seconTrip} />}
+          {roundTrip.boolean && <OrderMapDetail trip={2} parentProps={secondTrip} />}
 
           <div className="row py-5">
             <div className="col-4">
@@ -83,18 +55,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  saveDate,
-  saveTime,
-  savePassenger,
-  saveDateAgain,
-  saveTimeAgain,
-  savePassengerAgain,
-  saveFlight,
-  saveFlightAgain
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(withRouter(OrderStepSecond));

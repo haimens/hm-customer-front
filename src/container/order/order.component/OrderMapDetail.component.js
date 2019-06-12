@@ -27,6 +27,7 @@ class OrderMapDetail extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { pickup_date, pickup_time, dropoff_location, pickup_location } = this.props.parentProps;
     const { minivan, sedan } = this.state;
     return (

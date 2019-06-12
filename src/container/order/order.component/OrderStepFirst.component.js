@@ -19,15 +19,18 @@ import {
 class OrderStepFirst extends Component {
   state = {
     roundTrip: false,
-    pickup_date: "",
-    pickup_time: "",
-    passenger_amount: "",
-    flight: "",
-
-    pickup_date_again: "",
-    pickup_time_again: "",
-    passenger_amount_again: "",
-    flight_again: ""
+    firstTrip: {
+      pickup_date: "",
+      pickup_time: "",
+      passenger_amount: "",
+      flight: ""
+    },
+    secondTrip: {
+      pickup_date: "",
+      pickup_time: "",
+      passenger_amount: "",
+      flight: ""
+    }
   };
 
   onDateChange = date => {
@@ -55,7 +58,6 @@ class OrderStepFirst extends Component {
   };
 
   updatePassengerAgain = passenger_amount_again => {
-    console.log(passenger_amount_again);
     this.setState({ passenger_amount_again });
   };
 
@@ -68,24 +70,20 @@ class OrderStepFirst extends Component {
   };
 
   handleChangePosition = async () => {
-    const {
-      pickup_date,
-      pickup_time,
-      passenger_amount,
-      flight,
-      pickup_date_again,
-      pickup_time_again,
-      passenger_amount_again,
-      flight_again,
-      roundTrip
-    } = this.state;
-
-    if (roundTrip) {
+    const { firstTrip, secondTrip, roundTrip } = this.state;
+    const { pickup_date, pickup_time, passenger_amount, flight } = firstTrip;
+    if (roundTrip.boolean) {
       const { pickup_location, dropoff_location } = this.props.firstTrip;
       const {
         pickup_location: pickup_location_again,
         dropoff_location: dropoff_location_again
       } = this.props.secondTrip;
+      const {
+        pickup_date: pickup_date_again,
+        pickup_time: pickup_time_again,
+        passenger_amount: passenger_amount_again,
+        flight: flight_again
+      } = secondTrip;
       if (
         pickup_date !== "" &&
         pickup_time !== "" &&
@@ -116,9 +114,8 @@ class OrderStepFirst extends Component {
         alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
       }
     }
-    if (!roundTrip) {
+    if (!roundTrip.boolean) {
       const { pickup_location, dropoff_location } = this.props.firstTrip;
-
       if (
         pickup_date.date !== "" &&
         pickup_time.time !== "" &&
@@ -151,35 +148,67 @@ class OrderStepFirst extends Component {
     ) {
       this.props.history.push("/");
     }
-    await this.setState({
-      pickup_date_again: "",
-      pickup_time_again: "",
-      passenger_amount_again: 1,
-      flight_again: ""
-    });
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { roundTrip, firstTrip } = props;
+    const { roundTrip, firstTrip, secondTrip } = props;
     const { pickup_date, pickup_time, passenger_amount } = firstTrip;
 
-    if (
-      state.pickup_date !== pickup_date.date &&
-      state.pickup_time !== pickup_time.time &&
-      state.passenger_amount !== passenger_amount
-    ) {
-      return {
-        pickup_date: pickup_date.date,
-        pickup_time: pickup_time.time,
-        passenger_amount: passenger_amount.number,
-        roundTrip: roundTrip.boolean
-      };
+    const { pickup_date_again, pickup_time_again, passenger_amount_again } = secondTrip;
+    if (roundTrip.boolean) {
+      if (
+        state.firstTrip.pickup_date !== pickup_date.date &&
+        state.firstTrip.pickup_time !== pickup_time.time &&
+        state.firstTrip.passenger_amount !== passenger_amount.number
+      ) {
+        if (pickup_date_again.date !== "") {
+          return {
+            firstTrip: {
+              pickup_date: pickup_date,
+              pickup_time: pickup_time,
+              passenger_amount: passenger_amount.number
+            },
+            secondTrip: {
+              pickup_date: pickup_date_again,
+              pickup_time: pickup_time_again,
+              passenger_amount: passenger_amount_again
+            },
+            roundTrip: roundTrip
+          };
+        }
+        return {
+          firstTrip: {
+            pickup_date: pickup_date,
+            pickup_time: pickup_time,
+            passenger_amount: passenger_amount
+          }
+        };
+      }
+    }
+    if (!roundTrip.boolean) {
+      if (
+        state.firstTrip.pickup_date !== pickup_date.date &&
+        state.firstTrip.pickup_time !== pickup_time.time &&
+        state.firstTrip.passenger_amount !== passenger_amount.number
+      ) {
+        return {
+          firstTrip: {
+            pickup_date: pickup_date,
+            pickup_time: pickup_time,
+            passenger_amount: passenger_amount
+          },
+          roundTrip: roundTrip
+        };
+      }
     }
     return null;
   }
 
   render() {
     const { roundTrip } = this.state;
+    const { firstTrip, secondTrip } = this.props;
+    console.log(this.state.firstTrip);
+    console.log(this.props);
     return (
       <section>
         <div className="col-10 mx-auto my-5">
@@ -187,19 +216,27 @@ class OrderStepFirst extends Component {
           <OrderForm
             pickup={"PICKUP"}
             dropoff={"DROPOFF"}
-            trip={this.props.firstTrip}
+            trip={{
+              pickup_location: firstTrip.pickup_location,
+              dropoff_location: firstTrip.dropoff_location,
+              ...this.state.firstTrip
+            }}
             onDateChange={this.onDateChange}
             onTimeChange={this.onTimeChange}
             updatePassenger={this.updatePassenger}
             updateFlight={this.updateFlight}
           />
-          {roundTrip && (
+          {roundTrip.boolean && (
             <div>
               <hr className="haimens-margin-top-35" />
               <OrderForm
                 pickup={"PICKUPAGAIN"}
                 dropoff={"DROPOFFAGAIN"}
-                trip={this.props.secondTrip}
+                trip={{
+                  pickup_location: secondTrip.pickup_location,
+                  dropoff_location: secondTrip.dropoff_location,
+                  ...this.state.secondTrip
+                }}
                 onDateChange={this.onDateChangeAgain}
                 onTimeChange={this.onTimeChangeAgain}
                 updatePassenger={this.updatePassengerAgain}
@@ -214,7 +251,7 @@ class OrderStepFirst extends Component {
                 className="btn haimens-main-button-outline w-100 haimens-input-height"
                 onClick={this.handleTripType}
               >
-                {roundTrip ? "One Way" : "Round Trip"}
+                {roundTrip.boolean ? "One Way" : "Round Trip"}
               </button>
             </div>
             <div className="col-4">
