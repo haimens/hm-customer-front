@@ -21,12 +21,12 @@ class OrderStepFirst extends Component {
     roundTrip: false,
     pickup_date: "",
     pickup_time: "",
-    passenger_amount: 1,
+    passenger_amount: "",
     flight: "",
 
     pickup_date_again: "",
     pickup_time_again: "",
-    passenger_amount_again: 1,
+    passenger_amount_again: "",
     flight_again: ""
   };
 
@@ -154,7 +154,7 @@ class OrderStepFirst extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { pickup_date, pickup_time, passenger_amount, roundTrip } = props;
+    const { pickup_date, pickup_time, passenger_amount, roundTrip, flight } = props;
     if (
       state.pickup_date !== pickup_date.date &&
       state.pickup_time !== pickup_time.time &&
@@ -239,9 +239,7 @@ const mapStateToProps = state => {
     pickup_date: state.locationReducer.pickup_date,
     pickup_time: state.locationReducer.pickup_time,
     passenger_amount: state.locationReducer.passenger_amount,
-    pickup_date_again: state.locationReducer.pickup_date_again,
-    pickup_time_again: state.locationReducer.pickup_time_again,
-    passenger_amount_again: state.locationReducer.passenger_amount_again,
+    flight: state.locationReducer.flight,
     roundTrip: state.locationReducer.roundTrip
   };
 };

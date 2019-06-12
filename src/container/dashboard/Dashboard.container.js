@@ -19,7 +19,7 @@ class Dashboard extends Component {
     this.state = {
       date: "",
       time: "",
-      passenger: 1
+      passenger: ""
     };
   }
 

@@ -11,7 +11,7 @@ export default class OrderForm extends Component {
       dropoff_location: "",
       pickup_date: "",
       pickup_time: "",
-      passenger_amount: 1,
+      passenger_amount: "",
       flight: "",
       roundTrip: false
     };
@@ -40,20 +40,22 @@ export default class OrderForm extends Component {
         roundTrip: true
       };
     }
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = props.parentProps;
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = props.parentProps;
     if (
       state.pickup_location !== pickup_location.location &&
       state.dropoff_location !== dropoff_location.location &&
       state.pickup_date !== pickup_date.date &&
       state.pickup_time !== pickup_time.time &&
-      state.passenger_amount !== passenger_amount
+      state.passenger_amount !== passenger_amount &&
+      state.flight !== flight
     ) {
       return {
         pickup_location: pickup_location.location[0].formatted_address,
         dropoff_location: dropoff_location.location[0].formatted_address,
         pickup_date: pickup_date.date,
         pickup_time: pickup_time.time,
-        passenger_amount: passenger_amount.number
+        passenger_amount: passenger_amount.number,
+        flight: flight.flight_number
       };
     }
     return null;
