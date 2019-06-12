@@ -18,15 +18,11 @@ import alertify from "alertifyjs";
 class OrderStepFirst extends Component {
   state = {
     roundedTrip: false,
-    pickup_location: "",
-    dropoff_location: "",
     pickup_date: "",
     pickup_time: "",
     passenger_amount: 1,
     flight: "",
 
-    pickup_location_again: "",
-    dropoff_location_again: "",
     pickup_date_again: "",
     pickup_time_again: "",
     passenger_amount_again: 1,
@@ -82,19 +78,21 @@ class OrderStepFirst extends Component {
       flight_again,
       roundedTrip
     } = this.state;
+
     const { pickup_location, dropoff_location, pickup_location_again, dropoff_location_again } = this.props;
+
     if (roundedTrip) {
       if (
-        pickup_date.date &&
-        pickup_time.time &&
-        passenger_amount.number &&
-        pickup_date_again.date &&
-        pickup_time_again.time &&
-        passenger_amount_again.number &&
-        pickup_location.location &&
-        dropoff_location.location &&
-        pickup_location_again.location &&
-        dropoff_location_again.location
+        pickup_date.date !== "" &&
+        pickup_time.time !== "" &&
+        passenger_amount.number !== "" &&
+        pickup_date_again.date !== "" &&
+        pickup_time_again.time !== "" &&
+        passenger_amount_again.number !== "" &&
+        pickup_location.location !== "" &&
+        dropoff_location.location !== "" &&
+        pickup_location_again.location !== "" &&
+        dropoff_location_again.location !== ""
       ) {
         await Promise.all([
           this.props.saveDate(pickup_date.date),
@@ -108,17 +106,17 @@ class OrderStepFirst extends Component {
           this.props.saveFlightAgain(flight_again)
         ]);
         this.props.handleChangePosition(1);
+      } else {
+        alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
       }
-    } else {
-      alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
     }
     if (!roundedTrip) {
       if (
-        pickup_date.date &&
-        pickup_time.time &&
-        passenger_amount.number &&
-        pickup_location.location &&
-        dropoff_location.location
+        pickup_date.date !== "" &&
+        pickup_time.time !== "" &&
+        passenger_amount.number !== "" &&
+        pickup_location.location !== "" &&
+        dropoff_location.location !== ""
       ) {
         await Promise.all([
           this.props.saveDate(pickup_date.date),
@@ -143,8 +141,15 @@ class OrderStepFirst extends Component {
       passenger_amount.number === ""
     ) {
       this.props.history.push("/");
+    } else {
+      this.setState({
+        pickup_date: pickup_date.date,
+        pickup_time: pickup_time.time,
+        passenger_amount: passenger_amount.number
+      });
     }
   }
+
   render() {
     const { roundedTrip } = this.state;
     return (

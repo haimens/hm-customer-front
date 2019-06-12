@@ -43,7 +43,6 @@ export const saveDropOffAgain = location => async dispatch => {
 };
 
 export const saveDate = date => async dispatch => {
-  console.log(date);
   try {
     await dispatch({
       type: constants.PICKUP_DATE,
@@ -55,7 +54,6 @@ export const saveDate = date => async dispatch => {
 };
 
 export const saveDateAgain = date => async dispatch => {
-  console.log(date);
   try {
     await dispatch({
       type: constants.PICKUP_DATE_AGAIN,
