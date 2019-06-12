@@ -214,8 +214,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => {
   return {
-    pickup_location: state.locationReducer.pickup_location,
-    dropoff_location: state.locationReducer.dropoff_location
+    pickup_location: state.locationReducer.firstTrip.pickup_location,
+    dropoff_location: state.locationReducer.firstTrip.dropoff_location
   };
 };
 

@@ -103,16 +103,8 @@ class OrderStepSecond extends Component {
 
 const mapStateToProps = state => {
   return {
-    pickup_location: state.locationReducer.pickup_location,
-    dropoff_location: state.locationReducer.dropoff_location,
-    pickup_location_again: state.locationReducer.pickup_location_again,
-    dropoff_location_again: state.locationReducer.dropoff_location_again,
-    pickup_date: state.locationReducer.pickup_date,
-    pickup_time: state.locationReducer.pickup_time,
-    passenger_amount: state.locationReducer.passenger_amount,
-    pickup_date_again: state.locationReducer.pickup_date_again,
-    pickup_time_again: state.locationReducer.pickup_time_again,
-    passenger_amount_again: state.locationReducer.passenger_amount_again,
+    firstTrip: state.locationReducer.firstTrip,
+    secondTrip: state.locationReducer.secondTrip,
     roundTrip: state.locationReducer.roundTrip
   };
 };

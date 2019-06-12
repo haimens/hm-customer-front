@@ -40,7 +40,7 @@ export default class OrderForm extends Component {
         roundTrip: true
       };
     }
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = props.parentProps;
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = props.trip;
     if (
       state.pickup_location !== pickup_location.location &&
       state.dropoff_location !== dropoff_location.location &&

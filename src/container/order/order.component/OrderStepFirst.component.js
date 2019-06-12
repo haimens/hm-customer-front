@@ -80,8 +80,12 @@ class OrderStepFirst extends Component {
       roundTrip
     } = this.state;
 
-    const { pickup_location, dropoff_location, pickup_location_again, dropoff_location_again } = this.props;
     if (roundTrip) {
+      const { pickup_location, dropoff_location } = this.props.firstTrip;
+      const {
+        pickup_location: pickup_location_again,
+        dropoff_location: dropoff_location_again
+      } = this.props.secondTrip;
       if (
         pickup_date !== "" &&
         pickup_time !== "" &&
@@ -113,6 +117,8 @@ class OrderStepFirst extends Component {
       }
     }
     if (!roundTrip) {
+      const { pickup_location, dropoff_location } = this.props.firstTrip;
+
       if (
         pickup_date.date !== "" &&
         pickup_time.time !== "" &&
@@ -135,7 +141,7 @@ class OrderStepFirst extends Component {
   };
 
   componentDidMount = async () => {
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = this.props;
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = this.props.firstTrip;
     if (
       pickup_location.location === "" ||
       dropoff_location.location === "" ||
@@ -154,7 +160,9 @@ class OrderStepFirst extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const { pickup_date, pickup_time, passenger_amount, roundTrip, flight } = props;
+    const { roundTrip, firstTrip } = props;
+    const { pickup_date, pickup_time, passenger_amount } = firstTrip;
+
     if (
       state.pickup_date !== pickup_date.date &&
       state.pickup_time !== pickup_time.time &&
@@ -179,7 +187,7 @@ class OrderStepFirst extends Component {
           <OrderForm
             pickup={"PICKUP"}
             dropoff={"DROPOFF"}
-            parentProps={this.props}
+            trip={this.props.firstTrip}
             onDateChange={this.onDateChange}
             onTimeChange={this.onTimeChange}
             updatePassenger={this.updatePassenger}
@@ -191,7 +199,7 @@ class OrderStepFirst extends Component {
               <OrderForm
                 pickup={"PICKUPAGAIN"}
                 dropoff={"DROPOFFAGAIN"}
-                parentProps={this.props}
+                trip={this.props.secondTrip}
                 onDateChange={this.onDateChangeAgain}
                 onTimeChange={this.onTimeChangeAgain}
                 updatePassenger={this.updatePassengerAgain}
@@ -232,14 +240,8 @@ class OrderStepFirst extends Component {
 
 const mapStateToProps = state => {
   return {
-    pickup_location: state.locationReducer.pickup_location,
-    dropoff_location: state.locationReducer.dropoff_location,
-    pickup_location_again: state.locationReducer.pickup_location_again,
-    dropoff_location_again: state.locationReducer.dropoff_location_again,
-    pickup_date: state.locationReducer.pickup_date,
-    pickup_time: state.locationReducer.pickup_time,
-    passenger_amount: state.locationReducer.passenger_amount,
-    flight: state.locationReducer.flight,
+    firstTrip: state.locationReducer.firstTrip,
+    secondTrip: state.locationReducer.secondTrip,
     roundTrip: state.locationReducer.roundTrip
   };
 };
