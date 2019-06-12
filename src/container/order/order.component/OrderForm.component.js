@@ -26,7 +26,7 @@ export default class OrderForm extends Component {
   handleInputChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
-    if (id === "passenger") {
+    if (id === "passenger_amount") {
       this.props.updatePassenger(value);
     }
     if (id === "flight") {
@@ -49,8 +49,8 @@ export default class OrderForm extends Component {
       state.passenger_amount !== passenger_amount
     ) {
       return {
-        pickup_location: pickup_location.location,
-        dropoff_location: dropoff_location.location,
+        pickup_location: pickup_location.location[0].formatted_address,
+        dropoff_location: dropoff_location.location[0].formatted_address,
         pickup_date: pickup_date.date,
         pickup_time: pickup_time.time,
         passenger_amount: passenger_amount.number

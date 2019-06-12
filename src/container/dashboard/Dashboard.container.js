@@ -39,10 +39,14 @@ class Dashboard extends Component {
     const { pickup_location, dropoff_location } = this.props;
     const { date, time, passenger } = this.state;
     if (date && time && passenger && pickup_location.location && dropoff_location.location) {
-      await this.props.saveDate(date);
-      await this.props.saveTime(time);
-      await this.props.savePassenger(passenger);
-      await this.props.history.push("/order");
+      if (passenger > 0) {
+        await this.props.saveDate(date);
+        await this.props.saveTime(time);
+        await this.props.savePassenger(passenger);
+        await this.props.history.push("/order");
+      } else {
+        alertify.alert("Something Wrong", "Please Submit Correct Passenger Amount!");
+      }
     } else {
       alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
     }

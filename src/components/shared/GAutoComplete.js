@@ -77,7 +77,7 @@ const PlacesWithStandaloneSearchBox = compose(
   withScriptjs
 )(props => (
   <>
-    {props.places[0] && props._getAddress(props.places[0].formatted_address)}
+    {props.places[0] && props._getAddress(props.places)}
     <StandaloneSearchBox ref={props.onSearchBoxMounted} bounds={props.bounds} onPlacesChanged={props.onPlacesChanged}>
       <div className="input-group mb-3 ">
         <div className="input-group-prepend ">
