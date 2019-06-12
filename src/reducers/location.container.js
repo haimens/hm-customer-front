@@ -48,7 +48,6 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case constants.PICKUP_LOCATION:
       return { ...state, firstTrip: { ...state.firstTrip, pickup_location: action.payload } };

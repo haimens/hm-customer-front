@@ -207,8 +207,6 @@ class OrderStepFirst extends Component {
   render() {
     const { roundTrip } = this.state;
     const { firstTrip, secondTrip } = this.props;
-    console.log(this.state.firstTrip);
-    console.log(this.props);
     return (
       <section>
         <div className="col-10 mx-auto my-5">

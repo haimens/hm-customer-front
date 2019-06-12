@@ -38,7 +38,9 @@ class Dashboard extends Component {
   handleSubmitOrder = async () => {
     const { pickup_location, dropoff_location } = this.props;
     const { date, time, passenger } = this.state;
-    if (date && time && passenger && pickup_location.location && dropoff_location.location) {
+    console.log(this.state);
+    console.log(this.props);
+    if (date && time && passenger && pickup_location[0].formatted_address && dropoff_location[0].formatted_address) {
       if (passenger > 0) {
         await this.props.saveDate(date);
         await this.props.saveTime(time);
