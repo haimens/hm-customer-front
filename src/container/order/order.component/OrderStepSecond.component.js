@@ -37,38 +37,12 @@ class OrderStepSecond extends Component {
   };
 
   render() {
-    const {
-      pickup_location,
-      dropoff_location,
-      pickup_date,
-      pickup_time,
-      passenger_amount,
-      pickup_location_again,
-      dropoff_location_again,
-      pickup_date_again,
-      pickup_time_again,
-      passenger_amount_again,
-      roundTrip
-    } = this.props;
+    const { firstTrip, seconTrip, roundTrip } = this.props;
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
-          <OrderMapDetail
-            trip={1}
-            parentProps={{ pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount }}
-          />
-          {roundTrip.boolean && (
-            <OrderMapDetail
-              trip={2}
-              parentProps={{
-                pickup_location: pickup_location_again,
-                dropoff_location: dropoff_location_again,
-                pickup_date: pickup_date_again,
-                pickup_time: pickup_time_again,
-                passenger_amount: passenger_amount_again
-              }}
-            />
-          )}
+          <OrderMapDetail trip={1} parentProps={firstTrip} />
+          {roundTrip.boolean && <OrderMapDetail trip={2} parentProps={seconTrip} />}
 
           <div className="row py-5">
             <div className="col-4">
