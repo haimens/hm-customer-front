@@ -109,3 +109,25 @@ export const savePassengerAgain = number => async dispatch => {
     console.log(err);
   }
 };
+
+export const saveFlight = flight_number => async dispatch => {
+  try {
+    await dispatch({
+      type: constants.FLIGHT,
+      flight_number
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const saveFlightAgain = flight_number => async dispatch => {
+  try {
+    await dispatch({
+      type: constants.FLIGHT_AGAIN,
+      flight_number
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};

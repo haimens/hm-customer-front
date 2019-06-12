@@ -30,6 +30,12 @@ const initialState = {
   },
   passenger_amount_again: {
     number: ""
+  },
+  flight: {
+    flight_number: ""
+  },
+  flight_again: {
+    flight_number: ""
   }
 };
 
@@ -56,6 +62,10 @@ export default (state = initialState, action) => {
       return { ...state, passenger_amount: action };
     case constants.PASSENGER_AMOUNT_AGAIN:
       return { ...state, passenger_amount_again: action };
+    case constants.FLIGHT:
+      return { ...state, flight: action };
+    case constants.FLIGHT_AGAIN:
+      return { ...state, flight_again: action };
     default:
       return state;
   }

@@ -8,53 +8,107 @@ import {
   savePassenger,
   saveDateAgain,
   saveTimeAgain,
-  savePassengerAgain
+  savePassengerAgain,
+  saveFlight,
+  saveFlightAgain
 } from "../../../actions/location.action";
 import moment from "moment";
+import alertify from "alertifyjs";
 
 class OrderStepFirst extends Component {
   state = {
-    roundedTrip: false
+    roundedTrip: false,
+    pickup_location: "",
+    dropoff_location: "",
+    pickup_date: "",
+    pickup_time: "",
+    passenger_amount: 1,
+    flight: "",
+
+    pickup_location_again: "",
+    dropoff_location_again: "",
+    pickup_date_again: "",
+    pickup_time_again: "",
+    passenger_amount_again: 1,
+    flight_again: ""
   };
 
   onDateChange = date => {
-    console.log(moment(date).format("LL"));
+    this.setState({ pickup_date: moment(date) });
   };
 
   onTimeChange = time => {
-    console.log(moment(time).format("hh:mm a"));
+    this.setState({ pickup_time: moment(time) });
   };
 
-  updatePassenger = number => {
-    console.log(number);
+  updatePassenger = passenger_amount => {
+    this.setState({ passenger_amount });
   };
 
-  updateFlight = text => {
-    console.log(text);
+  updateFlight = flight => {
+    this.setState({ flight });
   };
 
   onDateChangeAgain = date => {
-    console.log(moment(date).format("LL"));
+    this.setState({ pickup_date_again: moment(date) });
   };
 
   onTimeChangeAgain = time => {
-    console.log(moment(time).format("hh:mm a"));
+    this.setState({ pickup_time_again: moment(time) });
   };
 
-  updatePassengerAgain = number => {
-    console.log(number);
+  updatePassengerAgain = passenger_amount_again => {
+    this.setState({ passenger_amount_again });
   };
 
-  updateFlightAgain = text => {
-    console.log(text);
+  updateFlightAgain = flight_again => {
+    this.setState({ flight_again });
   };
 
   handleTripType = async () => {
     await this.setState(states => ({ roundedTrip: !states.roundedTrip }));
   };
 
-  handleChangePosition = () => {
-    this.props.handleChangePosition(1);
+  handleChangePosition = async () => {
+    const {
+      pickup_date,
+      pickup_time,
+      passenger_amount,
+      flight,
+
+      pickup_date_again,
+      pickup_time_again,
+      passenger_amount_again,
+      flight_again,
+      roundedTrip
+    } = this.state;
+
+    if (roundedTrip) {
+      if (
+        pickup_date.date &&
+        pickup_time.time &&
+        passenger_amount.number &&
+        flight.flight_number &&
+        pickup_date_again.date &&
+        pickup_time_again.time &&
+        passenger_amount_again.number &&
+        flight_again.flight_number
+      ) {
+        await Promise.all([
+          this.props.saveDate(pickup_date.date),
+          this.props.saveTime(pickup_time),
+          this.props.savePassenger(passenger_amount),
+          this.props.saveFlight(flight),
+
+          this.props.saveDateAgain(pickup_date_again),
+          this.props.saveTimeAgain(pickup_time_again),
+          this.props.savePassengerAgain(passenger_amount_again),
+          this.props.saveFlightAgain(flight_again)
+        ]);
+        this.props.handleChangePosition(1);
+      } else {
+      }
+    }
   };
 
   componentDidMount() {
@@ -139,7 +193,16 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { saveDate, saveTime, savePassenger, saveDateAgain, saveTimeAgain, savePassengerAgain };
+const mapDispatchToProps = {
+  saveDate,
+  saveTime,
+  savePassenger,
+  saveDateAgain,
+  saveTimeAgain,
+  savePassengerAgain,
+  saveFlight,
+  saveFlightAgain
+};
 
 export default connect(
   mapStateToProps,
