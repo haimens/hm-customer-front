@@ -7,7 +7,9 @@ export default class OrderForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      roundTrip: false
+      roundTrip: false,
+      passenger_amount: "",
+      flight: ""
     };
   }
 
@@ -28,10 +30,15 @@ export default class OrderForm extends Component {
     }
   };
 
+  componentDidMount() {
+    this.setState({ passenger_amount: this.props.trip.passenger_amount, flight: this.props.trip.flight });
+  }
+
   render() {
     console.log(this.props);
     const { onDateChange, onTimeChange, pickup, dropoff, trip } = this.props;
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight, roundTrip } = trip;
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, roundTrip } = trip;
+    const { flight, passenger_amount } = this.state;
     return (
       <div className="row">
         <div className="col-6">

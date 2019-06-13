@@ -50,7 +50,7 @@ class OrderStepFirst extends Component {
   };
 
   onDateChangeAgain = date => {
-    this.setState({ pickup_date: moment(date) });
+    this.setState({ secondTrip: { pickup_date: moment(date) } });
   };
 
   onTimeChangeAgain = time => {
@@ -70,6 +70,8 @@ class OrderStepFirst extends Component {
   };
 
   handleChangePosition = async () => {
+    console.log(this.state);
+    console.log(this.props);
     const { firstTrip, secondTrip, roundTrip } = this.state;
     const { pickup_date, pickup_time, passenger_amount, flight } = firstTrip;
     if (roundTrip) {
@@ -119,9 +121,9 @@ class OrderStepFirst extends Component {
       if (
         pickup_date.date !== "" &&
         pickup_time.time !== "" &&
-        passenger_amount.number !== "" &&
-        pickup_location.location !== "" &&
-        dropoff_location.location !== ""
+        passenger_amount !== "" &&
+        pickup_location !== "" &&
+        dropoff_location !== ""
       ) {
         await Promise.all([
           this.props.saveDate(pickup_date),
@@ -209,12 +211,7 @@ class OrderStepFirst extends Component {
               <OrderForm
                 pickup={"PICKUPAGAIN"}
                 dropoff={"DROPOFFAGAIN"}
-                trip={{
-                  pickup_location: secondTrip.pickup_location,
-                  dropoff_location: secondTrip.dropoff_location,
-                  roundTrip,
-                  ...this.state.secondTrip
-                }}
+                trip={{ ...secondTrip, roundTrip }}
                 onDateChange={this.onDateChangeAgain}
                 onTimeChange={this.onTimeChangeAgain}
                 updatePassenger={this.updatePassengerAgain}
