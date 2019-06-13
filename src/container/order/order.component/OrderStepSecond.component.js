@@ -2,20 +2,56 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import OrderMapDetail from "./OrderMapDetail.component";
+import alertify from "alertifyjs";
+import { saveAmount, saveAmountAgain } from "../../../actions/location.action";
 
 class OrderStepSecond extends Component {
-  handleChangePosition = page => {
-    this.props.handleChangePosition(page);
+  state = {
+    firstTripAmount: 0,
+    secondTripAmount: 0
   };
-
+  handleChangePosition = position => {
+    if (position < 0) {
+      this.props.handleChangePosition(position);
+      return;
+    }
+    const { firstTripAmount, secondTripAmount } = this.state;
+    if (firstTripAmount > 0) {
+      if (this.props.roundTrip) {
+        if (secondTripAmount > 0) {
+          this.props.saveAmount(firstTripAmount);
+          this.props.saveAmountAgain(secondTripAmount);
+          this.props.handleChangePosition(position);
+        } else {
+          alertify.alert("Something Wrong", "Please Select A Car For Trip #2");
+        }
+      }
+      if (!this.props.roundTrip) {
+        this.props.saveAmount(firstTripAmount);
+        this.props.handleChangePosition(position);
+      }
+    } else {
+      alertify.alert("Something Wrong", "Please Select a Car For Trip #1");
+    }
+  };
+  handleFirstTripAmount = firstTripAmount => {
+    this.setState({ firstTripAmount });
+  };
+  handleSecondTripAmount = secondTripAmount => {
+    this.setState({ secondTripAmount });
+  };
   render() {
     const { firstTrip, secondTrip, roundTrip } = this.props;
+    const { firstTripAmount, secondTripAmount } = this.state;
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
-          <OrderMapDetail trip={1} parentProps={firstTrip} />
-          {roundTrip && <OrderMapDetail trip={2} parentProps={secondTrip} />}
-
+          <OrderMapDetail trip={1} parentProps={firstTrip} handleTripAmount={this.handleFirstTripAmount} />
+          {roundTrip && (
+            <OrderMapDetail trip={2} parentProps={secondTrip} handleTripAmount={this.handleSecondTripAmount} />
+          )}
+          <hr className="my-5" />
+          <h4 className="haimens-main-text-28 text-right">{`Total Due: $${firstTripAmount + secondTripAmount}`}</h4>
           <div className="row py-5">
             <div className="col-4">
               <button
@@ -55,7 +91,12 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = {
+  saveAmount,
+  saveAmountAgain
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(withRouter(OrderStepSecond));

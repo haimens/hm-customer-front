@@ -9,11 +9,8 @@ class GMapLocation extends Component {
     };
   }
 
-  _getResult = result => {
-    console.log(result);
-  };
   render() {
-    return <MapWithADirectionsRenderer _getResult={this._getResult} position={this.props.position} />;
+    return <MapWithADirectionsRenderer position={this.props.position} />;
   }
 }
 
@@ -61,7 +58,6 @@ const MapWithADirectionsRenderer = compose(
     defaultCenter={new window.google.maps.LatLng(props.position.center.lat, props.position.center.lng)}
     options={{ disableDefaultUI: true }}
   >
-    {props.directions && props._getResult(props.directions.routes[0].legs[0])}
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
 ));

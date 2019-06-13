@@ -17,12 +17,14 @@ class OrderMapDetail extends Component {
         sedan: true,
         minivan: false
       });
+      this.props.handleTripAmount(85);
     }
     if (type === "miniVan") {
       await this.setState({
         sedan: false,
         minivan: true
       });
+      this.props.handleTripAmount(105);
     }
   };
 

@@ -13,7 +13,9 @@ import {
   savePassengerAgain,
   saveFlight,
   saveFlightAgain,
-  saveRoundTrip
+  saveRoundTrip,
+  savePickUpAgain,
+  saveDropOffAgain
 } from "../../../actions/location.action";
 
 class OrderStepFirst extends Component {
@@ -70,10 +72,9 @@ class OrderStepFirst extends Component {
 
   handleChangePosition = async () => {
     const { firstTrip, secondTrip, roundTrip } = this.state;
-    console.log(secondTrip);
     const { pickup_date, pickup_time, passenger_amount, flight } = firstTrip;
+    const { pickup_location, dropoff_location } = this.props.firstTrip;
     if (roundTrip) {
-      const { pickup_location, dropoff_location } = this.props.firstTrip;
       const {
         pickup_location: pickup_location_again,
         dropoff_location: dropoff_location_again
@@ -96,7 +97,6 @@ class OrderStepFirst extends Component {
         pickup_location_again !== "" &&
         dropoff_location_again !== ""
       ) {
-        console.log("imhere");
         await Promise.all([
           this.props.saveDate(pickup_date),
           this.props.saveTime(pickup_time),
@@ -116,7 +116,6 @@ class OrderStepFirst extends Component {
       }
     }
     if (!roundTrip) {
-      const { pickup_location, dropoff_location } = this.props.firstTrip;
       if (
         pickup_date.date !== "" &&
         pickup_time.time !== "" &&
@@ -129,7 +128,14 @@ class OrderStepFirst extends Component {
           this.props.saveTime(pickup_time),
           this.props.savePassenger(passenger_amount),
           this.props.saveFlight(flight),
-          this.props.saveRoundTrip(false)
+          this.props.saveRoundTrip(false),
+
+          this.props.saveDateAgain(""),
+          this.props.saveTimeAgain(""),
+          this.props.savePassengerAgain(""),
+          this.props.saveFlightAgain(""),
+          this.props.savePickUpAgain(""),
+          this.props.saveDropOffAgain("")
         ]);
         this.props.handleChangePosition(1);
       } else {
@@ -140,8 +146,13 @@ class OrderStepFirst extends Component {
 
   componentDidMount = async () => {
     const { roundTrip, firstTrip, secondTrip } = this.props;
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = firstTrip;
-    const { pickup_date_again, pickup_time_again, passenger_amount_again } = secondTrip;
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = firstTrip;
+    const {
+      pickup_date: pickup_date_again,
+      pickup_time: pickup_time_again,
+      passenger_amount: passenger_amount_again,
+      flight: flight_again
+    } = secondTrip;
     if (
       pickup_location === "" ||
       dropoff_location === "" ||
@@ -154,34 +165,41 @@ class OrderStepFirst extends Component {
 
     if (roundTrip) {
       if (pickup_date_again !== "") {
-        this.setState({
+        await this.setState({
           firstTrip: {
             pickup_date: pickup_date,
             pickup_time: pickup_time,
-            passenger_amount: passenger_amount
+            passenger_amount: passenger_amount,
+            flight: flight
           },
           secondTrip: {
             pickup_date: pickup_date_again,
             pickup_time: pickup_time_again,
-            passenger_amount: passenger_amount_again
+            passenger_amount: passenger_amount_again,
+            flight: flight_again
           },
           roundTrip: roundTrip
         });
       }
-      this.setState({
-        firstTrip: {
-          pickup_date: pickup_date,
-          pickup_time: pickup_time,
-          passenger_amount: passenger_amount
-        }
-      });
+      if (pickup_date_again === "") {
+        await this.setState({
+          firstTrip: {
+            pickup_date: pickup_date,
+            pickup_time: pickup_time,
+            passenger_amount: passenger_amount,
+            flight: flight
+          },
+          roundTrip: roundTrip
+        });
+      }
     }
     if (!roundTrip) {
       this.setState({
         firstTrip: {
           pickup_date: pickup_date,
           pickup_time: pickup_time,
-          passenger_amount: passenger_amount
+          passenger_amount: passenger_amount,
+          flight: flight
         },
         roundTrip: roundTrip
       });
@@ -194,7 +212,7 @@ class OrderStepFirst extends Component {
     return (
       <section>
         <div className="col-10 mx-auto my-5">
-          <h3>Trip Detail</h3>
+          <h3 className="mb-3">Trip Detail</h3>
           <OrderForm
             pickup={"PICKUP"}
             dropoff={"DROPOFF"}
@@ -266,7 +284,9 @@ const mapDispatchToProps = {
   savePassengerAgain,
   saveFlight,
   saveFlightAgain,
-  saveRoundTrip
+  saveRoundTrip,
+  savePickUpAgain,
+  saveDropOffAgain
 };
 
 export default connect(

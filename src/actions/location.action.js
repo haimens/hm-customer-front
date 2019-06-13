@@ -76,7 +76,6 @@ export const saveTime = payload => async dispatch => {
 };
 
 export const saveTimeAgain = payload => async dispatch => {
-  console.log(payload);
   try {
     await dispatch({
       type: constants.PICKUP_TIME_AGAIN,
@@ -135,6 +134,28 @@ export const saveRoundTrip = payload => async dispatch => {
   try {
     await dispatch({
       type: constants.ROUND_TRIP,
+      payload
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const saveAmount = payload => async dispatch => {
+  try {
+    await dispatch({
+      type: constants.AMOUNT,
+      payload
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const saveAmountAgain = payload => async dispatch => {
+  try {
+    await dispatch({
+      type: constants.AMOUNT_AGAIN,
       payload
     });
   } catch (err) {
