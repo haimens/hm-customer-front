@@ -10,7 +10,6 @@ class OrderStepSecond extends Component {
 
   render() {
     const { firstTrip, secondTrip, roundTrip } = this.props;
-    console.log(roundTrip);
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">

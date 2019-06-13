@@ -49,19 +49,19 @@ class OrderStepFirst extends Component {
   };
 
   onDateChangeAgain = date => {
-    this.setState({ secondTrip: { pickup_date: moment(date) } });
+    this.setState(states => ({ ...states, secondTrip: { ...states.secondTrip, pickup_date: moment(date) } }));
   };
 
   onTimeChangeAgain = async time => {
-    this.setState({ secondTrip: { pickup_time: moment(time) } });
+    this.setState(states => ({ ...states, secondTrip: { ...states.secondTrip, pickup_time: moment(time) } }));
   };
 
   updatePassengerAgain = passenger_amount => {
-    this.setState({ secondTrip: { passenger_amount } });
+    this.setState(states => ({ ...states, secondTrip: { ...states.secondTrip, passenger_amount } }));
   };
 
   updateFlightAgain = flight => {
-    this.setState({ secondTrip: { flight } });
+    this.setState(states => ({ ...states, secondTrip: { ...states.secondTrip, flight } }));
   };
 
   handleTripType = async () => {

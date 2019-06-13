@@ -71,13 +71,24 @@ export default class OrderForm extends Component {
               <i className="far fa-calendar-times addon-color" />
             </span>
             {roundTrip ? (
-              <DatePicker
-                onChange={onDateChange}
-                disabledDate={this.disabledDate}
-                id="date"
-                size="large"
-                placeholder={""}
-              />
+              pickup_date !== "" ? (
+                <DatePicker
+                  onChange={onDateChange}
+                  disabledDate={this.disabledDate}
+                  defaultValue={moment(pickup_date._d)}
+                  id="date"
+                  size="large"
+                  placeholder={""}
+                />
+              ) : (
+                <DatePicker
+                  onChange={onDateChange}
+                  disabledDate={this.disabledDate}
+                  id="date"
+                  size="large"
+                  placeholder={""}
+                />
+              )
             ) : (
               <DatePicker
                 onChange={onDateChange}
@@ -99,14 +110,26 @@ export default class OrderForm extends Component {
               <i className="far fa-clock addon-color time-clock" />
             </span>
             {roundTrip ? (
-              <TimePicker
-                onChange={onTimeChange}
-                defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-                placeholder={""}
-                size="large"
-                format="HH:mm"
-                id="time"
-              />
+              pickup_time !== "" ? (
+                <TimePicker
+                  onChange={onTimeChange}
+                  defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+                  defaultValue={moment(pickup_time._d)}
+                  placeholder={""}
+                  size="large"
+                  format="HH:mm"
+                  id="time"
+                />
+              ) : (
+                <TimePicker
+                  onChange={onTimeChange}
+                  defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+                  placeholder={""}
+                  size="large"
+                  format="HH:mm"
+                  id="time"
+                />
+              )
             ) : (
               <TimePicker
                 onChange={onTimeChange}
