@@ -76,6 +76,7 @@ export const saveTime = payload => async dispatch => {
 };
 
 export const saveTimeAgain = payload => async dispatch => {
+  console.log(payload);
   try {
     await dispatch({
       type: constants.PICKUP_TIME_AGAIN,

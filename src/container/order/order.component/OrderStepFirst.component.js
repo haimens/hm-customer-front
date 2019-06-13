@@ -50,19 +50,19 @@ class OrderStepFirst extends Component {
   };
 
   onDateChangeAgain = date => {
-    this.setState({ pickup_date_again: moment(date) });
+    this.setState({ pickup_date: moment(date) });
   };
 
   onTimeChangeAgain = time => {
-    this.setState({ secondTrip: { pickup_time_again: moment(time) } });
+    this.setState({ secondTrip: { pickup_time: moment(time) } });
   };
 
-  updatePassengerAgain = passenger_amount_again => {
-    this.setState({ secondTrip: { passenger_amount_again } });
+  updatePassengerAgain = passenger_amount => {
+    this.setState({ secondTrip: { passenger_amount } });
   };
 
-  updateFlightAgain = flight_again => {
-    this.setState({ secondTrip: { flight_again } });
+  updateFlightAgain = flight => {
+    this.setState({ secondTrip: { flight } });
   };
 
   handleTripType = async () => {
@@ -96,7 +96,6 @@ class OrderStepFirst extends Component {
         pickup_location_again !== "" &&
         dropoff_location_again !== ""
       ) {
-        console.log("here");
         await Promise.all([
           this.props.saveDate(pickup_date),
           this.props.saveTime(pickup_time),
@@ -139,73 +138,56 @@ class OrderStepFirst extends Component {
   };
 
   componentDidMount = async () => {
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = this.props.firstTrip;
+    const { roundTrip, firstTrip, secondTrip } = this.props;
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount } = firstTrip;
+    const { pickup_date_again, pickup_time_again, passenger_amount_again } = secondTrip;
     if (
-      pickup_location.location === "" ||
-      dropoff_location.location === "" ||
-      pickup_date.date === "" ||
+      pickup_location === "" ||
+      dropoff_location === "" ||
+      pickup_date === "" ||
       pickup_time.time === "" ||
       passenger_amount.number === ""
     ) {
       this.props.history.push("/");
     }
-  };
 
-  static getDerivedStateFromProps(props, state) {
-    const { roundTrip, firstTrip, secondTrip } = props;
-    const { pickup_date, pickup_time, passenger_amount } = firstTrip;
-    const { pickup_date_again, pickup_time_again, passenger_amount_again } = secondTrip;
-    if (roundTrip.boolean) {
-      if (
-        state.firstTrip.pickup_date !== pickup_date &&
-        state.firstTrip.pickup_time !== pickup_time &&
-        state.firstTrip.passenger_amount !== passenger_amount
-      ) {
-        if (pickup_date_again !== "") {
-          return {
-            firstTrip: {
-              pickup_date: pickup_date,
-              pickup_time: pickup_time,
-              passenger_amount: passenger_amount
-            },
-            secondTrip: {
-              pickup_date: pickup_date_again,
-              pickup_time: pickup_time_again,
-              passenger_amount: passenger_amount_again
-            },
-            roundTrip: roundTrip
-          };
-        }
-        return {
-          firstTrip: {
-            pickup_date: pickup_date,
-            pickup_time: pickup_time,
-            passenger_amount: passenger_amount
-          }
-        };
-      }
-    }
-    if (!roundTrip.boolean) {
-      if (
-        state.firstTrip.pickup_date !== pickup_date &&
-        state.firstTrip.pickup_time !== pickup_time &&
-        state.firstTrip.passenger_amount !== passenger_amount
-      ) {
-        return {
+    if (roundTrip) {
+      if (pickup_date_again !== "") {
+        this.setState({
           firstTrip: {
             pickup_date: pickup_date,
             pickup_time: pickup_time,
             passenger_amount: passenger_amount
           },
-          roundTrip: roundTrip.boolean
-        };
+          secondTrip: {
+            pickup_date: pickup_date_again,
+            pickup_time: pickup_time_again,
+            passenger_amount: passenger_amount_again
+          },
+          roundTrip: roundTrip
+        });
       }
+      this.setState({
+        firstTrip: {
+          pickup_date: pickup_date,
+          pickup_time: pickup_time,
+          passenger_amount: passenger_amount
+        }
+      });
     }
-    return null;
-  }
+    if (!roundTrip) {
+      this.setState({
+        firstTrip: {
+          pickup_date: pickup_date,
+          pickup_time: pickup_time,
+          passenger_amount: passenger_amount
+        },
+        roundTrip: roundTrip
+      });
+    }
+  };
 
   render() {
-    console.log(this.state);
     const { roundTrip } = this.state;
     const { firstTrip, secondTrip } = this.props;
     return (
@@ -215,11 +197,7 @@ class OrderStepFirst extends Component {
           <OrderForm
             pickup={"PICKUP"}
             dropoff={"DROPOFF"}
-            trip={{
-              pickup_location: firstTrip.pickup_location,
-              dropoff_location: firstTrip.dropoff_location,
-              ...this.state.firstTrip
-            }}
+            trip={firstTrip}
             onDateChange={this.onDateChange}
             onTimeChange={this.onTimeChange}
             updatePassenger={this.updatePassenger}
@@ -234,6 +212,7 @@ class OrderStepFirst extends Component {
                 trip={{
                   pickup_location: secondTrip.pickup_location,
                   dropoff_location: secondTrip.dropoff_location,
+                  roundTrip,
                   ...this.state.secondTrip
                 }}
                 onDateChange={this.onDateChangeAgain}

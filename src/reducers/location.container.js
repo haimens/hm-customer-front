@@ -2,44 +2,20 @@ import constants from "../constant/constant";
 
 const initialState = {
   firstTrip: {
-    pickup_location: {
-      location: ""
-    },
-    dropoff_location: {
-      location: ""
-    },
-    pickup_date: {
-      date: ""
-    },
-    pickup_time: {
-      time: ""
-    },
-    passenger_amount: {
-      number: ""
-    },
-    flight: {
-      flight_number: ""
-    }
+    pickup_location: "",
+    dropoff_location: "",
+    pickup_date: "",
+    pickup_time: "",
+    passenger_amount: "",
+    flight: ""
   },
   secondTrip: {
-    pickup_location: {
-      location: ""
-    },
-    dropoff_location: {
-      location: ""
-    },
-    pickup_date: {
-      date: ""
-    },
-    pickup_time: {
-      time: ""
-    },
-    passenger_amount: {
-      number: ""
-    },
-    flight: {
-      flight_number: ""
-    }
+    pickup_location: "",
+    dropoff_location: "",
+    pickup_date: "",
+    pickup_time: "",
+    passenger_amount: "",
+    flight: ""
   },
   roundTrip: false
 };

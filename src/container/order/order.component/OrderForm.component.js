@@ -7,12 +7,6 @@ export default class OrderForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pickup_location: "",
-      dropoff_location: "",
-      pickup_date: "",
-      pickup_time: "",
-      passenger_amount: "",
-      flight: "",
       roundTrip: false
     };
   }
@@ -34,47 +28,10 @@ export default class OrderForm extends Component {
     }
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.pickup === "PICKUPAGAIN" || props.dropoff === "DROPOFFAGAIN") {
-      return {
-        roundTrip: true
-      };
-    }
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = props.trip;
-    if (
-      state.pickup_location !== pickup_location.location &&
-      state.dropoff_location !== dropoff_location.location &&
-      state.pickup_date !== pickup_date &&
-      state.pickup_time !== pickup_time.time &&
-      state.passenger_amount !== passenger_amount.number
-    ) {
-      let flight_number = "";
-      if (flight && flight.number !== "") {
-        flight_number = flight.number;
-      }
-      return {
-        pickup_location: pickup_location[0].formatted_address,
-        dropoff_location: dropoff_location[0].formatted_address,
-        pickup_date: pickup_date,
-        pickup_time: pickup_time,
-        passenger_amount: passenger_amount,
-        flight: flight_number
-      };
-    }
-    return null;
-  }
-
   render() {
-    const { onDateChange, onTimeChange } = this.props;
-    const {
-      pickup_location,
-      dropoff_location,
-      pickup_date,
-      pickup_time,
-      passenger_amount,
-      flight,
-      roundTrip
-    } = this.state;
+    console.log(this.props);
+    const { onDateChange, onTimeChange, pickup, dropoff, trip } = this.props;
+    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight, roundTrip } = trip;
     return (
       <div className="row">
         <div className="col-6">
@@ -82,9 +39,9 @@ export default class OrderForm extends Component {
             Pickup Location
           </label>
           <GAutoComplete
-            placeholder={this.props.pickup}
+            placeholder={pickup}
             disablePlaceHolder={true}
-            defaultValue={pickup_location}
+            defaultValue={pickup_location && pickup_location[0].formatted_address}
             inputClass={"border-left-0"}
           />
         </div>
@@ -93,9 +50,9 @@ export default class OrderForm extends Component {
             Dropoff Location
           </label>
           <GAutoComplete
-            placeholder={this.props.dropoff}
+            placeholder={dropoff}
             disablePlaceHolder={true}
-            defaultValue={dropoff_location}
+            defaultValue={dropoff_location && dropoff_location[0].formatted_address}
             inputClass={"border-left-0"}
           />
         </div>
@@ -119,7 +76,7 @@ export default class OrderForm extends Component {
               <DatePicker
                 onChange={onDateChange}
                 disabledDate={this.disabledDate}
-                defaultValue={moment(pickup_date)}
+                defaultValue={moment(pickup_date._d)}
                 id="date"
                 size="large"
                 placeholder={""}
@@ -148,7 +105,7 @@ export default class OrderForm extends Component {
               <TimePicker
                 onChange={onTimeChange}
                 defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-                defaultValue={moment(pickup_time)}
+                defaultValue={moment(pickup_time._d)}
                 placeholder={""}
                 size="large"
                 format="HH:mm"
