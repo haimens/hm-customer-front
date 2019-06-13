@@ -3,6 +3,7 @@ import "./Order.container.css";
 import OrderPagination from "./order.component/OrderPagination.component";
 import OrderStepFirstComponent from "./order.component/OrderStepFirst.component";
 import OrderStepSecondComponent from "./order.component/OrderStepSecond.component";
+import OrderStepThirdComponent from "./order.component/OrderStepThird.component";
 
 class Order extends Component {
   state = {
@@ -22,6 +23,7 @@ class Order extends Component {
         <hr className="haimens-main-bgColor" />
         {position === 0 && <OrderStepFirstComponent handleChangePosition={this.handleChangePosition} />}
         {position === 1 && <OrderStepSecondComponent handleChangePosition={this.handleChangePosition} />}
+        {position === 2 && <OrderStepThirdComponent handleChangePosition={this.handleChangePosition} />}
       </section>
     );
   }

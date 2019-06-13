@@ -41,7 +41,7 @@ export default class OrderForm extends Component {
     return (
       <div className="row">
         <div className="col-6">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="pickup_location">
+          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_location">
             Pickup Location
           </label>
           <GAutoComplete
@@ -52,7 +52,7 @@ export default class OrderForm extends Component {
           />
         </div>
         <div className="col-6">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="dropoff_location">
+          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="dropoff_location">
             Dropoff Location
           </label>
           <GAutoComplete
@@ -63,7 +63,7 @@ export default class OrderForm extends Component {
           />
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="pickup_date">
+          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_date">
             Date
           </label>
           <div className="d-flex">
@@ -102,7 +102,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="pickup_time">
+          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_time">
             Time
           </label>
           <div className="d-flex">
@@ -144,7 +144,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="passenger_amount">
+          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="passenger_amount">
             Passenger
           </label>
           <div className="d-flex">
@@ -161,7 +161,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-3">
-          <label className="haimens-margin-top-35{ font-weight-bold" htmlFor="flight">
+          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="flight">
             Flight Number
           </label>
           <div className="d-flex">
