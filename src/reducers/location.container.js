@@ -41,10 +41,7 @@ const initialState = {
       flight_number: ""
     }
   },
-
-  roundTrip: {
-    boolean: false
-  }
+  roundTrip: false
 };
 
 export default (state = initialState, action) => {

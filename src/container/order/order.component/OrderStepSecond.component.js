@@ -10,11 +10,12 @@ class OrderStepSecond extends Component {
 
   render() {
     const { firstTrip, secondTrip, roundTrip } = this.props;
+    console.log(roundTrip);
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
           <OrderMapDetail trip={1} parentProps={firstTrip} />
-          {roundTrip.boolean && <OrderMapDetail trip={2} parentProps={secondTrip} />}
+          {roundTrip && <OrderMapDetail trip={2} parentProps={secondTrip} />}
 
           <div className="row py-5">
             <div className="col-4">

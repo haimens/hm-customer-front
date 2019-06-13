@@ -27,7 +27,6 @@ class OrderMapDetail extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { pickup_date, pickup_time, dropoff_location, pickup_location } = this.props.parentProps;
     const { minivan, sedan } = this.state;
     return (
@@ -35,19 +34,19 @@ class OrderMapDetail extends Component {
         <h3>{`Trip #${this.props.trip}`}</h3>
         <h4 className="haimens-main-text-14 mt-4">
           Pickup Time:
-          <span className="haimens-main-textColor">{` ${moment(pickup_date.date).format("MM/DD/YYYY")}  ${moment(
-            pickup_time.time
+          <span className="haimens-main-textColor">{` ${moment(pickup_date).format("MM/DD/YYYY")}  ${moment(
+            pickup_time
           ).format("HH:mm a")}`}</span>
         </h4>
         <h4 className="haimens-main-text-14 mt-3">
-          Pickup Location:{" "}
-          <span className="haimens-main-textColor-sub">{` ${pickup_location.location !== "" &&
-            pickup_location.location[0].formatted_address}`}</span>
+          Pickup Location:
+          <span className="haimens-main-textColor-sub">{` ${pickup_location !== "" &&
+            pickup_location[0].formatted_address}`}</span>
         </h4>
         <h4 className="haimens-main-text-14 mt-3">
           Dropoff Location:
-          <span className="haimens-main-textColor">{` ${dropoff_location.location !== "" &&
-            dropoff_location.location[0].formatted_address}`}</span>
+          <span className="haimens-main-textColor">{` ${dropoff_location !== "" &&
+            dropoff_location[0].formatted_address}`}</span>
         </h4>
         <div className="row">
           <div className="col-6 mt-4" style={{ height: "282px" }}>
@@ -55,16 +54,16 @@ class OrderMapDetail extends Component {
               <GMapLocation
                 position={{
                   center: {
-                    lat: pickup_location.location[0].geometry.location.lat(),
-                    lng: pickup_location.location[0].geometry.location.lng()
+                    lat: pickup_location[0].geometry.location.lat(),
+                    lng: pickup_location[0].geometry.location.lng()
                   },
                   origin: {
-                    lat: pickup_location.location[0].geometry.location.lat(),
-                    lng: pickup_location.location[0].geometry.location.lng()
+                    lat: pickup_location[0].geometry.location.lat(),
+                    lng: pickup_location[0].geometry.location.lng()
                   },
                   destination: {
-                    lat: dropoff_location.location[0].geometry.location.lat(),
-                    lng: dropoff_location.location[0].geometry.location.lng()
+                    lat: dropoff_location[0].geometry.location.lat(),
+                    lng: dropoff_location[0].geometry.location.lng()
                   }
                 }}
               />
