@@ -35,7 +35,6 @@ export default class OrderForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { onDateChange, onTimeChange, pickup, dropoff, trip } = this.props;
     const { pickup_location, dropoff_location, pickup_date, pickup_time, roundTrip } = trip;
     const { flight, passenger_amount } = this.state;

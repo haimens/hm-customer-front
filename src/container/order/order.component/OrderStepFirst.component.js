@@ -32,28 +32,27 @@ class OrderStepFirst extends Component {
       flight: ""
     }
   };
-
   onDateChange = date => {
-    this.setState({ firstTrip: { pickup_date: moment(date) } });
+    this.setState(states => ({ ...states, firstTrip: { ...states.firstTrip, pickup_date: moment(date) } }));
   };
 
   onTimeChange = time => {
-    this.setState({ firstTrip: { pickup_time: moment(time) } });
+    this.setState(states => ({ ...states, firstTrip: { ...states.firstTrip, pickup_time: moment(time) } }));
   };
 
   updatePassenger = passenger_amount => {
-    this.setState({ firstTrip: { passenger_amount } });
+    this.setState(states => ({ ...states, firstTrip: { ...states.firstTrip, passenger_amount } }));
   };
 
   updateFlight = flight => {
-    this.setState({ firstTrip: { flight } });
+    this.setState(states => ({ ...states, firstTrip: { ...states.firstTrip, flight } }));
   };
 
   onDateChangeAgain = date => {
     this.setState({ secondTrip: { pickup_date: moment(date) } });
   };
 
-  onTimeChangeAgain = time => {
+  onTimeChangeAgain = async time => {
     this.setState({ secondTrip: { pickup_time: moment(time) } });
   };
 
@@ -70,9 +69,8 @@ class OrderStepFirst extends Component {
   };
 
   handleChangePosition = async () => {
-    console.log(this.state);
-    console.log(this.props);
     const { firstTrip, secondTrip, roundTrip } = this.state;
+    console.log(secondTrip);
     const { pickup_date, pickup_time, passenger_amount, flight } = firstTrip;
     if (roundTrip) {
       const { pickup_location, dropoff_location } = this.props.firstTrip;
@@ -98,6 +96,7 @@ class OrderStepFirst extends Component {
         pickup_location_again !== "" &&
         dropoff_location_again !== ""
       ) {
+        console.log("imhere");
         await Promise.all([
           this.props.saveDate(pickup_date),
           this.props.saveTime(pickup_time),
