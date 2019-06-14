@@ -5,6 +5,22 @@ import OrderStepFourthDetail from "./orderStepFourth.component/OrderStepFourthDe
 import alertify from "alertifyjs";
 
 class OrderStepFourth extends Component {
+  state = {
+    firstTripAmount: "",
+    secondTripAmount: ""
+  };
+
+  handleFirstTripAmount = firstTripAmount => {
+    this.setState({ firstTripAmount });
+  };
+
+  handleFirstTripAmount = secondTripAmount => {
+    this.setState({ secondTripAmount });
+  };
+  handleChangePosition = position => {
+    this.props.handleChangePosition(position);
+  };
+
   render() {
     const { firstTrip, secondTrip, roundTrip } = this.props;
     return (

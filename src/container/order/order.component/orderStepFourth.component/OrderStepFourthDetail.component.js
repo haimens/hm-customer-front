@@ -16,7 +16,15 @@ class OrderStepFourthDetail extends Component {
       custom_tip: e.target.value
     });
   };
-  addTip = () => {};
+  addTip = () => {
+    const { tip, custom_tip } = this.state;
+    if (tip && !custom_tip) {
+      this.props.handleTripAmount(tip);
+    }
+    if (!tip && custom_tip) {
+      this.props.handleTripAmount(custom_tip);
+    }
+  };
   render() {
     const { pickup_date, pickup_time, dropoff_location, pickup_location } = this.props.parentProps;
     const { tip, custom_tip } = this.state;
