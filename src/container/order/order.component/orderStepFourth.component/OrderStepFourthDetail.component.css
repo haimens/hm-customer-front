@@ -1,0 +1,11 @@
+.tip-button{
+  height: 48px !important;
+  width: 48px !important;
+}
+.tip-button-custom{
+  height: 48px !important;
+  width: 100px !important;
+}
+.tip-button-outline{
+  border: 1px solid #cccccc !important;
+}

@@ -94,7 +94,7 @@ class OrderStepThird extends Component {
                   rows="3"
                   id="special_instruction"
                   onChange={this.handleInputChange}
-                  value={email}
+                  value={special_instruction}
                 />
               </div>
             </div>

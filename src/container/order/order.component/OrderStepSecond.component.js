@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import OrderMapDetail from "./OrderMapDetail.component";
 import alertify from "alertifyjs";
+import OrderMapDetail from "./orderStepSecond.component/OrderStepSecondDetail.component";
 import { saveAmount, saveAmountAgain } from "../../../actions/location.action";
 
 class OrderStepSecond extends Component {
@@ -48,7 +48,10 @@ class OrderStepSecond extends Component {
         <div className="col-10 mx-auto">
           <OrderMapDetail trip={1} parentProps={firstTrip} handleTripAmount={this.handleFirstTripAmount} />
           {roundTrip && (
-            <OrderMapDetail trip={2} parentProps={secondTrip} handleTripAmount={this.handleSecondTripAmount} />
+            <div>
+              <hr className="my-5" />
+              <OrderMapDetail trip={2} parentProps={secondTrip} handleTripAmount={this.handleSecondTripAmount} />
+            </div>
           )}
           <hr className="my-5" />
           <h4 className="haimens-main-text-28 text-right">{`Total Due: $${firstTripAmount + secondTripAmount}`}</h4>

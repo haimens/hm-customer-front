@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import moment from "moment";
 import alertify from "alertifyjs";
-import OrderForm from "./OrderForm.component";
+import OrderForm from "./orderStepFirst.component/OrderForm.component";
 import {
   saveDate,
   saveTime,

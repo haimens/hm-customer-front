@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
-import GMapLocation from "../../../components/shared/GMapLocation";
-import "./OrderMapDetail.component.css";
+import "./OrderStepSecondDetail.component.css";
+import GMapLocation from "../../../../components/shared/GMapLocation";
 class OrderMapDetail extends Component {
   constructor(props) {
     super(props);
