@@ -14,7 +14,7 @@ class OrderStepFourth extends Component {
     this.setState({ firstTripAmount });
   };
 
-  handleFirstTripAmount = secondTripAmount => {
+  handleSecondTripAmount = secondTripAmount => {
     this.setState({ secondTripAmount });
   };
   handleChangePosition = position => {

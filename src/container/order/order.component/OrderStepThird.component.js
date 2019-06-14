@@ -85,12 +85,12 @@ class OrderStepThird extends Component {
               </div>
             </div>
             <div className="col-12">
-              <div class="form-group">
+              <div className="form-group">
                 <label className="haimens-margin-top-35 font-weight-bold" htmlFor="special_instruction">
                   Special Instruction
                 </label>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   rows="3"
                   id="special_instruction"
                   onChange={this.handleInputChange}
