@@ -22,10 +22,10 @@ class Order extends Component {
           <OrderPagination position={position} />
         </div>
         <hr className="haimens-main-bgColor" />
-        {position === 0 && <OrderStepFirstComponent handleChangePosition={this.handleChangePosition} />}
+        {position === 3 && <OrderStepFirstComponent handleChangePosition={this.handleChangePosition} />}
         {position === 1 && <OrderStepSecondComponent handleChangePosition={this.handleChangePosition} />}
         {position === 2 && <OrderStepThirdComponent handleChangePosition={this.handleChangePosition} />}
-        {position === 3 && <OrderStepFourthComponent handleChangePosition={this.handleChangePosition} />}
+        {position === 0 && <OrderStepFourthComponent handleChangePosition={this.handleChangePosition} />}
       </section>
     );
   }

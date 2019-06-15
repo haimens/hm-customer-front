@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import OrderStepFourthDetail from "./orderStepFourth.component/OrderStepFourthDetail.component";
 import alertify from "alertifyjs";
+import CreditCard from "./orderStepFourth.component/CreditCard.component";
 import "./OrderStepFourth.component.css";
 class OrderStepFourth extends Component {
   state = {
@@ -36,7 +37,7 @@ class OrderStepFourth extends Component {
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
-          <OrderStepFourthDetail trip={1} parentProps={firstTrip} handleTotalAmount={this.handleFirstTotalAmount} />
+          {/* <OrderStepFourthDetail trip={1} parentProps={firstTrip} handleTotalAmount={this.handleFirstTotalAmount} />
           {roundTrip && (
             <div>
               <hr className="my-5" />
@@ -87,7 +88,10 @@ class OrderStepFourth extends Component {
             <h4 className="haimens-main-text-22">{`Subtotal: $ ${firstTotalAmount + secondTotalAmount}`}</h4>
             <h4 className="haimens-main-text-22">Discount: $</h4>
             <h4 className="haimens-main-text-28">Total Due: $</h4>
-          </div>
+          </div> */}
+          <hr className="my-5" />
+          <h4 className="haimens-main-text-28">Payment Information</h4>
+          <CreditCard />
           <div className="row py-5">
             <div className="col-4">
               <button
