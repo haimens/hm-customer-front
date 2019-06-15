@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 
 export default class CreditCard extends Component {
+  state = {
+    expiration_date: "",
+    cvv: "",
+    postal_code: "",
+    card_number: ""
+  };
+  handleInputChange = e => {
+    const { id, value } = e.target;
+    this.setState({ [id]: value });
+  };
   render() {
+    const { expiration_date, cvv, postal_code, card_number } = this.state;
     return (
       <section>
         <div className="mt-4 p-3 border rounded-top">
@@ -23,7 +34,13 @@ export default class CreditCard extends Component {
           <div>
             <label for="basic-url">Card Number</label>
             <div className="input-group mb-3">
-              <input type="text" className="form-control haimens-input-height" id="basic-url" value="card_number" />
+              <input
+                type="text"
+                className="form-control haimens-input-height"
+                id="card_number"
+                value={card_number}
+                onChange={this.handleInputChange}
+              />
             </div>
           </div>
 
@@ -33,22 +50,35 @@ export default class CreditCard extends Component {
               <div className="input-group mb-3">
                 <input
                   type="text"
-                  value="expiration_date"
+                  id="expiration_date"
                   className="form-control haimens-input-height"
-                  id="basic-url"
+                  value={expiration_date}
+                  onChange={this.handleInputChange}
                 />
               </div>
             </div>
             <div className="col-4">
               <label for="basic-url">CVV</label>
               <div className="input-group mb-3">
-                <input type="password" value="cvv" className="form-control haimens-input-height" id="basic-url" />
+                <input
+                  type="password"
+                  id="cvv"
+                  className="form-control haimens-input-height"
+                  value={cvv}
+                  onChange={this.handleInputChange}
+                />
               </div>
             </div>
             <div className="col-4">
               <label for="basic-url">Postal Code</label>
               <div className="input-group mb-3">
-                <input type="text" value="postal_code" className="form-control haimens-input-height" id="basic-url" />
+                <input
+                  type="text"
+                  id="postal_code"
+                  className="form-control haimens-input-height"
+                  value={postal_code}
+                  onChange={this.handleInputChange}
+                />
               </div>
             </div>
           </div>
