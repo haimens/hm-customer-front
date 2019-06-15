@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import OrderStepFourthDetail from "./orderStepFourth.component/OrderStepFourthDetail.component";
 import alertify from "alertifyjs";
-
+import "./OrderStepFourth.component.css";
 class OrderStepFourth extends Component {
   state = {
     firstTripAmount: "",
@@ -26,15 +26,54 @@ class OrderStepFourth extends Component {
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
-          <OrderStepFourthDetail trip={1} parentProps={firstTrip} handleTripAmount={this.handleFirstTripAmount} />
+          {/* <OrderStepFourthDetail trip={1} parentProps={firstTrip} handleTripAmount={this.handleFirstTripAmount} />
           {roundTrip && (
             <div>
               <hr className="my-5" />
               <OrderStepFourthDetail trip={2} parentProps={secondTrip} handleTripAmount={this.handleSecondTripAmount} />
             </div>
-          )}
+          )} */}
           <hr className="my-5" />
-          <h4 className="haimens-main-text-28 text-right">{`Total Due: $${136}`}</h4>
+          <div className="row">
+            <div className="col-6">
+              <h4 className="haimens-main-text-28">Passenger Information</h4>
+              <h4 className="haimens-main-text-14 mt-4">
+                Name:
+                <span>{` Chrin `}</span>
+              </h4>
+              <h4 className="haimens-main-text-14 mt-4">
+                Phone:
+                <span>{` Chrin `}</span>
+              </h4>
+              <h4 className="haimens-main-text-14 mt-4">
+                Email:
+                <span>{` Chrin `}</span>
+              </h4>
+              <h4 className="haimens-main-text-14 mt-4">
+                Special Instruction:
+                <span>{` Chrin `}</span>
+              </h4>
+            </div>
+            <div className="col-6">
+              <h4 className="haimens-main-text-28">Coupon</h4>
+              <h4 className="haimens-main-text-14 mt-4">Coupon Code</h4>
+              <div className="d-flex  mt-4">
+                <input
+                  className={`form-control haimens-input-height`}
+                  placeholder="Other"
+                  id="other"
+                  type="text"
+                  value={123}
+                />
+                <button className="btn haimens-main-bgColor text-white stepFour-button-custom ml-4">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div className="mt-5 text-right">
+            <h4 className="haimens-main-text-22">Subtotal: $</h4>
+            <h4 className="haimens-main-text-22">Discount: $</h4>
+            <h4 className="haimens-main-text-28">Total Due: $</h4>
+          </div>
           <div className="row py-5">
             <div className="col-4">
               <button

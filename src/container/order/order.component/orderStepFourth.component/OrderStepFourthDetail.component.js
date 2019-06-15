@@ -119,14 +119,15 @@ class OrderStepFourthDetail extends Component {
                   20%
                 </button>
                 <input
-                  className={`form-control tip-button-custom  ${custom_tip !== "" && "haimens-main-button-outline"}`}
+                  className={`form-control stepFour-button-custom  ${custom_tip !== "" &&
+                    "haimens-main-button-outline"}`}
                   placeholder="Other"
                   id="other"
                   type="number"
                   onChange={this.changeCustomTip}
                   value={custom_tip}
                 />
-                <button className="btn haimens-main-bgColor text-white tip-button-custom" onClick={this.addTip}>
+                <button className="btn haimens-main-bgColor text-white stepFour-button-custom" onClick={this.addTip}>
                   Add Tip
                 </button>
               </div>
