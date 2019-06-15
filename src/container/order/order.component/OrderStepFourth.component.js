@@ -9,7 +9,11 @@ class OrderStepFourth extends Component {
   state = {
     firstTotalAmount: 0,
     secondTotalAmount: 0,
-    coupon: ""
+    coupon: "",
+    expiration_date: "",
+    cvv: "",
+    postal_code: "",
+    card_number: ""
   };
 
   handleFirstTotalAmount = firstTotalAmount => {
@@ -22,6 +26,9 @@ class OrderStepFourth extends Component {
   handleChangePosition = position => {
     this.props.handleChangePosition(position);
   };
+  handleInputChange = (id, value) => {
+    this.setState({ [id]: value });
+  };
 
   componentDidMount() {
     const { firstTrip, secondTrip } = this.props;
@@ -33,7 +40,7 @@ class OrderStepFourth extends Component {
 
   render() {
     const { firstTrip, secondTrip, roundTrip, contactInfo } = this.props;
-    const { firstTotalAmount, secondTotalAmount, coupon } = this.state;
+    const { firstTotalAmount, secondTotalAmount, coupon, expiration_date, cvv, postal_code, card_number } = this.state;
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
@@ -91,7 +98,10 @@ class OrderStepFourth extends Component {
           </div> */}
           <hr className="my-5" />
           <h4 className="haimens-main-text-28">Payment Information</h4>
-          <CreditCard />
+          <CreditCard
+            parentProps={{ expiration_date, cvv, postal_code, card_number }}
+            handleInputChange={this.handleInputChange}
+          />
           <div className="row py-5">
             <div className="col-4">
               <button

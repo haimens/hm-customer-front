@@ -1,18 +1,12 @@
 import React, { Component } from "react";
 
 export default class CreditCard extends Component {
-  state = {
-    expiration_date: "",
-    cvv: "",
-    postal_code: "",
-    card_number: ""
-  };
   handleInputChange = e => {
     const { id, value } = e.target;
-    this.setState({ [id]: value });
+    this.props.handleInputChange(id, value);
   };
   render() {
-    const { expiration_date, cvv, postal_code, card_number } = this.state;
+    const { expiration_date, cvv, postal_code, card_number } = this.props.parentProps;
     return (
       <section>
         <div className="mt-4 p-3 border rounded-top">
