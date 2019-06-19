@@ -19,7 +19,7 @@ class Dashboard extends Component {
     this.state = {
       date: "",
       time: "",
-      passenger: ""
+      passenger: 1
     };
   }
 
@@ -123,13 +123,18 @@ class Dashboard extends Component {
                     <span className="input-group-text bg-white border-right-0 main-addon">
                       <i className="far fa-user addon-color" />
                     </span>
-                    <input
-                      className="form-control passenger-input font-weight-bold haimens-main-text-14 border-left-0"
-                      placeholder="PASSENGER"
+                    <select
+                      className="custom-select haimens-input-height border-left-0 rounded-0 rounded-right"
+                      id="passenger"
                       value={this.state.passenger}
                       onChange={this.handlePassengerChange}
-                      type="number"
-                    />
+                    >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
                   </div>
 
                   <div className="mt-3">
