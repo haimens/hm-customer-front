@@ -6,14 +6,12 @@ class Account extends Component {
     return (
       <section>
         <div className="col-10 mx-auto">
-          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center haimens-header-margin">
-            My Account
-          </h1>
+          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center">My Account</h1>
         </div>
         <hr className="haimens-main-bgColor" />
         <div className="col-10 mx-auto my-5">
           <div className="row">
-            <div className="col-6">
+            <div className="col-12 col-lg-6">
               <h4>New Client</h4>
               <p className="haimens-main-text-14 haimens-margin-top-35">
                 By creating an account you will be able to order faster, be up to date on an order's status, and keep
@@ -24,8 +22,8 @@ class Account extends Component {
               </div>
             </div>
 
-            <div className="col-6">
-              <h4 className="mt-3">Returning Client</h4>
+            <div className="col-12 mt-5 mt-lg-0 col-lg-6">
+              <h4>Returning Client</h4>
               <label className="haimens-margin-top-35 font-weight-bold" for="email">
                 Email
               </label>

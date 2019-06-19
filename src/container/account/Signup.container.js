@@ -21,16 +21,14 @@ class Signup extends Component {
     return (
       <section>
         <div className="col-10 mx-auto">
-          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center haimens-header-margin">
-            Signup
-          </h1>
+          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center">Signup</h1>
         </div>
         <hr className="haimens-main-bgColor" />
         <div className="col-10 mx-auto my-5">
           <div className="row">
             <div className="col-12">
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <label className="font-weight-bold" for="name">
                     Name
                   </label>
@@ -42,7 +40,7 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                   />
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <label className="font-weight-bold" for="phone">
                     Phone
                   </label>
@@ -54,7 +52,7 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                   />
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <label className="font-weight-bold" for="email">
                     Email
                   </label>
@@ -80,7 +78,7 @@ class Signup extends Component {
               />
 
               <div className="row mt-3">
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <label className="font-weight-bold" for="city">
                     City
                   </label>
@@ -92,7 +90,7 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                   />
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <label className="font-weight-bold" for="state">
                     State
                   </label>
@@ -104,7 +102,7 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                   />
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12">
                   <label className="font-weight-bold" for="zip_code">
                     Zip Code
                   </label>
@@ -144,7 +142,7 @@ class Signup extends Component {
                   />
                 </div>
               </div>
-              <button className="mt-5 text-white haimens-main-bgColor col-3 p-3 offset-md-9 offset-0 ">
+              <button className="mt-5 text-white haimens-main-bgColor col-md-3 col-12 p-3 offset-md-9 offset-0 ">
                 Create Account
               </button>
             </div>

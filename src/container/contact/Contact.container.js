@@ -5,9 +5,7 @@ class Contact extends Component {
     return (
       <section>
         <div className="col-10 mx-auto">
-          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center haimens-header-margin">
-            Contact Us
-          </h1>
+          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center">Contact Us</h1>
         </div>
         <hr className="haimens-main-bgColor" />
         <div className="col-10 mx-auto my-5">
