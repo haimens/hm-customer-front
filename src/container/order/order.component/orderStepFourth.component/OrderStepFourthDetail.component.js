@@ -50,10 +50,10 @@ class OrderStepFourthDetail extends Component {
     const { pickup_date, pickup_time, dropoff_location, pickup_location, amount } = this.props.parentProps;
     const { tip, custom_tip, alreadyAddedTips, finalTip, totalAmount } = this.state;
     return (
-      <div className="my-4">
+      <div>
         <h3>{`Trip #${this.props.trip}`}</h3>
         <div className="row">
-          <div className="col-6 mt-4" style={{ height: "282px" }}>
+          <div className="col-md-6 col-12 mt-4" style={{ height: "282px" }}>
             {
               /* {pickup_location.location !== "" && ( */
               <GMapLocation
@@ -74,7 +74,10 @@ class OrderStepFourthDetail extends Component {
               />
             }
           </div>
-          <div className="col-6 d-flex flex-column p-0 justify-content-between mt-4" style={{ height: "282px" }}>
+          <div
+            className="col-md-6 col-12 d-flex flex-column p-md-0 p-3 justify-content-between mt-4"
+            style={{ height: "282px" }}
+          >
             <div>
               <h4 className="haimens-main-text-14">
                 Pickup Time:
@@ -94,7 +97,7 @@ class OrderStepFourthDetail extends Component {
               </h4>
             </div>
             <div className={`row ${alreadyAddedTips && "d-none"}`}>
-              <div className="col-10 d-flex justify-content-between">
+              <div className="col-md-10 col-12 d-flex justify-content-between">
                 <button
                   className={`rounded tip-button-outline tip-button ${
                     tip === 10 ? "haimens-main-button-outline" : "tip-button-outline"

@@ -39,10 +39,10 @@ class OrderStepThird extends Component {
     const { name, phone, email, special_instruction } = this.state;
     return (
       <section>
-        <div className="col-10 mx-auto my-5">
+        <div className="col-md-10 col-12 mx-auto">
           <h3>Contact Information</h3>
           <div className="row">
-            <div className="col-4">
+            <div className="col-md-4 col-12">
               <label className="haimens-margin-top-35 font-weight-bold" htmlFor="name">
                 Name
               </label>
@@ -56,7 +56,7 @@ class OrderStepThird extends Component {
                 />
               </div>
             </div>
-            <div className="col-4">
+            <div className="col-md-4 col-12">
               <label className="haimens-margin-top-35 font-weight-bold" htmlFor="phone">
                 Phone
               </label>
@@ -70,7 +70,7 @@ class OrderStepThird extends Component {
                 />
               </div>
             </div>
-            <div className="col-4">
+            <div className="col-md-4 col-12">
               <label className="haimens-margin-top-35 font-weight-bold" htmlFor="email">
                 Email
               </label>

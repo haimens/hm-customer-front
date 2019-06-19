@@ -39,7 +39,7 @@ export default class CreditCard extends Component {
           </div>
 
           <div className="row ">
-            <div className="col-4">
+            <div className="col-md-4 col-12 ">
               <label for="basic-url">Expiration Date</label>
               <div className="input-group mb-3">
                 <input
@@ -51,7 +51,7 @@ export default class CreditCard extends Component {
                 />
               </div>
             </div>
-            <div className="col-4">
+            <div className="col-md-4 col-12">
               <label for="basic-url">CVV</label>
               <div className="input-group mb-3">
                 <input
@@ -63,7 +63,7 @@ export default class CreditCard extends Component {
                 />
               </div>
             </div>
-            <div className="col-4">
+            <div className="col-md-4 col-12">
               <label for="basic-url">Postal Code</label>
               <div className="input-group mb-3">
                 <input

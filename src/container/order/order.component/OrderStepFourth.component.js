@@ -42,8 +42,8 @@ class OrderStepFourth extends Component {
     const { firstTrip, secondTrip, roundTrip, contactInfo } = this.props;
     const { firstTotalAmount, secondTotalAmount, coupon, expiration_date, cvv, postal_code, card_number } = this.state;
     return (
-      <section className="pt-4 pb-4">
-        <div className="col-10 mx-auto">
+      <section>
+        <div className="col-md-10 col-12 mx-auto">
           <OrderStepFourthDetail trip={1} parentProps={firstTrip} handleTotalAmount={this.handleFirstTotalAmount} />
           {roundTrip && (
             <div>
@@ -57,7 +57,7 @@ class OrderStepFourth extends Component {
           )}
           <hr className="my-5" />
           <div className="row">
-            <div className="col-6">
+            <div className="col-md-6 col-12">
               <h4 className="haimens-main-text-28">Passenger Information</h4>
               <h4 className="haimens-main-text-14 mt-4">
                 Name:
@@ -76,8 +76,8 @@ class OrderStepFourth extends Component {
                 <span>{` ${contactInfo.special_instruction}`}</span>
               </h4>
             </div>
-            <div className="col-6">
-              <h4 className="haimens-main-text-28">Coupon</h4>
+            <div className="col-md-6 col-12">
+              <h4 className="haimens-main-text-28 mt-4 mt-md-0">Coupon</h4>
               <h4 className="haimens-main-text-14 mt-4">Coupon Code</h4>
               <div className="d-flex  mt-4">
                 <input
