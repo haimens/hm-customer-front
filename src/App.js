@@ -8,7 +8,7 @@ import Order from "./container/order/Order.container";
 import About from "./container/about/About.container";
 import Account from "./container/account/Account.container";
 import Main from "./components/main/Main.container";
-
+import Contact from "./container/contact/Contact.container";
 class App extends Component {
   componentDidMount() {
     Promise.all([
@@ -35,6 +35,7 @@ class App extends Component {
               <Route exact path="/order" component={Order} />
               <Route exact path="/about" component={About} />
               <Route exact path="/account" component={Account} />
+              <Route exact path="/contact" component={Contact} />
               <Route component={Page404} />
             </Switch>
           </Main>
