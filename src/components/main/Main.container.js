@@ -12,7 +12,7 @@ class Main extends Component {
             outlineButton={`haimens-main-button-white-outline`}
           />
         </div>
-        <div>{this.props.children}</div>
+        <div className="py-5">{this.props.children}</div>
         <div className="fixed-bottom">
           <Footer />
         </div>

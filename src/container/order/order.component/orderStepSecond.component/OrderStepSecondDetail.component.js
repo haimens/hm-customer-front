@@ -32,7 +32,7 @@ class OrderMapDetail extends Component {
     const { pickup_date, pickup_time, dropoff_location, pickup_location } = this.props.parentProps;
     const { minivan, sedan } = this.state;
     return (
-      <div className="my-4">
+      <div>
         <h3>{`Trip #${this.props.trip}`}</h3>
         <h4 className="haimens-main-text-14 mt-4">
           Pickup Time:
@@ -51,7 +51,7 @@ class OrderMapDetail extends Component {
             dropoff_location[0].formatted_address}`}</span>
         </h4>
         <div className="row">
-          <div className="col-6 mt-4" style={{ height: "282px" }}>
+          <div className="col-lg-6 col-12 mt-4" style={{ height: "282px" }}>
             {pickup_location.location !== "" && (
               <GMapLocation
                 position={{
@@ -71,7 +71,7 @@ class OrderMapDetail extends Component {
               />
             )}
           </div>
-          <div className="col-6 my-4" style={{ height: "282px" }}>
+          <div className="col-lg-6 col-12 my-4" style={{ height: "282px" }}>
             <div className="d-flex flex-column justify-content-between " style={{ height: "100%" }} id="sedan">
               <div
                 className="row p-2 border rounded orderMapHover"

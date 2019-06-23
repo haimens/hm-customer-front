@@ -211,7 +211,7 @@ class OrderStepFirst extends Component {
     const { firstTrip, secondTrip } = this.props;
     return (
       <section>
-        <div className="col-10 mx-auto my-5">
+        <div className="col-md-10 col-12 mx-auto my-5">
           <h3 className="mb-3">Trip Detail</h3>
           <OrderForm
             pickup={"PICKUP"}

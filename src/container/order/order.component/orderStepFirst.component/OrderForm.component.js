@@ -40,7 +40,7 @@ export default class OrderForm extends Component {
     const { flight, passenger_amount } = this.state;
     return (
       <div className="row">
-        <div className="col-6">
+        <div className="col-lg-6 col-12">
           <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_location">
             Pickup Location
           </label>
@@ -51,7 +51,7 @@ export default class OrderForm extends Component {
             inputClass={"border-left-0"}
           />
         </div>
-        <div className="col-6">
+        <div className="col-lg-6 col-12">
           <label className="haimens-margin-top-35 font-weight-bold" htmlFor="dropoff_location">
             Dropoff Location
           </label>
@@ -62,7 +62,7 @@ export default class OrderForm extends Component {
             inputClass={"border-left-0"}
           />
         </div>
-        <div className="col-3">
+        <div className="col-lg-3 col-12">
           <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_date">
             Date
           </label>
@@ -101,7 +101,7 @@ export default class OrderForm extends Component {
             )}
           </div>
         </div>
-        <div className="col-3">
+        <div className="col-lg-3 col-12">
           <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_time">
             Time
           </label>
@@ -143,7 +143,7 @@ export default class OrderForm extends Component {
             )}
           </div>
         </div>
-        <div className="col-3">
+        <div className="col-lg-3 col-12">
           <label className="haimens-margin-top-35 font-weight-bold" htmlFor="passenger_amount">
             Passenger
           </label>
@@ -151,16 +151,21 @@ export default class OrderForm extends Component {
             <span className="input-group-text bg-white border-right-0 main-addon">
               <i className="far fa-user addon-color" />
             </span>
-            <input
-              type="number"
+            <select
+              className="custom-select haimens-input-height border-left-0 rounded-0 rounded-right"
               id="passenger_amount"
-              className="form-control haimens-input-height border-left-0"
-              onChange={this.handleInputChange}
               value={passenger_amount}
-            />
+              onChange={this.handleInputChange}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
           </div>
         </div>
-        <div className="col-3">
+        <div className="col-lg-3 col-12">
           <label className="haimens-margin-top-35 font-weight-bold" htmlFor="flight">
             Flight Number
           </label>
