@@ -8,7 +8,7 @@ import Order from "./container/order/Order.container";
 import About from "./container/about/About.container";
 import Account from "./container/account/Account.container";
 import Main from "./components/main/Main.container";
-
+import Login from "./container/login/Login.container";
 class App extends Component {
   componentDidMount() {
     Promise.all([
@@ -30,6 +30,8 @@ class App extends Component {
       <Suspense fallback={<LoaderAlt />}>
         <Switch>
           <Route exact path="/" component={Dashboard} />
+          <Route exact path="/login" component={Login} />
+
           <Main>
             <Switch>
               <Route exact path="/order" component={Order} />
