@@ -42,17 +42,16 @@ class OrderStepSecond extends Component {
     this.setState({ secondTripAmount });
   };
   render() {
-    const { firstTrip, secondTrip, roundTrip } = this.props;
-    console.log(firstTrip);
+    const { first_trip, second_trip, roundTrip } = this.props;
     const { firstTripAmount, secondTripAmount } = this.state;
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
-          <OrderMapDetail trip={1} parentProps={firstTrip} handleTripAmount={this.handleFirstTripAmount} />
+          <OrderMapDetail trip={1} parentProps={first_trip} handleTripAmount={this.handleFirstTripAmount} />
           {roundTrip && (
             <div>
               <hr className="my-5" />
-              <OrderMapDetail trip={2} parentProps={secondTrip} handleTripAmount={this.handleSecondTripAmount} />
+              <OrderMapDetail trip={2} parentProps={second_trip} handleTripAmount={this.handleSecondTripAmount} />
             </div>
           )}
           <hr className="my-5" />
@@ -92,8 +91,8 @@ class OrderStepSecond extends Component {
 
 const mapStateToProps = state => {
   return {
-    firstTrip: state.orderReducer.firstTrip,
-    secondTrip: state.locationReducer.secondTrip,
+    first_trip: state.orderReducer.first_trip,
+    second_trip: state.orderReducer.second_trip,
     roundTrip: state.locationReducer.roundTrip
   };
 };

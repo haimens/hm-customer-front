@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import OrderStepFourthDetail from "./orderStepFourth.component/OrderStepFourthDetail.component";
 import alertify from "alertifyjs";
+import { parsePrice } from "../../../actions/utilities.action";
 import CreditCard from "./orderStepFourth.component/CreditCard.component";
 import "./OrderStepFourth.component.css";
 class OrderStepFourth extends Component {
@@ -39,18 +40,22 @@ class OrderStepFourth extends Component {
   }
 
   render() {
-    const { firstTrip, secondTrip, roundTrip, contactInfo } = this.props;
+    const { first_trip, second_trip, roundTrip, contactInfo, firstTrip } = this.props;
     const { firstTotalAmount, secondTotalAmount, coupon, expiration_date, cvv, postal_code, card_number } = this.state;
     return (
       <section>
         <div className="col-md-10 col-12 mx-auto">
-          <OrderStepFourthDetail trip={1} parentProps={firstTrip} handleTotalAmount={this.handleFirstTotalAmount} />
+          <OrderStepFourthDetail
+            trip={1}
+            parentProps={{ first_trip, firstTrip }}
+            handleTotalAmount={this.handleFirstTotalAmount}
+          />
           {roundTrip && (
             <div>
               <hr className="my-5" />
               <OrderStepFourthDetail
                 trip={2}
-                parentProps={secondTrip}
+                parentProps={second_trip}
                 handleTotalAmount={this.handleSecondTotalAmount}
               />
             </div>
@@ -92,7 +97,7 @@ class OrderStepFourth extends Component {
             </div>
           </div>
           <div className="mt-5 text-right">
-            <h4 className="hm-main-text-22">{`Subtotal: $ ${firstTotalAmount + secondTotalAmount}`}</h4>
+            <h4 className="hm-main-text-22">{`Subtotal: $ ${parsePrice(firstTotalAmount + secondTotalAmount)}`}</h4>
             <h4 className="hm-main-text-22">Discount: $</h4>
             <h4 className="hm-main-text-28">Total Due: $</h4>
           </div>
@@ -134,6 +139,9 @@ class OrderStepFourth extends Component {
 }
 const mapStateToProps = state => {
   return {
+    first_trip: state.orderReducer.first_trip,
+    second_trip: state.orderReducer.second_trip,
+
     firstTrip: state.locationReducer.firstTrip,
     secondTrip: state.locationReducer.secondTrip,
     roundTrip: state.locationReducer.roundTrip,
