@@ -79,20 +79,20 @@ class OrderStepFourthDetail extends Component {
             style={{ height: "282px" }}
           >
             <div>
-              <h4 className="haimens-main-text-14">
+              <h4 className="hm-main-text-14">
                 Pickup Time:
-                <span className="haimens-main-textColor">{` ${moment(pickup_date).format("MM/DD/YYYY")}  ${moment(
+                <span className="hm-main-textColor">{` ${moment(pickup_date).format("MM/DD/YYYY")}  ${moment(
                   pickup_time
                 ).format("HH:mm a")}`}</span>
               </h4>
-              <h4 className="haimens-main-text-14 mt-3">
+              <h4 className="hm-main-text-14 mt-3">
                 Pickup Location:
-                <span className="haimens-main-textColor-sub">{` ${pickup_location !== "" &&
+                <span className="hm-main-textColor-sub">{` ${pickup_location !== "" &&
                   pickup_location[0].formatted_address}`}</span>
               </h4>
-              <h4 className="haimens-main-text-14 mt-3">
+              <h4 className="hm-main-text-14 mt-3">
                 Dropoff Location:
-                <span className="haimens-main-textColor">{` ${dropoff_location !== "" &&
+                <span className="hm-main-textColor">{` ${dropoff_location !== "" &&
                   dropoff_location[0].formatted_address}`}</span>
               </h4>
             </div>
@@ -100,7 +100,7 @@ class OrderStepFourthDetail extends Component {
               <div className="col-md-10 col-12 d-flex justify-content-between">
                 <button
                   className={`rounded tip-button-outline tip-button ${
-                    tip === 10 ? "haimens-main-button-outline" : "tip-button-outline"
+                    tip === 10 ? "hm-main-button-outline" : "tip-button-outline"
                   }`}
                   onClick={() => this.setState({ tip: 0.1, custom_tip: "" })}
                   id="10"
@@ -109,7 +109,7 @@ class OrderStepFourthDetail extends Component {
                 </button>
                 <button
                   className={`rounded tip-button-outline tip-button ${
-                    tip === 15 ? "haimens-main-button-outline" : "tip-button-outline"
+                    tip === 15 ? "hm-main-button-outline" : "tip-button-outline"
                   }`}
                   id="15"
                   onClick={() => this.setState({ tip: 0.15, custom_tip: "" })}
@@ -118,7 +118,7 @@ class OrderStepFourthDetail extends Component {
                 </button>
                 <button
                   className={`rounded tip-button-outline tip-button ${
-                    tip === 20 ? "haimens-main-button-outline" : "tip-button-outline"
+                    tip === 20 ? "hm-main-button-outline" : "tip-button-outline"
                   }`}
                   id="20"
                   onClick={() => this.setState({ tip: 0.2, custom_tip: "" })}
@@ -127,31 +127,31 @@ class OrderStepFourthDetail extends Component {
                 </button>
                 <input
                   className={`form-control stepFour-button-custom  ${custom_tip !== "" &&
-                    "haimens-main-button-outline"}`}
+                    "hm-main-button-outline"}`}
                   placeholder="Other"
                   id="other"
                   type="number"
                   onChange={this.changeCustomTip}
                   value={custom_tip}
                 />
-                <button className="btn haimens-main-bgColor text-white stepFour-button-custom" onClick={this.addTip}>
+                <button className="btn hm-main-bgColor text-white stepFour-button-custom" onClick={this.addTip}>
                   Add Tip
                 </button>
               </div>
             </div>
             <div>
-              <h4 className="haimens-main-text-14 mt-4">
+              <h4 className="hm-main-text-14 mt-4">
                 Trip Total:
                 <span>{`$ ${amount}`}</span>
               </h4>
-              <h4 className="haimens-main-text-14 mt-3 align-middle">
+              <h4 className="hm-main-text-14 mt-3 align-middle">
                 Tip:
                 <span>{`$ ${finalTip}`}</span>
                 {alreadyAddedTips && (
                   <i className="far fa-times-circle text-danger ml-4 cursor" onClick={this.handleTipCancel} />
                 )}
               </h4>
-              <h4 className="haimens-main-text-18 haimens-main-textColor mt-3">
+              <h4 className="hm-main-text-18 hm-main-textColor mt-3">
                 Subtotal:
                 <span>{`$ ${totalAmount}`}</span>
               </h4>

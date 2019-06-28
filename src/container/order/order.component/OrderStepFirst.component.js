@@ -231,7 +231,7 @@ class OrderStepFirst extends Component {
           />
           {roundTrip && (
             <div>
-              <hr className="haimens-margin-top-35" />
+              <hr className="hm-margin-top-35" />
               <OrderForm
                 pickup={"PICKUPAGAIN"}
                 dropoff={"DROPOFFAGAIN"}
@@ -247,21 +247,21 @@ class OrderStepFirst extends Component {
             <div className="col-4">
               <button
                 type="button"
-                className="btn haimens-main-button-outline w-100 haimens-input-height"
+                className="btn hm-main-button-outline w-100 hm-input-height"
                 onClick={this.handleTripType}
               >
                 {roundTrip ? "One Way" : "Round Trip"}
               </button>
             </div>
             <div className="col-4">
-              <button type="button" className="btn haimens-button-bgColor-sub text-white w-100 haimens-input-height">
+              <button type="button" className="btn hm-button-bgColor-sub text-white w-100 hm-input-height">
                 Contact Sales
               </button>
             </div>
             <div className="col-4">
               <button
                 type="button"
-                className="btn haimens-main-bgColor text-white w-100 haimens-input-height"
+                className="btn hm-main-bgColor text-white w-100 hm-input-height"
                 onClick={this.handleChangePosition}
               >
                 Get Price

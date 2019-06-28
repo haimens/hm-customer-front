@@ -86,7 +86,7 @@ const PlacesWithStandaloneSearchBox = compose(
           </span>
         </div>
         <input
-          className={`form-control p-1 GAuto-input font-weight-bold haimens-main-text-14 haimens-input-height ${
+          className={`form-control p-1 GAuto-input font-weight-bold hm-main-text-14 hm-input-height ${
             props.inputClass
           }`}
           type="text"

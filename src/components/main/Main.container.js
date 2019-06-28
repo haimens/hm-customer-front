@@ -7,9 +7,9 @@ class Main extends Component {
       <section>
         <div>
           <Nav
-            outerClass={"haimens-main-bgColor"}
+            outerClass={"hm-main-bgColor"}
             navTextColor={"text-white"}
-            outlineButton={`haimens-main-button-white-outline`}
+            outlineButton={`hm-main-button-white-outline`}
           />
         </div>
         <div className="py-5">{this.props.children}</div>

@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import alertify from "alertifyjs";
 import OrderMapDetail from "./orderStepSecond.component/OrderStepSecondDetail.component";
 import { saveAmount, saveAmountAgain } from "../../../actions/location.action";
+import { parsePrice } from "../../../actions/utilities.action";
 
 class OrderStepSecond extends Component {
   state = {
@@ -42,6 +43,7 @@ class OrderStepSecond extends Component {
   };
   render() {
     const { firstTrip, secondTrip, roundTrip } = this.props;
+    console.log(firstTrip);
     const { firstTripAmount, secondTripAmount } = this.state;
     return (
       <section className="pt-4 pb-4">
@@ -54,26 +56,28 @@ class OrderStepSecond extends Component {
             </div>
           )}
           <hr className="my-5" />
-          <h4 className="haimens-main-text-28 text-right">{`Total Due: $${firstTripAmount + secondTripAmount}`}</h4>
+          <h4 className="hm-main-text-28 text-right">{`Total Due: ${parsePrice(
+            firstTripAmount + secondTripAmount
+          )}`}</h4>
           <div className="row py-5">
             <div className="col-4">
               <button
                 type="button"
-                className="btn haimens-main-button-outline w-100 haimens-input-height"
+                className="btn hm-main-button-outline w-100 hm-input-height"
                 onClick={() => this.handleChangePosition(-1)}
               >
                 Back
               </button>
             </div>
             <div className="col-4">
-              <button type="button" className="btn haimens-button-bgColor-sub text-white w-100 haimens-input-height">
+              <button type="button" className="btn hm-button-bgColor-sub text-white w-100 hm-input-height">
                 Contact Sales
               </button>
             </div>
             <div className="col-4">
               <button
                 type="button"
-                className="btn haimens-main-bgColor text-white w-100 haimens-input-height"
+                className="btn hm-main-bgColor text-white w-100 hm-input-height"
                 onClick={() => this.handleChangePosition(1)}
               >
                 Continue
@@ -88,7 +92,7 @@ class OrderStepSecond extends Component {
 
 const mapStateToProps = state => {
   return {
-    firstTrip: state.locationReducer.firstTrip,
+    firstTrip: state.orderReducer.firstTrip,
     secondTrip: state.locationReducer.secondTrip,
     roundTrip: state.locationReducer.roundTrip
   };

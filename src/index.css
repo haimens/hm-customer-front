@@ -102,64 +102,64 @@ button{
   cursor: pointer;
 }
 
-.haimens-main-textColor {
+.hm-main-textColor {
   color: #10086b !important
 }
-.haimens-main-textColor-sub {
+.hm-main-textColor-sub {
   color: #d6a748 !important;
 }
 
-.haimens-main-bgColor {
+.hm-main-bgColor {
   background-color: #10086b !important;
 }
 
-.haimens-main-button-outline {
+.hm-main-button-outline {
   border: 1px solid #10086b !important
 }
-.haimens-main-button-white-outline{
+.hm-main-button-white-outline{
   border: 1px solid white !important
 }
 
-.haimens-main-text-14 {
+.hm-main-text-14 {
   font-size: 14px !important;
   letter-spacing: 1px;
 }
-.haimens-main-text-16{
+.hm-main-text-16{
   font-size: 16px !important;
   letter-spacing: 1px;
 }
-.haimens-main-text-18 {
+.hm-main-text-18 {
   font-size: 18px !important;
   letter-spacing: 1px;
 }
 
-.haimens-main-text-22 {
+.hm-main-text-22 {
   font-size: 22px !important;
   letter-spacing: 1px;
 }
-.haimens-main-text-28 {
+.hm-main-text-28 {
   font-size: 28px !important;
   letter-spacing: 1px;
 }
 
-.haimens-main-text-60 {
+.hm-main-text-60 {
   font-size: 60px !important;
   letter-spacing: 1px;
 }
 
-.haimens-header-margin{
+.hm-header-margin{
   margin-top: 33px !important;
   margin-bottom: 32px !important;
 }
 
-.haimens-input-height{
+.hm-input-height{
   height: 48px !important;
 }
-.haimens-button-bgColor-sub {
+.hm-button-bgColor-sub {
   background-color: #d6a748 !important;
 }
 
-.haimens-margin-top-35{
+.hm-margin-top-35{
   margin-top: 35px;
 }
 
