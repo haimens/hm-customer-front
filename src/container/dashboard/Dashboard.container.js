@@ -70,8 +70,8 @@ class Dashboard extends Component {
           />
           <Nav
             outerClass={"main-nav"}
-            navTextColor={"haimens-main-textColor"}
-            outlineButton={`haimens-main-button-outline`}
+            navTextColor={"hm-main-textColor"}
+            outlineButton={`hm-main-button-outline`}
           />
           <div className="container-fluid main-info">
             <div className="row">
@@ -81,7 +81,7 @@ class Dashboard extends Component {
 
               <div className=" ml-auto mr-auto ml-sm-none mr-sm-none col-sm-12 col-lg-6 ">
                 <div className="col-lg-9 col-12 dashboard-form rounded p-4">
-                  <h3 className="haimens-main-textColor font-weight-bold ">BOOK A TRIP NOW</h3>
+                  <h3 className="hm-main-textColor font-weight-bold ">BOOK A TRIP NOW</h3>
                   <div className="mt-4">
                     <GAutoComplete placeholder={"PICKUP"} inputClass={"border-left-0"} />
                   </div>
@@ -124,7 +124,7 @@ class Dashboard extends Component {
                       <i className="far fa-user addon-color" />
                     </span>
                     <select
-                      className="custom-select haimens-input-height border-left-0 rounded-0 rounded-right"
+                      className="custom-select hm-input-height border-left-0 rounded-0 rounded-right"
                       id="passenger"
                       value={this.state.passenger}
                       onChange={this.handlePassengerChange}
@@ -140,7 +140,7 @@ class Dashboard extends Component {
                   <div className="mt-3">
                     <button
                       type="button"
-                      className="btn p-2 text-white w-100 haimens-main-bgColor"
+                      className="btn p-2 text-white w-100 hm-main-bgColor"
                       onClick={this.handleSubmitOrder}
                     >
                       GET PRICE QUOTE
@@ -153,7 +153,7 @@ class Dashboard extends Component {
         </section>
 
         <section>
-          <h1 className="haimens-main-textColor header-text-sub my-2">Why choose us</h1>
+          <h1 className="hm-main-textColor header-text-sub my-2">Why choose us</h1>
           <div className="card-margin-top">
             <div className="container">
               <div className="row">

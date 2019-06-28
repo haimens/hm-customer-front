@@ -21,9 +21,9 @@ class Signup extends Component {
     return (
       <section>
         <div className="col-10 mx-auto">
-          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center">Signup</h1>
+          <h1 className="hm-main-text-60 hm-main-textColor align-items-center">Signup</h1>
         </div>
-        <hr className="haimens-main-bgColor" />
+        <hr className="hm-main-bgColor" />
         <div className="col-10 mx-auto my-5">
           <div className="row">
             <div className="col-12">
@@ -35,7 +35,7 @@ class Signup extends Component {
                   <input
                     type="text"
                     id="name"
-                    class="form-control mt-1 haimens-input-height"
+                    class="form-control mt-1 hm-input-height"
                     value={name}
                     onChange={this.handleInputChange}
                   />
@@ -48,7 +48,7 @@ class Signup extends Component {
                     type="text"
                     id="phone"
                     value={phone}
-                    class="form-control mt-1 haimens-input-height"
+                    class="form-control mt-1 hm-input-height"
                     onChange={this.handleInputChange}
                   />
                 </div>
@@ -60,7 +60,7 @@ class Signup extends Component {
                     type="email"
                     id="email"
                     value={email}
-                    class="form-control mt-1 haimens-input-height"
+                    class="form-control mt-1 hm-input-height"
                     onChange={this.handleInputChange}
                   />
                 </div>
@@ -73,7 +73,7 @@ class Signup extends Component {
                 type="text"
                 id="street_address"
                 value={street_address}
-                class="form-control mt-1 haimens-input-height"
+                class="form-control mt-1 hm-input-height"
                 onChange={this.handleInputChange}
               />
 
@@ -86,7 +86,7 @@ class Signup extends Component {
                     type="text"
                     id="city"
                     value={city}
-                    class="form-control mt-1 haimens-input-height"
+                    class="form-control mt-1 hm-input-height"
                     onChange={this.handleInputChange}
                   />
                 </div>
@@ -98,7 +98,7 @@ class Signup extends Component {
                     type="text"
                     id="state"
                     value={state}
-                    class="form-control mt-1 haimens-input-height"
+                    class="form-control mt-1 hm-input-height"
                     onChange={this.handleInputChange}
                   />
                 </div>
@@ -110,7 +110,7 @@ class Signup extends Component {
                     type="number"
                     id="zip_code"
                     value={zip_code}
-                    class="form-control mt-1 haimens-input-height"
+                    class="form-control mt-1 hm-input-height"
                     onChange={this.handleInputChange}
                   />
                 </div>
@@ -125,7 +125,7 @@ class Signup extends Component {
                     type="password"
                     id="password"
                     value={password}
-                    class="form-control mt-1 haimens-input-height"
+                    class="form-control mt-1 hm-input-height"
                     onChange={this.handleInputChange}
                   />
                 </div>
@@ -137,12 +137,12 @@ class Signup extends Component {
                     type="password"
                     id="confirm_password"
                     value={confirm_password}
-                    class="form-control mt-1 haimens-input-height"
+                    class="form-control mt-1 hm-input-height"
                     onChange={this.handleInputChange}
                   />
                 </div>
               </div>
-              <button className="mt-5 text-white haimens-main-bgColor col-md-3 col-12 p-3 offset-md-9 offset-0 ">
+              <button className="mt-5 text-white hm-main-bgColor col-md-3 col-12 p-3 offset-md-9 offset-0 ">
                 Create Account
               </button>
             </div>

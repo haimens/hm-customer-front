@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import GMapLocation from "../../../../components/shared/GMapLocation";
 import alertify from "alertifyjs";
-import { parseDecimal } from "../../../../actions/utilities.action";
+import { parsePrice } from "../../../../actions/utilities.action";
 import "./OrderStepFourthDetail.component.css";
 class OrderStepFourthDetail extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class OrderStepFourthDetail extends Component {
   };
   addTip = () => {
     const { tip, custom_tip } = this.state;
-    const { amount } = this.props.parentProps;
+    const { amount } = this.props.parentProps.firstTrip;
     if (tip !== 0) {
       if (Number(tip) && tip >= 0) {
         this.setState({ alreadyAddedTips: true, finalTip: tip * amount, totalAmount: tip * amount + amount });
@@ -47,60 +47,57 @@ class OrderStepFourthDetail extends Component {
     }
   };
   render() {
-    const { pickup_date, pickup_time, dropoff_location, pickup_location, amount } = this.props.parentProps;
+    console.log(this.props.parentProps);
+    const { first_trip, firstTrip } = this.props.parentProps;
+    const { pickup_time, from_formatted, to_formatted, from_lat, from_lng, to_lat, to_lng } = first_trip.basic_info;
     const { tip, custom_tip, alreadyAddedTips, finalTip, totalAmount } = this.state;
     return (
       <div>
         <h3>{`Trip #${this.props.trip}`}</h3>
         <div className="row">
           <div className="col-md-6 col-12 mt-4" style={{ height: "282px" }}>
-            {
-              /* {pickup_location.location !== "" && ( */
+            {from_lat !== "" && (
               <GMapLocation
                 position={{
                   center: {
-                    lat: pickup_location[0].geometry.location.lat(),
-                    lng: pickup_location[0].geometry.location.lng()
+                    lat: from_lat,
+                    lng: from_lng
                   },
                   origin: {
-                    lat: pickup_location[0].geometry.location.lat(),
-                    lng: pickup_location[0].geometry.location.lng()
+                    lat: from_lat,
+                    lng: from_lng
                   },
                   destination: {
-                    lat: dropoff_location[0].geometry.location.lat(),
-                    lng: dropoff_location[0].geometry.location.lng()
+                    lat: to_lat,
+                    lng: to_lng
                   }
                 }}
               />
-            }
+            )}
           </div>
           <div
             className="col-md-6 col-12 d-flex flex-column p-md-0 p-3 justify-content-between mt-4"
             style={{ height: "282px" }}
           >
             <div>
-              <h4 className="haimens-main-text-14">
+              <h4 className="hm-main-text-14">
                 Pickup Time:
-                <span className="haimens-main-textColor">{` ${moment(pickup_date).format("MM/DD/YYYY")}  ${moment(
-                  pickup_time
-                ).format("HH:mm a")}`}</span>
+                <span className="hm-main-textColor">{pickup_time}</span>
               </h4>
-              <h4 className="haimens-main-text-14 mt-3">
+              <h4 className="hm-main-text-14 mt-3">
                 Pickup Location:
-                <span className="haimens-main-textColor-sub">{` ${pickup_location !== "" &&
-                  pickup_location[0].formatted_address}`}</span>
+                <span className="hm-main-textColor-sub">{from_formatted}</span>
               </h4>
-              <h4 className="haimens-main-text-14 mt-3">
+              <h4 className="hm-main-text-14 mt-3">
                 Dropoff Location:
-                <span className="haimens-main-textColor">{` ${dropoff_location !== "" &&
-                  dropoff_location[0].formatted_address}`}</span>
+                <span className="hm-main-textColor">{to_formatted}</span>
               </h4>
             </div>
             <div className={`row ${alreadyAddedTips && "d-none"}`}>
               <div className="col-md-10 col-12 d-flex justify-content-between">
                 <button
                   className={`rounded tip-button-outline tip-button ${
-                    tip === 10 ? "haimens-main-button-outline" : "tip-button-outline"
+                    tip === 10 ? "hm-main-button-outline" : "tip-button-outline"
                   }`}
                   onClick={() => this.setState({ tip: 0.1, custom_tip: "" })}
                   id="10"
@@ -109,7 +106,7 @@ class OrderStepFourthDetail extends Component {
                 </button>
                 <button
                   className={`rounded tip-button-outline tip-button ${
-                    tip === 15 ? "haimens-main-button-outline" : "tip-button-outline"
+                    tip === 15 ? "hm-main-button-outline" : "tip-button-outline"
                   }`}
                   id="15"
                   onClick={() => this.setState({ tip: 0.15, custom_tip: "" })}
@@ -118,7 +115,7 @@ class OrderStepFourthDetail extends Component {
                 </button>
                 <button
                   className={`rounded tip-button-outline tip-button ${
-                    tip === 20 ? "haimens-main-button-outline" : "tip-button-outline"
+                    tip === 20 ? "hm-main-button-outline" : "tip-button-outline"
                   }`}
                   id="20"
                   onClick={() => this.setState({ tip: 0.2, custom_tip: "" })}
@@ -126,34 +123,33 @@ class OrderStepFourthDetail extends Component {
                   20%
                 </button>
                 <input
-                  className={`form-control stepFour-button-custom  ${custom_tip !== "" &&
-                    "haimens-main-button-outline"}`}
+                  className={`form-control stepFour-button-custom  ${custom_tip !== "" && "hm-main-button-outline"}`}
                   placeholder="Other"
                   id="other"
                   type="number"
                   onChange={this.changeCustomTip}
                   value={custom_tip}
                 />
-                <button className="btn haimens-main-bgColor text-white stepFour-button-custom" onClick={this.addTip}>
+                <button className="btn hm-main-bgColor text-white stepFour-button-custom" onClick={this.addTip}>
                   Add Tip
                 </button>
               </div>
             </div>
             <div>
-              <h4 className="haimens-main-text-14 mt-4">
+              <h4 className="hm-main-text-14 mt-4">
                 Trip Total:
-                <span>{`$ ${amount}`}</span>
+                <span>{parsePrice(firstTrip.amount)}</span>
               </h4>
-              <h4 className="haimens-main-text-14 mt-3 align-middle">
+              <h4 className="hm-main-text-14 mt-3 align-middle">
                 Tip:
-                <span>{`$ ${finalTip}`}</span>
+                <span>{parsePrice(finalTip)}</span>
                 {alreadyAddedTips && (
                   <i className="far fa-times-circle text-danger ml-4 cursor" onClick={this.handleTipCancel} />
                 )}
               </h4>
-              <h4 className="haimens-main-text-18 haimens-main-textColor mt-3">
+              <h4 className="hm-main-text-18 hm-main-textColor mt-3">
                 Subtotal:
-                <span>{`$ ${totalAmount}`}</span>
+                <span>{parsePrice(totalAmount)}</span>
               </h4>
             </div>
           </div>

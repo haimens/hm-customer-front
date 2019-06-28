@@ -39,8 +39,8 @@ export const parseAmountNoSign = (amount, decimal = 0) => {
   return parseFloat(amount / 100).toFixed(decimal);
 };
 
-export const parsePrice = (amount, decimal = 0) => {
-  return `${parseFloat(amount / 100).toFixed(decimal)}`;
+export const parsePrice = (amount, decimal = 2) => {
+  return `$${parseFloat(amount / 100).toFixed(decimal)}`;
 };
 
 export const parseDecimal = inputValue => {

@@ -40,45 +40,45 @@ class Account extends Component {
     return (
       <section>
         <div className="col-10 mx-auto">
-          <h1 className="haimens-main-text-60 haimens-main-textColor align-items-center">My Account</h1>
+          <h1 className="hm-main-text-60 hm-main-textColor align-items-center">My Account</h1>
         </div>
-        <hr className="haimens-main-bgColor" />
+        <hr className="hm-main-bgColor" />
         <div className="col-10 mx-auto my-5">
           <div className="row">
             <div className="col-12 col-lg-6">
               <h4>New Client</h4>
-              <p className="haimens-main-text-14 haimens-margin-top-35">
+              <p className="hm-main-text-14 hm-margin-top-35">
                 By creating an account you will be able to order faster, be up to date on an order's status, and keep
                 track of the orders you have previously made.
               </p>
               <div className="col-10 p-0">
-                <button className="haimens-margin-top-35 text-white haimens-main-bgColor p-3 w-100">Signup</button>
+                <button className="hm-margin-top-35 text-white hm-main-bgColor p-3 w-100">Signup</button>
               </div>
             </div>
 
             <div className="col-12 mt-5 mt-lg-0 col-lg-6">
               <h4>Returning Client</h4>
-              <label className="haimens-margin-top-35 font-weight-bold" for="email">
+              <label className="hm-margin-top-35 font-weight-bold" for="email">
                 Email
               </label>
               <input
                 type="email"
                 id="email"
-                class="form-control mt-1 haimens-input-height"
+                class="form-control mt-1 hm-input-height"
                 onChange={this.handleInputChange}
               />
-              <label className="haimens-margin-top-35 font-weight-bold" for="password">
+              <label className="hm-margin-top-35 font-weight-bold" for="password">
                 Password
               </label>
               <input
                 type="password"
                 id="password"
-                class="form-control mt-1 haimens-input-height"
+                class="form-control mt-1 hm-input-height"
                 onChange={this.handleInputChange}
               />
               <div className="col-8 p-0">
                 <button
-                  className="mt-5 account-marginBottom text-white haimens-main-bgColor p-3 w-100"
+                  className="mt-5 account-marginBottom text-white hm-main-bgColor p-3 w-100"
                   onClick={this.handleLoginSubmit}
                 >
                   Login

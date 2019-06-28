@@ -43,42 +43,42 @@ class OrderStepThird extends Component {
           <h3>Contact Information</h3>
           <div className="row">
             <div className="col-md-4 col-12">
-              <label className="haimens-margin-top-35 font-weight-bold" htmlFor="name">
+              <label className="hm-margin-top-35 font-weight-bold" htmlFor="name">
                 Name
               </label>
               <div className="d-flex">
                 <input
                   type="text"
                   id="name"
-                  className="form-control haimens-input-height"
+                  className="form-control hm-input-height"
                   onChange={this.handleInputChange}
                   value={name}
                 />
               </div>
             </div>
             <div className="col-md-4 col-12">
-              <label className="haimens-margin-top-35 font-weight-bold" htmlFor="phone">
+              <label className="hm-margin-top-35 font-weight-bold" htmlFor="phone">
                 Phone
               </label>
               <div className="d-flex">
                 <input
                   type="text"
                   id="phone"
-                  className="form-control haimens-input-height"
+                  className="form-control hm-input-height"
                   onChange={this.handleInputChange}
                   value={phone}
                 />
               </div>
             </div>
             <div className="col-md-4 col-12">
-              <label className="haimens-margin-top-35 font-weight-bold" htmlFor="email">
+              <label className="hm-margin-top-35 font-weight-bold" htmlFor="email">
                 Email
               </label>
               <div className="d-flex">
                 <input
                   type="email"
                   id="email"
-                  className="form-control haimens-input-height"
+                  className="form-control hm-input-height"
                   onChange={this.handleInputChange}
                   value={email}
                 />
@@ -86,7 +86,7 @@ class OrderStepThird extends Component {
             </div>
             <div className="col-12">
               <div className="form-group">
-                <label className="haimens-margin-top-35 font-weight-bold" htmlFor="special_instruction">
+                <label className="hm-margin-top-35 font-weight-bold" htmlFor="special_instruction">
                   Special Instruction
                 </label>
                 <textarea
@@ -103,21 +103,21 @@ class OrderStepThird extends Component {
             <div className="col-4">
               <button
                 type="button"
-                className="btn haimens-main-button-outline w-100 haimens-input-height"
+                className="btn hm-main-button-outline w-100 hm-input-height"
                 onClick={() => this.handleChangePosition(-1)}
               >
                 Back
               </button>
             </div>
             <div className="col-4">
-              <button type="button" className="btn haimens-button-bgColor-sub text-white w-100 haimens-input-height">
+              <button type="button" className="btn hm-button-bgColor-sub text-white w-100 hm-input-height">
                 Contact Sales
               </button>
             </div>
             <div className="col-4">
               <button
                 type="button"
-                className="btn haimens-main-bgColor text-white w-100 haimens-input-height"
+                className="btn hm-main-bgColor text-white w-100 hm-input-height"
                 onClick={() => this.handleChangePosition(1)}
               >
                 Continue

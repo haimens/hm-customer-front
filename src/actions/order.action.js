@@ -10,7 +10,26 @@ export const findOrderLocationPrice = location => async dispatch => {
       ...location
     });
     await dispatch({
-      type: userConstants.ORDER_LOCATION_PRICE,
+      type: userConstants.FIRST_TRIP,
+      payload
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    console.log(err);
+    checkLogoutStatus(err, dispatch);
+  }
+};
+
+export const findOrderLocationPriceAgain = location => async dispatch => {
+  try {
+    console.log(location);
+    await startLoader(dispatch);
+    const { payload } = await callApi(`quote/REALM-e775d5ca14bd440e244ea374c1f57fc5`, "POST", {
+      ...location
+    });
+    await dispatch({
+      type: userConstants.SECOND_TRIP,
       payload
     });
     await stopLoader(dispatch);

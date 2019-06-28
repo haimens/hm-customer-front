@@ -6,9 +6,9 @@ class About extends Component {
     return (
       <section>
         <div className="col-10 mx-auto">
-          <h1 className="haimens-main-text-60  haimens-main-textColor align-items-center">About Us</h1>
+          <h1 className="hm-main-text-60  hm-main-textColor align-items-center">About Us</h1>
         </div>
-        <hr className="haimens-main-bgColor" />
+        <hr className="hm-main-bgColor" />
         <div className="col-10 mx-auto my-5">
           <p className="mt-4">
             SUNSHIRE strives to the best passenger experience no matter you are going to the airport, from the airport

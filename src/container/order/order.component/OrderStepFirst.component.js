@@ -18,7 +18,7 @@ import {
   saveDropOffAgain
 } from "../../../actions/location.action";
 
-import { findOrderLocationPrice } from "../../../actions/order.action";
+import { findOrderLocationPrice, findOrderLocationPriceAgain } from "../../../actions/order.action";
 
 class OrderStepFirst extends Component {
   state = {
@@ -109,9 +109,21 @@ class OrderStepFirst extends Component {
           this.props.saveTimeAgain(pickup_time_again),
           this.props.savePassengerAgain(passenger_amount_again),
           this.props.saveFlightAgain(flight_again),
-
-          this.props.saveRoundTrip(true)
+          this.props.saveRoundTrip(true),
+          this.props.findOrderLocationPrice({
+            from_address_str: pickup_location[0].formatted_address,
+            to_address_str: dropoff_location[0].formatted_address,
+            pickup_time: `${moment(pickup_date).format("MM-DD-YYYY")} ${moment(pickup_time).format("HH:mm:ss")}`
+          }),
+          this.props.findOrderLocationPriceAgain({
+            from_address_str: pickup_location_again[0].formatted_address,
+            to_address_str: dropoff_location_again[0].formatted_address,
+            pickup_time: `${moment(pickup_date_again).format("MM-DD-YYYY")} ${moment(pickup_time_again).format(
+              "HH:mm:ss"
+            )}`
+          })
         ]);
+
         this.props.handleChangePosition(1);
       } else {
         alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
@@ -137,13 +149,14 @@ class OrderStepFirst extends Component {
           this.props.savePassengerAgain(""),
           this.props.saveFlightAgain(""),
           this.props.savePickUpAgain(""),
-          this.props.saveDropOffAgain("")
+          this.props.saveDropOffAgain(""),
+          this.props.findOrderLocationPrice({
+            from_address_str: pickup_location[0].formatted_address,
+            to_address_str: dropoff_location[0].formatted_address,
+            pickup_time: `${moment(pickup_date).format("MM-DD-YYYY")} ${moment(pickup_time).format("HH:mm:ss")}`
+          })
         ]);
-        this.props.findOrderLocationPrice({
-          from_address_str: pickup_location[0].formatted_address,
-          to_address_str: dropoff_location[0].formatted_address,
-          pickup_time: `${moment(pickup_date).format("MM-DD-YYYY")} ${moment(pickup_time).format("HH:mm:ss")}`
-        });
+
         this.props.handleChangePosition(1);
       } else {
         alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
@@ -231,7 +244,7 @@ class OrderStepFirst extends Component {
           />
           {roundTrip && (
             <div>
-              <hr className="haimens-margin-top-35" />
+              <hr className="hm-margin-top-35" />
               <OrderForm
                 pickup={"PICKUPAGAIN"}
                 dropoff={"DROPOFFAGAIN"}
@@ -247,21 +260,21 @@ class OrderStepFirst extends Component {
             <div className="col-4">
               <button
                 type="button"
-                className="btn haimens-main-button-outline w-100 haimens-input-height"
+                className="btn hm-main-button-outline w-100 hm-input-height"
                 onClick={this.handleTripType}
               >
                 {roundTrip ? "One Way" : "Round Trip"}
               </button>
             </div>
             <div className="col-4">
-              <button type="button" className="btn haimens-button-bgColor-sub text-white w-100 haimens-input-height">
+              <button type="button" className="btn hm-button-bgColor-sub text-white w-100 hm-input-height">
                 Contact Sales
               </button>
             </div>
             <div className="col-4">
               <button
                 type="button"
-                className="btn haimens-main-bgColor text-white w-100 haimens-input-height"
+                className="btn hm-main-bgColor text-white w-100 hm-input-height"
                 onClick={this.handleChangePosition}
               >
                 Get Price
@@ -294,8 +307,8 @@ const mapDispatchToProps = {
   saveRoundTrip,
   savePickUpAgain,
   saveDropOffAgain,
-
-  findOrderLocationPrice
+  findOrderLocationPrice,
+  findOrderLocationPriceAgain
 };
 
 export default connect(

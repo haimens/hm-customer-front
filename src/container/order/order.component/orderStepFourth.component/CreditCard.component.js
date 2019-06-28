@@ -26,11 +26,11 @@ export default class CreditCard extends Component {
         </div>
         <div className="p-3 border rounded-bottom ">
           <div>
-            <label for="basic-url">Card Number</label>
+            <label htmlFor="basic-url">Card Number</label>
             <div className="input-group mb-3">
               <input
                 type="text"
-                className="form-control haimens-input-height"
+                className="form-control hm-input-height"
                 id="card_number"
                 value={card_number}
                 onChange={this.handleInputChange}
@@ -40,36 +40,36 @@ export default class CreditCard extends Component {
 
           <div className="row ">
             <div className="col-md-4 col-12 ">
-              <label for="basic-url">Expiration Date</label>
+              <label htmlFor="basic-url">Expiration Date</label>
               <div className="input-group mb-3">
                 <input
                   type="text"
                   id="expiration_date"
-                  className="form-control haimens-input-height"
+                  className="form-control hm-input-height"
                   value={expiration_date}
                   onChange={this.handleInputChange}
                 />
               </div>
             </div>
             <div className="col-md-4 col-12">
-              <label for="basic-url">CVV</label>
+              <label htmlFor="basic-url">CVV</label>
               <div className="input-group mb-3">
                 <input
                   type="password"
                   id="cvv"
-                  className="form-control haimens-input-height"
+                  className="form-control hm-input-height"
                   value={cvv}
                   onChange={this.handleInputChange}
                 />
               </div>
             </div>
             <div className="col-md-4 col-12">
-              <label for="basic-url">Postal Code</label>
+              <label htmlFor="basic-url">Postal Code</label>
               <div className="input-group mb-3">
                 <input
                   type="text"
                   id="postal_code"
-                  className="form-control haimens-input-height"
+                  className="form-control hm-input-height"
                   value={postal_code}
                   onChange={this.handleInputChange}
                 />

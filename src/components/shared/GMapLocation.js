@@ -5,12 +5,17 @@ class GMapLocation extends Component {
     super(props);
     this.autocomplete = null;
     this.state = {
-      directions: "null"
+      directions: "null",
+      position: ""
     };
   }
 
+  async componentDidMount() {
+    await this.setState({ position: this.props.position });
+  }
+
   render() {
-    return <MapWithADirectionsRenderer position={this.props.position} />;
+    return <MapWithADirectionsRenderer position={this.state.position} />;
   }
 }
 

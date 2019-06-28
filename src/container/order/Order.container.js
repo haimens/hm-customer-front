@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Loader } from "../../components/shared";
+import { connect } from "react-redux";
+
 import "./Order.container.css";
 import OrderPagination from "./order.component/OrderPagination.component";
 import OrderStepFirstComponent from "./order.component/OrderStepFirst.component";
@@ -16,12 +19,14 @@ class Order extends Component {
 
   render() {
     const { position } = this.state;
+    const { isLoading } = this.props;
     return (
       <section>
+        {isLoading && <Loader />}
         <div className="col-12 col-md-10 mx-auto">
           <OrderPagination position={position} />
         </div>
-        <hr className="haimens-main-bgColor my-5" />
+        <hr className="hm-main-bgColor my-5" />
         {position === 0 && <OrderStepFirstComponent handleChangePosition={this.handleChangePosition} />}
         {position === 1 && <OrderStepSecondComponent handleChangePosition={this.handleChangePosition} />}
         {position === 2 && <OrderStepThirdComponent handleChangePosition={this.handleChangePosition} />}
@@ -31,4 +36,11 @@ class Order extends Component {
   }
 }
 
-export default Order;
+const mapStateToProps = state => {
+  return {
+    isLoading: state.loadReducer.loading,
+    isSuccess: state.loadReducer.is_success
+  };
+};
+
+export default connect(mapStateToProps)(Order);

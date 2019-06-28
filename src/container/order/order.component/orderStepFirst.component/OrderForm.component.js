@@ -41,7 +41,7 @@ export default class OrderForm extends Component {
     return (
       <div className="row">
         <div className="col-lg-6 col-12">
-          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_location">
+          <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_location">
             Pickup Location
           </label>
           <GAutoComplete
@@ -52,7 +52,7 @@ export default class OrderForm extends Component {
           />
         </div>
         <div className="col-lg-6 col-12">
-          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="dropoff_location">
+          <label className="hm-margin-top-35 font-weight-bold" htmlFor="dropoff_location">
             Dropoff Location
           </label>
           <GAutoComplete
@@ -63,7 +63,7 @@ export default class OrderForm extends Component {
           />
         </div>
         <div className="col-lg-3 col-12">
-          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_date">
+          <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_date">
             Date
           </label>
           <div className="d-flex">
@@ -102,7 +102,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-lg-3 col-12">
-          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="pickup_time">
+          <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_time">
             Time
           </label>
           <div className="d-flex">
@@ -144,7 +144,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-lg-3 col-12">
-          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="passenger_amount">
+          <label className="hm-margin-top-35 font-weight-bold" htmlFor="passenger_amount">
             Passenger
           </label>
           <div className="d-flex">
@@ -152,7 +152,7 @@ export default class OrderForm extends Component {
               <i className="far fa-user addon-color" />
             </span>
             <select
-              className="custom-select haimens-input-height border-left-0 rounded-0 rounded-right"
+              className="custom-select hm-input-height border-left-0 rounded-0 rounded-right"
               id="passenger_amount"
               value={passenger_amount}
               onChange={this.handleInputChange}
@@ -166,7 +166,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-lg-3 col-12">
-          <label className="haimens-margin-top-35 font-weight-bold" htmlFor="flight">
+          <label className="hm-margin-top-35 font-weight-bold" htmlFor="flight">
             Flight Number
           </label>
           <div className="d-flex">
@@ -176,7 +176,7 @@ export default class OrderForm extends Component {
             <input
               type="text"
               id="flight"
-              className="form-control haimens-input-height border-left-0"
+              className="form-control hm-input-height border-left-0"
               onChange={this.handleInputChange}
               value={flight}
             />

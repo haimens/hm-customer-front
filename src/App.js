@@ -1,16 +1,18 @@
-import React, { Component, Suspense } from "react";
+import React, { Component, Suspense, lazy } from "react";
 import alertify from "alertifyjs";
 import { Route, Switch } from "react-router-dom";
 import LoaderAlt from "./components/shared/LoaderAlt";
 
 import Dashboard from "./container/dashboard/Dashboard.container";
-import Order from "./container/order/Order.container";
 import About from "./container/about/About.container";
 import Account from "./container/account/Account.container";
 import Signup from "./container/account/Signup.container";
 import Main from "./components/main/Main.container";
 import Login from "./container/login/Login.container";
 import Contact from "./container/contact/Contact.container";
+
+const Order = lazy(() => import("./container/order/Order.container"));
+
 class App extends Component {
   componentDidMount() {
     Promise.all([
@@ -24,7 +26,7 @@ class App extends Component {
   }
   render() {
     alertify.defaults.transition = "zoom";
-    alertify.defaults.theme.ok = "btn haimens-main-bgColor text-white";
+    alertify.defaults.theme.ok = "btn hm-main-bgColor text-white";
     alertify.defaults.theme.cancel = "btn btn-danger";
     alertify.defaults.theme.input = "form-control";
 
