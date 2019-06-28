@@ -86,8 +86,8 @@ export function callApi(endpoint, method, data, query) {
   if (data && requireBody(method)) {
     body = JSON.stringify(data);
   }
-
   let url = `${API_BASE_URL}/api/v0/${endpoint}?`;
+  console.log(url);
   if (query) {
     Object.keys(query).forEach(key => {
       url += `${key}=${query[key]}&`;

@@ -1,7 +1,41 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { processLogin, processLogout } from "../../actions/auth.action";
+import { clearUserInfo } from "../../actions/localStorage.action";
+import alertify from "alertifyjs";
 import "./Account.container.css";
 
 class Account extends Component {
+  state = {
+    email: "",
+    passcode: ""
+  };
+
+  handleLoginSubmit = async e => {
+    e.preventDefault();
+    this.props.processLogin(
+      {
+        username: this.state.email,
+        passcode: this.state.passcode
+      },
+      this.props.history
+    );
+  };
+
+  handleInputChange = e => {
+    const { id, value } = e.target;
+    this.setState({ [id]: value });
+  };
+
+  handleForgetPass = e => {
+    e.preventDefault();
+    window.location.href = `${process.env.REACT_APP_HAVANA_FRONT}/forget/${process.env.REACT_APP_APP_TOKEN}`;
+  };
+
+  componentWillMount = () => {
+    clearUserInfo();
+  };
   render() {
     return (
       <section>
@@ -27,13 +61,28 @@ class Account extends Component {
               <label className="haimens-margin-top-35 font-weight-bold" for="email">
                 Email
               </label>
-              <input type="email" id="email" class="form-control mt-1 haimens-input-height" />
+              <input
+                type="email"
+                id="email"
+                class="form-control mt-1 haimens-input-height"
+                onChange={this.handleInputChange}
+              />
               <label className="haimens-margin-top-35 font-weight-bold" for="password">
                 Password
               </label>
-              <input type="password" id="password" class="form-control mt-1 haimens-input-height" />
+              <input
+                type="password"
+                id="password"
+                class="form-control mt-1 haimens-input-height"
+                onChange={this.handleInputChange}
+              />
               <div className="col-8 p-0">
-                <button className="mt-5 account-marginBottom text-white haimens-main-bgColor p-3 w-100">Login</button>
+                <button
+                  className="mt-5 account-marginBottom text-white haimens-main-bgColor p-3 w-100"
+                  onClick={this.handleLoginSubmit}
+                >
+                  Login
+                </button>
               </div>
             </div>
           </div>
@@ -42,4 +91,18 @@ class Account extends Component {
     );
   }
 }
-export default Account;
+
+const mapStateToProps = state => {
+  return {
+    // isLoading: state.loadReducer.loading,
+    // isSuccess: state.loadReducer.is_success
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    processLogin,
+    processLogout
+  }
+)(withRouter(Account));

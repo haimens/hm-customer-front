@@ -18,19 +18,21 @@ import {
   saveDropOffAgain
 } from "../../../actions/location.action";
 
+import { findOrderLocationPrice } from "../../../actions/order.action";
+
 class OrderStepFirst extends Component {
   state = {
     roundTrip: false,
     firstTrip: {
       pickup_date: "",
       pickup_time: "",
-      passenger_amount: "",
+      passenger_amount: 1,
       flight: ""
     },
     secondTrip: {
       pickup_date: "",
       pickup_time: "",
-      passenger_amount: "",
+      passenger_amount: 1,
       flight: ""
     }
   };
@@ -137,6 +139,11 @@ class OrderStepFirst extends Component {
           this.props.savePickUpAgain(""),
           this.props.saveDropOffAgain("")
         ]);
+        this.props.findOrderLocationPrice({
+          from_address_str: pickup_location[0].formatted_address,
+          to_address_str: dropoff_location[0].formatted_address,
+          pickup_time: `${moment(pickup_date).format("MM-DD-YYYY")} ${moment(pickup_time).format("HH:mm:ss")}`
+        });
         this.props.handleChangePosition(1);
       } else {
         alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
@@ -286,7 +293,9 @@ const mapDispatchToProps = {
   saveFlightAgain,
   saveRoundTrip,
   savePickUpAgain,
-  saveDropOffAgain
+  saveDropOffAgain,
+
+  findOrderLocationPrice
 };
 
 export default connect(

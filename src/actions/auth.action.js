@@ -55,7 +55,7 @@ export const processLogin = (user_login_nfo, history) => async dispatch => {
     saveUserInfo({ ...payload });
     await dispatch(loginSuccess());
     await stopLoader(dispatch);
-    history.push("/dashboard");
+    history.push("/home");
   } catch (err) {
     console.log(err);
     await stopLoader(dispatch);
