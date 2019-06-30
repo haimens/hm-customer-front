@@ -19,6 +19,7 @@ import {
 } from "../../../actions/location.action";
 
 import { findOrderLocationPrice, findOrderLocationPriceAgain } from "../../../actions/order.action";
+import { convertLocalToUTC } from "../../../actions/utilities.action";
 
 class OrderStepFirst extends Component {
   state = {
@@ -87,6 +88,11 @@ class OrderStepFirst extends Component {
         passenger_amount: passenger_amount_again,
         flight: flight_again
       } = secondTrip;
+      let time = `${moment(pickup_date).format("MM-DD-YYYY")} ${moment(pickup_time).format("HH:mm:ss")}`;
+      let timeSecond = `${moment(pickup_date_again).format("MM-DD-YYYY")} ${moment(pickup_time_again).format(
+        "HH:mm:ss"
+      )}`;
+
       if (
         pickup_date !== "" &&
         pickup_time !== "" &&
@@ -113,14 +119,12 @@ class OrderStepFirst extends Component {
           this.props.findOrderLocationPrice({
             from_address_str: pickup_location[0].formatted_address,
             to_address_str: dropoff_location[0].formatted_address,
-            pickup_time: `${moment(pickup_date).format("MM-DD-YYYY")} ${moment(pickup_time).format("HH:mm:ss")}`
+            pickup_time: convertLocalToUTC(time)
           }),
           this.props.findOrderLocationPriceAgain({
             from_address_str: pickup_location_again[0].formatted_address,
             to_address_str: dropoff_location_again[0].formatted_address,
-            pickup_time: `${moment(pickup_date_again).format("MM-DD-YYYY")} ${moment(pickup_time_again).format(
-              "HH:mm:ss"
-            )}`
+            pickup_time: convertLocalToUTC(timeSecond)
           })
         ]);
 
@@ -137,6 +141,7 @@ class OrderStepFirst extends Component {
         pickup_location !== "" &&
         dropoff_location !== ""
       ) {
+        let time = `${moment(pickup_date).format("MM-DD-YYYY")} ${moment(pickup_time).format("HH:mm:ss")}`;
         await Promise.all([
           this.props.saveDate(pickup_date),
           this.props.saveTime(pickup_time),
@@ -153,7 +158,7 @@ class OrderStepFirst extends Component {
           this.props.findOrderLocationPrice({
             from_address_str: pickup_location[0].formatted_address,
             to_address_str: dropoff_location[0].formatted_address,
-            pickup_time: `${moment(pickup_date).format("MM-DD-YYYY")} ${moment(pickup_time).format("HH:mm:ss")}`
+            pickup_time: convertLocalToUTC(time)
           })
         ]);
 
