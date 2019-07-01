@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
-import { parsePrice } from "../../../../actions/utilities.action";
+import { parsePrice, convertUTCtoLocal } from "../../../../actions/utilities.action";
 import "./OrderStepSecondDetail.component.css";
 import GMapLocation from "../../../../components/shared/GMapLocation";
 class OrderMapDetail extends Component {
@@ -40,7 +40,7 @@ class OrderMapDetail extends Component {
         <h3>{`Trip #${this.props.trip}`}</h3>
         <h4 className="hm-main-text-14 mt-4">
           Pickup Time:
-          <span className="hm-main-textColor">{pickup_time}</span>
+          <span className="hm-main-textColor">{convertUTCtoLocal(pickup_time)}</span>
         </h4>
         <h4 className="hm-main-text-14 mt-3">
           Pickup Location:
