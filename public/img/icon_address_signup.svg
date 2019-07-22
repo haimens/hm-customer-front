@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="16px" viewBox="0 0 12 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>icon_address_signup</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Customer-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Customer-V2-sign-up" transform="translate(-600.000000, -547.000000)" fill="#AEB5BD" fill-rule="nonzero">
+            <g id="icon_address_signup" transform="translate(600.000000, 547.000000)">
+                <path d="M10.1353846,1.63403636 C9.02092308,0.580363636 7.53907692,0 5.96307692,0 C4.38676923,0 2.90523077,0.580363636 1.79076923,1.63403636 C-0.271692308,3.58370909 -0.528,7.25207273 1.23569231,9.47461818 L5.96307692,15.9293091 L10.6833846,9.48363636 C12.4541538,7.25207273 12.1978462,3.58370909 10.1353846,1.63403636 Z M6.01753846,7.56363636 C4.83015385,7.56363636 3.86369231,6.64989091 3.86369231,5.52727273 C3.86369231,4.40465455 4.83015385,3.49090909 6.01753846,3.49090909 C7.20492308,3.49090909 8.17138462,4.40465455 8.17138462,5.52727273 C8.17138462,6.64989091 7.20492308,7.56363636 6.01753846,7.56363636 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

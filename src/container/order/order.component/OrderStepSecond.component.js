@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import alertify from "alertifyjs";
 import OrderMapDetail from "./orderStepSecond.component/OrderStepSecondDetail.component";
-import { saveAmount, saveAmountAgain } from "../../../actions/location.action";
 import { parsePrice } from "../../../actions/utilities.action";
 
 class OrderStepSecond extends Component {
@@ -42,18 +41,17 @@ class OrderStepSecond extends Component {
     this.setState({ secondTripAmount });
   };
   render() {
-    const { first_trip, second_trip, roundTrip } = this.props;
     const { firstTripAmount, secondTripAmount } = this.state;
     return (
       <section className="pt-4 pb-4">
         <div className="col-10 mx-auto">
-          <OrderMapDetail trip={1} parentProps={first_trip} handleTripAmount={this.handleFirstTripAmount} />
-          {roundTrip && (
+          {/* <OrderMapDetail trip={1} parentProps={first_trip} handleTripAmount={this.handleFirstTripAmount} /> */}
+          {/* {roundTrip && (
             <div>
               <hr className="my-5" />
               <OrderMapDetail trip={2} parentProps={second_trip} handleTripAmount={this.handleSecondTripAmount} />
             </div>
-          )}
+          )} */}
           <hr className="my-5" />
           <h4 className="hm-main-text-28 text-right">{`Total Due: ${parsePrice(
             firstTripAmount + secondTripAmount
@@ -97,10 +95,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  saveAmount,
-  saveAmountAgain
-};
+const mapDispatchToProps = {};
 
 export default connect(
   mapStateToProps,

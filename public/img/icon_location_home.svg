@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="22px" viewBox="0 0 16 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>icon_location</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Customer-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.5">
+        <g id="Customer-V2-Home" transform="translate(-1189.000000, -378.000000)" fill="#8898AA" fill-rule="nonzero">
+            <g id="Group-7" transform="translate(832.000000, 265.000000)">
+                <g id="icon_location" transform="translate(357.000000, 113.000000)">
+                    <path d="M13.5138462,2.2468 C12.0278974,0.798 10.0521026,0 7.95076923,0 C5.84902564,0 3.87364103,0.798 2.38769231,2.2468 C-0.36225641,4.9276 -0.704,9.9716 1.64758974,13.0276 L7.95076923,21.9028 L14.2445128,13.04 C16.6055385,9.9716 16.2637949,4.9276 13.5138462,2.2468 Z M8.02338462,10.4 C6.44020513,10.4 5.15158974,9.1436 5.15158974,7.6 C5.15158974,6.0564 6.44020513,4.8 8.02338462,4.8 C9.6065641,4.8 10.8951795,6.0564 10.8951795,7.6 C10.8951795,9.1436 9.6065641,10.4 8.02338462,10.4 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="20px" viewBox="0 0 15 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>icon_location_dark</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Customer-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Customer-V2-Home-book3" transform="translate(-150.000000, -280.000000)" fill="#32325D" fill-rule="nonzero">
+            <g id="icon_location_dark" transform="translate(150.000000, 280.000000)">
+                <path d="M12.6692308,2.04254545 C11.2761538,0.725454545 9.42384615,0 7.45384615,0 C5.48346154,0 3.63153846,0.725454545 2.23846154,2.04254545 C-0.339615385,4.47963636 -0.66,9.06509091 1.54461538,11.8432727 L7.45384615,19.9116364 L13.3542308,11.8545455 C15.5676923,9.06509091 15.2473077,4.47963636 12.6692308,2.04254545 Z M7.52192308,9.45454545 C6.03769231,9.45454545 4.82961538,8.31236364 4.82961538,6.90909091 C4.82961538,5.50581818 6.03769231,4.36363636 7.52192308,4.36363636 C9.00615385,4.36363636 10.2142308,5.50581818 10.2142308,6.90909091 C10.2142308,8.31236364 9.00615385,9.45454545 7.52192308,9.45454545 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

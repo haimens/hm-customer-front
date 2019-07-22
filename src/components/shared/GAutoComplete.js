@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { savePickUp, saveDropOff, savePickUpAgain, saveDropOffAgain } from "../../actions/location.action";
 import "./GAutoComplete.css";
 class GAutoComplete extends Component {
   constructor(props) {
@@ -11,18 +10,7 @@ class GAutoComplete extends Component {
   }
 
   _getAddress = address => {
-    if (this.props.placeholder === "PICKUP") {
-      this.props.savePickUp(address);
-    }
-    if (this.props.placeholder === "DROPOFF") {
-      this.props.saveDropOff(address);
-    }
-    if (this.props.placeholder === "PICKUPAGAIN") {
-      this.props.savePickUpAgain(address);
-    }
-    if (this.props.placeholder === "DROPOFFAGAIN") {
-      this.props.saveDropOffAgain(address);
-    }
+    console.log(address);
   };
 
   render() {
@@ -40,7 +28,7 @@ class GAutoComplete extends Component {
 
 export default connect(
   null,
-  { savePickUp, saveDropOff, savePickUpAgain, saveDropOffAgain }
+  {}
 )(GAutoComplete);
 
 const { compose, withProps, lifecycle } = require("recompose");

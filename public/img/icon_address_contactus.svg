@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="23px" viewBox="0 0 17 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>icon_address</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Customer-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Customer-V2-Contact-Us" transform="translate(-212.000000, -724.000000)" fill="#5E72E4" fill-rule="nonzero">
+            <g id="icon_address" transform="translate(212.000000, 724.000000)">
+                <path d="M8.5,0 C3.82751344,0 0.0261854839,3.73669141 0.0261854839,8.32968359 C0.0261854839,14.0297305 7.60941935,22.3977324 7.93228226,22.7511777 C8.23554032,23.0831953 8.76500806,23.0826113 9.06771774,22.7511777 C9.39058065,22.3977324 16.9738145,14.0297305 16.9738145,8.32968359 C16.9737231,3.73669141 13.1724409,0 8.5,0 Z M8.5,12.5205801 C6.14915591,12.5205801 4.23665591,10.6405547 4.23665591,8.32968359 C4.23665591,6.0188125 6.14920161,4.13883203 8.5,4.13883203 C10.8507984,4.13883203 12.7632984,6.01885742 12.7632984,8.32972852 C12.7632984,10.6405996 10.8507984,12.5205801 8.5,12.5205801 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -9,7 +9,6 @@ import "./Dashboard.container.css";
 
 import GAutoComplete from "../../components/shared/GAutoComplete";
 import Nav from "../../components/nav/Nav.component";
-import { saveDate, saveTime, savePassenger } from "../../actions/location.action";
 import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
 
@@ -18,8 +17,7 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       date: "",
-      time: "",
-      passenger: 1
+      time: ""
     };
   }
 
@@ -134,7 +132,7 @@ class Dashboard extends Component {
               <div className="row ">
                 <div className="col-12 col-md-6">
                   <MainCard
-                    img={"haimensMain.png"}
+                    img={"icon_airport.svg"}
                     title={"TO AIRPORT: ON TIME GUARANTEED PICKUP"}
                     paragraph={
                       "We Guarantee the driver will come to pick you up within the specified time frame for your airport drop off."
@@ -143,7 +141,7 @@ class Dashboard extends Component {
                 </div>
                 <div className="col-12 col-md-6">
                   <MainCard
-                    img={"haimensMain.png"}
+                    img={"icon_fromairport.svg"}
                     title={"FROM AIRPORT: LESS WAIT TIME AT THE CURB"}
                     paragraph={"90% of our customers wait 10 minutes or less at the curb."}
                   />
@@ -152,14 +150,14 @@ class Dashboard extends Component {
               <div className="row card-margin-fix-sub">
                 <div className="col-12 col-md-6">
                   <MainCard
-                    img={"haimensMain.png"}
+                    img={"icon_phone_home.svg"}
                     title={"PHONE SUPPORT"}
                     paragraph={"Feel free to call us for any question you may have before, on or after the trip."}
                   />
                 </div>
                 <div className="col-12 col-md-6">
                   <MainCard
-                    img={"haimensMain.png"}
+                    img={"icon_quality.svg"}
                     title={"HOURLY CHARTER"}
                     paragraph={
                       "Our Customer directed hourly charter service puts a chauffeur at your disposal for as long as you desire."
@@ -170,14 +168,14 @@ class Dashboard extends Component {
               <div className="row card-margin-fix-sub">
                 <div className="col-12 col-md-6">
                   <MainCard
-                    img={"haimensMain.png"}
+                    img={"icon_hourly.svg"}
                     title={"QUALITY"}
                     paragraph={"Clean, comfortable, and safe vehicles that meet your travel needs."}
                   />
                 </div>
                 <div className="col-12 col-md-6">
                   <MainCard
-                    img={"haimensMain.png"}
+                    img={"icon_driver.svg"}
                     title={"PROFESSIONAL DRIVERS"}
                     paragraph={
                       "Experienced, Friendly, and service oriented drivers are ready to serve you in higher standard."
@@ -195,13 +193,10 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    pickup_location: state.locationReducer.firstTrip.pickup_location,
-    dropoff_location: state.locationReducer.firstTrip.dropoff_location
-  };
+  return {};
 };
 
-const mapDispatchToProps = { saveDate, saveTime, savePassenger };
+const mapDispatchToProps = {};
 
 export default connect(
   mapStateToProps,
