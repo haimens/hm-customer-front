@@ -103,18 +103,19 @@ button{
 }
 
 .hm-main-textColor {
-  color: #10086b !important
+  color:#32325d !important
 }
 .hm-main-textColor-sub {
   color: #d6a748 !important;
 }
 
 .hm-main-bgColor {
-  background-color: #10086b !important;
+  background-color: #32325d !important;
 }
 
 .hm-main-button-outline {
-  border: 1px solid #10086b !important
+  border: 1px solid white!important;
+  border-radius: 26px !important;
 }
 .hm-main-button-white-outline{
   border: 1px solid white !important
@@ -166,3 +167,12 @@ button{
 .pointer-cursor{
   cursor: pointer !important;
 }
+
+.text-grey{
+  color:#8898aa
+}
+
+.bg-purple{
+  background-color: #5e72e4 !important
+}
+

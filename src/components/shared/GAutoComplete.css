@@ -1,3 +1,14 @@
-.GAuto-input{
-  height: 40px !important;
+.google-input::placeholder{
+  color: #8898aa !important;
+  font-size: 16px !important;
+  font-weight: bold;
+
+}
+.google-input{
+  color: #8898aa !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+.addon-color{
+  color: rgba(136, 152, 170, 0.5) !important
 }

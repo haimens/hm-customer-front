@@ -23,30 +23,30 @@ class Nav extends Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <a className={`navbar-brand ${this.props.navTextColor}`} href="/">
+        <a className={`navbar-brand text-purple`} href="/">
           Sunshire Logo
         </a>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ">
+          <ul className="navbar-nav ml-auto mt-2 mt-lg-0 mr-5">
             <li className="nav-item mr-5">
-              <a className={`nav-link hm-main-text-14 ${this.props.navTextColor}`} href="/">
+              <a className={`nav-link hm-main-text-16 text-white ${this.props.navTextColor}`} href="/">
                 Book A Trip
               </a>
             </li>
             <li className="nav-item mr-5">
-              <a className={`nav-link hm-main-text-14 ${this.props.navTextColor}`} href="/about">
+              <a className={`nav-link hm-main-text-16 text-white ${this.props.navTextColor}`} href="/about">
                 About Us
               </a>
             </li>
             <li className="nav-item mr-5">
-              <a className={`nav-link hm-main-text-14 ${this.props.navTextColor}`} href="/contact">
+              <a className={`nav-link hm-main-text-16 text-white ${this.props.navTextColor}`} href="/contact">
                 Contact Us
               </a>
             </li>
             <li className="nav-item mr-5">
               <button
-                className={`btn ${this.props.outlineButton} px-4 hm-main-text-14 ${this.props.navTextColor}`}
+                className={`btn ${this.props.outlineButton} px-4 hm-main-text-16 text-white ${this.props.navTextColor}`}
                 onClick={this.signIn}
               >
                 Sign In

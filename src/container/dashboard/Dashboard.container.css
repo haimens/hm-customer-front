@@ -1,60 +1,25 @@
 .header-text{
   margin-right: 20% !important;
-  margin-top: 300px;
+  margin-top: 359px;
   text-align: right;
-  font-size: 65px;
+  font-family: Futura;
+  font-size: 50px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 3px;
 }
 
 .dashboard-form{
-  margin-top: 160px;
-  background-color: rgb(255, 255, 255, 0.4)
-}
-
- .ant-calendar-picker-input, .ant-time-picker-input, .passenger-input {
-  background-color: white !important;
-  font-size: 14px !important;
-  font-weight: bold;
-  width: 100 !important;
-  vertical-align: middle;
-  height: 48px !important;
-  border-left: none !important;
-  border-top-left-radius: 0% !important;
-  border-bottom-left-radius: 0% !important;
-}
-
-.ant-calendar-picker, .ant-calendar-picker-input, .ant-time-picker, .ant-time-picker-input{
-  width: 100% !important;
-  vertical-align: middle !important;  
-}
-
-.time-clock{
-  margin-top: 1px;
-}
-
-.ant-calendar-picker-input::placeholder,.ant-time-picker-input::placeholder, .passenger-input::placeholder{
-  color: #636c72 !important;
-}
-
-.ant-calendar-picker-icon{
-  float: left !important;
-}
-.ant-calendar-picker-icon, .ant-time-picker-icon{
-  display: none !important;
-}
-
-.main-addon{
-  border-top-right-radius: 0% !important;
-  border-bottom-right-radius: 0% !important;
-}
-
-
-.addon-color{
-  color: #d6a748 !important;
+  margin-top: 263px;
+  width: 400px;
+  height: 506px;
+  text-align: center;
 }
 
 .header-container{
   position: relative;
-  color: white;
 }
 .main-nav{
   position: absolute !important;
@@ -70,6 +35,68 @@
 }
 
 .header-text-sub{
-  text-align: center;
-  font-size: 60px;
+  text-align: left;
+  font-size: 56px;
+  font-family: Futura;
+  font-weight: bold;
+}
+.ant-calendar-picker{
+  width: 100%;
+}
+
+.ant-input{
+  height: 48px !important;
+  border: none !important;
+  color: #8898aa !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.ant-input::placeholder{
+  color: #8898aa !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.ant-time-picker{
+  width: 100% !important;
+}
+
+.ant-time-picker-input{
+  height: 48px !important;
+  border: none !important;
+  color: #8898aa !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.ant-time-picker-input::placeholder{
+  color: #8898aa !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.dashboard-form-header{
+  height: 75px;
+  text-align:center;
+  padding-bottom:3px;
+  background: /* gradient can be an image */
+    linear-gradient(
+      to left, 
+      #355cff, #49e3fa
+    )
+    left 
+    bottom
+    no-repeat; 
+  background-size:100% 3px ;/* if linear-gradient, we need to resize it */
+}
+
+.price-button{
+  height: 52px;
+  border-radius: 26px !important;
+  box-shadow: 0 5px 15px 0 rgba(94, 114, 228, 0.8);
+}
+
+.card-margin-fix-bottom-sub{
+  margin-bottom: 87px !important
 }

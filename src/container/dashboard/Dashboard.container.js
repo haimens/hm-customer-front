@@ -64,87 +64,60 @@ class Dashboard extends Component {
       <main>
         <section className="header-container">
           <img
-            src={`${process.env.PUBLIC_URL}/img/haimensMain.png`}
+            src={`${process.env.PUBLIC_URL}/img/haimensMain.jpg`}
             alt="main-bg"
-            style={{ width: "100%", height: "700px" }}
+            style={{ width: "100%", height: "967px" }}
           />
-          <Nav
-            outerClass={"main-nav"}
-            navTextColor={"hm-main-textColor"}
-            outlineButton={`hm-main-button-outline`}
-          />
+          <Nav outerClass={"main-nav"} outlineButton={`hm-main-button-outline`} />
           <div className="container-fluid main-info">
             <div className="row">
               <div className="col-md-6 d-none d-lg-block">
-                <h1 className="text-white header-text">Pickup & Go</h1>
+                <h1 className="hm-main-textColor header-text">Shuttle Service Made Easier</h1>
               </div>
 
-              <div className=" ml-auto mr-auto ml-sm-none mr-sm-none col-sm-12 col-lg-6 ">
-                <div className="col-lg-9 col-12 dashboard-form rounded p-4">
-                  <h3 className="hm-main-textColor font-weight-bold ">BOOK A TRIP NOW</h3>
-                  <div className="mt-4">
-                    <GAutoComplete placeholder={"PICKUP"} inputClass={"border-left-0"} />
+              <div className="col-sm-12 col-lg-6">
+                <div className="col-lg-9 col-12 dashboard-form bg-white px-0">
+                  <div className="d-flex justify-content-center align-items-center dashboard-form-header">
+                    <h3 className="hm-main-textColor font-weight-bold ">BOOK A TRIP NOW</h3>
                   </div>
-                  <div className="mt-3">
-                    <GAutoComplete placeholder={"DROPOFF"} inputClass={"border-left-0"} />
-                  </div>
-
-                  <div className="mt-3">
-                    <div className="row">
-                      <div className="d-flex col-6 ">
-                        <span className="input-group-text bg-white border-right-0 main-addon">
-                          <i className="far fa-calendar-times addon-color" />
-                        </span>
-                        <DatePicker
-                          onChange={this.onDateChange}
-                          disabledDate={this.disabledDate}
-                          id="date"
-                          size="large"
-                          placeholder={"DATE"}
-                        />
-                      </div>
-                      <div className="d-flex col-6">
-                        <span className="input-group-text bg-white border-right-0 main-addon">
-                          <i className="far fa-clock addon-color time-clock" />
-                        </span>
-                        <TimePicker
-                          onChange={this.onTimeChange}
-                          defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-                          placeholder={"TIME"}
-                          size="large"
-                          format="HH:mm"
-                          id="time"
-                        />
-                      </div>
+                  <div className="col-12">
+                    <div className="mt-4">
+                      <GAutoComplete placeholder={"PICKUP"} />
                     </div>
-                  </div>
+                    <hr />
+                    <div className="mb-3">
+                      <GAutoComplete placeholder={"DROPOFF"} />
+                    </div>
+                    <hr />
 
-                  <div className="mt-3 d-flex">
-                    <span className="input-group-text bg-white border-right-0 main-addon">
-                      <i className="far fa-user addon-color" />
-                    </span>
-                    <select
-                      className="custom-select hm-input-height border-left-0 rounded-0 rounded-right"
-                      id="passenger"
-                      value={this.state.passenger}
-                      onChange={this.handlePassengerChange}
-                    >
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-
-                  <div className="mt-3">
-                    <button
-                      type="button"
-                      className="btn p-2 text-white w-100 hm-main-bgColor"
-                      onClick={this.handleSubmitOrder}
-                    >
-                      GET PRICE QUOTE
-                    </button>
+                    <div className="mb-3">
+                      <DatePicker
+                        onChange={this.onDateChange}
+                        disabledDate={this.disabledDate}
+                        id="date"
+                        placeholder={"Date"}
+                      />
+                    </div>
+                    <hr />
+                    <div className="mb-3">
+                      <TimePicker
+                        onChange={this.onTimeChange}
+                        defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+                        placeholder={"Time"}
+                        format="HH:mm"
+                        id="time"
+                      />
+                    </div>
+                    <hr />
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="btn mt-2 text-white w-100 bg-purple price-button"
+                        onClick={this.handleSubmitOrder}
+                      >
+                        GET PRICE QUOTE
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -153,11 +126,13 @@ class Dashboard extends Component {
         </section>
 
         <section>
-          <h1 className="hm-main-textColor header-text-sub my-2">Why choose us</h1>
-          <div className="card-margin-top">
+          <div className="container">
+            <h1 className="hm-main-textColor header-text-sub my-2">Why choose us</h1>
+          </div>
+          <div className="card-margin-top card-margin-fix-bottom-sub">
             <div className="container">
-              <div className="row">
-                <div className="col-12 col-md-4 mt-3 px-5">
+              <div className="row ">
+                <div className="col-12 col-md-6">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"TO AIRPORT: ON TIME GUARANTEED PICKUP"}
@@ -166,23 +141,23 @@ class Dashboard extends Component {
                     }
                   />
                 </div>
-                <div className="col-12 col-md-4 mt-3 px-5">
+                <div className="col-12 col-md-6">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"FROM AIRPORT: LESS WAIT TIME AT THE CURB"}
                     paragraph={"90% of our customers wait 10 minutes or less at the curb."}
                   />
                 </div>
-                <div className="col-12 col-md-4 mt-3 px-5">
+              </div>
+              <div className="row card-margin-fix-sub">
+                <div className="col-12 col-md-6">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"PHONE SUPPORT"}
                     paragraph={"Feel free to call us for any question you may have before, on or after the trip."}
                   />
                 </div>
-              </div>
-              <div className="row card-margin-fix-sub">
-                <div className="col-12 col-md-4 mt-3 px-5">
+                <div className="col-12 col-md-6">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"HOURLY CHARTER"}
@@ -191,14 +166,16 @@ class Dashboard extends Component {
                     }
                   />
                 </div>
-                <div className="col-12 col-md-4 mt-3 px-5">
+              </div>
+              <div className="row card-margin-fix-sub">
+                <div className="col-12 col-md-6">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"QUALITY"}
                     paragraph={"Clean, comfortable, and safe vehicles that meet your travel needs."}
                   />
                 </div>
-                <div className="col-12 col-md-4 mt-3 px-5">
+                <div className="col-12 col-md-6">
                   <MainCard
                     img={"haimensMain.png"}
                     title={"PROFESSIONAL DRIVERS"}

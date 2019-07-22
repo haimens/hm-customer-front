@@ -79,20 +79,18 @@ const PlacesWithStandaloneSearchBox = compose(
   <>
     {props.places[0] && props._getAddress(props.places)}
     <StandaloneSearchBox ref={props.onSearchBoxMounted} bounds={props.bounds} onPlacesChanged={props.onPlacesChanged}>
-      <div className="input-group mb-3 ">
-        <div className="input-group-prepend ">
-          <span className="input-group-text bg-white " id="basic-addon1">
-            <i className="fas fa-map-marker-alt addon-color" />
-          </span>
-        </div>
+      <div className="input-group ">
         <input
-          className={`form-control p-1 GAuto-input font-weight-bold hm-main-text-14 hm-input-height ${
-            props.inputClass
-          }`}
+          className={`form-control hm-input-height google-input border-0 ${props.inputClass}`}
           type="text"
           placeholder={props.disablePlaceHolder ? "" : props.placeholder}
           defaultValue={props.defaultValue}
         />
+        <div className="input-group-prepend ">
+          <span className="input-group-text bg-white border-0 addon-color" id="basic-addon1">
+            <i className="fas fa-map-marker-alt" />
+          </span>
+        </div>
       </div>
     </StandaloneSearchBox>
   </>
