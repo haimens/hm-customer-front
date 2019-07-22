@@ -44,142 +44,80 @@ export default class OrderForm extends Component {
           <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_location">
             Pickup Location
           </label>
-          <GAutoComplete
-            placeholder={pickup}
-            disablePlaceHolder={true}
-            defaultValue={pickup_location && pickup_location[0].formatted_address}
-            inputClass={"border-left-0"}
-          />
+          <div className="border rounded p-1">
+            <GAutoComplete
+              placeholder={pickup}
+              disablePlaceHolder={true}
+              defaultValue={pickup_location && pickup_location[0].formatted_address}
+              inputClass={"border-left-0"}
+            />
+          </div>
         </div>
         <div className="col-lg-6 col-12">
           <label className="hm-margin-top-35 font-weight-bold" htmlFor="dropoff_location">
             Dropoff Location
           </label>
-          <GAutoComplete
-            placeholder={dropoff}
-            disablePlaceHolder={true}
-            defaultValue={dropoff_location && dropoff_location[0].formatted_address}
-            inputClass={"border-left-0"}
-          />
+          <div className="border rounded p-1">
+            <GAutoComplete
+              placeholder={dropoff}
+              disablePlaceHolder={true}
+              defaultValue={dropoff_location && dropoff_location[0].formatted_address}
+              inputClass={"border-left-0"}
+            />
+          </div>
         </div>
         <div className="col-lg-3 col-12">
           <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_date">
             Date
           </label>
-          <div className="d-flex">
-            <span className="input-group-text bg-white border-right-0 main-addon">
-              <i className="far fa-calendar-times addon-color" />
-            </span>
-            {roundTrip ? (
-              pickup_date !== "" ? (
-                <DatePicker
-                  onChange={onDateChange}
-                  disabledDate={this.disabledDate}
-                  defaultValue={moment(pickup_date._d)}
-                  id="date"
-                  size="large"
-                  placeholder={""}
-                />
-              ) : (
-                <DatePicker
-                  onChange={onDateChange}
-                  disabledDate={this.disabledDate}
-                  id="date"
-                  size="large"
-                  placeholder={""}
-                />
-              )
-            ) : (
-              <DatePicker
-                onChange={onDateChange}
-                disabledDate={this.disabledDate}
-                defaultValue={moment(pickup_date._d)}
-                id="date"
-                size="large"
-                placeholder={""}
-              />
-            )}
+          <div className="border rounded p-1">
+            <DatePicker
+              onChange={onDateChange}
+              disabledDate={this.disabledDate}
+              id="date"
+              size="large"
+              placeholder={""}
+            />
           </div>
         </div>
         <div className="col-lg-3 col-12">
           <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_time">
             Time
           </label>
-          <div className="d-flex">
-            <span className="input-group-text bg-white border-right-0 main-addon">
-              <i className="far fa-clock addon-color time-clock" />
-            </span>
-            {roundTrip ? (
-              pickup_time !== "" ? (
-                <TimePicker
-                  onChange={onTimeChange}
-                  defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-                  defaultValue={moment(pickup_time._d)}
-                  placeholder={""}
-                  size="large"
-                  format="HH:mm"
-                  id="time"
-                />
-              ) : (
-                <TimePicker
-                  onChange={onTimeChange}
-                  defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-                  placeholder={""}
-                  size="large"
-                  format="HH:mm"
-                  id="time"
-                />
-              )
-            ) : (
-              <TimePicker
-                onChange={onTimeChange}
-                defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-                defaultValue={moment(pickup_time._d)}
-                placeholder={""}
-                size="large"
-                format="HH:mm"
-                id="time"
-              />
-            )}
+          <div className="border rounded p-1">
+            <TimePicker
+              onChange={onTimeChange}
+              defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
+              placeholder={""}
+              size="large"
+              format="HH:mm"
+              id="time"
+            />
           </div>
         </div>
-        <div className="col-lg-3 col-12">
-          <label className="hm-margin-top-35 font-weight-bold" htmlFor="passenger_amount">
-            Passenger
-          </label>
-          <div className="d-flex">
-            <span className="input-group-text bg-white border-right-0 main-addon">
-              <i className="far fa-user addon-color" />
-            </span>
-            <select
-              className="custom-select hm-input-height border-left-0 rounded-0 rounded-right"
-              id="passenger_amount"
-              value={passenger_amount}
-              onChange={this.handleInputChange}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-        </div>
-        <div className="col-lg-3 col-12">
+        <div className="col-lg-6 col-12">
           <label className="hm-margin-top-35 font-weight-bold" htmlFor="flight">
             Flight Number
           </label>
-          <div className="d-flex">
-            <span className="input-group-text bg-white border-right-0 main-addon">
-              <i className="fas fa-plane addon-color" />
-            </span>
-            <input
-              type="text"
-              id="flight"
-              className="form-control hm-input-height border-left-0"
-              onChange={this.handleInputChange}
-              value={flight}
-            />
+          <div className="d-flex ">
+            <div className="border rounded p-1 mr-3 w-100">
+              <div className="input-group">
+                <input
+                  className={`form-control hm-input-height google-input border-0`}
+                  placeholder="Airline Code"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div className="border rounded p-1 ml-3 w-100">
+              <div className="input-group">
+                <input
+                  className={`form-control hm-input-height google-input border-0`}
+                  placeholder="Flight Number"
+                  type="text"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
