@@ -234,54 +234,58 @@ class OrderStepFirst extends Component {
     const { roundTrip } = this.state;
     const { firstTrip, secondTrip } = this.props;
     return (
-      <section>
-        <div className="col-md-10 col-12 mx-auto my-5">
-          <h3 className="mt-3">Trip Detail</h3>
-          <OrderForm
-            pickup={"PICKUP"}
-            dropoff={"DROPOFF"}
-            trip={firstTrip}
-            onDateChange={this.onDateChange}
-            onTimeChange={this.onTimeChange}
-            updatePassenger={this.updatePassenger}
-            updateFlight={this.updateFlight}
-          />
-          {roundTrip && (
-            <div>
-              <OrderForm
-                pickup={"PICKUPAGAIN"}
-                dropoff={"DROPOFFAGAIN"}
-                trip={{ ...secondTrip, roundTrip }}
-                onDateChange={this.onDateChangeAgain}
-                onTimeChange={this.onTimeChangeAgain}
-                updatePassenger={this.updatePassengerAgain}
-                updateFlight={this.updateFlightAgain}
-              />
+      <section style={{ minHeight: "540px" }}>
+        <div className="col-md-10 col-12 mx-auto border shadow">
+          <div className="container">
+            <div className="d-flex align-items-center" style={{ height: "86px" }}>
+              <h3 className="mt-3">Trip Detail</h3>
             </div>
-          )}
-          <div className="row py-5">
-            <div className="col-4">
-              <button
-                type="button"
-                className="btn round-trip-button w-100 text-white hm-input-height"
-                onClick={this.handleTripType}
-              >
-                {roundTrip ? "One Way" : "Round Trip"}
-              </button>
-            </div>
-            <div className="col-4">
-              <button type="button" className="btn contact-sales-button text-white w-100 hm-input-height">
-                Contact Sales
-              </button>
-            </div>
-            <div className="col-4">
-              <button
-                type="button"
-                className="btn get-price-button text-white w-100 hm-input-height"
-                onClick={this.handleChangePosition}
-              >
-                Get Price
-              </button>
+            <OrderForm
+              pickup={"PICKUP"}
+              dropoff={"DROPOFF"}
+              trip={firstTrip}
+              onDateChange={this.onDateChange}
+              onTimeChange={this.onTimeChange}
+              updatePassenger={this.updatePassenger}
+              updateFlight={this.updateFlight}
+            />
+            {roundTrip && (
+              <div>
+                <OrderForm
+                  pickup={"PICKUPAGAIN"}
+                  dropoff={"DROPOFFAGAIN"}
+                  trip={{ ...secondTrip, roundTrip }}
+                  onDateChange={this.onDateChangeAgain}
+                  onTimeChange={this.onTimeChangeAgain}
+                  updatePassenger={this.updatePassengerAgain}
+                  updateFlight={this.updateFlightAgain}
+                />
+              </div>
+            )}
+            <div className="row pb-5">
+              <div className="col-4">
+                <button
+                  type="button"
+                  className="btn round-trip-button w-100 text-white hm-input-height"
+                  onClick={this.handleTripType}
+                >
+                  {roundTrip ? "One Way" : "Round Trip"}
+                </button>
+              </div>
+              <div className="col-4">
+                <button type="button" className="btn contact-sales-button text-white w-100 hm-input-height">
+                  Contact Sales
+                </button>
+              </div>
+              <div className="col-4">
+                <button
+                  type="button"
+                  className="btn get-price-button text-white w-100 hm-input-height"
+                  onClick={this.handleChangePosition}
+                >
+                  Get Price
+                </button>
+              </div>
             </div>
           </div>
         </div>

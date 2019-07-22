@@ -13,7 +13,7 @@ class Main extends Component {
             outlineButton={`hm-main-button-outline`}
           />
         </div>
-        <div>{this.props.children}</div>
+        <div className="pb-5">{this.props.children}</div>
         <div className="fixed-bottom">
           <Footer />
         </div>
