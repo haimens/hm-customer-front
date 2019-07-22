@@ -186,3 +186,8 @@ button{
   border-top-right-radius:  6px !important;
 
 }
+
+.round-trip-button{
+  box-shadow: 0 4px 10px 0 rgba(109, 100, 232, 0.7);
+  background-image: linear-gradient(98deg, #4776e6, #8e54e9);
+}

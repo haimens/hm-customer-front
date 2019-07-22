@@ -24,7 +24,6 @@ class Order extends Component {
       <section>
         {isLoading && <Loader />}
         <OrderPagination position={position} />
-        <hr className="hm-main-bgColor" />
         {position === 0 && <OrderStepFirstComponent handleChangePosition={this.handleChangePosition} />}
         {position === 1 && <OrderStepSecondComponent handleChangePosition={this.handleChangePosition} />}
         {position === 2 && <OrderStepThirdComponent handleChangePosition={this.handleChangePosition} />}

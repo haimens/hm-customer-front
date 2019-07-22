@@ -39,9 +39,9 @@ export default class OrderForm extends Component {
     const { pickup_location, dropoff_location, pickup_date, pickup_time, roundTrip } = trip;
     const { flight, passenger_amount } = this.state;
     return (
-      <div className="row">
-        <div className="col-lg-6 col-12">
-          <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_location">
+      <div className="row border-top mt-3 mb-5">
+        <div className="col-lg-6 col-12 mt-5">
+          <label className="font-weight-bold" htmlFor="pickup_location">
             Pickup Location
           </label>
           <div className="border rounded p-1">
@@ -53,8 +53,8 @@ export default class OrderForm extends Component {
             />
           </div>
         </div>
-        <div className="col-lg-6 col-12">
-          <label className="hm-margin-top-35 font-weight-bold" htmlFor="dropoff_location">
+        <div className="col-lg-6 col-12 mt-5">
+          <label className="font-weight-bold" htmlFor="dropoff_location">
             Dropoff Location
           </label>
           <div className="border rounded p-1">
@@ -66,8 +66,8 @@ export default class OrderForm extends Component {
             />
           </div>
         </div>
-        <div className="col-lg-3 col-12">
-          <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_date">
+        <div className="col-lg-3 col-12 mt-4">
+          <label className="font-weight-bold" htmlFor="pickup_date">
             Date
           </label>
           <div className="border rounded p-1">
@@ -80,8 +80,8 @@ export default class OrderForm extends Component {
             />
           </div>
         </div>
-        <div className="col-lg-3 col-12">
-          <label className="hm-margin-top-35 font-weight-bold" htmlFor="pickup_time">
+        <div className="col-lg-3 col-12 mt-4">
+          <label className="font-weight-bold" htmlFor="pickup_time">
             Time
           </label>
           <div className="border rounded p-1">
@@ -95,8 +95,8 @@ export default class OrderForm extends Component {
             />
           </div>
         </div>
-        <div className="col-lg-6 col-12">
-          <label className="hm-margin-top-35 font-weight-bold" htmlFor="flight">
+        <div className="col-lg-6 col-12  mt-4">
+          <label className="font-weight-bold" htmlFor="flight">
             Flight Number
           </label>
           <div className="d-flex ">

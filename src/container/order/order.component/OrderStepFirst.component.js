@@ -236,7 +236,7 @@ class OrderStepFirst extends Component {
     return (
       <section>
         <div className="col-md-10 col-12 mx-auto my-5">
-          <h3 className="mb-3">Trip Detail</h3>
+          <h3 className="mt-3">Trip Detail</h3>
           <OrderForm
             pickup={"PICKUP"}
             dropoff={"DROPOFF"}
@@ -248,7 +248,6 @@ class OrderStepFirst extends Component {
           />
           {roundTrip && (
             <div>
-              <hr className="hm-margin-top-35" />
               <OrderForm
                 pickup={"PICKUPAGAIN"}
                 dropoff={"DROPOFFAGAIN"}
@@ -264,7 +263,7 @@ class OrderStepFirst extends Component {
             <div className="col-4">
               <button
                 type="button"
-                className="btn hm-main-button-outline w-100 hm-input-height"
+                className="btn round-trip-button w-100 text-white hm-input-height"
                 onClick={this.handleTripType}
               >
                 {roundTrip ? "One Way" : "Round Trip"}
