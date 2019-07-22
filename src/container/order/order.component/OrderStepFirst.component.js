@@ -21,10 +21,10 @@ class OrderStepFirst extends Component {
             <div className="d-flex align-items-center" style={{ height: "86px" }}>
               <h3 className="mt-3">Trip Detail</h3>
             </div>
-            <OrderForm pickup={"PICKUP"} dropoff={"DROPOFF"} />
+            <OrderForm />
             {roundTrip && (
               <div>
-                <OrderForm pickup={"PICKUPAGAIN"} dropoff={"DROPOFFAGAIN"} />
+                <OrderForm />
               </div>
             )}
             <div className="row pb-5">
