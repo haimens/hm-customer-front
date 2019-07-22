@@ -234,7 +234,7 @@ class OrderStepFirst extends Component {
     const { roundTrip } = this.state;
     const { firstTrip, secondTrip } = this.props;
     return (
-      <section style={{ minHeight: "540px" }}>
+      <section className="pb-5" style={{ minHeight: "540px" }}>
         <div className="col-md-10 col-12 mx-auto border shadow">
           <div className="container">
             <div className="d-flex align-items-center" style={{ height: "86px" }}>
