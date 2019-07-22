@@ -191,3 +191,13 @@ button{
   box-shadow: 0 4px 10px 0 rgba(109, 100, 232, 0.7);
   background-image: linear-gradient(98deg, #4776e6, #8e54e9);
 }
+
+.contact-sales-button{
+  box-shadow: 0 4px 10px 0 rgba(109, 100, 232, 0.7);
+  background-image: linear-gradient(to right, #fb6640, #e59e3c);
+}
+
+.get-price-button{
+  box-shadow: 0 4px 10px 0 rgba(109, 100, 232, 0.7);
+  background-image: linear-gradient(to right, #2dcf8c, #2ecec9);
+}

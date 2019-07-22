@@ -270,14 +270,14 @@ class OrderStepFirst extends Component {
               </button>
             </div>
             <div className="col-4">
-              <button type="button" className="btn hm-button-bgColor-sub text-white w-100 hm-input-height">
+              <button type="button" className="btn contact-sales-button text-white w-100 hm-input-height">
                 Contact Sales
               </button>
             </div>
             <div className="col-4">
               <button
                 type="button"
-                className="btn hm-main-bgColor text-white w-100 hm-input-height"
+                className="btn get-price-button text-white w-100 hm-input-height"
                 onClick={this.handleChangePosition}
               >
                 Get Price
