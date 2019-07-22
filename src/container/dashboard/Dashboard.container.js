@@ -12,12 +12,16 @@ import Nav from "../../components/nav/Nav.component";
 import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
 
+import { saveTempOrder } from "../../actions/order.action";
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       date: "",
-      time: ""
+      time: "",
+      pickup_location: "",
+      dropoff_location: ""
     };
   }
 
@@ -29,29 +33,26 @@ class Dashboard extends Component {
     this.setState({ time: moment(time) });
   };
 
-  handlePassengerChange = e => {
-    this.setState({ passenger: e.target.value });
+  getLocation = type => address => {
+    if (type === "pickup") {
+      this.setState({ pickup_location: address[0].formatted_address });
+    }
+    if (type === "dropoff") {
+      this.setState({ dropoff_location: address[0].formatted_address });
+    }
   };
 
   handleSubmitOrder = async () => {
-    const { pickup_location, dropoff_location } = this.props;
-    const { date, time, passenger } = this.state;
-    if (date && time && passenger && pickup_location[0].formatted_address && dropoff_location[0].formatted_address) {
-      if (passenger > 0) {
-        await this.props.saveDate(date);
-        await this.props.saveTime(time);
-        await this.props.savePassenger(passenger);
-        await this.props.history.push("/order");
-      } else {
-        alertify.alert("Something Wrong", "Please Submit Correct Passenger Amount!");
-      }
+    const { date, time, pickup_location, dropoff_location } = this.state;
+    if (date && time && pickup_location && dropoff_location) {
+      await this.props.saveTempOrder({ date, time, pickup_location, dropoff_location });
+      await this.props.history.push("/order");
     } else {
       alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
     }
   };
 
   disabledDate(current) {
-    // Can not select days before today and today
     let date = new Date();
     date.setDate(date.getDate() - 1);
     return current && current.valueOf() < date;
@@ -80,11 +81,11 @@ class Dashboard extends Component {
                   </div>
                   <div className="col-12">
                     <div className="mt-4">
-                      <GAutoComplete placeholder={"PICKUP"} />
+                      <GAutoComplete getAddress={this.getLocation("pickup")} placeholder={"Pickup Location"} />
                     </div>
                     <hr />
                     <div className="mb-3">
-                      <GAutoComplete placeholder={"DROPOFF"} />
+                      <GAutoComplete getAddress={this.getLocation("dropoff")} placeholder={"Dropoff Location"} />
                     </div>
                     <hr />
 
@@ -196,7 +197,9 @@ const mapStateToProps = state => {
   return {};
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  saveTempOrder
+};
 
 export default connect(
   mapStateToProps,

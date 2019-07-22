@@ -11,6 +11,7 @@ class GAutoComplete extends Component {
 
   _getAddress = address => {
     console.log(address);
+    this.props.getAddress(address);
   };
 
   render() {
