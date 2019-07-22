@@ -170,65 +170,64 @@ class OrderStepFirst extends Component {
   };
 
   componentDidMount = async () => {
-    const { roundTrip, firstTrip, secondTrip } = this.props;
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = firstTrip;
-    const {
-      pickup_date: pickup_date_again,
-      pickup_time: pickup_time_again,
-      passenger_amount: passenger_amount_again,
-      flight: flight_again
-    } = secondTrip;
-    if (
-      pickup_location === "" ||
-      dropoff_location === "" ||
-      pickup_date === "" ||
-      pickup_time.time === "" ||
-      passenger_amount.number === ""
-    ) {
-      this.props.history.push("/");
-    }
-
-    if (roundTrip) {
-      if (pickup_date_again !== "") {
-        await this.setState({
-          firstTrip: {
-            pickup_date: pickup_date,
-            pickup_time: pickup_time,
-            passenger_amount: passenger_amount,
-            flight: flight
-          },
-          secondTrip: {
-            pickup_date: pickup_date_again,
-            pickup_time: pickup_time_again,
-            passenger_amount: passenger_amount_again,
-            flight: flight_again
-          },
-          roundTrip: roundTrip
-        });
-      }
-      if (pickup_date_again === "") {
-        await this.setState({
-          firstTrip: {
-            pickup_date: pickup_date,
-            pickup_time: pickup_time,
-            passenger_amount: passenger_amount,
-            flight: flight
-          },
-          roundTrip: roundTrip
-        });
-      }
-    }
-    if (!roundTrip) {
-      this.setState({
-        firstTrip: {
-          pickup_date: pickup_date,
-          pickup_time: pickup_time,
-          passenger_amount: passenger_amount,
-          flight: flight
-        },
-        roundTrip: roundTrip
-      });
-    }
+    // const { roundTrip, firstTrip, secondTrip } = this.props;
+    // const { pickup_location, dropoff_location, pickup_date, pickup_time, passenger_amount, flight } = firstTrip;
+    // const {
+    //   pickup_date: pickup_date_again,
+    //   pickup_time: pickup_time_again,
+    //   passenger_amount: passenger_amount_again,
+    //   flight: flight_again
+    // } = secondTrip;
+    // if (
+    //   pickup_location === "" ||
+    //   dropoff_location === "" ||
+    //   pickup_date === "" ||
+    //   pickup_time.time === "" ||
+    //   passenger_amount.number === ""
+    // ) {
+    //   this.props.history.push("/");
+    // }
+    // if (roundTrip) {
+    //   if (pickup_date_again !== "") {
+    //     await this.setState({
+    //       firstTrip: {
+    //         pickup_date: pickup_date,
+    //         pickup_time: pickup_time,
+    //         passenger_amount: passenger_amount,
+    //         flight: flight
+    //       },
+    //       secondTrip: {
+    //         pickup_date: pickup_date_again,
+    //         pickup_time: pickup_time_again,
+    //         passenger_amount: passenger_amount_again,
+    //         flight: flight_again
+    //       },
+    //       roundTrip: roundTrip
+    //     });
+    //   }
+    //   if (pickup_date_again === "") {
+    //     await this.setState({
+    //       firstTrip: {
+    //         pickup_date: pickup_date,
+    //         pickup_time: pickup_time,
+    //         passenger_amount: passenger_amount,
+    //         flight: flight
+    //       },
+    //       roundTrip: roundTrip
+    //     });
+    //   }
+    // }
+    // if (!roundTrip) {
+    //   this.setState({
+    //     firstTrip: {
+    //       pickup_date: pickup_date,
+    //       pickup_time: pickup_time,
+    //       passenger_amount: passenger_amount,
+    //       flight: flight
+    //     },
+    //     roundTrip: roundTrip
+    //   });
+    // }
   };
 
   render() {

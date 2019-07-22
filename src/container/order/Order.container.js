@@ -23,10 +23,8 @@ class Order extends Component {
     return (
       <section>
         {isLoading && <Loader />}
-        <div className="col-12 col-md-10 mx-auto">
-          <OrderPagination position={position} />
-        </div>
-        <hr className="hm-main-bgColor my-5" />
+        <OrderPagination position={position} />
+        <hr className="hm-main-bgColor" />
         {position === 0 && <OrderStepFirstComponent handleChangePosition={this.handleChangePosition} />}
         {position === 1 && <OrderStepSecondComponent handleChangePosition={this.handleChangePosition} />}
         {position === 2 && <OrderStepThirdComponent handleChangePosition={this.handleChangePosition} />}

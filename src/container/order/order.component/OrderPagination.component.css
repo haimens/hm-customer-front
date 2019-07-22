@@ -1,12 +1,14 @@
-.order-badge-border-inactive{
-  border: 1px solid #979797 !important;
-  color:  #979797 !important;
+.trip-tab{
+height: 201px;
+background-image: linear-gradient(to right, #41d0f0, #0d5dc3) !important;
 }
-.order-badge-text-inactive{
-  color:  #979797 !important;
+.trip-header{
+  font-family: Futura;
+  font-size: 36px;
+  font-weight: bold;
 }
 
-.order-header-margin{
-  margin-top: 56px;
-  margin-bottom: 58px;
+.tab{
+  background-color: #f4f5fa;
+  height: 60px;
 }

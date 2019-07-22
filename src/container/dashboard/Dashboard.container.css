@@ -100,3 +100,7 @@
 .card-margin-fix-bottom-sub{
   margin-bottom: 87px !important
 }
+
+.ant-calendar-picker-icon svg{
+  color: rgba(136, 152, 170, 0.5) !important
+}
