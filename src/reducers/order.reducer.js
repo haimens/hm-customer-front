@@ -44,7 +44,8 @@ const initialState = {
       { quote_token: "", img_path: "", car_type_name: "", amount: "", max_capacity: "", price_prefix: "" },
       { quote_token: "", img_path: "", car_type_name: "", amount: "", max_capacity: "", price_prefix: "" }
     ]
-  }
+  },
+  round_trip: false
 };
 
 export default (state = initialState, action) => {
@@ -53,6 +54,8 @@ export default (state = initialState, action) => {
       return { ...state, first_trip: action.payload };
     case constants.SECOND_TRIP:
       return { ...state, second_trip: action.payload };
+    case constants.SET_ROUND_TRIP:
+      return { ...state, round_trip: action.payload };
     default:
       return state;
   }

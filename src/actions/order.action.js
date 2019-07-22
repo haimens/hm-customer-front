@@ -40,6 +40,21 @@ export const findOrderLocationPriceAgain = location => async dispatch => {
   }
 };
 
+export const setRoundTrip = bool => async dispatch => {
+  console.log(bool);
+  try {
+    await dispatch({
+      type: userConstants.SECOND_TRIP,
+      payload: bool
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    console.log(err);
+    checkLogoutStatus(err, dispatch);
+  }
+};
+
 const startLoader = dispatch => {
   dispatch({
     type: userConstants.START_LOADING

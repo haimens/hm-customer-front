@@ -30,13 +30,7 @@ export default class OrderForm extends Component {
     }
   };
 
-  componentDidMount() {
-    this.setState({ passenger_amount: this.props.trip.passenger_amount, flight: this.props.trip.flight });
-  }
-
   render() {
-    const { onDateChange, onTimeChange, pickup, dropoff, trip } = this.props;
-    const { pickup_location, dropoff_location, pickup_date, pickup_time, roundTrip } = trip;
     const { flight, passenger_amount } = this.state;
     return (
       <div className="row border-top mt-3 mb-5">
@@ -45,12 +39,7 @@ export default class OrderForm extends Component {
             Pickup Location
           </label>
           <div className="border rounded p-1">
-            <GAutoComplete
-              placeholder={pickup}
-              disablePlaceHolder={true}
-              defaultValue={pickup_location && pickup_location[0].formatted_address}
-              inputClass={"border-left-0"}
-            />
+            <GAutoComplete disablePlaceHolder={true} inputClass={"border-left-0"} />
           </div>
         </div>
         <div className="col-lg-6 col-12 mt-5">
@@ -58,12 +47,7 @@ export default class OrderForm extends Component {
             Dropoff Location
           </label>
           <div className="border rounded p-1">
-            <GAutoComplete
-              placeholder={dropoff}
-              disablePlaceHolder={true}
-              defaultValue={dropoff_location && dropoff_location[0].formatted_address}
-              inputClass={"border-left-0"}
-            />
+            <GAutoComplete disablePlaceHolder={true} inputClass={"border-left-0"} />
           </div>
         </div>
         <div className="col-lg-3 col-12 mt-4">
@@ -71,13 +55,7 @@ export default class OrderForm extends Component {
             Date
           </label>
           <div className="border rounded p-1">
-            <DatePicker
-              onChange={onDateChange}
-              disabledDate={this.disabledDate}
-              id="date"
-              size="large"
-              placeholder={""}
-            />
+            <DatePicker disabledDate={this.disabledDate} id="date" size="large" placeholder={""} />
           </div>
         </div>
         <div className="col-lg-3 col-12 mt-4">
@@ -86,7 +64,6 @@ export default class OrderForm extends Component {
           </label>
           <div className="border rounded p-1">
             <TimePicker
-              onChange={onTimeChange}
               defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
               placeholder={""}
               size="large"
