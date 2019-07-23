@@ -8,10 +8,22 @@ export default class OrderForm extends Component {
     super(props);
     this.state = {
       roundTrip: false,
-      passenger_amount: "",
-      flight: ""
+      airline_code: "",
+      flight_number: ""
     };
   }
+  getPickupLocation = address => {
+    this.props.getPickupLocation(address[0].formatted_address);
+  };
+  getDropOffLocation = address => {
+    this.props.getDropOffLocation(address[0].formatted_address);
+  };
+  handleDatePicker = date => {
+    this.props.getDate(moment(date).format("YYYY-MM-DD"));
+  };
+  handleTimePicker = time => {
+    this.props.getTime(moment(time).format("HH:mm:ss"));
+  };
 
   disabledDate(current) {
     let date = new Date();
@@ -21,17 +33,16 @@ export default class OrderForm extends Component {
 
   handleInputChange = e => {
     const { id, value } = e.target;
-    this.setState({ [id]: value });
-    if (id === "passenger_amount") {
-      this.props.updatePassenger(value);
+    if (id === "airline_code") {
+      this.props.getAirlineCode(value);
     }
-    if (id === "flight") {
-      this.props.updateFlight(value);
+    if (id === "flight_number") {
+      this.props.getFlightNumber(value);
     }
   };
 
   render() {
-    const { flight, passenger_amount } = this.state;
+    const { airline_code, flight_number } = this.props;
     return (
       <div className="row border-top mt-3 mb-5">
         <div className="col-lg-6 col-12 mt-5">
@@ -39,7 +50,11 @@ export default class OrderForm extends Component {
             Pickup Location
           </label>
           <div className="border rounded p-1">
-            <GAutoComplete disablePlaceHolder={true} inputClass={"border-left-0"} />
+            <GAutoComplete
+              placeholder={"Pickup Location"}
+              getAddress={this.getPickupLocation}
+              inputClass={"border-left-0"}
+            />
           </div>
         </div>
         <div className="col-lg-6 col-12 mt-5">
@@ -47,7 +62,11 @@ export default class OrderForm extends Component {
             Dropoff Location
           </label>
           <div className="border rounded p-1">
-            <GAutoComplete disablePlaceHolder={true} inputClass={"border-left-0"} />
+            <GAutoComplete
+              getAddress={this.getDropOffLocation}
+              placeholder={"Dropoff Location"}
+              inputClass={"border-left-0"}
+            />
           </div>
         </div>
         <div className="col-lg-3 col-12 mt-4">
@@ -55,7 +74,7 @@ export default class OrderForm extends Component {
             Date
           </label>
           <div className="border rounded p-1">
-            <DatePicker disabledDate={this.disabledDate} id="date" size="large" placeholder={""} />
+            <DatePicker disabledDate={this.disabledDate} onChange={this.handleDatePicker} id="date" size="large" />
           </div>
         </div>
         <div className="col-lg-3 col-12 mt-4">
@@ -65,7 +84,7 @@ export default class OrderForm extends Component {
           <div className="border rounded p-1">
             <TimePicker
               defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-              placeholder={""}
+              onChange={this.handleTimePicker}
               size="large"
               format="HH:mm"
               id="time"
@@ -82,6 +101,8 @@ export default class OrderForm extends Component {
                 <input
                   className={`form-control hm-input-height google-input border-0`}
                   placeholder="Airline Code"
+                  value={airline_code}
+                  id="airline_code"
                   type="text"
                 />
               </div>
@@ -91,6 +112,8 @@ export default class OrderForm extends Component {
                 <input
                   className={`form-control hm-input-height google-input border-0`}
                   placeholder="Flight Number"
+                  value={flight_number}
+                  id="flight_number"
                   type="text"
                 />
               </div>
