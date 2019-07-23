@@ -193,11 +193,11 @@ button{
 }
 
 .contact-sales-button{
-  box-shadow: 0 4px 10px 0 rgba(109, 100, 232, 0.7);
+  box-shadow: 0 4px 10px 0 rgba(240, 133, 61, 0.6);
   background-image: linear-gradient(to right, #fb6640, #e59e3c);
 }
 
 .get-price-button{
-  box-shadow: 0 4px 10px 0 rgba(109, 100, 232, 0.7);
+  box-shadow: 0 4px 10px 0 rgba(45, 206, 171, 0.7);
   background-image: linear-gradient(to right, #2dcf8c, #2ecec9);
 }

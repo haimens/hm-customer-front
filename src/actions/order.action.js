@@ -22,6 +22,8 @@ export const findOrderLocationPrice = location => async dispatch => {
 };
 
 export const findOrderLocationPriceAgain = location => async dispatch => {
+  console.log(location);
+
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`quote/detail/REALM-e775d5ca14bd440e244ea374c1f57fc5`, "POST", {

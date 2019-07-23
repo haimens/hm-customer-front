@@ -15,7 +15,8 @@ class OrderStepFirst extends Component {
       airline_code: "",
       flight_number: "",
       pickup_location: "",
-      dropoff_location: ""
+      dropoff_location: "",
+      flight_str: ""
     },
     second_trip: {
       date: "",
@@ -23,7 +24,8 @@ class OrderStepFirst extends Component {
       airline_code: "",
       flight_number: "",
       pickup_location: "",
-      dropoff_location: ""
+      dropoff_location: "",
+      flight_str: ""
     },
     flight_number: "",
     airline_code: "",
@@ -36,6 +38,9 @@ class OrderStepFirst extends Component {
   };
 
   setUpFirstTrip = type => detail => {
+    if (type === "flystr") {
+      this.setState(state => ({ first_trip: { ...state.first_trip, flight_str: detail } }));
+    }
     if (type === "date") {
       this.setState(state => ({ first_trip: { ...state.first_trip, date: detail } }));
     }
@@ -56,6 +61,9 @@ class OrderStepFirst extends Component {
     }
   };
   setUpSecondTrip = type => detail => {
+    if (type === "flystr") {
+      this.setState(state => ({ first_trip: { ...state.first_trip, flight_str: detail } }));
+    }
     if (type === "date") {
       this.setState(state => ({ second_trip: { ...state.second_trip, date: detail } }));
     }
@@ -140,8 +148,6 @@ class OrderStepFirst extends Component {
               <h3 className="mt-3">Trip Detail</h3>
             </div>
             <OrderForm
-              airline_code={airline_code}
-              flight_number={flight_number}
               getDate={this.setUpFirstTrip("date")}
               getTime={this.setUpFirstTrip("time")}
               getAirlineCode={this.setUpFirstTrip("airlineCode")}
@@ -152,8 +158,7 @@ class OrderStepFirst extends Component {
             {roundTrip && (
               <div>
                 <OrderForm
-                  airline_code={airline_code_again}
-                  flight_number={flight_number_again}
+                  getFlightString={this.setUpFirstTrip("flystr")}
                   getDate={this.setUpSecondTrip("date")}
                   getTime={this.setUpSecondTrip("time")}
                   getAirlineCode={this.setUpSecondTrip("airlineCode")}

@@ -33,6 +33,7 @@ export default class OrderForm extends Component {
 
   handleInputChange = e => {
     const { id, value } = e.target;
+    this.setState({ [id]: value });
     if (id === "airline_code") {
       this.props.getAirlineCode(value);
     }
@@ -42,7 +43,7 @@ export default class OrderForm extends Component {
   };
 
   render() {
-    const { airline_code, flight_number } = this.props;
+    const { airline_code, flight_number } = this.state;
     return (
       <div className="row border-top mt-3 mb-5">
         <div className="col-lg-6 col-12 mt-5">
@@ -104,6 +105,7 @@ export default class OrderForm extends Component {
                   value={airline_code}
                   id="airline_code"
                   type="text"
+                  onChange={this.handleInputChange}
                 />
               </div>
             </div>
@@ -115,6 +117,7 @@ export default class OrderForm extends Component {
                   value={flight_number}
                   id="flight_number"
                   type="text"
+                  onChange={this.handleInputChange}
                 />
               </div>
             </div>
