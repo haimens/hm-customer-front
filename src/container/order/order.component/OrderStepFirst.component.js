@@ -142,7 +142,7 @@ class OrderStepFirst extends Component {
     const { roundTrip, flight_number, airline_code, flight_number_again, airline_code_again } = this.state;
     return (
       <section className="pb-5" style={{ minHeight: "540px" }}>
-        <div className="col-md-10 col-12 mx-auto border shadow">
+        <div className="col-md-10 col-12 mx-auto shadow">
           <div className="container">
             <div className="d-flex align-items-center" style={{ height: "86px" }}>
               <h3 className="mt-3">Trip Detail</h3>

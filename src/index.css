@@ -137,7 +137,7 @@ button{
   letter-spacing: 1px;
 }
 
-.hm-main-text-22 {
+.hm-text-22 {
   font-size: 22px !important;
   letter-spacing: 1px;
 }
@@ -179,6 +179,11 @@ button{
   background-color: #5e72e4 !important
 }
 
+.text-purple{
+  color: #5e72e4 !important
+}
+
+
 .custom-radius-top-left{
   border-top-left-radius:  6px !important;
 }
@@ -200,4 +205,13 @@ button{
 .get-price-button{
   box-shadow: 0 4px 10px 0 rgba(45, 206, 171, 0.7);
   background-image: linear-gradient(to right, #2dcf8c, #2ecec9);
+}
+
+.purple-border-button{
+  border-radius: 4px;
+  border: solid 1px #5e72e4 !important;
+}
+
+.font-weight-500{
+  font-weight: 500;
 }
