@@ -24,7 +24,7 @@ export default class OrderPagination extends Component {
                 1 && "bg-purple"}`}
             >
               <div className={`${position === 1 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
-                Vehicle Type
+                Price Quote
               </div>
             </div>
             <div
