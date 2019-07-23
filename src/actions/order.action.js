@@ -1,9 +1,8 @@
 import userConstants from "../constant/constant";
 import { processLogout } from "./auth.action";
-import { callApi, getPageIndex } from "../actions/utilities.action";
+import { callApi, startLoader, stopLoader } from "./utilities.action";
 
 export const findOrderLocationPrice = location => async dispatch => {
-  console.log(location);
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`quote/detail/REALM-428190c75115fe0b3dff74eb8cd00a09`, "POST", {
@@ -11,7 +10,8 @@ export const findOrderLocationPrice = location => async dispatch => {
     });
     await dispatch({
       type: userConstants.FIRST_TRIP,
-      payload
+      payload,
+      showMap: true
     });
     await stopLoader(dispatch);
   } catch (err) {
@@ -29,7 +29,8 @@ export const findOrderLocationPriceAgain = location => async dispatch => {
     });
     await dispatch({
       type: userConstants.SECOND_TRIP,
-      payload
+      payload,
+      showMap: true
     });
     await stopLoader(dispatch);
   } catch (err) {
@@ -45,7 +46,6 @@ export const setRoundTrip = bool => async dispatch => {
       type: userConstants.SET_ROUND_TRIP,
       payload: bool
     });
-    await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
     console.log(err);
@@ -66,18 +66,6 @@ export const saveTempOrder = data => async dispatch => {
     console.log(err);
     checkLogoutStatus(err, dispatch);
   }
-};
-
-const startLoader = dispatch => {
-  dispatch({
-    type: userConstants.START_LOADING
-  });
-};
-
-const stopLoader = dispatch => {
-  dispatch({
-    type: userConstants.STOP_LOADING
-  });
 };
 
 const checkLogoutStatus = async (err, dispatch) => {

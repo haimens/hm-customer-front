@@ -6,8 +6,8 @@ export default class LoaderAlt extends React.Component {
   render() {
     return (
       <main>
-        {/* <section style={styles.overlay} /> */}
-        <section style={styles.container}>
+        <section style={styles.overlay} />
+        <section style={styles.container} className="shadow-sm">
           <div className="sk-cube-grid">
             <div className="sk-cube sk-cube1" />
             <div className="sk-cube sk-cube2" />
@@ -19,7 +19,7 @@ export default class LoaderAlt extends React.Component {
             <div className="sk-cube sk-cube8" />
             <div className="sk-cube sk-cube9" />
           </div>
-          {/* <div className="text-center">{this.props.message || "加载中..."}</div> */}
+          <div className="text-center">{this.props.message || "Loading..."}</div>
         </section>
       </main>
     );
@@ -46,17 +46,14 @@ const styles = {
   },
   container: {
     position: "fixed",
-    // backgroundColor: "#fff",
+    backgroundColor: "#fff",
     top: "0",
     bottom: "0",
     left: "0",
     right: "0",
     margin: "auto auto",
-    height: "250px",
-    width: "250px",
-    backgroundColor: "rgba(255,255,255,0)",
-    // width: "300px",
-    // height: "300px",
+    width: "300px",
+    height: "300px",
     zIndex: "8889"
   }
 };

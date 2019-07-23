@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Loader } from "../../components/shared";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import "./Order.container.css";
 import OrderPagination from "./order.component/OrderPagination.component";
@@ -11,7 +12,7 @@ import OrderStepFourthComponent from "./order.component/OrderStepFourth.componen
 
 class Order extends Component {
   state = {
-    position: 0
+    position: 1
   };
   handleChangePosition = position => {
     this.setState(states => ({ position: states.position + position }));

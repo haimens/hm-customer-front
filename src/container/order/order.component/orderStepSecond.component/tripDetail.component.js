@@ -7,11 +7,11 @@ export default class TripDetail extends Component {
   state = {
     selected: ""
   };
-  handleOnButtonSelected = index => {
-    this.setState({ selected: index });
+  handleOnButtonSelected = quote_token => {
+    this.setState({ selected: quote_token });
   };
   render() {
-    const { basic_info, quote_list } = this.props.trip;
+    const { basic_info, quote_list, showMap } = this.props.trip;
     const { selected } = this.state;
     return (
       <div className="container">
@@ -23,24 +23,26 @@ export default class TripDetail extends Component {
         </div>
         <div className="row mt-4">
           <div className="col-6">
-            <div style={{ height: "230px" }}>
-              <GMapLocation
-                position={{
-                  center: {
-                    lat: basic_info.from_lat,
-                    lng: basic_info.from_lng
-                  },
-                  origin: {
-                    lat: basic_info.from_lat,
-                    lng: basic_info.from_lng
-                  },
-                  destination: {
-                    lat: basic_info.to_lat,
-                    lng: basic_info.to_lng
-                  }
-                }}
-              />
-            </div>
+            {showMap && (
+              <div style={{ height: "230px" }}>
+                <GMapLocation
+                  position={{
+                    center: {
+                      lat: basic_info.from_lat,
+                      lng: basic_info.from_lng
+                    },
+                    origin: {
+                      lat: basic_info.from_lat,
+                      lng: basic_info.from_lng
+                    },
+                    destination: {
+                      lat: basic_info.to_lat,
+                      lng: basic_info.to_lng
+                    }
+                  }}
+                />
+              </div>
+            )}
           </div>
           <div className="col-6" style={{ height: "264px" }}>
             {quote_list.length > 0 &&
@@ -48,9 +50,8 @@ export default class TripDetail extends Component {
                 <VehicleCard
                   clicked={selected}
                   key={index}
-                  current={index}
                   quote={quote}
-                  onButtonSelected={() => this.handleOnButtonSelected(index)}
+                  onButtonSelected={() => this.handleOnButtonSelected(quote.quote_token)}
                 />
               ))}
           </div>

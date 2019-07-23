@@ -1,21 +1,21 @@
 import moment from "moment";
 import { API_BASE_URL } from "../config";
 import { loadUserInfo } from "./localStorage.action";
+import constant from "../constant/constant";
 
-// require("es6-promise").polyfill();
-// require("isomorphic-fetch");
+require("isomorphic-fetch");
 
 export function formatDate(date, format) {
   return moment(date).format(format || "YYYY-MM-DD HH:mm");
 }
 
-export function convertUTCtoLocal(db_utc_time, format = "YYYY/MM/DD HH:mm") {
+export function convertUTCtoLocal(db_utc_time, format = "YYYY-MM-DD HH:mm") {
   return moment(db_utc_time)
     .local()
     .format(format);
 }
 
-export function convertLocalToUTC(local_time, format = "YYYY/MM/DD HH:mm") {
+export function convertLocalToUTC(local_time, format = "YYYY-MM-DD HH:mm") {
   return moment(local_time)
     .utc()
     .format(format);
@@ -35,12 +35,12 @@ export const parseAmount = (amount, decimal = 0) => {
   return `$${parseFloat(amount / 100).toFixed(decimal)}`;
 };
 
-export const parseAmountNoSign = (amount, decimal = 0) => {
-  return parseFloat(amount / 100).toFixed(decimal);
+export const parseAmountNoSymbol = (amount, decimal = 0) => {
+  return `${parseFloat(Number(amount) / 100).toFixed(decimal)}`;
 };
 
-export const parsePrice = (amount, decimal = 2) => {
-  return `$${parseFloat(amount / 100).toFixed(decimal)}`;
+export const parsePrice = (amount, decimal = 0) => {
+  return `${parseFloat(amount / 100).toFixed(decimal)}`;
 };
 
 export const parseDecimal = inputValue => {
@@ -52,7 +52,7 @@ export const parseDecimalOneDigit = inputValue => {
 };
 
 export const parseRate = rate => {
-  return `${rate}%`;
+  return `${rate / 10}%`;
 };
 
 export const parseBloodRate = (rate, decimal = 0) => {
@@ -86,8 +86,8 @@ export function callApi(endpoint, method, data, query) {
   if (data && requireBody(method)) {
     body = JSON.stringify(data);
   }
+
   let url = `${API_BASE_URL}/api/v0/${endpoint}?`;
-  console.log(url);
   if (query) {
     Object.keys(query).forEach(key => {
       url += `${key}=${query[key]}&`;
@@ -148,3 +148,25 @@ function normalizeResponseErrors(res) {
   }
   return res;
 }
+export const startLoader = dispatch => {
+  dispatch({
+    type: constant.START_LOADING
+  });
+};
+
+export const stopLoader = dispatch => {
+  dispatch({
+    type: constant.STOP_LOADING
+  });
+};
+
+export const launchSuccess = async dispatch => {
+  await dispatch({
+    type: constant.START_SUCCESS
+  });
+  setTimeout(() => {
+    dispatch({
+      type: constant.STOP_SUCCESS
+    });
+  }, 1000);
+};
