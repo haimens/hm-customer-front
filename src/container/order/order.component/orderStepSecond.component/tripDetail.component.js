@@ -33,7 +33,7 @@ export default class TripDetail extends Component {
               />
             </div>
           </div>
-          <div className="col-6 ">
+          <div className="col-6" style={{ height: "264px" }}>
             <VehicleCard />
           </div>
           <div className="col-6 ">
