@@ -106,7 +106,7 @@ button{
   color:#32325d !important
 }
 .hm-main-textColor-sub {
-  color: #d6a748 !important;
+  color:#525f7f!important;
 }
 
 .hm-main-bgColor {
@@ -205,6 +205,11 @@ button{
 .get-price-button{
   box-shadow: 0 4px 10px 0 rgba(45, 206, 171, 0.7);
   background-image: linear-gradient(to right, #2dcf8c, #2ecec9);
+}
+
+.back-button{
+  box-shadow: 0 4px 8px 0 rgba(50, 50, 93, 0.3);
+  background-color: #ffffff;
 }
 
 .purple-border-button{

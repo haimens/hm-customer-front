@@ -53,15 +53,22 @@ class Modal extends Component {
     };
 
     return (
-      <main className="modal-over-lay" onClick={this.handleExit} style={{ zIndex: `${this.props.zIndex || 9}` }}>
-        <section className={`${curr} ${this.props.className} rounded`} id="onlyScroll" style={widthHeight}>
+      <main>
+        <section
+          className="modal-over-lay"
+          style={{ zIndex: `${this.props.zIndex || 1}` }}
+          onClick={this.handleClose}
+        />
+        <section className={`${curr} ${this.props.className} rounded-custom`} id="onlyScroll" style={widthHeight}>
           <div
-            className={`sticky-top w-100 md-2 p-3 border-bottom shadow-sm ${
+            className={`sticky-top w-100 border-bottom ${
               this.props.headerContainerClassName ? this.props.headerContainerClassName : "bg-white"
             }`}
           >
-            <header className={`d-flex justify-content-between align-items-center`}>
-              <h5 className={this.props.headerTitleClassName}>{this.props.title}</h5>
+            <header className={`d-flex justify-content-between align-items-center p-4`} style={{ height: "110px" }}>
+              <h5 className="font-weight-bold" style={{ fontColor: "#32325d", fontSize: "25px" }}>
+                {this.props.title}
+              </h5>
               <ImageButton
                 // image={`${process.env.PUBLIC_URL}/img/forget-password@2x.png`}
                 icon={<i className="fas fa-times" />}

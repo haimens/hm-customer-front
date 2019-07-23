@@ -38,90 +38,112 @@ class OrderStepThird extends Component {
   render() {
     const { name, phone, email, special_instruction } = this.state;
     return (
-      <section>
-        <div className="col-md-10 col-12 mx-auto">
-          <h3>Contact Information</h3>
-          <div className="row">
-            <div className="col-md-4 col-12">
-              <label className="hm-margin-top-35 font-weight-bold" htmlFor="name">
-                Name
-              </label>
-              <div className="d-flex">
-                <input
-                  type="text"
-                  id="name"
-                  className="form-control hm-input-height"
-                  onChange={this.handleInputChange}
-                  value={name}
-                />
-              </div>
-            </div>
-            <div className="col-md-4 col-12">
-              <label className="hm-margin-top-35 font-weight-bold" htmlFor="phone">
-                Phone
-              </label>
-              <div className="d-flex">
-                <input
-                  type="text"
-                  id="phone"
-                  className="form-control hm-input-height"
-                  onChange={this.handleInputChange}
-                  value={phone}
-                />
-              </div>
-            </div>
-            <div className="col-md-4 col-12">
-              <label className="hm-margin-top-35 font-weight-bold" htmlFor="email">
-                Email
-              </label>
-              <div className="d-flex">
-                <input
-                  type="email"
-                  id="email"
-                  className="form-control hm-input-height"
-                  onChange={this.handleInputChange}
-                  value={email}
-                />
-              </div>
-            </div>
-            <div className="col-12">
-              <div className="form-group">
-                <label className="hm-margin-top-35 font-weight-bold" htmlFor="special_instruction">
-                  Special Instruction
-                </label>
-                <textarea
-                  className="form-control"
-                  rows="3"
-                  id="special_instruction"
-                  onChange={this.handleInputChange}
-                  value={special_instruction}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row py-5">
-            <div className="col-4">
-              <button
-                type="button"
-                className="btn hm-main-button-outline w-100 hm-input-height"
-                onClick={() => this.handleChangePosition(-1)}
+      <section className="pb-5">
+        <div className="col-md-10 col-12 mx-auto shadow">
+          <div className="pb-5">
+            <div className="container">
+              <div
+                className="d-flex align-items-center justify-content-between border-bottom"
+                style={{ height: "86px" }}
               >
-                Back
-              </button>
-            </div>
-            <div className="col-4">
-              <button type="button" className="btn hm-button-bgColor-sub text-white w-100 hm-input-height">
-                Contact Sales
-              </button>
-            </div>
-            <div className="col-4">
-              <button
-                type="button"
-                className="btn hm-main-bgColor text-white w-100 hm-input-height"
-                onClick={() => this.handleChangePosition(1)}
-              >
-                Continue
-              </button>
+                <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Contact Information</h3>
+              </div>
+              <div className="row mt-4">
+                <div className="col-md-4 col-12">
+                  <label className="hm-main-textColor-sub hm-main-text-14 font-weight-bold" htmlFor="name">
+                    Name
+                  </label>
+                  <div className="d-flex">
+                    <input
+                      type="text"
+                      id="name"
+                      className="form-control hm-input-height"
+                      onChange={this.handleInputChange}
+                      value={name}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-4 col-12">
+                  <label className="hm-main-textColor-sub hm-main-text-14 font-weight-bold" htmlFor="phone">
+                    Phone
+                  </label>
+                  <div className="d-flex">
+                    <input
+                      type="text"
+                      id="phone"
+                      className="form-control hm-input-height"
+                      onChange={this.handleInputChange}
+                      value={phone}
+                    />
+                  </div>
+                </div>
+                <div className="col-md-4 col-12">
+                  <label className="hm-main-textColor-sub hm-main-text-14 font-weight-bold" htmlFor="email">
+                    Email
+                  </label>
+                  <div className="d-flex">
+                    <input
+                      type="email"
+                      id="email"
+                      className="form-control hm-input-height"
+                      onChange={this.handleInputChange}
+                      value={email}
+                    />
+                  </div>
+                </div>
+                <div className="col-12 mt-4">
+                  <div className="form-group">
+                    <label
+                      className="hm-main-textColor-sub hm-main-text-14 font-weight-bold"
+                      htmlFor="special_instruction"
+                    >
+                      Special Instruction
+                    </label>
+                    <textarea
+                      className="form-control"
+                      rows="3"
+                      id="special_instruction"
+                      onChange={this.handleInputChange}
+                      value={special_instruction}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row pt-5">
+                <div className="col-4">
+                  <button
+                    type="button"
+                    className="btn back-button w-100 hm-main-textColor font-weight-bold hm-input-height d-flex justify-content-between align-items-center"
+                    onClick={this.handleChangePosition}
+                  >
+                    <img src={`${process.env.PUBLIC_URL}/img/icon_back.svg`} alt="roundTrip" />
+                    <div>Back</div>
+                    <div style={{ width: "20px" }} />
+                  </button>
+                </div>
+                <div className="col-4">
+                  <button
+                    type="button"
+                    className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+                    onClick={this.handleChangePosition}
+                  >
+                    <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
+                    <div>Contact Sales</div>
+                    <div style={{ width: "20px" }} />
+                  </button>
+                </div>
+                <div className="col-4">
+                  <button
+                    type="button"
+                    className="btn round-trip-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+                    onClick={this.handleChangePosition}
+                  >
+                    <div style={{ width: "20px" }} />
+                    <div>Continue</div>
+                    <img src={`${process.env.PUBLIC_URL}/img/icon_continue.svg`} alt="roundTrip" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -2,12 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TripDetail from "./orderStepSecond.component/tripDetail.component";
+import TripSignIn from "./orderStepSecond.component/tripSignIn.modal";
+import { Modal } from "../../../components/shared";
 
 class OrderStepSecond extends Component {
+  state = {
+    showTripSignIn: false
+  };
+  handleShowSignIn = () => {
+    this.setState({ showTripSignIn: true });
+  };
+  handleCloseShowSignIn = () => {
+    this.setState({ showTripSignIn: false });
+  };
   render() {
+    const { showTripSignIn } = this.state;
     const { round_trip, first_trip, second_trip } = this.props;
     return (
       <section className="pb-5">
+        {showTripSignIn && <TripSignIn onClose={this.handleCloseShowSignIn} />}
         <div className="col-md-10 col-12 mx-auto shadow">
           <div className="pb-5">
             <TripDetail trip={first_trip} />
@@ -38,7 +51,7 @@ class OrderStepSecond extends Component {
                 <button
                   type="button"
                   className="btn get-price-button text-white w-100 hm-input-height"
-                  onClick={this.handleChangePosition}
+                  onClick={this.handleShowSignIn}
                 >
                   Get Price
                 </button>
