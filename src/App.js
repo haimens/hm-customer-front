@@ -6,7 +6,6 @@ import LoaderAlt from "./components/shared/LoaderAlt";
 import Dashboard from "./container/dashboard/Dashboard.container";
 import About from "./container/about/About.container";
 import Account from "./container/account/Account.container";
-import Signup from "./container/account/Signup.container";
 import Main from "./components/main/Main.container";
 import Login from "./container/login/Login.container";
 import Contact from "./container/contact/Contact.container";
@@ -35,13 +34,12 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/create" component={Account} />
 
           <Main>
             <Switch>
               <Route exact path="/order" component={Order} />
               <Route exact path="/about" component={About} />
-              <Route exact path="/account" component={Account} />
-              <Route exact path="/signup" component={Signup} />
               <Route exact path="/contact" component={Contact} />
               <Route component={Page404} />
             </Switch>

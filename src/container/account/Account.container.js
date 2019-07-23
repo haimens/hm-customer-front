@@ -1,29 +1,34 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { processLogin, processLogout } from "../../actions/auth.action";
 import { clearUserInfo } from "../../actions/localStorage.action";
-import alertify from "alertifyjs";
 import "./Account.container.css";
+import GAutoComplete from "../../components/shared/GAutoComplete";
 
-class Account extends Component {
+export class Account extends React.Component {
   state = {
+    name: "",
+    passcode: "",
     email: "",
-    passcode: ""
+    area: "",
+    cell: "",
+    confirm_password: ""
   };
 
-  handleLoginSubmit = async e => {
+  handleSubmit = async e => {
     e.preventDefault();
-    this.props.processLogin(
+
+    this.props.processaccount(
       {
-        username: this.state.email,
+        username: this.state.username,
         passcode: this.state.passcode
       },
       this.props.history
     );
   };
 
-  handleInputChange = e => {
+  handleChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
   };
@@ -33,69 +38,186 @@ class Account extends Component {
     window.location.href = `${process.env.REACT_APP_HAVANA_FRONT}/forget/${process.env.REACT_APP_APP_TOKEN}`;
   };
 
+  handleCreateNewAccount = e => {
+    e.preventDefault();
+    this.props.history.push("/create");
+  };
+
   componentWillMount = () => {
     clearUserInfo();
   };
+
+  componentDidMount() {
+    let newImage = new Image();
+    newImage.onload = function(img) {
+      document.getElementById("account-image").classList.remove("account-image-init");
+      document.getElementById("account-image").classList.add("account-image-loaded");
+    };
+    newImage.src = `${process.env.PUBLIC_URL}/img/genos_bg.png`;
+  }
+
   render() {
+    const { name, passcode, email, area, cell, confirm_password } = this.props;
     return (
-      <section>
-        <div className="col-10 mx-auto">
-          <h1 className="hm-main-text-60 hm-main-textColor align-items-center">My Account</h1>
-        </div>
-        <hr className="hm-main-bgColor" />
-        <div className="col-10 mx-auto my-5">
-          <div className="row">
-            <div className="col-12 col-lg-6">
-              <h4>New Client</h4>
-              <p className="hm-main-text-14 hm-margin-top-35">
-                By creating an account you will be able to order faster, be up to date on an order's status, and keep
-                track of the orders you have previously made.
-              </p>
-              <div className="col-10 p-0">
-                <button className="hm-margin-top-35 text-white hm-main-bgColor p-3 w-100">Signup</button>
+      <main className="account-container">
+        <section
+          className="account-image account-image-bg account-image-init"
+          id="account-image"
+          style={{ zIndex: "1" }}
+        />
+        {/* <img
+          src={`${process.env.PUBLIC_URL}/img/logo-white.svg`}
+          alt="Logo"
+          className="account-logo"
+          style={{ zIndex: "2" }}
+        /> */}
+        <p className="text-white welcome font-weight-bold text-center" style={{ fontSize: "26px", zIndex: "2" }}>
+          Create an account!
+        </p>
+        <section className="p-3 account-content text-center rounded-custom" style={{ zIndex: "2" }}>
+          <div className="hm-text-12 text-secondary-color mt-4 mb-5">Sign up with credentials</div>
+
+          <form onSubmit={this.handleSubmit} className="container-fluid">
+            <div className="input-group shadow-sm mb-4">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon1">
+                  <i className="fas fa-user text-secondary-color" />
+                </span>
               </div>
+              <input
+                required
+                type="text"
+                className="form-control hm-input-height hm-input-account border-0 p-2"
+                placeholder="Name"
+                aria-label="name"
+                id="name"
+                aria-describedby="basic-addon1"
+                value={name}
+                onChange={this.handleChange}
+              />
             </div>
 
-            <div className="col-12 mt-5 mt-lg-0 col-lg-6">
-              <h4>Returning Client</h4>
-              <label className="hm-margin-top-35 font-weight-bold" for="email">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                class="form-control mt-1 hm-input-height"
-                onChange={this.handleInputChange}
-              />
-              <label className="hm-margin-top-35 font-weight-bold" for="password">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                class="form-control mt-1 hm-input-height"
-                onChange={this.handleInputChange}
-              />
-              <div className="col-8 p-0">
-                <button
-                  className="mt-5 account-marginBottom text-white hm-main-bgColor p-3 w-100"
-                  onClick={this.handleLoginSubmit}
-                >
-                  Login
-                </button>
+            <div className="input-group shadow-sm mb-4 d-flex">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
+                  <i className="fas fa-phone-alt text-secondary-color" />
+                </span>
               </div>
+              <input
+                required
+                type="Phone"
+                className="form-control hm-input-height hm-input-account border-0 p-2 col-2"
+                placeholder="Area"
+                aria-label="Area"
+                id="area"
+                aria-describedby="basic-addon2"
+                value={area}
+                onChange={this.handleChange}
+              />
+              <input
+                required
+                type="Phone"
+                className="form-control hm-input-height hm-input-account border-0 p-2"
+                placeholder="Cell"
+                aria-label="Cell"
+                id="cell"
+                aria-describedby="basic-addon2"
+                value={cell}
+                onChange={this.handleChange}
+              />
             </div>
+
+            <div className="input-group shadow-sm mb-4">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon1">
+                  <i className="fas fa-envelope text-secondary-color" />
+                </span>
+              </div>
+              <input
+                required
+                type="email"
+                className="form-control hm-input-height hm-input-account border-0 p-2"
+                placeholder="Email"
+                aria-label="Email"
+                id="email"
+                aria-describedby="basic-addon1"
+                value={email}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="input-group shadow-sm mb-4">
+              <GAutoComplete iconFront={true} placeholder={"address"} />
+            </div>
+
+            <div className="input-group shadow-sm mb-4">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
+                  <i className="fas fa-unlock-alt text-secondary-color" />
+                </span>
+              </div>
+              <input
+                required
+                type="password"
+                className="form-control hm-input-height hm-input-account border-0 p-2"
+                placeholder="Password"
+                aria-label="Password"
+                id="passcode"
+                aria-describedby="basic-addon2"
+                value={passcode}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="input-group shadow-sm mb-4">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
+                  <i className="fas fa-unlock-alt text-secondary-color" />
+                </span>
+              </div>
+              <input
+                required
+                type="password"
+                className="form-control hm-input-height hm-input-account border-0 p-2"
+                placeholder="Confirm Password"
+                aria-label="Confirm Password"
+                id="confirm_password"
+                aria-describedby="basic-addon2"
+                value={confirm_password}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="text-center" style={{ marginTop: "55px" }}>
+              <button
+                type="submit"
+                className="btn bg-purple button-main-size shadow text-white "
+                style={{ height: "43px", width: "90px" }}
+              >
+                Sign in
+              </button>
+            </div>
+          </form>
+          <div className="d-flex justify-content-end" style={{ marginTop: "40px" }}>
+            <p
+              className="text-left hm-pointer-cursor px-0"
+              style={{ color: "#ced4da" }}
+              onClick={this.handleCreateNewAccount}
+            >
+              Sign in
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="account-image account-image-bg-2" />
+      </main>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    // isLoading: state.loadReducer.loading,
-    // isSuccess: state.loadReducer.is_success
+    isLoading: state.loadReducer.loading,
+    isSuccess: state.loadReducer.is_success
   };
 };
 

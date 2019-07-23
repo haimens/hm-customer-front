@@ -13,27 +13,9 @@ class OrderStepThird extends Component {
   handleInputChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
-    if (id === "passenger_amount") {
-      this.props.updatePassenger(value);
-    }
-    if (id === "flight") {
-      this.props.updateFlight(value);
-    }
   };
 
-  handleChangePosition = position => {
-    if (position < 0) {
-      this.props.handleChangePosition(position);
-      return;
-    }
-    const { name, phone, email, special_instruction } = this.state;
-    if (name && phone && email && special_instruction) {
-      this.props.saveContact({ ...this.state });
-      this.props.handleChangePosition(position);
-    } else {
-      alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
-    }
-  };
+  handleChangePosition = position => {};
 
   render() {
     const { name, phone, email, special_instruction } = this.state;

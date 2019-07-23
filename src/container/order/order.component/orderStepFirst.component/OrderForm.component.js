@@ -48,7 +48,7 @@ export default class OrderForm extends Component {
     const { airline_code, flight_number } = this.state;
     const { date, time, pickup_location, dropoff_location } = this.props.trip;
     return (
-      <div className="row border-top mt-3 mb-5">
+      <div className="row border-top mb-5">
         <div className="col-lg-6 col-12 mt-5">
           <label className="font-weight-bold" htmlFor="pickup_location">
             Pickup Location

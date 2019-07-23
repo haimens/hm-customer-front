@@ -86,7 +86,6 @@ class OrderStepFirst extends Component {
 
   handleChangePosition = () => {
     const { first_trip, second_trip, roundTrip } = this.state;
-    console.log(roundTrip);
     if (roundTrip) {
       if (
         first_trip.pickup_location &&
@@ -160,69 +159,71 @@ class OrderStepFirst extends Component {
     return (
       <section className="pb-5" style={{ minHeight: "540px" }}>
         <div className="col-md-10 col-12 mx-auto shadow">
-          <div className="container">
-            <div className="d-flex align-items-center" style={{ height: "86px" }}>
-              <h3 className="mt-3">Trip Detail</h3>
-            </div>
-            <OrderForm
-              trip={first_trip}
-              getDate={this.setUpFirstTrip("date")}
-              getTime={this.setUpFirstTrip("time")}
-              getAirlineCode={this.setUpFirstTrip("airlineCode")}
-              getFlightNumber={this.setUpFirstTrip("flightNumber")}
-              getPickupLocation={this.setUpFirstTrip("pickup")}
-              getDropOffLocation={this.setUpFirstTrip("dropoff")}
-            />
-            {roundTrip && (
-              <div>
-                <OrderForm
-                  trip={second_trip}
-                  getFlightString={this.setUpFirstTrip("flystr")}
-                  getDate={this.setUpSecondTrip("date")}
-                  getTime={this.setUpSecondTrip("time")}
-                  getAirlineCode={this.setUpSecondTrip("airlineCode")}
-                  getFlightNumber={this.setUpSecondTrip("flightNumber")}
-                  getPickupLocation={this.setUpSecondTrip("pickup")}
-                  getDropOffLocation={this.setUpSecondTrip("dropoff")}
-                />
+          <div className="pb-5">
+            <div className="container">
+              <div className="d-flex align-items-center justify-content-between " style={{ height: "86px" }}>
+                <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Contact Information</h3>
               </div>
-            )}
-            <div className="row pb-5">
-              <div className="col-4">
-                <button
-                  type="button"
-                  className="btn round-trip-button w-100 text-white hm-input-height d-flex justify-content-between align-items-center"
-                  onClick={this.handleTripType}
-                >
-                  {roundTrip ? (
-                    <img src={`${process.env.PUBLIC_URL}/img/icon_oneway.svg`} alt="oneway" />
-                  ) : (
-                    <img src={`${process.env.PUBLIC_URL}/img/icon_roundtrip.svg`} alt="roundTrip" />
-                  )}
-                  <div>{roundTrip ? "One Way" : "Round Trip"}</div>
-                  <div style={{ width: "20px" }} />
-                </button>
-              </div>
-              <div className="col-4">
-                <button
-                  type="button"
-                  className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
-                >
-                  <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
-                  <div> Contact Sales</div>
-                  <div style={{ width: "20px" }} />
-                </button>
-              </div>
-              <div className="col-4">
-                <button
-                  type="button"
-                  className="btn get-price-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
-                  onClick={this.handleChangePosition}
-                >
-                  <img src={`${process.env.PUBLIC_URL}/img/icon_price.svg`} alt="roundTrip" />
-                  <div>Get Price</div>
-                  <div style={{ width: "20px" }} />
-                </button>
+              <OrderForm
+                trip={first_trip}
+                getDate={this.setUpFirstTrip("date")}
+                getTime={this.setUpFirstTrip("time")}
+                getAirlineCode={this.setUpFirstTrip("airlineCode")}
+                getFlightNumber={this.setUpFirstTrip("flightNumber")}
+                getPickupLocation={this.setUpFirstTrip("pickup")}
+                getDropOffLocation={this.setUpFirstTrip("dropoff")}
+              />
+              {roundTrip && (
+                <div>
+                  <OrderForm
+                    trip={second_trip}
+                    getFlightString={this.setUpFirstTrip("flystr")}
+                    getDate={this.setUpSecondTrip("date")}
+                    getTime={this.setUpSecondTrip("time")}
+                    getAirlineCode={this.setUpSecondTrip("airlineCode")}
+                    getFlightNumber={this.setUpSecondTrip("flightNumber")}
+                    getPickupLocation={this.setUpSecondTrip("pickup")}
+                    getDropOffLocation={this.setUpSecondTrip("dropoff")}
+                  />
+                </div>
+              )}
+              <div className="row pb-5">
+                <div className="col-4">
+                  <button
+                    type="button"
+                    className="btn round-trip-button w-100 text-white hm-input-height d-flex justify-content-between align-items-center"
+                    onClick={this.handleTripType}
+                  >
+                    {roundTrip ? (
+                      <img src={`${process.env.PUBLIC_URL}/img/icon_oneway.svg`} alt="oneway" />
+                    ) : (
+                      <img src={`${process.env.PUBLIC_URL}/img/icon_roundtrip.svg`} alt="roundTrip" />
+                    )}
+                    <div>{roundTrip ? "One Way" : "Round Trip"}</div>
+                    <div style={{ width: "20px" }} />
+                  </button>
+                </div>
+                <div className="col-4">
+                  <button
+                    type="button"
+                    className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+                  >
+                    <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
+                    <div> Contact Sales</div>
+                    <div style={{ width: "20px" }} />
+                  </button>
+                </div>
+                <div className="col-4">
+                  <button
+                    type="button"
+                    className="btn get-price-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+                    onClick={this.handleChangePosition}
+                  >
+                    <img src={`${process.env.PUBLIC_URL}/img/icon_price.svg`} alt="roundTrip" />
+                    <div>Get Price</div>
+                    <div style={{ width: "20px" }} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>

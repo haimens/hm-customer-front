@@ -16,6 +16,7 @@ class GAutoComplete extends Component {
   render() {
     return (
       <PlacesWithStandaloneSearchBox
+        iconFront={this.props.iconFront}
         _getAddress={this._getAddress}
         inputClass={this.props.inputClass}
         placeholder={this.props.placeholder}
@@ -68,17 +69,26 @@ const PlacesWithStandaloneSearchBox = compose(
     {props.places[0] && props._getAddress(props.places)}
     <StandaloneSearchBox ref={props.onSearchBoxMounted} bounds={props.bounds} onPlacesChanged={props.onPlacesChanged}>
       <div className="input-group ">
+        {props.iconFront && (
+          <div className="input-group-prepend ">
+            <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
+              <i className="fas fa-map-marker-alt" />
+            </span>
+          </div>
+        )}
         <input
-          className={`form-control hm-input-height google-input border-0 ${props.inputClass}`}
+          className={`form-control hm-input-height  border-0 ${!props.iconFront && "google-input"}`}
           type="text"
           placeholder={props.disablePlaceHolder ? "" : props.placeholder}
           defaultValue={props.defaultValue}
         />
-        <div className="input-group-prepend ">
-          <span className="input-group-text bg-white border-0 addon-color" id="basic-addon1">
-            <i className="fas fa-map-marker-alt" />
-          </span>
-        </div>
+        {!props.iconFront && (
+          <div className="input-group-prepend ">
+            <span className="input-group-text bg-white border-0 addon-color" id="basic-addon1">
+              <i className="fas fa-map-marker-alt" />
+            </span>
+          </div>
+        )}
       </div>
     </StandaloneSearchBox>
   </>

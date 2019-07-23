@@ -1,7 +1,42 @@
 .login-container {
   width:100%;
   height:100%;
+  position: relative
 }
+
+.login-logo{
+  height: 38px;
+  width: 142px;
+  margin-left: 38px;
+  margin-top: 25px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.welcome{
+  position: absolute;
+  top: 112px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.login-content {
+  min-width: 330px;
+  max-width: 440px;
+  height: 352px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f7fafc ;
+}
+
 .login-image{
   position:fixed;
   top:0;
@@ -13,20 +48,15 @@
   background: center no-repeat;
   background-size:cover;
 
-
 }
-.login-image-init{
-  background-image:url('/img/puri_login_bg-min.jpg');
-  filter:blur(5px);
+.login-image-bg{
+  background-image: linear-gradient(#41d0f0, #0d5dc3);
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 50%);
 }
 
-.login-image-loaded{
-  background-image:url('/img/hd.png');
-  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 2s; /* Firefox < 16 */
-   -ms-animation: fadein 2s; /* Internet Explorer */
-    -o-animation: fadein 2s; /* Opera < 12.1 */
-       animation: fadein 2s;
+.login-image-bg-2{
+
+background-color: #172b4c
 }
 
 @keyframes fadein {
