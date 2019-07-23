@@ -11,7 +11,7 @@ import NoRecord from "./NoRecord";
 import IconButton from "./IconButton";
 import LoaderAlt from "./LoaderAlt";
 import ImagePreview from "./ImagePreview.modal";
-
+import GMapLocation from "./GMapLocation";
 export {
   ImagePreview,
   LoaderAlt,
@@ -25,5 +25,6 @@ export {
   Pagination,
   ProtectedRoute,
   SearchBar,
-  SuccessModal
+  SuccessModal,
+  GMapLocation
 };
