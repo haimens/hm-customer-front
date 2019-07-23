@@ -85,15 +85,8 @@ class OrderStepFirst extends Component {
   };
 
   handleChangePosition = () => {
-    const {
-      first_trip,
-      second_trip,
-      roundTrip,
-      flight_number,
-      airline_code,
-      flight_number_again,
-      airline_code_again
-    } = this.state;
+    const { first_trip, second_trip, roundTrip } = this.state;
+    console.log(roundTrip);
     if (roundTrip) {
       if (
         first_trip.pickup_location &&
@@ -109,17 +102,22 @@ class OrderStepFirst extends Component {
           this.props.findOrderLocationPrice({
             from_address_str: first_trip.pickup_location,
             to_address_str: first_trip.dropoff_location,
-            pickup_time: convertUTCtoLocal(moment(`${first_trip.date} ${first_trip.time}`)),
+            pickup_time: convertUTCtoLocal(
+              moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
+            ),
             pickup_time_local: `${first_trip.date} ${first_trip.time}`
           }),
           this.props.findOrderLocationPriceAgain({
             from_address_str: second_trip.pickup_location,
             to_address_str: second_trip.dropoff_location,
-            pickup_time: convertUTCtoLocal(moment(`${second_trip.date} ${second_trip.time}`)),
+            pickup_time: convertUTCtoLocal(
+              moment(`${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`)
+            ),
             pickup_time_local: `${second_trip.date} ${second_trip.time}`
           }),
           this.props.setRoundTrip(true)
         ]);
+        this.props.handleChangePosition(1);
       } else {
         alertify.alert("Warning!", "Please Finish The Form.");
       }
@@ -128,18 +126,37 @@ class OrderStepFirst extends Component {
         this.props.findOrderLocationPrice({
           from_address_str: first_trip.pickup_location,
           to_address_str: first_trip.dropoff_location,
-          pickup_time: convertUTCtoLocal(moment(`${first_trip.date} ${first_trip.time}`)),
-          pickup_time_local: `${first_trip.date} ${first_trip.time}`
+          pickup_time: convertUTCtoLocal(
+            moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
+          ),
+          pickup_time_local: moment(
+            `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`
+          )
         });
-        this.props.setRoundTrip(true);
+        this.props.setRoundTrip(false);
+        this.props.handleChangePosition(1);
       } else {
         alertify.alert("Warning!", "Please Finish The Form.");
       }
     }
   };
 
+  componentDidMount() {
+    if (this.props.temp_order) {
+      this.setState(state => ({
+        first_trip: {
+          ...state.first_trip,
+          date: this.props.temp_order.date,
+          time: this.props.temp_order.time,
+          pickup_location: this.props.temp_order.pickup_location,
+          dropoff_location: this.props.temp_order.dropoff_location
+        }
+      }));
+    }
+  }
+
   render() {
-    const { roundTrip, flight_number, airline_code, flight_number_again, airline_code_again } = this.state;
+    const { roundTrip, first_trip, second_trip } = this.state;
     return (
       <section className="pb-5" style={{ minHeight: "540px" }}>
         <div className="col-md-10 col-12 mx-auto shadow">
@@ -148,6 +165,7 @@ class OrderStepFirst extends Component {
               <h3 className="mt-3">Trip Detail</h3>
             </div>
             <OrderForm
+              trip={first_trip}
               getDate={this.setUpFirstTrip("date")}
               getTime={this.setUpFirstTrip("time")}
               getAirlineCode={this.setUpFirstTrip("airlineCode")}
@@ -158,6 +176,7 @@ class OrderStepFirst extends Component {
             {roundTrip && (
               <div>
                 <OrderForm
+                  trip={second_trip}
                   getFlightString={this.setUpFirstTrip("flystr")}
                   getDate={this.setUpSecondTrip("date")}
                   getTime={this.setUpSecondTrip("time")}
@@ -172,24 +191,37 @@ class OrderStepFirst extends Component {
               <div className="col-4">
                 <button
                   type="button"
-                  className="btn round-trip-button w-100 text-white hm-input-height"
+                  className="btn round-trip-button w-100 text-white hm-input-height d-flex justify-content-between align-items-center"
                   onClick={this.handleTripType}
                 >
-                  {roundTrip ? "One Way" : "Round Trip"}
-                </button>
-              </div>
-              <div className="col-4">
-                <button type="button" className="btn contact-sales-button text-white w-100 hm-input-height">
-                  Contact Sales
+                  {roundTrip ? (
+                    <img src={`${process.env.PUBLIC_URL}/img/icon_oneway.svg`} alt="oneway" />
+                  ) : (
+                    <img src={`${process.env.PUBLIC_URL}/img/icon_roundtrip.svg`} alt="roundTrip" />
+                  )}
+                  <div>{roundTrip ? "One Way" : "Round Trip"}</div>
+                  <div style={{ width: "20px" }} />
                 </button>
               </div>
               <div className="col-4">
                 <button
                   type="button"
-                  className="btn get-price-button text-white w-100 hm-input-height"
+                  className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+                >
+                  <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
+                  <div> Contact Sales</div>
+                  <div style={{ width: "20px" }} />
+                </button>
+              </div>
+              <div className="col-4">
+                <button
+                  type="button"
+                  className="btn get-price-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
                   onClick={this.handleChangePosition}
                 >
-                  Get Price
+                  <img src={`${process.env.PUBLIC_URL}/img/icon_price.svg`} alt="roundTrip" />
+                  <div>Get Price</div>
+                  <div style={{ width: "20px" }} />
                 </button>
               </div>
             </div>
@@ -201,7 +233,9 @@ class OrderStepFirst extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    temp_order: state.orderReducer.temp_order
+  };
 };
 
 const mapDispatchToProps = { findOrderLocationPrice, findOrderLocationPriceAgain, setRoundTrip };

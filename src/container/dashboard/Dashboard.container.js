@@ -26,11 +26,11 @@ class Dashboard extends Component {
   }
 
   onDateChange = date => {
-    this.setState({ date: moment(date) });
+    this.setState({ date });
   };
 
   onTimeChange = time => {
-    this.setState({ time: moment(time) });
+    this.setState({ time });
   };
 
   getLocation = type => address => {
@@ -44,6 +44,7 @@ class Dashboard extends Component {
 
   handleSubmitOrder = async () => {
     const { date, time, pickup_location, dropoff_location } = this.state;
+    console.log(date);
     if (date && time && pickup_location && dropoff_location) {
       await this.props.saveTempOrder({ date, time, pickup_location, dropoff_location });
       await this.props.history.push("/order");

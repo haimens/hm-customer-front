@@ -19,10 +19,10 @@ export default class OrderForm extends Component {
     this.props.getDropOffLocation(address[0].formatted_address);
   };
   handleDatePicker = date => {
-    this.props.getDate(moment(date).format("YYYY-MM-DD"));
+    this.props.getDate(date);
   };
   handleTimePicker = time => {
-    this.props.getTime(moment(time).format("HH:mm:ss"));
+    this.props.getTime(time);
   };
 
   disabledDate(current) {
@@ -42,8 +42,11 @@ export default class OrderForm extends Component {
     }
   };
 
+  componentDidMount() {}
+
   render() {
     const { airline_code, flight_number } = this.state;
+    const { date, time, pickup_location, dropoff_location } = this.props.trip;
     return (
       <div className="row border-top mt-3 mb-5">
         <div className="col-lg-6 col-12 mt-5">
@@ -52,6 +55,7 @@ export default class OrderForm extends Component {
           </label>
           <div className="border rounded p-1">
             <GAutoComplete
+              defaultValue={pickup_location}
               placeholder={"Pickup Location"}
               getAddress={this.getPickupLocation}
               inputClass={"border-left-0"}
@@ -64,6 +68,7 @@ export default class OrderForm extends Component {
           </label>
           <div className="border rounded p-1">
             <GAutoComplete
+              defaultValue={dropoff_location}
               getAddress={this.getDropOffLocation}
               placeholder={"Dropoff Location"}
               inputClass={"border-left-0"}
@@ -75,7 +80,13 @@ export default class OrderForm extends Component {
             Date
           </label>
           <div className="border rounded p-1">
-            <DatePicker disabledDate={this.disabledDate} onChange={this.handleDatePicker} id="date" size="large" />
+            <DatePicker
+              value={date}
+              disabledDate={this.disabledDate}
+              onChange={this.handleDatePicker}
+              id="date"
+              size="large"
+            />
           </div>
         </div>
         <div className="col-lg-3 col-12 mt-4">
@@ -83,13 +94,7 @@ export default class OrderForm extends Component {
             Time
           </label>
           <div className="border rounded p-1">
-            <TimePicker
-              defaultOpenValue={moment("00:00:00", "HH:mm:ss")}
-              onChange={this.handleTimePicker}
-              size="large"
-              format="HH:mm"
-              id="time"
-            />
+            <TimePicker value={time} onChange={this.handleTimePicker} size="large" format="HH:mm" id="time" />
           </div>
         </div>
         <div className="col-lg-6 col-12  mt-4">

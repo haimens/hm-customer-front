@@ -3,6 +3,7 @@ import { processLogout } from "./auth.action";
 import { callApi, getPageIndex } from "../actions/utilities.action";
 
 export const findOrderLocationPrice = location => async dispatch => {
+  console.log(location);
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`quote/detail/REALM-428190c75115fe0b3dff74eb8cd00a09`, "POST", {
@@ -53,6 +54,7 @@ export const setRoundTrip = bool => async dispatch => {
 };
 
 export const saveTempOrder = data => async dispatch => {
+  console.log(data);
   try {
     await dispatch({
       type: userConstants.TEMP_ORDER,

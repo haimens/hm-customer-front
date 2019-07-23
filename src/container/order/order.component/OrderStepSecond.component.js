@@ -5,15 +5,18 @@ import TripDetail from "./orderStepSecond.component/tripDetail.component";
 
 class OrderStepSecond extends Component {
   render() {
+    const { round_trip, first_trip, second_trip } = this.props;
     return (
       <section className="pb-5">
         <div className="col-md-10 col-12 mx-auto shadow">
           <div className="pb-5">
-            <TripDetail />
+            <TripDetail trip={first_trip} />
           </div>
-          <div className="pb-5">
-            <TripDetail />
-          </div>
+          {round_trip && (
+            <div className="pb-5">
+              <TripDetail trip={second_trip} />
+            </div>
+          )}
           <div className="container py-5">
             <div className="row">
               <div className="col-4">
@@ -49,7 +52,11 @@ class OrderStepSecond extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    first_trip: state.orderReducer.first_trip,
+    second_trip: state.orderReducer.second_trip,
+    round_trip: state.orderReducer.round_trip
+  };
 };
 
 const mapDispatchToProps = {};

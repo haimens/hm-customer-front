@@ -32,7 +32,7 @@ export function timeDuration(start_time, end_time) {
 }
 
 export const parseAmount = (amount, decimal = 0) => {
-  return `${parseFloat(amount / 100).toFixed(decimal)} 元`;
+  return `$${parseFloat(amount / 100).toFixed(decimal)}`;
 };
 
 export const parseAmountNoSign = (amount, decimal = 0) => {
