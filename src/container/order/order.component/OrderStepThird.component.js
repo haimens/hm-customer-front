@@ -62,6 +62,14 @@ class OrderStepThird extends Component {
 
   componentDidMount() {
     console.log(this.props.login);
+    if (this.props.login) {
+      this.setState({
+        name: localStorage.getItem("name"),
+        area: localStorage.getItem("cell").split(" ")[0],
+        cell: localStorage.getItem("cell").split(" ")[1],
+        email: localStorage.getItem("email")
+      });
+    }
   }
 
   render() {

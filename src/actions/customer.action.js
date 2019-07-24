@@ -6,7 +6,7 @@ export const createACustomerIn = (body = {}, history) => async dispatch => {
   console.log(body);
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`customer/detail/REALM-e775d5ca14bd440e244ea374c1f57fc5`, "POST", body);
+    const { payload } = await callApi(`customer/detail/${process.env.REACT_APP_REALM_TOKEN}`, "POST", body);
     console.log(payload);
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
@@ -29,7 +29,7 @@ export const createCustomerNote = (body = {}) => async dispatch => {
   console.log(body);
   try {
     await startLoader(dispatch);
-    await callApi(`note/detail/customer/REALM-e775d5ca14bd440e244ea374c1f57fc5`, "POST", body);
+    await callApi(`note/detail/customer/${process.env.REACT_APP_REALM_TOKEN}`, "POST", body);
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
