@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { GMapLocation } from "../../../../components/shared";
 import VehicleCard from "./vehicle.card";
-import { convertUTCtoLocal } from "../../../../actions/utilities.action";
+import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.action";
 
 export default class TripDetail extends Component {
   state = {
@@ -20,7 +20,9 @@ export default class TripDetail extends Component {
         <div className="d-flex align-items-center justify-content-between border-bottom" style={{ height: "86px" }}>
           <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Trip {num}</h3>
           <h3 className="mt-3">
-            <span className="text-grey hm-text-22 font-weight-bold">Trip {num} Subtotal:</span>
+            <span className="text-grey hm-text-22 font-weight-bold">
+              Trip {num} Subtotal: {parseAmount(basic_info.amount, 2)}
+            </span>
           </h3>
         </div>
         <div className="row mt-4">
@@ -68,11 +70,15 @@ export default class TripDetail extends Component {
             </div>
             <div className="mt-4">
               <div className="text-grey hm-main-text-14 font-weight-500">Pickup Location</div>
-              <div className="text-main-textColor hm-main-text-14 font-weight-bold">{basic_info.from_formatted}</div>
+              <div className="text-main-textColor hm-main-text-14 font-weight-bold">
+                {basic_info.from_formatted || basic_info.from_addr_str}
+              </div>
             </div>
             <div className="mt-4">
               <div className="text-grey hm-main-text-14 font-weight-500">Dropoff Location</div>
-              <div className="text-main-textColor hm-main-text-14 font-weight-bold">{basic_info.to_formatted}</div>
+              <div className="text-main-textColor hm-main-text-14 font-weight-bold">
+                {basic_info.to_formatted || basic_info.to_addr_str}
+              </div>
             </div>
           </div>
         </div>

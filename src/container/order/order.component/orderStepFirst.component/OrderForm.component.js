@@ -81,7 +81,7 @@ export default class OrderForm extends Component {
           </label>
           <div className="border rounded p-1">
             <DatePicker
-              value={moment(date)}
+              value={date}
               disabledDate={this.disabledDate}
               onChange={this.handleDatePicker}
               id="date"
@@ -94,7 +94,7 @@ export default class OrderForm extends Component {
             Time
           </label>
           <div className="border rounded p-1">
-            <TimePicker value={moment(time)} onChange={this.handleTimePicker} size="large" format="HH:mm" id="time" />
+            <TimePicker value={time} onChange={this.handleTimePicker} size="large" format="HH:mm" id="time" />
           </div>
         </div>
         <div className="col-lg-6 col-12  mt-4">

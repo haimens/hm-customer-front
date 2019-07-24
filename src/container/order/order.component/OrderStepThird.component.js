@@ -38,9 +38,9 @@ class OrderStepThird extends Component {
         history
       );
     }
-    // if (special_instruction) {
-    //   createCustomerNote({ note: special_instruction });
-    // }
+    if (special_instruction) {
+      createCustomerNote({ note: special_instruction });
+    }
     if (localStorage.getItem("instance_token")) {
       if (round_trip_locally) {
         createAOrder({

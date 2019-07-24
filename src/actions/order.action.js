@@ -1,6 +1,6 @@
 import userConstants from "../constant/constant";
 import { processLogout } from "./auth.action";
-import { callApi, startLoader, stopLoader } from "./utilities.action";
+import { callApi, startLoader, stopLoader, launchSuccess } from "./utilities.action";
 
 export const findOrderLocationPrice = location => async dispatch => {
   try {
@@ -72,16 +72,41 @@ const checkLogoutStatus = async (err, dispatch) => {
 };
 
 export const createAOrder = (body = {}) => async dispatch => {
-  console.log(body);
-
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`order/detail`, "POST", body);
-    console.log(payload);
-    // await dispatch({
-    //   type: constant.CURRENT_ORDER,
-    //   payload
-    // });
+    await dispatch({
+      type: userConstants.CURRENT_ORDER,
+      payload
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const getOrderDetail = order_token => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`order/detail/${order_token}`, "GET");
+    await dispatch({
+      type: userConstants.ORDER_DETAIL_IN_PAYMENT,
+      payload
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const applyCouponToOrder = (order_token, body) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`order/discount/${order_token}`, "POST", body);
+    await launchSuccess(dispatch);
+    await dispatch(getOrderDetail);
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
