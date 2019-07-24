@@ -12,7 +12,7 @@ import OrderStepFourthComponent from "./order.component/OrderStepFourth.componen
 
 class Order extends Component {
   state = {
-    position: 3
+    position: 0
   };
   handleChangePosition = position => {
     this.setState(states => ({ position: states.position + position }));

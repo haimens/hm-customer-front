@@ -1,0 +1,19 @@
+.trip-tab{
+  height: 201px;
+  background-image: linear-gradient(to right, #41d0f0, #0d5dc3) !important;
+  }
+  .trip-header{
+    font-family: Futura;
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .tab{
+    background-color: #f4f5fa;
+    height: 60px;
+  }
+
+  .custom-shadow{
+    border-radius: 6px;
+    box-shadow: -0px 2px 3px rgba(14, 95, 195, 0.25), 0px 2px 10px rgba(14, 95, 195, 0.25);
+  }

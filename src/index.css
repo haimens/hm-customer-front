@@ -221,3 +221,7 @@ button{
   font-weight: 500;
 }
 
+.custom-radius-top{
+  border-top-left-radius:  6px !important;
+  border-top-right-radius:  6px !important;
+}
