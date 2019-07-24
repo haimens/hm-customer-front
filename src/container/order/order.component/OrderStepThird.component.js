@@ -61,7 +61,6 @@ class OrderStepThird extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.login);
     if (this.props.login) {
       this.setState({
         name: localStorage.getItem("name"),

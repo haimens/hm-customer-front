@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import TripDetail from "./orderStepSecond.component/tripDetail.component";
+import TripDetail from "./orderDetail.share/tripDetail.component";
 import TripSignIn from "./orderStepSecond.component/tripSignIn.modal";
 import { Modal } from "../../../components/shared";
 import { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally } from "../../../actions/local.action";

@@ -12,7 +12,7 @@ export default class TripDetail extends Component {
     this.props.handleOnButtonSelected(quote_token);
   };
   render() {
-    const { trip, num } = this.props;
+    const { trip, num, hideVehicleCard } = this.props;
     const { basic_info, quote_list, showMap } = trip;
     const { selected } = this.state;
     return (
@@ -46,17 +46,19 @@ export default class TripDetail extends Component {
               </div>
             )}
           </div>
-          <div className="col-6" style={{ height: "264px" }}>
-            {quote_list.length > 0 &&
-              quote_list.map((quote, index) => (
-                <VehicleCard
-                  clicked={selected}
-                  key={index}
-                  quote={quote}
-                  onButtonSelected={() => this.handleOnButtonSelected(quote.quote_token)}
-                />
-              ))}
-          </div>
+          {!hideVehicleCard && (
+            <div className="col-6" style={{ height: "264px" }}>
+              {quote_list.length > 0 &&
+                quote_list.map((quote, index) => (
+                  <VehicleCard
+                    clicked={selected}
+                    key={index}
+                    quote={quote}
+                    onButtonSelected={() => this.handleOnButtonSelected(quote.quote_token)}
+                  />
+                ))}
+            </div>
+          )}
           <div className="col-6 ">
             <div className="mt-4">
               <div className="text-grey hm-main-text-14 font-weight-500">Pickup Date/Time</div>

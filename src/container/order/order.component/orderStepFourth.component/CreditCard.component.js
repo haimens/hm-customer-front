@@ -1,78 +1,176 @@
 import React, { Component } from "react";
-
+import alertify from "alertifyjs";
 export default class CreditCard extends Component {
   handleInputChange = e => {
     const { id, value } = e.target;
     this.props.handleInputChange(id, value);
   };
+  requestCardNonce() {
+    this.paymentForm.requestCardNonce();
+  }
+  handleFinishOrder = () => {
+    if (this.state.cashButton) {
+      this.props.handleFinishOrder("cash");
+    } else {
+      this.requestCardNonce();
+    }
+  };
+
+  handleNoneReceived = (nonce, data) => {
+    this.props.handleNoneReceived(nonce);
+  };
+  componentDidMount() {
+    const config = {
+      applicationId: "sq0idp-3ASxoXTMofredU3wDxTCrg",
+      locationId: "403KJ1N03DHRY",
+      inputClass: "sq-input",
+      autoBuild: false,
+      inputStyles: [
+        {
+          fontSize: "16px",
+          fontFamily: "Helvetica Neue",
+          padding: "16px",
+          color: "#373F4A",
+          backgroundColor: "transparent",
+          lineHeight: "1.15em",
+          placeholderColor: "#000",
+          _webkitFontSmoothing: "antialiased",
+          _mozOsxFontSmoothing: "grayscale"
+        }
+      ],
+      cardNumber: {
+        elementId: "sq-card-number",
+        placeholder: "• • • •  • • • •  • • • •  • • • •"
+      },
+      cvv: {
+        elementId: "sq-cvv",
+        placeholder: "CVV"
+      },
+      expirationDate: {
+        elementId: "sq-expiration-date",
+        placeholder: "MM/YY"
+      },
+      postalCode: {
+        elementId: "sq-postal-code",
+        placeholder: "Zip"
+      },
+      callbacks: {
+        // createPaymentRequest: () => {
+        //   return {
+        //     requestShippingAddress: false,
+        //     requestBillingInfo: true,
+        //     currencyCode: "USD",
+        //     countryCode: "US",
+        //     total: {
+        //       label: "MERCHANT NAME",
+        //       amount: "1",
+        //       pending: false
+        //     },
+        //     lineItems: [
+        //       {
+        //         label: "Subtotal",
+        //         amount: "1",
+        //         pending: false
+        //       }
+        //     ]
+        //   };
+        // },
+
+        cardNonceResponseReceived: (errors, nonce, cardData) => {
+          if (errors) {
+            // Log errors from nonce generation to the Javascript console
+            errors.forEach(function(error) {
+              alertify.alert("  " + error.message);
+            });
+
+            return;
+          }
+          this.setState({ creditCardButton: true, cashButton: false });
+
+          this.handleNoneReceived(nonce, cardData);
+          this.props.handleFinishOrder("card");
+
+          // TODO: Connect to pay back end
+        },
+        unsupportedBrowserDetected: () => {},
+        inputEventReceived: inputEvent => {
+          switch (inputEvent.eventType) {
+            case "focusClassAdded":
+              break;
+            case "focusClassRemoved":
+              break;
+            case "errorClassAdded":
+              alertify.alert("Error", "Please fix card information errors before continuing.");
+              break;
+            case "cardBrandChanged":
+              if (inputEvent.cardBrand !== "unknown") {
+                this.setState({
+                  cardBrand: inputEvent.cardBrand
+                });
+              } else {
+                this.setState({
+                  cardBrand: ""
+                });
+              }
+              break;
+            case "postalCodeChanged":
+              break;
+            default:
+              break;
+          }
+        }
+      }
+    };
+    this.paymentForm = new this.props.paymentForm(config);
+    this.paymentForm.build();
+  }
   render() {
-    const { expiration_date, cvv, postal_code, card_number } = this.props.parentProps;
     return (
       <section>
-        <div className="mt-4 p-3 border rounded-top">
-          <div className="d-flex justify-content-between">
-            <div>
-              <i className="far fa-credit-card mr-4" />
-              Pay with Card
-            </div>
-            <div>
-              <i className="fab fa-cc-visa " />
-              <i className="fab mr-4 fa-cc-masterjcb" />
-              <i className="fab mr-4 fa-cc-mastercard" />
-              <i className="fab mr-4 fa-cc-discover" />
-              <i className="fab fa-cc-amex" />
-            </div>
-          </div>
-        </div>
-        <div className="p-3 border rounded-bottom ">
-          <div>
-            <label htmlFor="basic-url">Card Number</label>
-            <div className="input-group mb-3">
-              <input
-                type="text"
-                className="form-control hm-input-height"
-                id="card_number"
-                value={card_number}
-                onChange={this.handleInputChange}
-              />
-            </div>
-          </div>
-
-          <div className="row ">
-            <div className="col-md-4 col-12 ">
-              <label htmlFor="basic-url">Expiration Date</label>
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  id="expiration_date"
-                  className="form-control hm-input-height"
-                  value={expiration_date}
-                  onChange={this.handleInputChange}
-                />
+        <div id="sq-ccbox">
+          <div className="mt-4 p-3 border rounded-top">
+            <div className="d-flex justify-content-between">
+              <div>
+                <i className="far fa-credit-card mr-4" />
+                Pay with Card
+              </div>
+              <div>
+                <i className="fab fa-cc-visa " />
+                <i className="fab mr-4 fa-cc-masterjcb" />
+                <i className="fab mr-4 fa-cc-mastercard" />
+                <i className="fab mr-4 fa-cc-discover" />
+                <i className="fab fa-cc-amex" />
               </div>
             </div>
-            <div className="col-md-4 col-12">
-              <label htmlFor="basic-url">CVV</label>
-              <div className="input-group mb-3">
-                <input
-                  type="password"
-                  id="cvv"
-                  className="form-control hm-input-height"
-                  value={cvv}
-                  onChange={this.handleInputChange}
-                />
+          </div>
+          <div className="px-2 py-3 border">
+            <div id="cc-field-wrapper">
+              <div className="col-12 my-2">
+                <label htmlFor="card" className="hm-text-14 text-main-color font-weight-bold">
+                  Card Number
+                </label>
+                <div id="sq-card-number" className="border" />
+                <input type="hidden" id="card-nonce" name="nonce" />
               </div>
-            </div>
-            <div className="col-md-4 col-12">
-              <label htmlFor="basic-url">Postal Code</label>
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  id="postal_code"
-                  className="form-control hm-input-height"
-                  value={postal_code}
-                  onChange={this.handleInputChange}
-                />
+              <div className="d-flex">
+                <div className="col-4">
+                  <label htmlFor="card" className="hm-text-14 text-main-color font-weight-bold">
+                    Expiration Date (MM/YY)
+                  </label>
+                  <div id="sq-expiration-date" className="border" />
+                </div>
+                <div className="col-4">
+                  <label htmlFor="card" className="hm-text-14 text-main-color font-weight-bold">
+                    CVV (3 digits)
+                  </label>
+                  <div id="sq-cvv" className="border" />
+                </div>
+                <div className="col-4">
+                  <label htmlFor="card" className="hm-text-14 text-main-color font-weight-bold">
+                    Zip Code
+                  </label>
+                  <div id="sq-postal-code" className="border" />
+                </div>
               </div>
             </div>
           </div>
