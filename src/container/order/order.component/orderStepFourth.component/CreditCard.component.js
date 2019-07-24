@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import alertify from "alertifyjs";
 export default class CreditCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nonce: undefined
+    };
+    this.requestCardNonce = this.requestCardNonce.bind(this);
+  }
   handleInputChange = e => {
     const { id, value } = e.target;
     this.props.handleInputChange(id, value);
@@ -8,21 +15,14 @@ export default class CreditCard extends Component {
   requestCardNonce() {
     this.paymentForm.requestCardNonce();
   }
-  handleFinishOrder = () => {
-    if (this.state.cashButton) {
-      this.props.handleFinishOrder("cash");
-    } else {
-      this.requestCardNonce();
-    }
-  };
 
   handleNoneReceived = (nonce, data) => {
-    this.props.handleNoneReceived(nonce);
+    console.log(nonce);
   };
   componentDidMount() {
     const config = {
-      applicationId: "sq0idp-3ASxoXTMofredU3wDxTCrg",
-      locationId: "403KJ1N03DHRY",
+      applicationId: `${process.env.REACT_APP_SQUARE_APPLICATION_ID}`,
+      locationId: `${process.env.REACT_APP_SQUARE_LOCATION_ID}`,
       inputClass: "sq-input",
       autoBuild: false,
       inputStyles: [
@@ -88,7 +88,6 @@ export default class CreditCard extends Component {
           this.setState({ creditCardButton: true, cashButton: false });
 
           this.handleNoneReceived(nonce, cardData);
-          this.props.handleFinishOrder("card");
 
           // TODO: Connect to pay back end
         },
@@ -196,9 +195,9 @@ export default class CreditCard extends Component {
               <button
                 type="button"
                 className="btn get-price-button text-white w-100 hm-input-height"
-                onClick={this.handleShowSignIn}
+                onClick={this.requestCardNonce}
               >
-                Get Price
+                Place order
               </button>
             </div>
           </div>
