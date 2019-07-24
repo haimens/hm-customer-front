@@ -27,7 +27,8 @@ class OrderStepThird extends Component {
       round_trip_locally,
       first_local_trip,
       second_local_trip,
-      createAOrder
+      createAOrder,
+      current_order
     } = this.props;
     const { name, area, cell, email, special_instruction } = this.state;
     if (!login && name && area && cell && email) {
@@ -38,12 +39,9 @@ class OrderStepThird extends Component {
         history
       );
     }
-    if (special_instruction) {
-      createCustomerNote({ note: special_instruction });
-    }
     if (localStorage.getItem("instance_token")) {
       if (round_trip_locally) {
-        createAOrder({
+        await createAOrder({
           customer_token: localStorage.getItem("customer_token"),
           quote_list: [
             { flight_str: first_local_trip.flight_str, quote_token: first_local_trip.selected_quote },
@@ -51,11 +49,15 @@ class OrderStepThird extends Component {
           ]
         });
       } else {
-        createAOrder({
+        await createAOrder({
           customer_token: localStorage.getItem("customer_token"),
           quote_list: [{ flight_str: first_local_trip.flight_str, quote_token: first_local_trip.selected_quote }]
         });
       }
+    }
+    if (special_instruction) {
+      console.log(this.props.current_order.order_token);
+      createCustomerNote(this.props.current_order.order_token, { note: special_instruction });
     }
     this.props.handleChangePosition(1);
   };
@@ -200,7 +202,8 @@ const mapStateToProps = state => {
     login: state.authReducer.login,
     round_trip_locally: state.localReducer.round_trip_locally,
     first_local_trip: state.localReducer.first_local_trip,
-    second_local_trip: state.localReducer.second_local_trip
+    second_local_trip: state.localReducer.second_local_trip,
+    current_order: state.orderReducer.current_order
   };
 };
 

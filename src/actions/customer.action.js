@@ -25,11 +25,12 @@ export const createACustomerIn = (body = {}, history) => async dispatch => {
   }
 };
 
-export const createCustomerNote = (body = {}) => async dispatch => {
+export const createCustomerNote = (order_token, body = {}) => async dispatch => {
   console.log(body);
+  console.log(order_token);
   try {
     await startLoader(dispatch);
-    await callApi(`note/detail/customer/${process.env.REACT_APP_REALM_TOKEN}`, "POST", body);
+    await callApi(`note/detail/order/${order_token}`, "POST", body);
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {

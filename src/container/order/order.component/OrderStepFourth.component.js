@@ -6,13 +6,18 @@ import alertify from "alertifyjs";
 import { parsePrice, parseAmount } from "../../../actions/utilities.action";
 import CreditCard from "./orderStepFourth.component/CreditCard.component";
 import TripDetail from "./orderDetail.share/tripDetail.component";
-import { getOrderDetail, applyCouponToOrder } from "../../../actions/order.action";
+import { getOrderDetail, applyCouponToOrder, removeCouponToOrder } from "../../../actions/order.action";
 import "./OrderStepFourth.component.css";
 class OrderStepFourth extends Component {
-  state = {
-    coupon: "",
-    loaded: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      coupon: "",
+      loaded: false,
+      sum: 0,
+      total_discount: 0
+    };
+  }
 
   handleInputChange = e => {
     const { id, value } = e.target;
@@ -33,6 +38,32 @@ class OrderStepFourth extends Component {
     document.getElementsByTagName("head")[0].appendChild(sqPaymentScript);
   }
 
+  getDiscount = discount => {
+    const { sum } = this.state;
+    if (discount.type === 1) {
+      return (discount.amount / 100).toFixed(2);
+    }
+    if (discount.type === 2) {
+      return (((discount.rate / 1000) * sum) / 100).toFixed(2);
+    }
+  };
+
+  getSum = order_discount_list => {
+    let totalDiscount = 0;
+    const { sum } = this.state;
+    order_discount_list.map((discount, index) => {
+      if (discount.type === 1) {
+        totalDiscount += discount.amount / 100;
+      }
+      if (discount.type === 2) {
+        totalDiscount += ((discount.rate / 1000) * sum) / 100;
+      }
+      return null;
+    });
+    console.log(totalDiscount);
+    return (sum / 100 - totalDiscount).toFixed(2);
+  };
+
   handleApplyCouponToOrder = () => {
     const { coupon } = this.state;
     if (coupon) {
@@ -41,19 +72,31 @@ class OrderStepFourth extends Component {
     }
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { getOrderDetail, current_order } = this.props;
-    getOrderDetail(current_order.order_token);
+    await getOrderDetail(current_order.order_token);
+    let sum = 0;
+    this.props.order_detail_in_payment.trip_list.map(tri => {
+      sum += tri.amount;
+      return null;
+    });
+    this.setState({ sum });
   }
+
+  handleRemoveDiscount = order_discount_token => {
+    const { current_order, removeCouponToOrder } = this.props;
+    removeCouponToOrder(current_order.order_token, order_discount_token, { status: 0 });
+  };
+
   render() {
     const { round_trip_locally, order_detail_in_payment } = this.props;
-    const { customer_info } = order_detail_in_payment;
+    const { customer_info, order_discount_list, trip_list } = order_detail_in_payment;
     const { coupon, loaded } = this.state;
     return (
       <section className="pb-5">
         <div className="col-md-10 col-12 mx-auto shadow">
           {order_detail_in_payment.trip_list.map((trip, index) => (
-            <div className="pb-5">
+            <div className="pb-5" key={index}>
               <TripDetail
                 hideVehicleCard={true}
                 num={index + 1}
@@ -134,29 +177,47 @@ class OrderStepFourth extends Component {
                 <div className="col-12">
                   <div className="d-flex justify-content-between border-bottom py-2">
                     <div className="text-secondary-color hm-text-14 font-weight-bold">Trip 1 Subtotal:</div>
-                    <div className="hm-text-14 font-weight-bold text-modal-color">+{parseAmount(2, 2)}</div>
+                    <div className="hm-text-14 font-weight-bold text-modal-color">
+                      +{parseAmount(trip_list[0].amount, 2)}
+                    </div>
                   </div>
                 </div>
                 {round_trip_locally && (
                   <div className="col-12">
                     <div className="d-flex justify-content-between border-bottom py-2">
                       <div className="text-secondary-color hm-text-14 font-weight-bold">Trip 2 Subtotal:</div>
-                      <div className="hm-text-14 font-weight-bold text-modal-color">+{parseAmount(2, 2)}</div>
+                      <div className="hm-text-14 font-weight-bold text-modal-color">
+                        +{parseAmount(trip_list[1].amount, 2)}
+                      </div>
                     </div>
                   </div>
                 )}
+
+                {order_discount_list &&
+                  order_discount_list.map((discount, index) => (
+                    <div className="col-12" key={index}>
+                      <div className="d-flex justify-content-between border-bottom py-2">
+                        <div className="text-secondary-color hm-text-14 font-weight-bold">Discount:</div>
+                        <div className="d-flex align-items-center">
+                          <i
+                            className="fas fa-trash-alt mr-3 text-danger hm-pointer-cursor"
+                            onClick={() => this.handleRemoveDiscount(discount.order_discount_token)}
+                          />
+                          <div className="hm-text-14 font-weight-bold text-modal-color">
+                            -${this.getDiscount(discount)}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 <div className="col-12">
-                  <div className="d-flex justify-content-between border-bottom py-2">
-                    <div className="text-secondary-color hm-text-14 font-weight-bold">Discount:</div>
-                    <div className="hm-text-14 font-weight-bold text-modal-color">-${(2 / 100 + 2).toFixed(2)}</div>
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="d-flex justify-content-between  py-3">
+                  <div className="d-flex justify-content-between py-3">
                     <div className="text-secondary-color hm-text-14 font-weight-bold hm-title-sub-size">
                       Order Total Due:
                     </div>
-                    <div className="hm-title-sub-size font-weight-bold text-modal-color">${2}</div>
+                    <div className="hm-title-sub-size font-weight-bold text-modal-color">
+                      {order_discount_list && this.getSum(order_discount_list)}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -186,7 +247,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getOrderDetail,
-  applyCouponToOrder
+  applyCouponToOrder,
+  removeCouponToOrder
 };
 
 export default connect(

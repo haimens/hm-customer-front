@@ -14,11 +14,11 @@ const initialState = {
     showMap: false
   },
   current_order: {
-    order_token: "ORD-1f103dfae38fe06bdad64cdbcc54b53b",
-    trip_list: ["TRIP-bd215c40c0ee7881f2b17cc5330b5c7c", "TRIP-5e4877bbccea4df05411b2dd32018337"]
+    order_token: "ORD-d384012297c29cb5d11212a529d231cf",
+    trip_list: []
   },
   order_detail_in_payment: {
-    trip_list: [],
+    trip_list: [{ amount: 0 }],
     customer_info: {
       name: "",
       cell: "",

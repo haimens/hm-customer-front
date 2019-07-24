@@ -106,7 +106,20 @@ export const applyCouponToOrder = (order_token, body) => async dispatch => {
     await startLoader(dispatch);
     const { payload } = await callApi(`order/discount/${order_token}`, "POST", body);
     await launchSuccess(dispatch);
-    await dispatch(getOrderDetail);
+    await dispatch(getOrderDetail(order_token));
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const removeCouponToOrder = (order_token, order_discount_token, body) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`order/discount/${order_token}/${order_discount_token}`, "PATCH", body);
+    await launchSuccess(dispatch);
+    await dispatch(getOrderDetail(order_token));
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
