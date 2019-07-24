@@ -175,6 +175,34 @@ export default class CreditCard extends Component {
             </div>
           </div>
         </div>
+        <div className="py-5">
+          <div className="row">
+            <div className="col-4">
+              <button
+                type="button"
+                className="btn round-trip-button w-100 text-white hm-input-height"
+                onClick={this.handleTripType}
+              >
+                {/* {round_trip ? "One Way" : "Round Trip"} */}
+                One Way
+              </button>
+            </div>
+            <div className="col-4">
+              <button type="button" className="btn contact-sales-button text-white w-100 hm-input-height">
+                Contact Sales
+              </button>
+            </div>
+            <div className="col-4">
+              <button
+                type="button"
+                className="btn get-price-button text-white w-100 hm-input-height"
+                onClick={this.handleShowSignIn}
+              >
+                Get Price
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
     );
   }
