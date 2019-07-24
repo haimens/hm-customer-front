@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./Nav.css";
 class Nav extends Component {
   signIn = () => {
-    this.props.history.push("/account");
+    this.props.history.push("/login");
   };
   render() {
     return (
