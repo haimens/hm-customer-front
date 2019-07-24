@@ -36,9 +36,9 @@ export default class CouponAdding extends Component {
                 <button
                   type="button"
                   className="btn contact-sales-button text-white w-100 hm-input-height"
-                  onClick={this.handleCreateAccount}
+                  onClick={() => this.props.handleChangePosition(1)}
                 >
-                  Create Account
+                  Sign In As Guest
                 </button>
               </div>
             </div>

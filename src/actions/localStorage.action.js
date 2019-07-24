@@ -10,10 +10,12 @@ export const loadUserInfo = type => {
 
 export const saveUserInfo = user_info => {
   try {
-    const { instance_token, user_token, username } = user_info;
+    console.log(user_info);
+    const { instance_token, user_token, username, customer_token } = user_info;
     localStorage.setItem("instance_token", instance_token);
     localStorage.setItem("user_token", user_token);
     localStorage.setItem("username", username);
+    localStorage.setItem("customer_token", customer_token);
   } catch (e) {
     console.log("save auth token error");
     throw e;

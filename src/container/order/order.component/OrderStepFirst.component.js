@@ -113,7 +113,9 @@ class OrderStepFirst extends Component {
             pickup_time: convertUTCtoLocal(
               moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
             ),
-            pickup_time_local: `${first_trip.date} ${first_trip.time}`
+            pickup_time_local: `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format(
+              "HH:mm:ss"
+            )}`
           }),
           this.props.saveFirstTripLocally({
             from_address_str: first_trip.pickup_location,
@@ -121,7 +123,9 @@ class OrderStepFirst extends Component {
             pickup_time: convertUTCtoLocal(
               moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
             ),
-            pickup_time_local: `${first_trip.date} ${first_trip.time}`,
+            pickup_time_local: `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format(
+              "HH:mm:ss"
+            )}`,
             flight_str: `${airline_code} ${flight_number}`
           }),
           this.props.findOrderLocationPriceAgain({
@@ -130,7 +134,9 @@ class OrderStepFirst extends Component {
             pickup_time: convertUTCtoLocal(
               moment(`${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`)
             ),
-            pickup_time_local: `${second_trip.date} ${second_trip.time}`
+            pickup_time_local: `${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format(
+              "HH:mm:ss"
+            )}`
           }),
           this.props.saveSecondTripLocally({
             from_address_str: second_trip.pickup_location,
@@ -138,7 +144,9 @@ class OrderStepFirst extends Component {
             pickup_time: convertUTCtoLocal(
               moment(`${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`)
             ),
-            pickup_time_local: `${second_trip.date} ${second_trip.time}`,
+            pickup_time_local: `${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format(
+              "HH:mm:ss"
+            )}`,
             flight_str: `${airline_code_again} ${flight_number_again}`
           }),
           this.props.setRoundTrip(true),
@@ -157,9 +165,9 @@ class OrderStepFirst extends Component {
             pickup_time: convertUTCtoLocal(
               moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
             ),
-            pickup_time_local: moment(
-              `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`
-            )
+            pickup_time_local: `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format(
+              "HH:mm:ss"
+            )}`
           }),
           this.props.saveFirstTripLocally({
             from_address_str: first_trip.pickup_location,
@@ -167,7 +175,9 @@ class OrderStepFirst extends Component {
             pickup_time: convertUTCtoLocal(
               moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
             ),
-            pickup_time_local: `${first_trip.date} ${first_trip.time}`,
+            pickup_time_local: `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format(
+              "HH:mm:ss"
+            )}`,
             flight_str: `${airline_code} ${flight_number}`
           }),
           this.props.setRoundTrip(false),

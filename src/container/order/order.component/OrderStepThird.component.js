@@ -3,10 +3,13 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import alertify from "alertifyjs";
 import { saveContact } from "../../../actions/contact.action";
+import { createACustomerIn, createCustomerNote } from "../../../actions/customer.action";
+import { createAOrder } from "../../../actions/order.action";
 class OrderStepThird extends Component {
   state = {
     name: "",
-    phone: "",
+    area: "",
+    cell: "",
     email: "",
     special_instruction: ""
   };
@@ -15,10 +18,54 @@ class OrderStepThird extends Component {
     this.setState({ [id]: value });
   };
 
-  handleChangePosition = position => {};
+  handleChangePosition = async position => {
+    const {
+      login,
+      createACustomerIn,
+      history,
+      createCustomerNote,
+      round_trip_locally,
+      first_local_trip,
+      second_local_trip,
+      createAOrder
+    } = this.props;
+    const { name, area, cell, email, special_instruction } = this.state;
+    if (!login && name && area && cell && email) {
+      await createACustomerIn(
+        {
+          customer_info: { name, email, cell: `${area} ${cell}` }
+        },
+        history
+      );
+    }
+    // if (special_instruction) {
+    //   createCustomerNote({ note: special_instruction });
+    // }
+    if (localStorage.getItem("instance_token")) {
+      if (round_trip_locally) {
+        createAOrder({
+          customer_token: localStorage.getItem("customer_token"),
+          quote_list: [
+            { flight_str: first_local_trip.flight_str, quote_token: first_local_trip.selected_quote },
+            { flight_str: second_local_trip.flight_str, quote_token: second_local_trip.selected_quote }
+          ]
+        });
+      } else {
+        createAOrder({
+          customer_token: localStorage.getItem("customer_token"),
+          quote_list: [{ flight_str: first_local_trip.flight_str, quote_token: first_local_trip.selected_quote }]
+        });
+      }
+    }
+    this.props.handleChangePosition(1);
+  };
+
+  componentDidMount() {
+    console.log(this.props.login);
+  }
 
   render() {
-    const { name, phone, email, special_instruction } = this.state;
+    const { name, area, cell, email, special_instruction } = this.state;
     return (
       <section className="pb-5">
         <div className="col-md-10 col-12 mx-auto shadow">
@@ -52,10 +99,17 @@ class OrderStepThird extends Component {
                   <div className="d-flex">
                     <input
                       type="text"
-                      id="phone"
+                      id="area"
+                      className="form-control hm-input-height col-3"
+                      onChange={this.handleInputChange}
+                      value={area}
+                    />
+                    <input
+                      type="text"
+                      id="cell"
                       className="form-control hm-input-height"
                       onChange={this.handleInputChange}
-                      value={phone}
+                      value={cell}
                     />
                   </div>
                 </div>
@@ -134,11 +188,23 @@ class OrderStepThird extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    login: state.authReducer.login,
+    round_trip_locally: state.localReducer.round_trip_locally,
+    first_local_trip: state.localReducer.first_local_trip,
+    second_local_trip: state.localReducer.second_local_trip
+  };
+};
+
 const mapDispatchToProps = {
-  saveContact
+  saveContact,
+  createACustomerIn,
+  createCustomerNote,
+  createAOrder
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(withRouter(OrderStepThird));

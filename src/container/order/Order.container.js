@@ -18,9 +18,15 @@ class Order extends Component {
     this.setState(states => ({ position: states.position + position }));
   };
 
+  componentDidMount() {
+    const { first_local_trip, second_local_trip } = this.props;
+    if (first_local_trip.selected_quote !== "" || second_local_trip.selected_quote !== "") {
+      this.setState({ position: 2 });
+    }
+  }
+
   render() {
     const { position } = this.state;
-    const { isLoading } = this.props;
     return (
       <section>
         <OrderPagination position={position} />
@@ -35,8 +41,8 @@ class Order extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.loadReducer.loading,
-    isSuccess: state.loadReducer.is_success
+    first_local_trip: state.localReducer.first_local_trip,
+    second_local_trip: state.localReducer.second_local_trip
   };
 };
 

@@ -7,44 +7,10 @@ import { parsePrice } from "../../../actions/utilities.action";
 import CreditCard from "./orderStepFourth.component/CreditCard.component";
 import "./OrderStepFourth.component.css";
 class OrderStepFourth extends Component {
-  state = {
-    firstTotalAmount: 0,
-    secondTotalAmount: 0,
-    coupon: "",
-    expiration_date: "",
-    cvv: "",
-    postal_code: "",
-    card_number: ""
-  };
-
-  handleFirstTotalAmount = firstTotalAmount => {
-    this.setState({ firstTotalAmount });
-  };
-
-  handleSecondTotalAmount = secondTotalAmount => {
-    this.setState({ secondTotalAmount });
-  };
-  handleChangePosition = position => {
-    this.props.handleChangePosition(position);
-  };
-  handleInputChange = (id, value) => {
-    this.setState({ [id]: value });
-  };
-
-  componentDidMount() {
-    const { firstTrip, secondTrip } = this.props;
-    this.setState({ firstTotalAmount: firstTrip.amount });
-    if (secondTrip.amount !== "") {
-      this.setState({ secondTotalAmount: secondTrip.amount });
-    }
-  }
-
   render() {
-    const { first_trip, second_trip, roundTrip, contactInfo, firstTrip } = this.props;
-    const { firstTotalAmount, secondTotalAmount, coupon, expiration_date, cvv, postal_code, card_number } = this.state;
     return (
       <section>
-        <div className="col-md-10 col-12 mx-auto">
+        {/* <div className="col-md-10 col-12 mx-auto">
           <OrderStepFourthDetail
             trip={1}
             parentProps={{ first_trip, firstTrip }}
@@ -132,21 +98,13 @@ class OrderStepFourth extends Component {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
     );
   }
 }
 const mapStateToProps = state => {
-  return {
-    first_trip: state.orderReducer.first_trip,
-    second_trip: state.orderReducer.second_trip,
-
-    firstTrip: state.locationReducer.firstTrip,
-    secondTrip: state.locationReducer.secondTrip,
-    roundTrip: state.locationReducer.roundTrip,
-    contactInfo: state.contactReducer
-  };
+  return {};
 };
 
 export default connect(

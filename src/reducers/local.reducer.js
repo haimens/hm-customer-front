@@ -3,7 +3,7 @@ import constants from "../constant/constant";
 const initialState = {
   first_local_trip: {
     basic_info: {},
-    quote_list: [],
+    quote_list: [{}],
     selected_quote: ""
   },
   second_local_trip: {

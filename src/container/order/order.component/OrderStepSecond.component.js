@@ -14,11 +14,19 @@ class OrderStepSecond extends Component {
   };
   handleShowSignIn = () => {
     const { selected, selected_again } = this.state;
-    if (selected && selected_again) {
-      Promise.all([saveFirstTripQuoteLocally(selected), saveSecondTripQuoteLocally(selected_again)]);
-      this.setState({ showTripSignIn: true });
+    const { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, round_trip } = this.props;
+    if (selected) {
+      if (round_trip && selected_again) {
+        Promise.all([saveFirstTripQuoteLocally(selected), saveSecondTripQuoteLocally(selected_again)]);
+        this.setState({ showTripSignIn: true });
+      } else if (!round_trip) {
+        Promise.all([saveFirstTripQuoteLocally(selected)]);
+        this.setState({ showTripSignIn: true });
+      } else {
+        alertify.alert("Warning", "Please Select a Vehicle for Second Trip.");
+      }
     } else {
-      alertify.alert("Warning", "Please Select a Vehicle.");
+      alertify.alert("Warning", "Please Select a Vehicle for First Trip.");
     }
   };
   handleCloseShowSignIn = () => {
@@ -32,10 +40,16 @@ class OrderStepSecond extends Component {
   };
   render() {
     const { showTripSignIn } = this.state;
-    const { history, round_trip, first_trip, second_trip } = this.props;
+    const { history, round_trip, first_trip, second_trip, handleChangePosition } = this.props;
     return (
       <section className="pb-5">
-        {showTripSignIn && <TripSignIn history={history} onClose={this.handleCloseShowSignIn} />}
+        {showTripSignIn && (
+          <TripSignIn
+            handleChangePosition={handleChangePosition}
+            history={history}
+            onClose={this.handleCloseShowSignIn}
+          />
+        )}
         <div className="col-md-10 col-12 mx-auto shadow">
           <div className="pb-5">
             <TripDetail num={1} handleOnButtonSelected={this.handleOnButtonSelected} trip={first_trip} />
