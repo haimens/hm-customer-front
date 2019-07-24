@@ -106,7 +106,7 @@ class OrderStepFourth extends Component {
               >
                 <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Price Breakdown</h3>
               </div>
-              <div className="row p-5">
+              <div className="row px-5 pt-5">
                 <div className="col-12">
                   <div className="d-flex justify-content-between border-bottom py-2">
                     <div className="text-secondary-color hm-text-14 font-weight-bold">Trip 1 Subtotal:</div>
