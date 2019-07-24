@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { processLogin, processLogout } from "../../actions/auth.action";
+import { createNewAddressInstance } from "../../actions/address.action";
+import { createACustomerIn } from "../../actions/customer.action";
 import { clearUserInfo } from "../../actions/localStorage.action";
 import "./Account.container.css";
 import GAutoComplete from "../../components/shared/GAutoComplete";
-
+import alertify from "alertifyjs";
 export class Account extends React.Component {
   state = {
     name: "",
@@ -13,19 +14,28 @@ export class Account extends React.Component {
     email: "",
     area: "",
     cell: "",
-    confirm_password: ""
+    confirm_password: "",
+    address: ""
   };
 
   handleSubmit = async e => {
     e.preventDefault();
-
-    this.props.processaccount(
-      {
-        username: this.state.username,
-        passcode: this.state.passcode
-      },
-      this.props.history
-    );
+    const { name, email, area, cell, address } = this.state;
+    const { createNewAddressInstance, createACustomerIn, history } = this.props;
+    if (name && email && area && cell && address) {
+      let token = await createNewAddressInstance({ address_str: address });
+      await createACustomerIn(
+        {
+          customer_info: { name, email, cell: `${area} ${cell}` },
+          address_info: {
+            address_token: token.address_token
+          }
+        },
+        history
+      );
+    } else {
+      alertify.alert("Warning", "Please Finish The Form Before Signin");
+    }
   };
 
   handleChange = e => {
@@ -38,13 +48,17 @@ export class Account extends React.Component {
     window.location.href = `${process.env.REACT_APP_HAVANA_FRONT}/forget/${process.env.REACT_APP_APP_TOKEN}`;
   };
 
-  handleCreateNewAccount = e => {
+  handleSignIn = e => {
     e.preventDefault();
-    this.props.history.push("/create");
+    this.props.history.push("/login");
   };
 
   componentWillMount = () => {
     clearUserInfo();
+  };
+
+  getAddress = address => {
+    this.setState({ address: address[0].formatted_address });
   };
 
   componentDidMount() {
@@ -147,63 +161,21 @@ export class Account extends React.Component {
             </div>
 
             <div className="input-group shadow-sm mb-4">
-              <GAutoComplete iconFront={true} placeholder={"address"} />
-            </div>
-
-            <div className="input-group shadow-sm mb-4">
-              <div className="input-group-prepend">
-                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
-                  <i className="fas fa-unlock-alt text-secondary-color" />
-                </span>
-              </div>
-              <input
-                required
-                type="password"
-                className="form-control hm-input-height hm-input-account border-0 p-2"
-                placeholder="Password"
-                aria-label="Password"
-                id="passcode"
-                aria-describedby="basic-addon2"
-                value={passcode}
-                onChange={this.handleChange}
-              />
-            </div>
-
-            <div className="input-group shadow-sm mb-4">
-              <div className="input-group-prepend">
-                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
-                  <i className="fas fa-unlock-alt text-secondary-color" />
-                </span>
-              </div>
-              <input
-                required
-                type="password"
-                className="form-control hm-input-height hm-input-account border-0 p-2"
-                placeholder="Confirm Password"
-                aria-label="Confirm Password"
-                id="confirm_password"
-                aria-describedby="basic-addon2"
-                value={confirm_password}
-                onChange={this.handleChange}
-              />
+              <GAutoComplete getAddress={this.getAddress} iconFront={true} placeholder={"Address"} />
             </div>
 
             <div className="text-center" style={{ marginTop: "55px" }}>
               <button
                 type="submit"
-                className="btn bg-purple button-main-size shadow text-white "
-                style={{ height: "43px", width: "90px" }}
+                className="btn button-main-size shadow text-white "
+                style={{ height: "43px", width: "134px", backgroundColor: "#12ccef" }}
               >
-                Sign in
+                Create account
               </button>
             </div>
           </form>
           <div className="d-flex justify-content-end" style={{ marginTop: "40px" }}>
-            <p
-              className="text-left hm-pointer-cursor px-0"
-              style={{ color: "#ced4da" }}
-              onClick={this.handleCreateNewAccount}
-            >
+            <p className="text-left hm-pointer-cursor px-0" style={{ color: "#ced4da" }} onClick={this.handleSignIn}>
               Sign in
             </p>
           </div>
@@ -215,16 +187,14 @@ export class Account extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    isLoading: state.loadReducer.loading,
-    isSuccess: state.loadReducer.is_success
-  };
+  return {};
+};
+const mapDispatchToProps = {
+  createNewAddressInstance,
+  createACustomerIn
 };
 
 export default connect(
   mapStateToProps,
-  {
-    processLogin,
-    processLogout
-  }
+  mapDispatchToProps
 )(withRouter(Account));
