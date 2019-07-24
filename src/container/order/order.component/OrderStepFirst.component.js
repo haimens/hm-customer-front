@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import OrderForm from "./orderStepFirst.component/OrderForm.component";
 import { findOrderLocationPrice, findOrderLocationPriceAgain, setRoundTrip } from "../../../actions/order.action";
 import { convertUTCtoLocal } from "../../../actions/utilities.action";
-import { saveFirstTripLocally, saveSecondTripLocally } from "../../../actions/local.action";
+import { saveFirstTripLocally, saveSecondTripLocally, setRoundTripLocally } from "../../../actions/local.action";
 import alertify from "alertifyjs";
 import moment from "moment";
 class OrderStepFirst extends Component {
@@ -141,7 +141,8 @@ class OrderStepFirst extends Component {
             pickup_time_local: `${second_trip.date} ${second_trip.time}`,
             flight_str: `${airline_code_again} ${flight_number_again}`
           }),
-          this.props.setRoundTrip(true)
+          this.props.setRoundTrip(true),
+          this.props.setRoundTripLocally(true)
         ]);
         this.props.handleChangePosition(1);
       } else {
@@ -170,8 +171,9 @@ class OrderStepFirst extends Component {
             flight_str: `${airline_code} ${flight_number}`
           }),
           this.props.setRoundTrip(false),
-          this.props.handleChangePosition(1)
+          this.props.setRoundTripLocally(false)
         ]);
+        this.props.handleChangePosition(1);
       } else {
         alertify.alert("Warning!", "Please Finish The Form.");
       }
@@ -282,7 +284,8 @@ const mapDispatchToProps = {
   findOrderLocationPriceAgain,
   setRoundTrip,
   saveFirstTripLocally,
-  saveSecondTripLocally
+  saveSecondTripLocally,
+  setRoundTripLocally
 };
 
 export default connect(

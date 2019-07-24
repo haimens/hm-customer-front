@@ -21,3 +21,14 @@ export const saveSecondTripLocally = payload => async dispatch => {
     console.log(err);
   }
 };
+
+export const setRoundTripLocally = payload => async dispatch => {
+  try {
+    await dispatch({
+      type: userConstants.SET_ROUND_TRIP_LOCALLY,
+      payload
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
