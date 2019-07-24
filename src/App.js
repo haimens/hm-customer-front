@@ -1,6 +1,6 @@
 import React, { Component, Suspense, lazy } from "react";
 import alertify from "alertifyjs";
-import { Switch } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import LoaderAlt from "./components/shared/LoaderAlt";
 
 import Dashboard from "./container/dashboard/Dashboard.container";
@@ -29,6 +29,7 @@ class App extends Component {
     alertify.defaults.theme.ok = "btn hm-main-bgColor text-white";
     alertify.defaults.theme.cancel = "btn btn-danger";
     alertify.defaults.theme.input = "form-control";
+    const NoMatch = () => <Redirect to="/nomatch" />;
 
     return (
       <Suspense fallback={<LoaderAlt />}>
@@ -36,13 +37,13 @@ class App extends Component {
           <ProtectedRoute exact path="/" component={Dashboard} />
           <ProtectedRoute exact path="/login" component={Login} />
           <ProtectedRoute exact path="/create" component={Account} />
-
+          <ProtectedRoute exact path="/nomatch" component={Page404} />
           <Main>
             <Switch>
               <ProtectedRoute exact path="/order" component={Order} />
               <ProtectedRoute exact path="/about" component={About} />
               <ProtectedRoute exact path="/contact" component={Contact} />
-              <ProtectedRoute component={Page404} />
+              <ProtectedRoute component={NoMatch} />
             </Switch>
           </Main>
         </Switch>
@@ -67,7 +68,7 @@ function Page404(props) {
         alt="error404"
         className="mt-4"
       />
-      <a className="btn mr-bg-darkblue text-white mt-4" href="/dashboard">
+      <a className="btn btn-primary text-white mt-4" href="/">
         返回
       </a>
     </main>

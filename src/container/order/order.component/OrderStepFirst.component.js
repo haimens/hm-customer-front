@@ -49,10 +49,10 @@ class OrderStepFirst extends Component {
       this.setState(state => ({ first_trip: { ...state.first_trip, time: detail } }));
     }
     if (type === "airlineCode") {
-      this.setState(state => ({ first_trip: { ...state.first_trip, airline_code: detail } }));
+      this.setState({ airline_code: detail });
     }
     if (type === "flightNumber") {
-      this.setState(state => ({ first_trip: { ...state.first_trip, flight_number: detail } }));
+      this.setState({ flight_number: detail });
     }
     if (type === "dropoff") {
       this.setState(state => ({ first_trip: { ...state.first_trip, dropoff_location: detail } }));
@@ -72,10 +72,10 @@ class OrderStepFirst extends Component {
       this.setState(state => ({ second_trip: { ...state.second_trip, time: detail } }));
     }
     if (type === "airlineCode") {
-      this.setState(state => ({ second_trip: { ...state.second_trip, airline_code: detail } }));
+      this.setState({ airline_code_again: detail });
     }
     if (type === "flightNumber") {
-      this.setState(state => ({ second_trip: { ...state.second_trip, flight_number: detail } }));
+      this.setState({ flight_number_again: detail });
     }
     if (type === "dropoff") {
       this.setState(state => ({ second_trip: { ...state.second_trip, dropoff_location: detail } }));
@@ -132,7 +132,7 @@ class OrderStepFirst extends Component {
             ),
             pickup_time_local: `${second_trip.date} ${second_trip.time}`
           }),
-          this.props.saveFirstTripLocally({
+          this.props.saveSecondTripLocally({
             from_address_str: second_trip.pickup_location,
             to_address_str: second_trip.dropoff_location,
             pickup_time: convertUTCtoLocal(

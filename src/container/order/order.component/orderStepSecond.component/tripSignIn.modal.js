@@ -5,6 +5,12 @@ export default class CouponAdding extends Component {
   handleClose = () => {
     this.props.onClose();
   };
+  handleSignIn = () => {
+    this.props.history.push("/login");
+  };
+  handleCreateAccount = () => {
+    this.props.history.push("/create");
+  };
   render() {
     return (
       <div>
@@ -21,13 +27,17 @@ export default class CouponAdding extends Component {
                 <button
                   type="button"
                   className="btn round-trip-button w-100 text-white hm-input-height"
-                  onClick={this.handleTripType}
+                  onClick={this.handleSignIn}
                 >
                   Sign In
                 </button>
               </div>
               <div className="col-9 mt-4">
-                <button type="button" className="btn contact-sales-button text-white w-100 hm-input-height">
+                <button
+                  type="button"
+                  className="btn contact-sales-button text-white w-100 hm-input-height"
+                  onClick={this.handleCreateAccount}
+                >
                   Create Account
                 </button>
               </div>

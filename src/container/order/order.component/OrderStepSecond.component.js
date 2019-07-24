@@ -4,30 +4,45 @@ import { withRouter } from "react-router-dom";
 import TripDetail from "./orderStepSecond.component/tripDetail.component";
 import TripSignIn from "./orderStepSecond.component/tripSignIn.modal";
 import { Modal } from "../../../components/shared";
-
+import { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally } from "../../../actions/local.action";
+import alertify from "alertifyjs";
 class OrderStepSecond extends Component {
   state = {
-    showTripSignIn: false
+    showTripSignIn: false,
+    selected: "",
+    selected_again: ""
   };
   handleShowSignIn = () => {
-    this.setState({ showTripSignIn: true });
+    const { selected, selected_again } = this.state;
+    if (selected && selected_again) {
+      Promise.all([saveFirstTripQuoteLocally(selected), saveSecondTripQuoteLocally(selected_again)]);
+      this.setState({ showTripSignIn: true });
+    } else {
+      alertify.alert("Warning", "Please Select a Vehicle.");
+    }
   };
   handleCloseShowSignIn = () => {
     this.setState({ showTripSignIn: false });
   };
+  handleOnButtonSelected = quote_token => {
+    this.setState({ selected: quote_token });
+  };
+  handleOnButtonSelectedAgain = quote_token => {
+    this.setState({ selected_again: quote_token });
+  };
   render() {
     const { showTripSignIn } = this.state;
-    const { round_trip, first_trip, second_trip } = this.props;
+    const { history, round_trip, first_trip, second_trip } = this.props;
     return (
       <section className="pb-5">
-        {showTripSignIn && <TripSignIn onClose={this.handleCloseShowSignIn} />}
+        {showTripSignIn && <TripSignIn history={history} onClose={this.handleCloseShowSignIn} />}
         <div className="col-md-10 col-12 mx-auto shadow">
           <div className="pb-5">
-            <TripDetail trip={first_trip} />
+            <TripDetail num={1} handleOnButtonSelected={this.handleOnButtonSelected} trip={first_trip} />
           </div>
           {round_trip && (
             <div className="pb-5">
-              <TripDetail trip={second_trip} />
+              <TripDetail num={2} handleOnButtonSelected={this.handleOnButtonSelectedAgain} trip={second_trip} />
             </div>
           )}
           <div className="container py-5">
@@ -72,7 +87,10 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  saveFirstTripQuoteLocally,
+  saveSecondTripQuoteLocally
+};
 
 export default connect(
   mapStateToProps,

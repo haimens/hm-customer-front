@@ -12,7 +12,7 @@ import OrderStepFourthComponent from "./order.component/OrderStepFourth.componen
 
 class Order extends Component {
   state = {
-    position: 2
+    position: 0
   };
   handleChangePosition = position => {
     this.setState(states => ({ position: states.position + position }));
@@ -23,7 +23,6 @@ class Order extends Component {
     const { isLoading } = this.props;
     return (
       <section>
-        {isLoading && <Loader />}
         <OrderPagination position={position} />
         {position === 0 && <OrderStepFirstComponent handleChangePosition={this.handleChangePosition} />}
         {position === 1 && <OrderStepSecondComponent handleChangePosition={this.handleChangePosition} />}

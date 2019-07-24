@@ -9,16 +9,18 @@ export default class TripDetail extends Component {
   };
   handleOnButtonSelected = quote_token => {
     this.setState({ selected: quote_token });
+    this.props.handleOnButtonSelected(quote_token);
   };
   render() {
-    const { basic_info, quote_list, showMap } = this.props.trip;
+    const { trip, num } = this.props;
+    const { basic_info, quote_list, showMap } = trip;
     const { selected } = this.state;
     return (
       <div className="container">
         <div className="d-flex align-items-center justify-content-between border-bottom" style={{ height: "86px" }}>
-          <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Trip 1</h3>
+          <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Trip {num}</h3>
           <h3 className="mt-3">
-            <span className="text-grey hm-text-22 font-weight-bold">Trip 1 Subtotal:</span>
+            <span className="text-grey hm-text-22 font-weight-bold">Trip {num} Subtotal:</span>
           </h3>
         </div>
         <div className="row mt-4">
