@@ -6,7 +6,13 @@ import alertify from "alertifyjs";
 import { parsePrice, parseAmount } from "../../../actions/utilities.action";
 import CreditCard from "./orderStepFourth.component/CreditCard.component";
 import TripDetail from "./orderDetail.share/tripDetail.component";
-import { getOrderDetail, applyCouponToOrder, removeCouponToOrder } from "../../../actions/order.action";
+import {
+  getOrderDetail,
+  applyCouponToOrder,
+  removeCouponToOrder,
+  finalizeOrder,
+  handleSubmitAPaymentInLord
+} from "../../../actions/order.action";
 import "./OrderStepFourth.component.css";
 class OrderStepFourth extends Component {
   constructor(props) {
@@ -89,7 +95,13 @@ class OrderStepFourth extends Component {
   };
 
   render() {
-    const { round_trip_locally, order_detail_in_payment } = this.props;
+    const {
+      round_trip_locally,
+      order_detail_in_payment,
+      finalizeOrder,
+      handleSubmitAPaymentInLord,
+      current_order
+    } = this.props;
     const { customer_info, order_discount_list, trip_list } = order_detail_in_payment;
     const { coupon, loaded } = this.state;
     return (
@@ -229,7 +241,15 @@ class OrderStepFourth extends Component {
               >
                 <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Payment Information</h3>
               </div>
-              {loaded && <CreditCard paymentForm={window.SqPaymentForm} handleInputChange={this.handleInputChange} />}
+              {loaded && (
+                <CreditCard
+                  order_token={current_order.order_token}
+                  finalizeOrder={finalizeOrder}
+                  handleSubmitAPaymentInLord={handleSubmitAPaymentInLord}
+                  paymentForm={window.SqPaymentForm}
+                  handleInputChange={this.handleInputChange}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -248,7 +268,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   getOrderDetail,
   applyCouponToOrder,
-  removeCouponToOrder
+  removeCouponToOrder,
+  finalizeOrder,
+  handleSubmitAPaymentInLord
 };
 
 export default connect(

@@ -126,3 +126,32 @@ export const removeCouponToOrder = (order_token, order_discount_token, body) => 
     dispatch(processLogout(err));
   }
 };
+
+export const finalizeOrder = order_token => async dispatch => {
+  console.log(order_token);
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`order/finalize/${order_token}`, "PATCH");
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const handleSubmitAPaymentInLord = (order_token, body = {}) => async dispatch => {
+  console.log(order_token);
+  console.log(body);
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`payment/web/${order_token}`, "POST", body);
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+    console.log(payload);
+    return payload;
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};

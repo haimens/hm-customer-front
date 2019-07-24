@@ -26,8 +26,6 @@ export const createACustomerIn = (body = {}, history) => async dispatch => {
 };
 
 export const createCustomerNote = (order_token, body = {}) => async dispatch => {
-  console.log(body);
-  console.log(order_token);
   try {
     await startLoader(dispatch);
     await callApi(`note/detail/order/${order_token}`, "POST", body);
