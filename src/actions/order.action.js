@@ -169,3 +169,23 @@ export const handleSubmitAPaymentInLord = (order_token, body = {}) => async disp
     dispatch(processLogout(err));
   }
 };
+
+export const getOrderHistoryFromCustomer = (query = {}) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`order/all/detail/customer/`, "GET", null, {
+      order_key: "udate",
+      order_direction: "DESC",
+      ...query
+    });
+    await dispatch({
+      type: userConstants.ORDER_HISTORY_FROM_CUSTOMER,
+      payload
+    });
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};

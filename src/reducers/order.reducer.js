@@ -29,6 +29,11 @@ const initialState = {
   },
   after_payment: {
     order_token: ""
+  },
+  order_history_from_customer: {
+    record_list: [],
+    count: 0,
+    end: 0
   }
 };
 
@@ -56,6 +61,8 @@ export default (state = initialState, action) => {
       return { ...state, order_detail_in_payment: { ...state.order_detail_in_payment, showMap: action.showMap } };
     case constants.AFTER_PAYMENT:
       return { ...state, after_payment: action.payload };
+    case constants.ORDER_HISTORY_FROM_CUSTOMER:
+      return { ...state, order_history_from_customer: action.payload };
     default:
       return state;
   }

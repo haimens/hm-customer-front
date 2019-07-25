@@ -10,14 +10,22 @@
 
 .pagination>li {
   padding: 2px 10px;
-  border:solid 0.5px #f0f0f0 
+  border:solid 0.5px #f0f0f0; 
+  border-radius:50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
 }
 .pagination a{
-  color: grey
+  color: grey;
+  padding:10px;
 }
 
 .pagination-active{
-  background-color: #0CC1A8
+  background-color: #5e72e4
 }
 .pagination-active a{
   color:#fff;

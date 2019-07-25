@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
 import NoRecord from "./NoRecord";
-import ImageButton from "./ImageButton";
 import "./ImageButton";
 import "./ListView.css";
 
@@ -41,9 +40,6 @@ class ListView extends Component {
       const cols = this.props.fieldNames.length;
       return <NoRecord howManyCol={cols} />;
     }
-    if (this.state.isLess) {
-      return list.slice(0, 5).map(item => item);
-    }
     return list.map(item => item);
   };
 
@@ -57,24 +53,27 @@ class ListView extends Component {
      */
     const renderFieldNames = (names = []) => {
       return names.map((name, key) => (
-        <th scope="col" key={key} className="text-dark text-left">
-          {name}
+        <th scope="col" key={key} className={`text-secondary-color custom-text text-center`}>
+          {name.toUpperCase()}
         </th>
       ));
     };
 
     return (
-      <div className="table-responsive rounded shadow-sm bg-white">
+      <div className="table-responsive shadow-sm rounded-custom-bottom bg-white">
         {!this.props.hideHeader && (
           <section
             className="d-flex justify-content-between 
         p-3 shadow-sm"
+            style={{ height: "65px" }}
           >
-            <h6 className="d-block d-flex align-items-center">{this.props.title}</h6>
+            <h6 className="d-block d-flex align-items-center hm-title-sub-size text-main-color font-weight-bold ml-3">
+              {this.props.title}
+            </h6>
             {this.props.onSearch && (
               <div>
                 <SearchBar
-                  placeholder={this.props.placeholder || "搜索"}
+                  placeholder={this.props.placeholder || "search"}
                   name="search"
                   onSubmit={this.handleSubmit}
                   onClearClick={this.handleClear}
@@ -83,21 +82,14 @@ class ListView extends Component {
             )}
           </section>
         )}
-        <table className="table mb-0">
-          <thead>
-            <tr>{renderFieldNames(this.props.fieldNames)}</tr>
+        <table className="table table-borderless border-0 mb-0">
+          <thead className="border-0">
+            <tr style={{ backgroundColor: "#f7f9fc" }}>{renderFieldNames(this.props.fieldNames)}</tr>
           </thead>
-          <tbody className="st-break-word">{this.renderList(this.props.children)}</tbody>
+          <tbody className="hm-break-word">{this.renderList(this.props.children)}</tbody>
         </table>
-        <div className="d-flex flex-column shadow-sm p-2" style={{ minHeight: "40px" }}>
-          {this.state.isLess && this.props.totalCount > 5 && (
-            <ImageButton
-              outerClassName={"w-100 p-2"}
-              icon={<i className="fas fa-angle-down fa-2x text-secondary" style={{ opacity: 0.8 }} />}
-              onClick={() => this.showMore()}
-            />
-          )}
-          {!this.state.isLess && <Pagination onPageChange={this.handlePageChange} count={this.props.totalCount} />}
+        <div className="d-flex flex-column shadow-sm border border-0 p-2 rounded-custom-bottom">
+          {<Pagination onPageChange={this.handlePageChange} count={this.props.totalCount} />}
         </div>
       </div>
     );
