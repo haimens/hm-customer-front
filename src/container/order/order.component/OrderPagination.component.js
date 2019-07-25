@@ -10,45 +10,39 @@ export default class OrderPagination extends Component {
           <h1 className="text-center text-white trip-header">Book a Trip</h1>
         </div>
         <div className="container-fluid">
-          <div className="row">
-            <div
-              className={`col-2 d-flex justify-content-center align-items-center offset-1 custom-radius-top-left tab border-right hm-pointer-cursor ${position ===
-                0 && "bg-purple"}`}
-            >
-              <div className={`${position === 0 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
-                Location & time
+          <div className="col-10 px-0 offset-1">
+            <div className="row">
+              <div
+                className={`col-3 d-flex justify-content-center align-items-center custom-radius-top-left tab border-right hm-pointer-cursor ${position ===
+                  0 && "bg-purple"}`}
+              >
+                <div className={`${position === 0 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
+                  Location & time
+                </div>
               </div>
-            </div>
-            <div
-              className={`col-2 d-flex justify-content-center align-items-center tab border-right hm-pointer-cursor ${position ===
-                1 && "bg-purple"}`}
-            >
-              <div className={`${position === 1 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
-                Price Quote
+              <div
+                className={`col-3 d-flex justify-content-center align-items-center tab border-right hm-pointer-cursor ${position ===
+                  1 && "bg-purple"}`}
+              >
+                <div className={`${position === 1 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
+                  Price Quote
+                </div>
               </div>
-            </div>
-            <div
-              className={`col-2 d-flex justify-content-center align-items-center tab border-right hm-pointer-cursor ${position ===
-                2 && "bg-purple"}`}
-            >
-              <div className={`${position === 2 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
-                Contact Information
+              <div
+                className={`col-3 d-flex justify-content-center align-items-center tab border-right hm-pointer-cursor ${position ===
+                  2 && "bg-purple"}`}
+              >
+                <div className={`${position === 2 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
+                  Contact Information
+                </div>
               </div>
-            </div>
-            <div
-              className={`col-2 d-flex justify-content-center align-items-center tab border-right hm-pointer-cursor ${position ===
-                3 && "bg-purple"}`}
-            >
-              <div className={`${position === 3 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
-                Payment
-              </div>
-            </div>
-            <div
-              className={`col-2 d-flex justify-content-center align-items-center custom-radius-top-right tab border-right hm-pointer-cursor ${position ===
-                4 && "bg-purple"}`}
-            >
-              <div className={`${position === 4 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
-                Complete
+              <div
+                className={`col-3 d-flex justify-content-center align-items-center custom-radius-top-right tab border-right hm-pointer-cursor ${position ===
+                  3 && "bg-purple"}`}
+              >
+                <div className={`${position === 3 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>
+                  Payment
+                </div>
               </div>
             </div>
           </div>
