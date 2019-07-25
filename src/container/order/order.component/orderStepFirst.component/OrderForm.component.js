@@ -7,9 +7,7 @@ export default class OrderForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      roundTrip: false,
-      airline_code: "",
-      flight_number: ""
+      roundTrip: false
     };
   }
   getPickupLocation = address => {
@@ -31,22 +29,21 @@ export default class OrderForm extends Component {
     return current && current.valueOf() < date;
   }
 
-  handleInputChange = e => {
+  handleInputChange = async e => {
     const { id, value } = e.target;
-    this.setState({ [id]: value });
     if (id === "airline_code") {
-      this.props.getAirlineCode(value);
+      await this.props.getAirlineCode(value);
     }
     if (id === "flight_number") {
-      this.props.getFlightNumber(value);
+      await this.props.getFlightNumber(value);
     }
   };
 
   componentDidMount() {}
 
   render() {
-    const { airline_code, flight_number } = this.state;
-    const { date, time, pickup_location, dropoff_location } = this.props.trip;
+    const { airline_code, flight_number, trip } = this.props;
+    const { date, time, pickup_location, dropoff_location } = trip;
     return (
       <div className="row border-top mb-5">
         <div className="col-lg-6 col-12 mt-5">

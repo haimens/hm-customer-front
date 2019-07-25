@@ -54,3 +54,14 @@ export const setRoundTripLocally = payload => async dispatch => {
     console.log(err);
   }
 };
+
+export const setMapToFalse = payload => async dispatch => {
+  try {
+    await dispatch({
+      type: userConstants.SET_MAP_TO_FALSE,
+      payload
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};

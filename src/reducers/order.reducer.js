@@ -25,6 +25,9 @@ const initialState = {
       email: "",
       note: ""
     }
+  },
+  after_payment: {
+    order_token: ""
   }
 };
 
@@ -38,10 +41,18 @@ export default (state = initialState, action) => {
       return { ...state, second_trip: { ...action.payload, showMap: action.showMap } };
     case constants.SET_ROUND_TRIP:
       return { ...state, round_trip: action.payload };
+    case constants.SET_MAP_TO_FALSE:
+      return {
+        ...state,
+        first_trip: { ...state.first_trip, showMap: false },
+        second_trip: { ...state.second_trip, showMap: false }
+      };
     case constants.CURRENT_ORDER:
       return { ...state, current_order: action.payload };
     case constants.ORDER_DETAIL_IN_PAYMENT:
       return { ...state, order_detail_in_payment: action.payload };
+    case constants.AFTER_PAYMENT:
+      return { ...state, after_payment: action.payload };
     default:
       return state;
   }

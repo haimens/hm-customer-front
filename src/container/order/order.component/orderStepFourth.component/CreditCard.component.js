@@ -17,7 +17,6 @@ export default class CreditCard extends Component {
   }
 
   handleNoneReceived = (nonce, data) => {
-    console.log(nonce);
     const { finalizeOrder, handleSubmitAPaymentInLord, order_token } = this.props;
     Promise.all([finalizeOrder(order_token), handleSubmitAPaymentInLord(order_token, { card_nonce: nonce, type: 1 })]);
   };

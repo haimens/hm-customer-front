@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import TripDetail from "./orderDetail.share/tripDetail.component";
 import TripSignIn from "./orderStepSecond.component/tripSignIn.modal";
 import { Modal } from "../../../components/shared";
-import { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally } from "../../../actions/local.action";
+import { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, setMapToFalse } from "../../../actions/local.action";
 import alertify from "alertifyjs";
 class OrderStepSecond extends Component {
   state = {
@@ -12,7 +12,7 @@ class OrderStepSecond extends Component {
     selected: "",
     selected_again: ""
   };
-  handleShowSignIn = () => {
+  handleContinue = () => {
     const { selected, selected_again } = this.state;
     const { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, round_trip } = this.props;
     if (selected) {
@@ -28,6 +28,10 @@ class OrderStepSecond extends Component {
     } else {
       alertify.alert("Warning", "Please Select a Vehicle for First Trip.");
     }
+  };
+  handleGoBack = () => {
+    this.props.setMapToFalse();
+    this.props.handleChangePosition(-1);
   };
   handleCloseShowSignIn = () => {
     this.setState({ showTripSignIn: false });
@@ -64,25 +68,33 @@ class OrderStepSecond extends Component {
               <div className="col-4">
                 <button
                   type="button"
-                  className="btn round-trip-button w-100 text-white hm-input-height"
-                  onClick={this.handleTripType}
+                  className="btn back-button w-100 hm-input-height hm-main-textColor hm-text-main-14 font-weigh-bold d-flex justify-content-between align-items-center"
+                  onClick={this.handleGoBack}
                 >
-                  {/* {round_trip ? "One Way" : "Round Trip"} */}
-                  One Way
-                </button>
-              </div>
-              <div className="col-4">
-                <button type="button" className="btn contact-sales-button text-white w-100 hm-input-height">
-                  Contact Sales
+                  <img src={`${process.env.PUBLIC_URL}/img/icon_back.svg`} alt="roundTrip" />
+                  <div>Back</div>
+                  <div style={{ width: "20px" }} />
                 </button>
               </div>
               <div className="col-4">
                 <button
                   type="button"
-                  className="btn get-price-button text-white w-100 hm-input-height"
-                  onClick={this.handleShowSignIn}
+                  className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
                 >
-                  Get Price
+                  <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
+                  <div> Contact Sales</div>
+                  <div style={{ width: "20px" }} />
+                </button>
+              </div>
+              <div className="col-4">
+                <button
+                  type="button"
+                  className="btn round-trip-button text-white w-100 hm-input-height hm-text-main-14 font-weigh-bold d-flex justify-content-between align-items-center"
+                  onClick={this.handleContinue}
+                >
+                  <div style={{ width: "20px" }} />
+                  <div>Continue</div>
+                  <img src={`${process.env.PUBLIC_URL}/img/icon_continue.svg`} alt="roundTrip" />
                 </button>
               </div>
             </div>
@@ -103,7 +115,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   saveFirstTripQuoteLocally,
-  saveSecondTripQuoteLocally
+  saveSecondTripQuoteLocally,
+  setMapToFalse
 };
 
 export default connect(

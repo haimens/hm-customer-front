@@ -1,16 +1,8 @@
 import constants from "../constant/constant";
 
 const initialState = {
-  first_local_trip: {
-    basic_info: {},
-    quote_list: [{}],
-    selected_quote: ""
-  },
-  second_local_trip: {
-    basic_info: {},
-    quote_list: [{}],
-    selected_quote: ""
-  },
+  first_local_trip: "",
+  second_local_trip: "",
   round_trip_locally: false
 };
 

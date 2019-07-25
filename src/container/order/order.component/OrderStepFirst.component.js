@@ -38,7 +38,7 @@ class OrderStepFirst extends Component {
     this.setState(state => ({ roundTrip: !state.roundTrip }));
   };
 
-  setUpFirstTrip = type => detail => {
+  setUpFirstTrip = type => async detail => {
     if (type === "flystr") {
       this.setState(state => ({ first_trip: { ...state.first_trip, flight_str: detail } }));
     }
@@ -49,7 +49,8 @@ class OrderStepFirst extends Component {
       this.setState(state => ({ first_trip: { ...state.first_trip, time: detail } }));
     }
     if (type === "airlineCode") {
-      this.setState({ airline_code: detail });
+      console.log(detail);
+      await this.setState({ airline_code: detail });
     }
     if (type === "flightNumber") {
       this.setState({ flight_number: detail });
@@ -190,9 +191,10 @@ class OrderStepFirst extends Component {
     }
   };
 
-  componentDidMount() {
-    if (this.props.temp_order) {
-      this.setState(state => ({
+  async componentDidMount() {
+    const { temp_order, first_local_trip, second_local_trip, round_trip_locally } = this.props;
+    if (temp_order) {
+      await this.setState(state => ({
         first_trip: {
           ...state.first_trip,
           date: this.props.temp_order.date,
@@ -202,10 +204,54 @@ class OrderStepFirst extends Component {
         }
       }));
     }
+    if (first_local_trip !== "") {
+      await this.setState(state => ({
+        first_trip: {
+          ...state.first_trip,
+          date: moment(first_local_trip.pickup_time),
+          time: moment(first_local_trip.pickup_time),
+          pickup_location: first_local_trip.from_address_str,
+          dropoff_location: first_local_trip.to_address_str
+        },
+        roundTrip: round_trip_locally
+      }));
+      if (first_local_trip.flight_str !== " " && first_local_trip.flight_str !== "") {
+        this.setState({
+          flight_number: first_local_trip.flight_str.split(" ")[1],
+          airline_code: first_local_trip.flight_str.split(" ")[0]
+        });
+      }
+    }
+    if (second_local_trip !== "") {
+      this.setState(state => ({
+        second_trip: {
+          ...state.second_trip,
+          date: moment(second_local_trip.pickup_time),
+          time: moment(second_local_trip.pickup_time),
+          pickup_location: second_local_trip.from_address_str,
+          dropoff_location: second_local_trip.to_address_str
+        }
+      }));
+      if (second_local_trip.flight_str) {
+        this.setState({
+          flight_number_again: second_local_trip.flight_str.split(" ")[1],
+          airline_code_again: second_local_trip.flight_str.split(" ")[0]
+        });
+      }
+    }
   }
 
   render() {
-    const { roundTrip, first_trip, second_trip } = this.state;
+    const {
+      roundTrip,
+      first_trip,
+      second_trip,
+      flight_number,
+      airline_code,
+      flight_number_again,
+      airline_code_again
+    } = this.state;
+    console.log(first_trip);
     return (
       <section className="pb-5" style={{ minHeight: "540px" }}>
         <div className="col-md-10 col-12 mx-auto shadow">
@@ -216,6 +262,8 @@ class OrderStepFirst extends Component {
               </div>
               <OrderForm
                 trip={first_trip}
+                flight_number={flight_number}
+                airline_code={airline_code}
                 getDate={this.setUpFirstTrip("date")}
                 getTime={this.setUpFirstTrip("time")}
                 getAirlineCode={this.setUpFirstTrip("airlineCode")}
@@ -227,6 +275,8 @@ class OrderStepFirst extends Component {
                 <div>
                   <OrderForm
                     trip={second_trip}
+                    flight_number={flight_number_again}
+                    airline_code={airline_code_again}
                     getFlightString={this.setUpFirstTrip("flystr")}
                     getDate={this.setUpSecondTrip("date")}
                     getTime={this.setUpSecondTrip("time")}
@@ -285,7 +335,10 @@ class OrderStepFirst extends Component {
 
 const mapStateToProps = state => {
   return {
-    temp_order: state.orderReducer.temp_order
+    temp_order: state.orderReducer.temp_order,
+    first_local_trip: state.localReducer.first_local_trip,
+    second_local_trip: state.localReducer.second_local_trip,
+    round_trip_locally: state.localReducer.round_trip_locally
   };
 };
 

@@ -20,7 +20,7 @@ class Order extends Component {
 
   componentDidMount() {
     const { first_local_trip, second_local_trip } = this.props;
-    if (first_local_trip.selected_quote !== "" || second_local_trip.selected_quote !== "") {
+    if (first_local_trip !== "" || second_local_trip !== "") {
       this.setState({ position: 2 });
     }
   }

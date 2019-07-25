@@ -5,23 +5,24 @@ import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.ac
 
 export default class TripDetail extends Component {
   state = {
-    selected: ""
+    selected: "",
+    selected_amount: ""
   };
-  handleOnButtonSelected = quote_token => {
-    this.setState({ selected: quote_token });
-    this.props.handleOnButtonSelected(quote_token);
+  handleOnButtonSelected = quote => {
+    this.setState({ selected: quote.quote_token, selected_amount: quote.amount });
+    this.props.handleOnButtonSelected(quote.quote_token);
   };
   render() {
     const { trip, num, hideVehicleCard } = this.props;
     const { basic_info, quote_list, showMap } = trip;
-    const { selected } = this.state;
+    const { selected, selected_amount } = this.state;
     return (
       <div className="container">
         <div className="d-flex align-items-center justify-content-between border-bottom" style={{ height: "86px" }}>
           <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Trip {num}</h3>
           <h3 className="mt-3">
             <span className="text-grey hm-text-22 font-weight-bold">
-              Trip {num} Subtotal: {parseAmount(basic_info.amount, 2)}
+              Trip {num} Subtotal: {parseAmount(basic_info.amount || selected_amount, 2)}
             </span>
           </h3>
         </div>
@@ -56,7 +57,7 @@ export default class TripDetail extends Component {
                     clicked={selected}
                     key={index}
                     quote={quote}
-                    onButtonSelected={() => this.handleOnButtonSelected(quote.quote_token)}
+                    onButtonSelected={() => this.handleOnButtonSelected(quote)}
                   />
                 ))}
             </div>
