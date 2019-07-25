@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route, Redirect, withRouter } from "react-router-dom";
-import { loadUserInfo } from "../../actions/localStorage.action";
+import { Route, withRouter } from "react-router-dom";
 import { LoaderAlt, SuccessModal } from "./index";
 
 export const UnProtectedRoute = ({ component: Component, ...rest }) => (

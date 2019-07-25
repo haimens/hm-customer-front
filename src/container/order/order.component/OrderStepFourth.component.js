@@ -66,7 +66,6 @@ class OrderStepFourth extends Component {
       }
       return null;
     });
-    console.log(totalDiscount);
     return (sum / 100 - totalDiscount).toFixed(2);
   };
 
@@ -100,7 +99,8 @@ class OrderStepFourth extends Component {
       order_detail_in_payment,
       finalizeOrder,
       handleSubmitAPaymentInLord,
-      current_order
+      current_order,
+      handleChangePosition
     } = this.props;
     const { customer_info, order_discount_list, trip_list } = order_detail_in_payment;
     const { coupon, loaded } = this.state;
@@ -116,7 +116,7 @@ class OrderStepFourth extends Component {
                 trip={{
                   basic_info: trip,
                   quote_list: "",
-                  showMap: true
+                  showMap: order_detail_in_payment.showMap
                 }}
               />
             </div>
@@ -243,6 +243,7 @@ class OrderStepFourth extends Component {
               </div>
               {loaded && (
                 <CreditCard
+                  handleChangePosition={handleChangePosition}
                   order_token={current_order.order_token}
                   finalizeOrder={finalizeOrder}
                   handleSubmitAPaymentInLord={handleSubmitAPaymentInLord}

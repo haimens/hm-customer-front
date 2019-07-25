@@ -13,14 +13,22 @@ class OrderStepSecond extends Component {
   };
   handleContinue = () => {
     const { selected, selected_again } = this.state;
-    const { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, round_trip } = this.props;
+    const { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, round_trip, login } = this.props;
     if (selected) {
       if (round_trip && selected_again) {
         Promise.all([saveFirstTripQuoteLocally(selected), saveSecondTripQuoteLocally(selected_again)]);
-        this.setState({ showTripSignIn: true });
+        if (!login) {
+          this.setState({ showTripSignIn: true });
+        } else {
+          this.props.handleChangePosition(1);
+        }
       } else if (!round_trip) {
         Promise.all([saveFirstTripQuoteLocally(selected)]);
-        this.setState({ showTripSignIn: true });
+        if (!login) {
+          this.setState({ showTripSignIn: true });
+        } else {
+          this.props.handleChangePosition(1);
+        }
       } else {
         alertify.alert("Warning", "Please Select a Vehicle for Second Trip.");
       }
@@ -106,6 +114,7 @@ class OrderStepSecond extends Component {
 
 const mapStateToProps = state => {
   return {
+    login: state.authReducer.login,
     first_trip: state.orderReducer.first_trip,
     second_trip: state.orderReducer.second_trip,
     round_trip: state.orderReducer.round_trip

@@ -16,6 +16,10 @@ export default class CreditCard extends Component {
     this.paymentForm.requestCardNonce();
   }
 
+  handleGoBack = () => {
+    this.props.handleChangePosition(-1);
+  };
+
   handleNoneReceived = (nonce, data) => {
     const { finalizeOrder, handleSubmitAPaymentInLord, order_token } = this.props;
     Promise.all([finalizeOrder(order_token), handleSubmitAPaymentInLord(order_token, { card_nonce: nonce, type: 1 })]);
@@ -175,30 +179,39 @@ export default class CreditCard extends Component {
             </div>
           </div>
         </div>
+
         <div className="py-5">
           <div className="row">
             <div className="col-4">
               <button
                 type="button"
-                className="btn round-trip-button w-100 text-white hm-input-height"
-                onClick={this.handleTripType}
+                className="btn back-button w-100 hm-input-height hm-main-textColor hm-text-main-14 font-weigh-bold d-flex justify-content-between align-items-center"
+                onClick={this.handleGoBack}
               >
-                {/* {round_trip ? "One Way" : "Round Trip"} */}
-                One Way
-              </button>
-            </div>
-            <div className="col-4">
-              <button type="button" className="btn contact-sales-button text-white w-100 hm-input-height">
-                Contact Sales
+                <img src={`${process.env.PUBLIC_URL}/img/icon_back.svg`} alt="roundTrip" />
+                <div>Back</div>
+                <div style={{ width: "20px" }} />
               </button>
             </div>
             <div className="col-4">
               <button
                 type="button"
-                className="btn get-price-button text-white w-100 hm-input-height"
+                className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+              >
+                <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
+                <div> Contact Sales</div>
+                <div style={{ width: "20px" }} />
+              </button>
+            </div>
+            <div className="col-4">
+              <button
+                type="button"
+                className="btn round-trip-button text-white w-100 hm-input-height hm-text-main-14 font-weigh-bold d-flex justify-content-between align-items-center"
                 onClick={this.requestCardNonce}
               >
-                Place order
+                <div style={{ width: "20px" }} />
+                <div>Place order</div>
+                <img src={`${process.env.PUBLIC_URL}/img/icon_continue.svg`} alt="roundTrip" />
               </button>
             </div>
           </div>

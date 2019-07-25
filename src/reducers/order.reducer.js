@@ -24,7 +24,8 @@ const initialState = {
       cell: "",
       email: "",
       note: ""
-    }
+    },
+    showMap: false
   },
   after_payment: {
     order_token: ""
@@ -50,7 +51,9 @@ export default (state = initialState, action) => {
     case constants.CURRENT_ORDER:
       return { ...state, current_order: action.payload };
     case constants.ORDER_DETAIL_IN_PAYMENT:
-      return { ...state, order_detail_in_payment: action.payload };
+      return { ...state, order_detail_in_payment: { ...action.payload, showMap: action.showMap } };
+    case constants.SET_ORDER_DETAIL_TO_FALSE:
+      return { ...state, order_detail_in_payment: { ...state.order_detail_in_payment, showMap: action.showMap } };
     case constants.AFTER_PAYMENT:
       return { ...state, after_payment: action.payload };
     default:

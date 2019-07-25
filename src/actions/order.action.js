@@ -92,7 +92,22 @@ export const getOrderDetail = order_token => async dispatch => {
     const { payload } = await callApi(`order/detail/${order_token}`, "GET");
     await dispatch({
       type: userConstants.ORDER_DETAIL_IN_PAYMENT,
-      payload
+      payload,
+      showMap: true
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const setOrderDetailMapToFalse = () => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    await dispatch({
+      type: userConstants.SET_ORDER_DETAIL_TO_FALSE,
+      showMap: false
     });
     await stopLoader(dispatch);
   } catch (err) {
