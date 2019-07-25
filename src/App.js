@@ -1,6 +1,6 @@
 import React, { Component, Suspense, lazy } from "react";
 import alertify from "alertifyjs";
-import { Switch, Redirect } from "react-router-dom";
+import { Switch, Redirect, Route } from "react-router-dom";
 import LoaderAlt from "./components/shared/LoaderAlt";
 
 import Dashboard from "./container/dashboard/Dashboard.container";
@@ -9,7 +9,7 @@ import Account from "./container/account/Account.container";
 import Main from "./components/main/Main.container";
 import Login from "./container/login/Login.container";
 import Contact from "./container/contact/Contact.container";
-import { ProtectedRoute } from "./components/shared";
+import { UnProtectedRoute } from "./components/shared";
 
 const Order = lazy(() => import("./container/order/Order.container"));
 
@@ -34,16 +34,16 @@ class App extends Component {
     return (
       <Suspense fallback={<LoaderAlt />}>
         <Switch>
-          <ProtectedRoute exact path="/" component={Dashboard} />
-          <ProtectedRoute exact path="/login" component={Login} />
-          <ProtectedRoute exact path="/create" component={Account} />
-          <ProtectedRoute exact path="/nomatch" component={Page404} />
+          <Route exact path="/" component={Dashboard} />
+          <UnProtectedRoute exact path="/login" component={Login} />
+          <UnProtectedRoute exact path="/create" component={Account} />
+          <Route exact path="/nomatch" component={Page404} />
           <Main>
             <Switch>
-              <ProtectedRoute exact path="/order" component={Order} />
-              <ProtectedRoute exact path="/about" component={About} />
-              <ProtectedRoute exact path="/contact" component={Contact} />
-              <ProtectedRoute component={NoMatch} />
+              <UnProtectedRoute exact path="/order" component={Order} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/contact" component={Contact} />
+              <Route component={NoMatch} />
             </Switch>
           </Main>
         </Switch>

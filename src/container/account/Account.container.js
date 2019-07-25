@@ -71,7 +71,7 @@ export class Account extends React.Component {
   }
 
   render() {
-    const { name, passcode, email, area, cell, confirm_password } = this.props;
+    const { name, email, area, cell } = this.props;
     return (
       <main className="account-container">
         <section

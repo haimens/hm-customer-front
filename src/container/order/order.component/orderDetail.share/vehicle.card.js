@@ -2,7 +2,7 @@ import React from "react";
 import { parseAmount } from "../../../../actions/utilities.action";
 
 export default function VehicleCard(props) {
-  const { clicked, current, quote, onButtonSelected } = props;
+  const { clicked, quote, onButtonSelected } = props;
   const { amount, car_type_name, img_path, max_capacity, quote_token } = quote;
   return (
     <div className="col-12 border-bottom bg-white hm-pointer-cursor" style={{ height: "88px" }}>

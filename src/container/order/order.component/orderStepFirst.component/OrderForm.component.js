@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
 import { DatePicker, TimePicker } from "antd";
 import GAutoComplete from "../../../../components/shared/GAutoComplete";
 

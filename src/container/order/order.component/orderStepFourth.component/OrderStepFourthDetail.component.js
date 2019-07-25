@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
 import GMapLocation from "../../../../components/shared/GMapLocation";
 import alertify from "alertifyjs";
 import { parsePrice } from "../../../../actions/utilities.action";

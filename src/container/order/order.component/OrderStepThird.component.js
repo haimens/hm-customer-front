@@ -27,8 +27,7 @@ class OrderStepThird extends Component {
       round_trip_locally,
       first_local_trip,
       second_local_trip,
-      createAOrder,
-      current_order
+      createAOrder
     } = this.props;
     const { name, area, cell, email, special_instruction } = this.state;
     if (!login && name && area && cell && email) {

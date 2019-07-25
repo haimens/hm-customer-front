@@ -12,6 +12,7 @@ import IconButton from "./IconButton";
 import LoaderAlt from "./LoaderAlt";
 import ImagePreview from "./ImagePreview.modal";
 import GMapLocation from "./GMapLocation";
+import UnProtectedRoute from "./UnProtectedRoute";
 export {
   ImagePreview,
   LoaderAlt,
@@ -26,5 +27,6 @@ export {
   ProtectedRoute,
   SearchBar,
   SuccessModal,
-  GMapLocation
+  GMapLocation,
+  UnProtectedRoute
 };

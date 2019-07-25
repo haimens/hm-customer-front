@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Loader } from "../../components/shared";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
 import "./Order.container.css";
 import OrderPagination from "./order.component/OrderPagination.component";

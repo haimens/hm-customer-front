@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TripDetail from "./orderDetail.share/tripDetail.component";
 import TripSignIn from "./orderStepSecond.component/tripSignIn.modal";
-import { Modal } from "../../../components/shared";
 import { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, setMapToFalse } from "../../../actions/local.action";
 import alertify from "alertifyjs";
 class OrderStepSecond extends Component {
