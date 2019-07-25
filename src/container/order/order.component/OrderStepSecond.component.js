@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TripDetail from "./orderDetail.share/tripDetail.component";
-import TripSignIn from "./orderStepSecond.component/tripSignIn.modal";
 import { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, setMapToFalse } from "../../../actions/local.action";
 import alertify from "alertifyjs";
 class OrderStepSecond extends Component {
@@ -17,18 +16,10 @@ class OrderStepSecond extends Component {
     if (selected) {
       if (round_trip && selected_again) {
         Promise.all([saveFirstTripQuoteLocally(selected), saveSecondTripQuoteLocally(selected_again)]);
-        if (!login) {
-          this.setState({ showTripSignIn: true });
-        } else {
-          this.props.handleChangePosition(1);
-        }
+        this.props.handleChangePosition(1);
       } else if (!round_trip) {
         Promise.all([saveFirstTripQuoteLocally(selected)]);
-        if (!login) {
-          this.setState({ showTripSignIn: true });
-        } else {
-          this.props.handleChangePosition(1);
-        }
+        this.props.handleChangePosition(1);
       } else {
         alertify.alert("Warning", "Please Select a Vehicle for Second Trip.");
       }
@@ -50,17 +41,9 @@ class OrderStepSecond extends Component {
     this.setState({ selected_again: quote_token });
   };
   render() {
-    const { showTripSignIn } = this.state;
-    const { history, round_trip, first_trip, second_trip, handleChangePosition } = this.props;
+    const { round_trip, first_trip, second_trip } = this.props;
     return (
       <section className="pb-5">
-        {showTripSignIn && (
-          <TripSignIn
-            handleChangePosition={handleChangePosition}
-            history={history}
-            onClose={this.handleCloseShowSignIn}
-          />
-        )}
         <div className="col-md-10 col-12 mx-auto shadow">
           <div className="pb-5">
             <TripDetail num={1} handleOnButtonSelected={this.handleOnButtonSelected} trip={first_trip} />

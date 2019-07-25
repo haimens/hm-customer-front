@@ -5,7 +5,8 @@ export default class CouponAdding extends Component {
   handleClose = () => {
     this.props.onClose();
   };
-  handleSignIn = () => {
+  handleSignIn = async () => {
+    await this.props.signInFromTrip();
     this.props.history.push("/login");
   };
   handleCreateAccount = () => {
@@ -36,7 +37,7 @@ export default class CouponAdding extends Component {
                 <button
                   type="button"
                   className="btn contact-sales-button text-white w-100 hm-input-height"
-                  onClick={() => this.props.handleChangePosition(1)}
+                  onClick={() => this.handleClose()}
                 >
                   Sign In As Guest
                 </button>

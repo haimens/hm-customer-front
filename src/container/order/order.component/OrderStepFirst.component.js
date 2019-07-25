@@ -203,6 +203,8 @@ class OrderStepFirst extends Component {
           dropoff_location: this.props.temp_order.dropoff_location
         }
       }));
+    } else {
+      this.props.history.push(`/`);
     }
     if (first_local_trip !== "") {
       await this.setState(state => ({
@@ -251,7 +253,6 @@ class OrderStepFirst extends Component {
       flight_number_again,
       airline_code_again
     } = this.state;
-    console.log(first_trip);
     return (
       <section className="pb-5" style={{ minHeight: "540px" }}>
         <div className="col-md-10 col-12 mx-auto shadow">

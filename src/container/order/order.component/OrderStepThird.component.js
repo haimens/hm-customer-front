@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import alertify from "alertifyjs";
+import TripSignIn from "./orderStepThird.component/tripSignIn.modal";
 import { saveContact } from "../../../actions/contact.action";
 import { createACustomerIn, createCustomerNote } from "../../../actions/customer.action";
 import { createAOrder } from "../../../actions/order.action";
@@ -16,6 +17,15 @@ class OrderStepThird extends Component {
   handleInputChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
+  };
+
+  signInFromTrip = () => {
+    this.props.signInFromTrip();
+  };
+
+  handleGoBackPosition = () => {
+    this.props.handleGoBack();
+    this.props.handleChangePosition(-1);
   };
 
   handleChangePosition = async position => {
@@ -60,6 +70,10 @@ class OrderStepThird extends Component {
     this.props.handleChangePosition(1);
   };
 
+  setTripSignInOff = () => {
+    this.setState({ showTripSignIn: false });
+  };
+
   componentDidMount() {
     if (this.props.login) {
       this.setState({
@@ -68,13 +82,24 @@ class OrderStepThird extends Component {
         cell: localStorage.getItem("cell").split(" ")[1],
         email: localStorage.getItem("email")
       });
+    } else {
+      this.setState({ showTripSignIn: true });
     }
   }
 
   render() {
-    const { name, area, cell, email, special_instruction } = this.state;
+    const { name, area, cell, email, special_instruction, showTripSignIn } = this.state;
+    const { history, handleChangePosition } = this.props;
     return (
       <section className="pb-5">
+        {showTripSignIn && (
+          <TripSignIn
+            signInFromTrip={this.signInFromTrip}
+            handleChangePosition={handleChangePosition}
+            history={history}
+            onClose={this.setTripSignInOff}
+          />
+        )}
         <div className="col-md-10 col-12 mx-auto shadow">
           <div className="pb-5">
             <div className="container">
@@ -157,7 +182,7 @@ class OrderStepThird extends Component {
                   <button
                     type="button"
                     className="btn back-button w-100 hm-main-textColor font-weight-bold hm-input-height d-flex justify-content-between align-items-center"
-                    onClick={this.handleChangePosition}
+                    onClick={this.handleGoBackPosition}
                   >
                     <img src={`${process.env.PUBLIC_URL}/img/icon_back.svg`} alt="roundTrip" />
                     <div>Back</div>

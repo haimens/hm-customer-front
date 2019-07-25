@@ -3,7 +3,8 @@ import constants from "../constant/constant";
 const initialState = {
   first_local_trip: "",
   second_local_trip: "",
-  round_trip_locally: false
+  round_trip_locally: false,
+  trip_been_created: false
 };
 
 export default (state = initialState, action) => {
@@ -18,7 +19,8 @@ export default (state = initialState, action) => {
       return { ...state, second_local_trip: { ...state.second_local_trip, selected_quote: action.payload } };
     case constants.SET_ROUND_TRIP_LOCALLY:
       return { ...state, round_trip_locally: action.payload };
-
+    case constants.SET_TRIP_CREATED:
+      return { ...state, trip_been_created: action.payload };
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import constants from "../constant/constant";
 
 const initialState = {
   round_trip: false,
-  temp_order: {},
+  temp_order: "",
   first_trip: {
     basic_info: {},
     quote_list: [{}],
@@ -18,7 +18,7 @@ const initialState = {
     trip_list: []
   },
   order_detail_in_payment: {
-    trip_list: [{ amount: 0 }],
+    trip_list: [{ amount: 0 }, { amount: 0 }],
     customer_info: {
       name: "",
       cell: "",

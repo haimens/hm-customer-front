@@ -65,3 +65,14 @@ export const setMapToFalse = payload => async dispatch => {
     console.log(err);
   }
 };
+
+export const setTripCreated = payload => async dispatch => {
+  try {
+    await dispatch({
+      type: userConstants.SET_TRIP_CREATED,
+      payload
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
