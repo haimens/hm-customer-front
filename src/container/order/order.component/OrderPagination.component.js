@@ -10,7 +10,7 @@ export default class OrderPagination extends Component {
           <h1 className="text-center text-white trip-header">Book a Trip</h1>
         </div>
         <div className="container-fluid">
-          <div className="col-10 px-0 offset-1">
+          <div className="col-md-10 col-12 px-0 offset-md-1 offset-0">
             <div className="row">
               <div
                 className={`col-3 d-flex justify-content-center align-items-center custom-radius-top-left tab border-right hm-pointer-cursor ${position ===
