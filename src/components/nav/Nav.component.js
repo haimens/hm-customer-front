@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./Nav.css";
 class Nav extends Component {
@@ -44,12 +45,73 @@ class Nav extends Component {
               </a>
             </li>
             <li className="nav-item mr-5">
-              <button
-                className={`btn ${this.props.outlineButton} px-4 hm-main-text-16 text-white ${this.props.navTextColor}`}
-                onClick={this.signIn}
-              >
-                Sign In
-              </button>
+              {!this.props.login && (
+                <button
+                  className={`btn ${this.props.outlineButton} px-4 hm-main-text-16 text-white ${
+                    this.props.navTextColor
+                  }`}
+                  onClick={this.signIn}
+                >
+                  Sign In
+                </button>
+              )}
+
+              {this.props.login && (
+                <div className="btn-group mr-2">
+                  <button
+                    type="button"
+                    className="btn dropdown-toggle hm-main-text-16 text-white ml-2 d-flex align-items-center"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    {localStorage.getItem("username").toUpperCase()}
+                  </button>
+
+                  <div className="dropdown-menu shadow-sm p-3">
+                    <div className="pb-2">Welcome!</div>
+                    <div>
+                      <button
+                        className="dropdown-item px-0 d-flex justify-content-center align-items-center"
+                        type="button"
+                        onClick={() => {
+                          this.props.history.push("order/detail");
+                        }}
+                      >
+                        <small>
+                          <img
+                            src={`${process.env.PUBLIC_URL}/img/icon_history.svg`}
+                            alt={`${process.env.PUBLIC_URL}/img/icon_history.svg`}
+                            className="mr-3"
+                          />
+                        </small>
+                        Booking history
+                      </button>
+                    </div>
+                    <div>
+                      <hr />
+                      <button
+                        className="dropdown-item p-0"
+                        type="button"
+                        onClick={() => {
+                          this.handleLogOut();
+                        }}
+                      >
+                        <div className="d-flex align-items-center">
+                          <small>
+                            <img
+                              src={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
+                              alt={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
+                              className="mr-3"
+                            />
+                          </small>
+                          Log Out
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </li>
           </ul>
         </div>
@@ -58,4 +120,15 @@ class Nav extends Component {
   }
 }
 
-export default withRouter(Nav);
+const mapStateToProps = state => {
+  return {
+    login: state.authReducer.login
+  };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Nav));
