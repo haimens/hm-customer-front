@@ -229,3 +229,6 @@ button{
 .hm-main-text-20{
   font-size: 20px !important;
 }
+.items-height{
+  height: 80px;
+}

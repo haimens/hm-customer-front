@@ -21,14 +21,15 @@ class OrderList extends Component {
           </div>
           <div className="container-fluid pb-5">
             <div className="row pb-5">
-              <div className="col-10 px-5 pb-5 bg-white mx-auto custom-shadow">
-                <div className="custom-radius-top tab bg-white font-weight-bold hm-main-textColor hm-main-text-20 d-flex align-items-center">
+              <div className="col-10 px-0 bg-white mx-auto custom-shadow">
+                <div className="custom-radius-top px-5 tab bg-white font-weight-bold hm-main-textColor hm-main-text-20 d-flex align-items-center">
                   Booking History
                 </div>
+
                 <ListView
                   totalCount={order_history_from_customer.count}
                   title="Earning List"
-                  fieldNames={["Created On", "Updated On", "Amount"]}
+                  fieldNames={["Order Date", "Confirmation Number", "Status", "Detai;"]}
                   hideHeader={true}
                   onPageChange={this.handlePageChange}
                 >
