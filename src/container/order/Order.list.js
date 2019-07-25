@@ -12,7 +12,7 @@ class OrderList extends Component {
     this.props.getOrderHistoryFromCustomer({ start });
   };
   render() {
-    const { order_history_from_customer } = this.props;
+    const { order_history_from_customer, history } = this.props;
     return (
       <section className="pb-5">
         <div className="trip-tab ">
@@ -34,7 +34,7 @@ class OrderList extends Component {
                   onPageChange={this.handlePageChange}
                 >
                   {order_history_from_customer.record_list.map((order, index) => (
-                    <OrderListItem parentProps={order} key={index} />
+                    <OrderListItem history={history} parentProps={order} key={index} />
                   ))}
                 </ListView>
               </div>

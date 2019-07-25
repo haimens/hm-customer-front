@@ -6,7 +6,7 @@ import { convertUTCtoLocal, parseAmount } from "../../../actions/utilities.actio
  * @onCorrect
  */
 export default function SalaryListItem(props) {
-  const { cdate, receipt, amount, status_str } = props.parentProps;
+  const { cdate, receipt, order_token, status_str } = props.parentProps;
   return (
     <tr className="border-bottom">
       <td data-label="Created On" className="items-height align-middle">
@@ -40,8 +40,12 @@ export default function SalaryListItem(props) {
         </section>
       </td>
       <td data-label="Amount" className="items-height align-middle text-center">
-        <section className="text-center align-middle hm-text-14 hm-main-textColor-sub font-weight-bold">
-          <img src={`${process.env.PUBLIC_URL}/img/icon_detail.svg`} alt="error404" />
+        <section className="text-center align-middle hm-text-14 hm-main-textColor-sub font-weight-bold hm-pointer-cursor">
+          <img
+            src={`${process.env.PUBLIC_URL}/img/icon_detail.svg`}
+            alt="icon detail"
+            onClick={() => props.history.push(`/order/detail/${order_token}`)}
+          />
         </section>
       </td>
     </tr>

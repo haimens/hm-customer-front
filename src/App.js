@@ -11,6 +11,8 @@ import Login from "./container/login/Login.container";
 import Contact from "./container/contact/Contact.container";
 import { UnProtectedRoute } from "./components/shared";
 import OrderList from "./container/order/Order.list";
+import OrderDetail from "./container/order/OrderDetail.container";
+
 const Order = lazy(() => import("./container/order/Order.container"));
 
 class App extends Component {
@@ -42,6 +44,7 @@ class App extends Component {
             <Switch>
               <UnProtectedRoute exact path="/order" component={Order} />
               <Route exact path="/order/list" component={OrderList} />
+              <Route exact path="/order/detail/:order_token" component={OrderDetail} />
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />
               <Route component={NoMatch} />

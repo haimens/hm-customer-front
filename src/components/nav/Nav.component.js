@@ -75,7 +75,7 @@ class Nav extends Component {
                         className="dropdown-item px-0 d-flex justify-content-center align-items-center"
                         type="button"
                         onClick={() => {
-                          this.props.history.push("order/detail");
+                          this.props.history.push("order/list");
                         }}
                       >
                         <small>
