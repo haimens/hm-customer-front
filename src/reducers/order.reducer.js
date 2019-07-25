@@ -14,7 +14,7 @@ const initialState = {
     showMap: false
   },
   current_order: {
-    order_token: "ORD-d384012297c29cb5d11212a529d231cf",
+    order_token: "",
     trip_list: []
   },
   order_detail_in_payment: {

@@ -104,7 +104,7 @@ export const getOrderDetail = order_token => async dispatch => {
 export const applyCouponToOrder = (order_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`order/discount/${order_token}`, "POST", body);
+    await callApi(`order/discount/${order_token}`, "POST", body);
     await launchSuccess(dispatch);
     await dispatch(getOrderDetail(order_token));
     await stopLoader(dispatch);
@@ -117,7 +117,7 @@ export const applyCouponToOrder = (order_token, body) => async dispatch => {
 export const removeCouponToOrder = (order_token, order_discount_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`order/discount/${order_token}/${order_discount_token}`, "PATCH", body);
+    await callApi(`order/discount/${order_token}/${order_discount_token}`, "PATCH", body);
     await launchSuccess(dispatch);
     await dispatch(getOrderDetail(order_token));
     await stopLoader(dispatch);
@@ -128,10 +128,9 @@ export const removeCouponToOrder = (order_token, order_discount_token, body) => 
 };
 
 export const finalizeOrder = order_token => async dispatch => {
-  console.log(order_token);
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`order/finalize/${order_token}`, "PATCH");
+    await callApi(`order/finalize/${order_token}`, "PATCH");
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
@@ -141,15 +140,11 @@ export const finalizeOrder = order_token => async dispatch => {
 };
 
 export const handleSubmitAPaymentInLord = (order_token, body = {}) => async dispatch => {
-  console.log(order_token);
-  console.log(body);
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`payment/web/${order_token}`, "POST", body);
+    await callApi(`payment/web/${order_token}`, "POST", body);
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
-    console.log(payload);
-    return payload;
   } catch (err) {
     await stopLoader(dispatch);
     dispatch(processLogout(err));
