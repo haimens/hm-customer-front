@@ -6,7 +6,11 @@ import { ListView } from "../../components/shared";
 import OrderListItem from "./orderList.component/OrderList.item";
 class OrderList extends Component {
   componentDidMount() {
-    this.props.getOrderHistoryFromCustomer();
+    if (this.props.login) {
+      this.props.getOrderHistoryFromCustomer();
+    } else {
+      this.props.history.push("/");
+    }
   }
   handlePageChange = start => {
     this.props.getOrderHistoryFromCustomer({ start });

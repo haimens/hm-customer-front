@@ -5,16 +5,6 @@ import { parseAmount } from "../../actions/utilities.action";
 import { getOrderDetail } from "../../actions/order.action";
 import TripDetail from "./order.component/orderDetail.share/tripDetail.component";
 class OrderDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      coupon: "",
-      loaded: false,
-      sum: 0,
-      total_discount: 0
-    };
-  }
-
   handleInputChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
@@ -54,20 +44,21 @@ class OrderDetail extends Component {
   };
 
   async componentDidMount() {
-    const { getOrderDetail, match } = this.props;
-    await getOrderDetail(match.params.order_token);
-    let sum = 0;
-    this.props.order_detail_in_payment.trip_list.map(tri => {
-      sum += tri.amount;
-      return null;
-    });
-    this.setState({ sum });
+    if (this.props.login) {
+      const { getOrderDetail, match } = this.props;
+      await getOrderDetail(match.params.order_token);
+      let sum = 0;
+      this.props.order_detail_in_payment.trip_list.map(tri => {
+        sum += tri.amount;
+        return null;
+      });
+      this.setState({ sum });
+    }
   }
 
   render() {
     const { round_trip_locally, order_detail_in_payment } = this.props;
     const { customer_info, order_discount_list, trip_list, order_info } = order_detail_in_payment;
-    const { coupon, loaded } = this.state;
     return (
       <section className="pb-5">
         <div className="trip-tab">
@@ -212,6 +203,7 @@ class OrderDetail extends Component {
 }
 const mapStateToProps = state => {
   return {
+    login: state.authReducer.login,
     round_trip_locally: state.localReducer.round_trip_locally,
     current_order: state.orderReducer.current_order,
     order_detail_in_payment: state.orderReducer.order_detail_in_payment
