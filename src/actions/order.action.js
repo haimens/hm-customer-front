@@ -154,16 +154,13 @@ export const finalizeOrder = order_token => async dispatch => {
   }
 };
 
-export const handleSubmitAPaymentInLord = (order_token, body = {}) => async dispatch => {
+export const handleSubmitAPaymentInLord = (order_token, body = {}, history) => async dispatch => {
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`payment/web/${order_token}`, "POST", body);
-    await dispatch({
-      type: userConstants.AFTER_PAYMENT,
-      payload
-    });
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
+    history.push(`/order/detail/${payload.order_token}`);
   } catch (err) {
     await stopLoader(dispatch);
     dispatch(processLogout(err));

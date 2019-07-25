@@ -96,7 +96,7 @@ class OrderDetail extends Component {
                       trip={{
                         basic_info: trip,
                         quote_list: "",
-                        showMap: true
+                        showMap: order_detail_in_payment.showMap
                       }}
                     />
                   </div>

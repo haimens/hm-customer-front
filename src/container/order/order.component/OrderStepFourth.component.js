@@ -100,7 +100,8 @@ class OrderStepFourth extends Component {
       finalizeOrder,
       handleSubmitAPaymentInLord,
       current_order,
-      handleChangePosition
+      handleChangePosition,
+      history
     } = this.props;
     const { customer_info, order_discount_list, trip_list } = order_detail_in_payment;
     const { coupon, loaded } = this.state;
@@ -243,6 +244,7 @@ class OrderStepFourth extends Component {
               </div>
               {loaded && (
                 <CreditCard
+                  history={history}
                   handleChangePosition={handleChangePosition}
                   order_token={current_order.order_token}
                   finalizeOrder={finalizeOrder}
