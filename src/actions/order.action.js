@@ -197,3 +197,18 @@ export const resetOrder = () => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const findFlightListInLord = (body = {}) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`flight/search/${process.env.REACT_APP_REALM_TOKEN}`, "POST", body);
+    await dispatch({
+      type: userConstants.FLIGHT_LIST_IN_LORD,
+      payload
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};

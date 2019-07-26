@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import OrderForm from "./orderStepFirst.component/OrderForm.component";
-import { findOrderLocationPrice, findOrderLocationPriceAgain, setRoundTrip } from "../../../actions/order.action";
+import {
+  findOrderLocationPrice,
+  findOrderLocationPriceAgain,
+  setRoundTrip,
+  findFlightListInLord
+} from "../../../actions/order.action";
 import { convertUTCtoLocal } from "../../../actions/utilities.action";
 import { saveFirstTripLocally, saveSecondTripLocally, setRoundTripLocally } from "../../../actions/local.action";
 import alertify from "alertifyjs";
@@ -49,7 +54,6 @@ class OrderStepFirst extends Component {
       this.setState(state => ({ first_trip: { ...state.first_trip, time: detail } }));
     }
     if (type === "airlineCode") {
-      console.log(detail);
       await this.setState({ airline_code: detail });
     }
     if (type === "flightNumber") {
@@ -261,6 +265,7 @@ class OrderStepFirst extends Component {
       flight_number_again,
       airline_code_again
     } = this.state;
+    const { findFlightListInLord, flight_list_in_lord } = this.props;
     return (
       <section className="pb-5" style={{ minHeight: "540px" }}>
         <div className="col-md-10 col-12 mx-auto shadow">
@@ -271,6 +276,8 @@ class OrderStepFirst extends Component {
               </div>
               <OrderForm
                 trip={first_trip}
+                flight_list_in_lord={flight_list_in_lord}
+                findFlightListInLord={findFlightListInLord}
                 pickup_giveId={"pickup_giveId"}
                 dropoff_giveId={"dropoff_giveId"}
                 flight_number={flight_number}
@@ -286,6 +293,8 @@ class OrderStepFirst extends Component {
                 <div>
                   <OrderForm
                     trip={second_trip}
+                    flight_list_in_lord={flight_list_in_lord}
+                    findFlightListInLord={findFlightListInLord}
                     pickup_giveId={"pickup_giveId_again"}
                     dropoff_giveId={"dropoff_giveId_again"}
                     flight_number={flight_number_again}
@@ -351,7 +360,8 @@ const mapStateToProps = state => {
     temp_order: state.orderReducer.temp_order,
     first_local_trip: state.localReducer.first_local_trip,
     second_local_trip: state.localReducer.second_local_trip,
-    round_trip_locally: state.localReducer.round_trip_locally
+    round_trip_locally: state.localReducer.round_trip_locally,
+    flight_list_in_lord: state.orderReducer.flight_list_in_lord
   };
 };
 
@@ -361,7 +371,8 @@ const mapDispatchToProps = {
   setRoundTrip,
   saveFirstTripLocally,
   saveSecondTripLocally,
-  setRoundTripLocally
+  setRoundTripLocally,
+  findFlightListInLord
 };
 
 export default connect(

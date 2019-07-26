@@ -13,6 +13,8 @@ import LoaderAlt from "./LoaderAlt";
 import ImagePreview from "./ImagePreview.modal";
 import GMapLocation from "./GMapLocation";
 import UnProtectedRoute from "./UnProtectedRoute";
+import FlightCard from "./Flight.card";
+import FlightCardNoRecord from "./FlightCardNoRecord.modal";
 export {
   ImagePreview,
   LoaderAlt,
@@ -28,5 +30,7 @@ export {
   SearchBar,
   SuccessModal,
   GMapLocation,
-  UnProtectedRoute
+  UnProtectedRoute,
+  FlightCard,
+  FlightCardNoRecord
 };

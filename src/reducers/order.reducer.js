@@ -35,6 +35,11 @@ const initialState = {
     record_list: [],
     count: 0,
     end: 0
+  },
+  flight_list_in_lord: {
+    record_list: [],
+    count: 0,
+    end: 0
   }
 };
 
@@ -102,7 +107,8 @@ export default (state = initialState, action) => {
           end: 0
         }
       };
-
+    case constants.FLIGHT_LIST_IN_LORD:
+      return { ...state, flight_list_in_lord: action.payload };
     default:
       return state;
   }

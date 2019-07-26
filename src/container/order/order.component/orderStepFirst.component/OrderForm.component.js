@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { DatePicker, TimePicker } from "antd";
 import GAutoComplete from "../../../../components/shared/GAutoComplete";
-
+import { convertLocalToUTC } from "../../../../actions/utilities.action";
+import FlightDetailModal from "./FlightDetail.modal";
+import alertify from "alertifyjs";
+import moment from "moment";
 export default class OrderForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      roundTrip: false
+      roundTrip: false,
+      showFlightDetail: false
     };
   }
   getPickupLocation = address => {
@@ -38,14 +42,39 @@ export default class OrderForm extends Component {
     }
   };
 
+  handleSearchFlight = async () => {
+    const { findFlightListInLord, trip, flight_number, airline_code } = this.props;
+    if (trip.time !== "" && trip.date !== "" && flight_number !== "" && airline_code !== "") {
+      await findFlightListInLord({
+        date: convertLocalToUTC(`${moment(trip.date).format("YYYY-MM-DD")} ${moment(trip.time).format("HH:mm:ss")}`),
+        airlineCode: airline_code,
+        flightNumber: flight_number
+      });
+      await this.setState({ showFlightDetail: true });
+    } else {
+      alertify.alert("Error!", "Please Finished Date, Air Line Code, and Flight Number before search!");
+    }
+  };
+
+  handleFlightDetailBeenClicked = async () => {
+    await this.setState({ showFlightDetail: false });
+  };
+
   componentDidMount() {}
 
   render() {
-    const { airline_code, flight_number, trip } = this.props;
+    const { showFlightDetail } = this.state;
+    const { airline_code, flight_number, trip, flight_list_in_lord } = this.props;
     const { date, time, pickup_location, dropoff_location } = trip;
-    console.log(dropoff_location);
     return (
       <div className="row border-top mb-5">
+        {showFlightDetail && (
+          <FlightDetailModal
+            hideButton={true}
+            onClose={this.handleFlightDetailBeenClicked}
+            flight_list_in_lord={flight_list_in_lord}
+          />
+        )}
         <div className="col-lg-6 col-12 mt-5">
           <label className="font-weight-bold hm-main-textColor-sub hm-main-text-14" htmlFor="pickup_location">
             Pickup Location
@@ -96,7 +125,7 @@ export default class OrderForm extends Component {
             <TimePicker value={time} onChange={this.handleTimePicker} size="large" format="HH:mm" id="time" />
           </div>
         </div>
-        <div className="col-lg-6 col-12  mt-4">
+        <div className="col-lg-6 col-12 mt-4">
           <label
             className="font-weight-bold hm-main-textColor-sub hm-main-text-14 d-flex align-items-center"
             htmlFor="flight"
@@ -131,7 +160,7 @@ export default class OrderForm extends Component {
           </label>
 
           <div className="d-flex ">
-            <div className="border rounded p-1 mr-3 w-100">
+            <div className="border rounded p-1 w-100 col-4">
               <div className="input-group">
                 <input
                   className={`form-control hm-input-height google-input border-0`}
@@ -143,7 +172,7 @@ export default class OrderForm extends Component {
                 />
               </div>
             </div>
-            <div className="border rounded p-1 ml-3 w-100">
+            <div className="border rounded p-1 w-100 offset-1 col-4">
               <div className="input-group">
                 <input
                   className={`form-control hm-input-height google-input border-0`}
@@ -152,6 +181,16 @@ export default class OrderForm extends Component {
                   id="flight_number"
                   type="text"
                   onChange={this.handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div className=" rounded p-1 w-100 col-3 ">
+              <div className="input-group d-flex justify-content-end">
+                <i
+                  className="fas fa-search d-flex justify-content-center align-items-center rounded-circle bg-purple text-white hm-pointer-cursor ml-3"
+                  style={{ height: "46px", width: "46px" }}
+                  onClick={this.handleSearchFlight}
                 />
               </div>
             </div>
