@@ -216,7 +216,7 @@ class OrderStepFirst extends Component {
         }
       }));
     } else {
-      // this.props.history.push(`/`);
+      this.props.history.push(`/`);
     }
     if (first_local_trip !== "") {
       await this.setState(state => ({
