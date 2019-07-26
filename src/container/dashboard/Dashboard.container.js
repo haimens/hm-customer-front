@@ -12,7 +12,7 @@ import Nav from "../../components/nav/Nav.component";
 import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
 
-import { saveTempOrder } from "../../actions/order.action";
+import { saveTempOrder, resetOrder } from "../../actions/order.action";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -35,16 +35,15 @@ class Dashboard extends Component {
 
   getLocation = type => address => {
     if (type === "pickup") {
-      this.setState({ pickup_location: address[0].formatted_address });
+      this.setState({ pickup_location: document.getElementById("from_address").value });
     }
     if (type === "dropoff") {
-      this.setState({ dropoff_location: address[0].formatted_address });
+      this.setState({ dropoff_location: document.getElementById("to_address").value });
     }
   };
 
   handleSubmitOrder = async () => {
     const { date, time, pickup_location, dropoff_location } = this.state;
-    console.log(date);
     if (date && time && pickup_location && dropoff_location) {
       await this.props.saveTempOrder({ date, time, pickup_location, dropoff_location });
       await this.props.history.push("/order");
@@ -57,6 +56,10 @@ class Dashboard extends Component {
     let date = new Date();
     date.setDate(date.getDate() - 1);
     return current && current.valueOf() < date;
+  }
+
+  componentDidMount() {
+    this.props.resetOrder();
   }
 
   render() {
@@ -82,11 +85,19 @@ class Dashboard extends Component {
                   </div>
                   <div className="col-12">
                     <div className="mt-4">
-                      <GAutoComplete getAddress={this.getLocation("pickup")} placeholder={"Pickup Location"} />
+                      <GAutoComplete
+                        giveId={"from_address"}
+                        getAddress={this.getLocation("pickup")}
+                        placeholder={"Pickup Location"}
+                      />
                     </div>
                     <hr />
                     <div className="mb-3">
-                      <GAutoComplete getAddress={this.getLocation("dropoff")} placeholder={"Dropoff Location"} />
+                      <GAutoComplete
+                        giveId={"to_address"}
+                        getAddress={this.getLocation("dropoff")}
+                        placeholder={"Dropoff Location"}
+                      />
                     </div>
                     <hr />
 
@@ -199,7 +210,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  saveTempOrder
+  saveTempOrder,
+  resetOrder
 };
 
 export default connect(

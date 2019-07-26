@@ -56,10 +56,14 @@ class OrderStepFirst extends Component {
       this.setState({ flight_number: detail });
     }
     if (type === "dropoff") {
-      this.setState(state => ({ first_trip: { ...state.first_trip, dropoff_location: detail } }));
+      this.setState(state => ({
+        first_trip: { ...state.first_trip, dropoff_location: document.getElementById("dropoff_giveId").value }
+      }));
     }
     if (type === "pickup") {
-      this.setState(state => ({ first_trip: { ...state.first_trip, pickup_location: detail } }));
+      this.setState(state => ({
+        first_trip: { ...state.first_trip, pickup_location: document.getElementById("pickup_giveId").value }
+      }));
     }
   };
   setUpSecondTrip = type => detail => {
@@ -79,10 +83,14 @@ class OrderStepFirst extends Component {
       this.setState({ flight_number_again: detail });
     }
     if (type === "dropoff") {
-      this.setState(state => ({ second_trip: { ...state.second_trip, dropoff_location: detail } }));
+      this.setState(state => ({
+        second_trip: { ...state.second_trip, dropoff_location: document.getElementById("dropoff_giveId_again").value }
+      }));
     }
     if (type === "pickup") {
-      this.setState(state => ({ second_trip: { ...state.second_trip, pickup_location: detail } }));
+      this.setState(state => ({
+        second_trip: { ...state.second_trip, pickup_location: document.getElementById("pickup_giveId_again").value }
+      }));
     }
   };
 
@@ -204,7 +212,7 @@ class OrderStepFirst extends Component {
         }
       }));
     } else {
-      this.props.history.push(`/`);
+      // this.props.history.push(`/`);
     }
     if (first_local_trip !== "") {
       await this.setState(state => ({
@@ -263,6 +271,8 @@ class OrderStepFirst extends Component {
               </div>
               <OrderForm
                 trip={first_trip}
+                pickup_giveId={"pickup_giveId"}
+                dropoff_giveId={"dropoff_giveId"}
                 flight_number={flight_number}
                 airline_code={airline_code}
                 getDate={this.setUpFirstTrip("date")}
@@ -276,6 +286,8 @@ class OrderStepFirst extends Component {
                 <div>
                   <OrderForm
                     trip={second_trip}
+                    pickup_giveId={"pickup_giveId_again"}
+                    dropoff_giveId={"dropoff_giveId_again"}
                     flight_number={flight_number_again}
                     airline_code={airline_code_again}
                     getFlightString={this.setUpFirstTrip("flystr")}

@@ -4,7 +4,11 @@ import { withRouter } from "react-router-dom";
 import { parseAmount } from "../../actions/utilities.action";
 import { getOrderDetail } from "../../actions/order.action";
 import TripDetail from "./order.component/orderDetail.share/tripDetail.component";
+
 class OrderDetail extends Component {
+  state = {
+    sum: 0
+  };
   handleInputChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });

@@ -22,6 +22,7 @@ class GAutoComplete extends Component {
         placeholder={this.props.placeholder}
         disablePlaceHolder={this.props.disablePlaceHolder}
         defaultValue={this.props.defaultValue}
+        giveId={this.props.giveId}
       />
     );
   }
@@ -81,6 +82,7 @@ const PlacesWithStandaloneSearchBox = compose(
           type="text"
           placeholder={props.disablePlaceHolder ? "" : props.placeholder}
           defaultValue={props.defaultValue}
+          id={props.giveId}
         />
         {!props.iconFront && (
           <div className="input-group-prepend ">

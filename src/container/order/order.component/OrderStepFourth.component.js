@@ -78,7 +78,7 @@ class OrderStepFourth extends Component {
   };
 
   async componentDidMount() {
-    const { getOrderDetail, current_order } = this.props;
+    const { getOrderDetail, current_order, getOrderNoteFromCustomer } = this.props;
     await getOrderDetail(current_order.order_token);
     let sum = 0;
     this.props.order_detail_in_payment.trip_list.map(tri => {
@@ -103,7 +103,7 @@ class OrderStepFourth extends Component {
       handleChangePosition,
       history
     } = this.props;
-    const { customer_info, order_discount_list, trip_list } = order_detail_in_payment;
+    const { customer_info, order_discount_list, trip_list, order_note_list } = order_detail_in_payment;
     const { coupon, loaded } = this.state;
     return (
       <section className="pb-5">
@@ -144,7 +144,7 @@ class OrderStepFourth extends Component {
                 <div className="mt-4">
                   <div className="text-grey hm-main-text-14 font-weight-500">Special Instruction</div>
                   <div className="text-main-textColor hm-main-text-14 font-weight-bold">
-                    {customer_info.note ? customer_info.note : "N/A"}
+                    {order_note_list && order_note_list.length > 0 ? order_note_list[0].note : "N/A"}
                   </div>
                 </div>
               </div>

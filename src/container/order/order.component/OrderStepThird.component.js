@@ -65,7 +65,7 @@ class OrderStepThird extends Component {
       }
     }
     if (special_instruction) {
-      createCustomerNote(this.props.current_order.order_token, { note: special_instruction });
+      createCustomerNote(this.props.current_order.order_token, { note: special_instruction, type: 1 });
     }
     this.props.handleChangePosition(1);
   };

@@ -43,6 +43,7 @@ export default class OrderForm extends Component {
   render() {
     const { airline_code, flight_number, trip } = this.props;
     const { date, time, pickup_location, dropoff_location } = trip;
+    console.log(dropoff_location);
     return (
       <div className="row border-top mb-5">
         <div className="col-lg-6 col-12 mt-5">
@@ -51,6 +52,7 @@ export default class OrderForm extends Component {
           </label>
           <div className="border rounded p-1">
             <GAutoComplete
+              giveId={this.props.pickup_giveId}
               defaultValue={pickup_location}
               placeholder={"Pickup Location"}
               getAddress={this.getPickupLocation}
@@ -64,6 +66,7 @@ export default class OrderForm extends Component {
           </label>
           <div className="border rounded p-1">
             <GAutoComplete
+              giveId={this.props.dropoff_giveId}
               defaultValue={dropoff_location}
               getAddress={this.getDropOffLocation}
               placeholder={"Dropoff Location"}

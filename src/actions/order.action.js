@@ -186,3 +186,14 @@ export const getOrderHistoryFromCustomer = (query = {}) => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const resetOrder = () => async dispatch => {
+  try {
+    await dispatch({
+      type: userConstants.RESET_ORDER
+    });
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
