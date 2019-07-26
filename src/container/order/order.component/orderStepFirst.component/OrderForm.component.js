@@ -47,7 +47,7 @@ export default class OrderForm extends Component {
     return (
       <div className="row border-top mb-5">
         <div className="col-lg-6 col-12 mt-5">
-          <label className="font-weight-bold" htmlFor="pickup_location">
+          <label className="font-weight-bold hm-main-textColor-sub hm-main-text-14" htmlFor="pickup_location">
             Pickup Location
           </label>
           <div className="border rounded p-1">
@@ -61,7 +61,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-lg-6 col-12 mt-5">
-          <label className="font-weight-bold" htmlFor="dropoff_location">
+          <label className="font-weight-bold hm-main-textColor-sub hm-main-text-14" htmlFor="dropoff_location">
             Dropoff Location
           </label>
           <div className="border rounded p-1">
@@ -75,7 +75,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-lg-3 col-12 mt-4">
-          <label className="font-weight-bold" htmlFor="pickup_date">
+          <label className="font-weight-bold hm-main-textColor-sub hm-main-text-14" htmlFor="pickup_date">
             Date
           </label>
           <div className="border rounded p-1">
@@ -89,7 +89,7 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-lg-3 col-12 mt-4">
-          <label className="font-weight-bold" htmlFor="pickup_time">
+          <label className="font-weight-bold hm-main-textColor-sub hm-main-text-14" htmlFor="pickup_time">
             Time
           </label>
           <div className="border rounded p-1">
@@ -97,9 +97,39 @@ export default class OrderForm extends Component {
           </div>
         </div>
         <div className="col-lg-6 col-12  mt-4">
-          <label className="font-weight-bold" htmlFor="flight">
+          <label
+            className="font-weight-bold hm-main-textColor-sub hm-main-text-14 d-flex align-items-center"
+            htmlFor="flight"
+          >
             Flight Number
+            <div className="btn-group dropup">
+              <button
+                type="button"
+                className="dropdown-toggle removeAfter"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                style={{ border: "none", outline: "none" }}
+              >
+                <i className="far fa-question-circle" style={{ fontSize: "16px", color: "#aeb5bd" }} />
+              </button>
+              <div
+                className="dropdown-menu hm-main-text-12 border-0 shadow hm-main-textColor-sub p-3 triangle-bottom"
+                style={{ width: "260px" }}
+              >
+                Airline code is the operating airline code, ex. UA. Flight number refers to the numeric part of a flight
+                code. If you are not sure,
+                <a
+                  className="hm-main-text-12"
+                  target="_blank"
+                  href="https://www.iata.org/publications/Pages/code-search.aspx"
+                >
+                  search here.
+                </a>
+              </div>
+            </div>
           </label>
+
           <div className="d-flex ">
             <div className="border rounded p-1 mr-3 w-100">
               <div className="input-group">

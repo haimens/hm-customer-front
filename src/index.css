@@ -236,3 +236,18 @@ button{
 .items-height{
   height: 80px;
 }
+.removeAfter::after{
+  border: none !important;
+}
+
+.triangle-bottom::after {
+  content:'';
+  position: absolute;
+  top: 100%;
+  left: 3%;
+  width: 0;
+  height: 0;
+  border-top: solid 6px white;
+  border-left: solid 6px transparent;
+  border-right: solid 6px transparent;
+}
