@@ -66,6 +66,28 @@ export const setMapToFalse = payload => async dispatch => {
   }
 };
 
+export const setFirstMapToFalse = payload => async dispatch => {
+  try {
+    await dispatch({
+      type: userConstants.SET_FIRST_MAP_TO_FALSE,
+      payload
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const setSecondMapToFalse = payload => async dispatch => {
+  try {
+    await dispatch({
+      type: userConstants.SET_SECOND_MAP_TO_FALSE,
+      payload
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const setTripCreated = payload => async dispatch => {
   try {
     await dispatch({

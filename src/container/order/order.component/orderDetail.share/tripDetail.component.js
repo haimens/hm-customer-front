@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { GMapLocation } from "../../../../components/shared";
 import VehicleCard from "./vehicle.card";
 import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.action";
-
+import moment from "moment";
 export default class TripDetail extends Component {
   state = {
     selected: "",
@@ -12,10 +12,16 @@ export default class TripDetail extends Component {
     this.setState({ selected: quote.quote_token, selected_amount: quote.amount });
     this.props.handleOnButtonSelected(quote.quote_token);
   };
+
+  handleEditTripDetail = () => {
+    this.props.handleEditTripDetail(this.props.num);
+  };
+
   render() {
     const { trip, num, hideVehicleCard } = this.props;
     const { basic_info, quote_list, showMap } = trip;
     const { selected, selected_amount } = this.state;
+    console.log(moment(basic_info.pickup_time));
     return (
       <div className="container">
         <div className="d-flex align-items-center justify-content-between border-bottom" style={{ height: "86px" }}>
@@ -64,7 +70,15 @@ export default class TripDetail extends Component {
           )}
           <div className="col-6 ">
             <div className="mt-4">
-              <div className="text-grey hm-main-text-14 font-weight-500">Pickup Date/Time</div>
+              <div className="d-flex justify-content-between align-items-center">
+                <div className="text-grey hm-main-text-14 font-weight-500">Pickup Date/Time</div>
+                <img
+                  src={`${process.env.PUBLIC_URL}/img/icon_edit.svg`}
+                  className="hm-pointer-cursor"
+                  alt="icon"
+                  onClick={this.handleEditTripDetail}
+                />
+              </div>
               <div className="text-main-textColor hm-main-text-14 font-weight-bold">
                 {convertUTCtoLocal(basic_info.pickup_time)}
               </div>

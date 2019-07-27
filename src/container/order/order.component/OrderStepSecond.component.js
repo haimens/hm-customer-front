@@ -2,13 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TripDetail from "./orderDetail.share/tripDetail.component";
-import { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, setMapToFalse } from "../../../actions/local.action";
+import {
+  saveFirstTripQuoteLocally,
+  saveSecondTripQuoteLocally,
+  setMapToFalse,
+  saveFirstTripLocally,
+  saveSecondTripLocally,
+  setFirstMapToFalse,
+  setSecondMapToFalse
+} from "../../../actions/local.action";
+import { findOrderLocationPrice, findOrderLocationPriceAgain } from "../../../actions/order.action";
 import alertify from "alertifyjs";
+import UpdateOrderModal from "./orderDetail.share/UpdateOrder.modal";
 class OrderStepSecond extends Component {
   state = {
     showTripSignIn: false,
     selected: "",
-    selected_again: ""
+    selected_again: "",
+    showUpdateModal: false,
+    num: ""
   };
   handleContinue = () => {
     const { selected, selected_again } = this.state;
@@ -27,6 +39,13 @@ class OrderStepSecond extends Component {
       alertify.alert("Warning", "Please Select a Vehicle for First Trip.");
     }
   };
+
+  handleEditTripDetail = num => {
+    this.setState({ num, showUpdateModal: true });
+  };
+  handleCloseUpdateOrderModal = () => {
+    this.setState({ showUpdateModal: false });
+  };
   handleGoBack = () => {
     this.props.setMapToFalse();
     this.props.handleChangePosition(-1);
@@ -41,16 +60,54 @@ class OrderStepSecond extends Component {
     this.setState({ selected_again: quote_token });
   };
   render() {
-    const { round_trip, first_trip, second_trip } = this.props;
+    const {
+      round_trip,
+      first_trip,
+      second_trip,
+      first_local_trip,
+      second_local_trip,
+      findOrderLocationPrice,
+      findOrderLocationPriceAgain,
+      saveFirstTripLocally,
+      saveSecondTripLocally,
+      setMapToFalse,
+      setFirstMapToFalse,
+      setSecondMapToFalse
+    } = this.props;
+    const { showUpdateModal, num } = this.state;
     return (
       <section className="pb-5">
+        {showUpdateModal && (
+          <UpdateOrderModal
+            num={num}
+            setFirstMapToFalse={setFirstMapToFalse}
+            setSecondMapToFalse={setSecondMapToFalse}
+            setMapToFalse={setMapToFalse}
+            trip={num === 1 ? first_local_trip : second_local_trip}
+            findOrderLocationPrice={findOrderLocationPrice}
+            findOrderLocationPriceAgain={findOrderLocationPriceAgain}
+            saveFirstTripLocally={saveFirstTripLocally}
+            saveSecondTripLocally={saveSecondTripLocally}
+            onClose={this.handleCloseUpdateOrderModal}
+          />
+        )}
         <div className="col-md-10 col-12 mx-auto shadow">
           <div className="pb-5">
-            <TripDetail num={1} handleOnButtonSelected={this.handleOnButtonSelected} trip={first_trip} />
+            <TripDetail
+              num={1}
+              handleEditTripDetail={this.handleEditTripDetail}
+              handleOnButtonSelected={this.handleOnButtonSelected}
+              trip={first_trip}
+            />
           </div>
           {round_trip && (
             <div className="pb-5">
-              <TripDetail num={2} handleOnButtonSelected={this.handleOnButtonSelectedAgain} trip={second_trip} />
+              <TripDetail
+                num={2}
+                handleEditTripDetail={this.handleEditTripDetail}
+                handleOnButtonSelected={this.handleOnButtonSelectedAgain}
+                trip={second_trip}
+              />
             </div>
           )}
           <div className="container py-5">
@@ -100,14 +157,22 @@ const mapStateToProps = state => {
     login: state.authReducer.login,
     first_trip: state.orderReducer.first_trip,
     second_trip: state.orderReducer.second_trip,
-    round_trip: state.orderReducer.round_trip
+    round_trip: state.orderReducer.round_trip,
+    first_local_trip: state.localReducer.first_local_trip,
+    second_local_trip: state.localReducer.second_local_trip
   };
 };
 
 const mapDispatchToProps = {
+  findOrderLocationPrice,
+  findOrderLocationPriceAgain,
+  saveFirstTripLocally,
+  saveSecondTripLocally,
   saveFirstTripQuoteLocally,
   saveSecondTripQuoteLocally,
-  setMapToFalse
+  setMapToFalse,
+  setFirstMapToFalse,
+  setSecondMapToFalse
 };
 
 export default connect(

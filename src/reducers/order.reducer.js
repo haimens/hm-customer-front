@@ -65,6 +65,16 @@ export default (state = initialState, action) => {
         first_trip: { ...state.first_trip, showMap: false },
         second_trip: { ...state.second_trip, showMap: false }
       };
+    case constants.SET_SECOND_MAP_TO_FALSE:
+      return {
+        ...state,
+        second_trip: { ...state.first_trip, showMap: false }
+      };
+    case constants.SET_FIRST_MAP_TO_FALSE:
+      return {
+        ...state,
+        first_trip: { ...state.first_trip, showMap: false }
+      };
     case constants.CURRENT_ORDER:
       return { ...state, current_order: action.payload };
     case constants.ORDER_DETAIL_IN_PAYMENT:

@@ -18,7 +18,7 @@ export function convertUTCtoLocal(db_utc_time, format = "YYYY-MM-DD HH:mm") {
 export function convertLocalToUTC(local_time, format = "YYYY-MM-DD HH:mm") {
   return moment(local_time)
     .utc()
-    .format(format);
+    .format();
 }
 
 export function timeDuration(start_time, end_time) {

@@ -8,7 +8,7 @@ import {
   setRoundTrip,
   findFlightListInLord
 } from "../../../actions/order.action";
-import { convertUTCtoLocal } from "../../../actions/utilities.action";
+import { convertLocalToUTC } from "../../../actions/utilities.action";
 import { saveFirstTripLocally, saveSecondTripLocally, setRoundTripLocally } from "../../../actions/local.action";
 import alertify from "alertifyjs";
 import moment from "moment";
@@ -123,8 +123,8 @@ class OrderStepFirst extends Component {
           this.props.findOrderLocationPrice({
             from_address_str: first_trip.pickup_location,
             to_address_str: first_trip.dropoff_location,
-            pickup_time: convertUTCtoLocal(
-              moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
+            pickup_time: convertLocalToUTC(
+              `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`
             ),
             pickup_time_local: `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format(
               "HH:mm:ss"
@@ -133,8 +133,8 @@ class OrderStepFirst extends Component {
           this.props.saveFirstTripLocally({
             from_address_str: first_trip.pickup_location,
             to_address_str: first_trip.dropoff_location,
-            pickup_time: convertUTCtoLocal(
-              moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
+            pickup_time: convertLocalToUTC(
+              `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`
             ),
             pickup_time_local: `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format(
               "HH:mm:ss"
@@ -144,8 +144,8 @@ class OrderStepFirst extends Component {
           this.props.findOrderLocationPriceAgain({
             from_address_str: second_trip.pickup_location,
             to_address_str: second_trip.dropoff_location,
-            pickup_time: convertUTCtoLocal(
-              moment(`${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`)
+            pickup_time: convertLocalToUTC(
+              `${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`
             ),
             pickup_time_local: `${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format(
               "HH:mm:ss"
@@ -154,8 +154,8 @@ class OrderStepFirst extends Component {
           this.props.saveSecondTripLocally({
             from_address_str: second_trip.pickup_location,
             to_address_str: second_trip.dropoff_location,
-            pickup_time: convertUTCtoLocal(
-              moment(`${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`)
+            pickup_time: convertLocalToUTC(
+              `${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`
             ),
             pickup_time_local: `${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format(
               "HH:mm:ss"
@@ -175,8 +175,8 @@ class OrderStepFirst extends Component {
           this.props.findOrderLocationPrice({
             from_address_str: first_trip.pickup_location,
             to_address_str: first_trip.dropoff_location,
-            pickup_time: convertUTCtoLocal(
-              moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
+            pickup_time: convertLocalToUTC(
+              `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`
             ),
             pickup_time_local: `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format(
               "HH:mm:ss"
@@ -185,8 +185,8 @@ class OrderStepFirst extends Component {
           this.props.saveFirstTripLocally({
             from_address_str: first_trip.pickup_location,
             to_address_str: first_trip.dropoff_location,
-            pickup_time: convertUTCtoLocal(
-              moment(`${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`)
+            pickup_time: convertLocalToUTC(
+              `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format("HH:mm:ss")}`
             ),
             pickup_time_local: `${moment(first_trip.date).format("YYYY-MM-DD")} ${moment(first_trip.time).format(
               "HH:mm:ss"
