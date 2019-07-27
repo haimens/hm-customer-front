@@ -1,6 +1,13 @@
+.mobile-nav-text{
+  color: white !important
+}
 
 @media only screen and (max-width: 992px) {
   .mobile-nav-bacground {
     background-color: white;
+    color: black !important
+  }
+  .mobile-nav-text{
+    color: black !important
   }
 }

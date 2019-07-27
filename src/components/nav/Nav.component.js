@@ -9,7 +9,7 @@ class Nav extends Component {
   render() {
     return (
       <nav
-        className={`navbar navbar-expand-lg navbar-light nav-bg p-3 mobile-nav-bacground ${this.props.outerClass}`}
+        className={`navbar navbar-expand-lg navbar-light nav-bg p-3 mobile-nav-bacground  ${this.props.outerClass}`}
         style={{ zIndex: 1 }}
       >
         <button
@@ -24,30 +24,41 @@ class Nav extends Component {
           <span className="navbar-toggler-icon" />
         </button>
         <a className={`navbar-brand text-purple`} href="/">
-          Sunshire Logo
+          <img
+            src={`${process.env.REACT_APP_LOGO_PATH}`}
+            alt={`${process.env.REACT_APP_LOGO_PATH}`}
+            className="ml-5"
+            style={{ height: "40px" }}
+          />
         </a>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0 mr-5">
             <li className="nav-item mr-5">
-              <a className={`nav-link hm-main-text-16 text-white ${this.props.navTextColor}`} href="/">
+              <a className={`nav-link text-center hm-main-text-16 mobile-nav-text ${this.props.navTextColor}`} href="/">
                 Book A Trip
               </a>
             </li>
             <li className="nav-item mr-5">
-              <a className={`nav-link hm-main-text-16 text-white ${this.props.navTextColor}`} href="/about">
+              <a
+                className={`nav-link hm-main-text-16 text-center mobile-nav-text ${this.props.navTextColor}`}
+                href="/about"
+              >
                 About Us
               </a>
             </li>
             <li className="nav-item mr-5">
-              <a className={`nav-link hm-main-text-16 text-white ${this.props.navTextColor}`} href="/contact">
+              <a
+                className={`nav-link hm-main-text-16 text-center mobile-nav-text ${this.props.navTextColor}`}
+                href="/contact"
+              >
                 Contact Us
               </a>
             </li>
-            <li className="nav-item mr-5">
+            <li className="nav-item mr-md-5 mr-0 d-flex justify-content-end ">
               {!this.props.login && (
                 <button
-                  className={`btn ${this.props.outlineButton} px-4 hm-main-text-16 text-white ${
+                  className={`btn ${this.props.outlineButton} px-4 hm-main-text-16 mobile-nav-text ${
                     this.props.navTextColor
                   }`}
                   onClick={this.signIn}

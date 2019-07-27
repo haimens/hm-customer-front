@@ -74,11 +74,11 @@ class OrderDetail extends Component {
               <div className="col-10 px-0 bg-white mx-auto custom-shadow py-4 p-3">
                 <div className="custom-radius-top">
                   <div className="container">
-                    <div className="text-main-textColor hm-main-text-24">
+                    <div className="text-main-textColor hm-main-text-24" style={{ wordBreak: "break-all" }}>
                       <span className="hm-main-text-24" style={{ color: "#5aad00" }}>
                         Order Complete!
                       </span>
-                      Your confirmation number is: {order_info && order_info.receipt}
+                      Your confirmation number is: {order_info && order_info.receipt ? order_info.receipt : "N/A"}
                     </div>
                   </div>
                 </div>

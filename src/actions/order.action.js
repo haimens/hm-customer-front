@@ -5,6 +5,8 @@ import { setBothMapToTrue, setMapToFalse } from "./local.action";
 
 export const findOrderLocationPrice = location => async dispatch => {
   try {
+    await startLoader(dispatch);
+
     const { payload } = await callApi(`quote/detail/${process.env.REACT_APP_REALM_TOKEN}`, "POST", {
       ...location
     });
@@ -61,7 +63,6 @@ export const saveTempOrder = data => async dispatch => {
       type: userConstants.TEMP_ORDER,
       payload: data
     });
-    await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
     console.log(err);
@@ -106,12 +107,10 @@ export const getOrderDetail = order_token => async dispatch => {
 
 export const setOrderDetailMapToFalse = () => async dispatch => {
   try {
-    await startLoader(dispatch);
     await dispatch({
       type: userConstants.SET_ORDER_DETAIL_TO_FALSE,
       showMap: false
     });
-    await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
     dispatch(processLogout(err));

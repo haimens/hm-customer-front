@@ -310,7 +310,7 @@ class OrderStepFirst extends Component {
                 </div>
               )}
               <div className="row pb-5">
-                <div className="col-4">
+                <div className="col-md-4 col-12 mt-3 ">
                   <button
                     type="button"
                     className="btn round-trip-button w-100 text-white hm-input-height d-flex justify-content-between align-items-center"
@@ -325,7 +325,7 @@ class OrderStepFirst extends Component {
                     <div style={{ width: "20px" }} />
                   </button>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12 mt-3">
                   <button
                     type="button"
                     className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
@@ -335,7 +335,7 @@ class OrderStepFirst extends Component {
                     <div style={{ width: "20px" }} />
                   </button>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4 col-12 mt-3">
                   <button
                     type="button"
                     className="btn get-price-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"

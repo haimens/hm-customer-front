@@ -21,7 +21,6 @@ export default class TripDetail extends Component {
     const { trip, num, hideVehicleCard } = this.props;
     const { basic_info, quote_list, showMap } = trip;
     const { selected, selected_amount } = this.state;
-    console.log(moment(basic_info.pickup_time));
     return (
       <div className="container">
         <div className="d-flex align-items-center justify-content-between border-bottom" style={{ height: "86px" }}>
@@ -32,8 +31,8 @@ export default class TripDetail extends Component {
             </span>
           </h3>
         </div>
-        <div className="row mt-4">
-          <div className="col-6">
+        <div className="row">
+          <div className="col-md-6 col-12  mt-4">
             {showMap && (
               <div style={{ height: "230px" }}>
                 <GMapLocation
@@ -56,7 +55,7 @@ export default class TripDetail extends Component {
             )}
           </div>
           {!hideVehicleCard && (
-            <div className="col-6" style={{ height: "264px" }}>
+            <div className="col-md-6 col-12  mt-4" style={{ maxHeight: "264px" }}>
               {quote_list.length > 0 &&
                 quote_list.map((quote, index) => (
                   <VehicleCard
@@ -68,7 +67,7 @@ export default class TripDetail extends Component {
                 ))}
             </div>
           )}
-          <div className="col-6 ">
+          <div className="col-md-6 col-12">
             <div className="mt-4">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="text-grey hm-main-text-14 font-weight-500">Pickup Date/Time</div>

@@ -186,7 +186,7 @@ export default class CreditCard extends Component {
 
         <div className="py-5">
           <div className="row">
-            <div className="col-4">
+            <div className="col-md-4 col-12 mt-3">
               <button
                 type="button"
                 className="btn back-button w-100 hm-input-height hm-main-textColor hm-text-main-14 font-weigh-bold d-flex justify-content-between align-items-center"
@@ -197,7 +197,7 @@ export default class CreditCard extends Component {
                 <div style={{ width: "20px" }} />
               </button>
             </div>
-            <div className="col-4">
+            <div className="col-md-4 col-12 mt-3">
               <button
                 type="button"
                 className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
@@ -207,7 +207,7 @@ export default class CreditCard extends Component {
                 <div style={{ width: "20px" }} />
               </button>
             </div>
-            <div className="col-4">
+            <div className="col-md-4 col-12 mt-3">
               <button
                 type="button"
                 className="btn round-trip-button text-white w-100 hm-input-height hm-text-main-14 font-weigh-bold d-flex justify-content-between align-items-center"
