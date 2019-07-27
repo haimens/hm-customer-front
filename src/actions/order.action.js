@@ -212,3 +212,18 @@ export const findFlightListInLord = (body = {}) => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const getAllPaymentResource = () => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`payment/resource`, "GET");
+    await dispatch({
+      type: userConstants.ALL_RESOURCE_IN_CUSTOMER,
+      payload
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};

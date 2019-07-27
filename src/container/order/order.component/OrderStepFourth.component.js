@@ -11,7 +11,8 @@ import {
   applyCouponToOrder,
   removeCouponToOrder,
   finalizeOrder,
-  handleSubmitAPaymentInLord
+  handleSubmitAPaymentInLord,
+  getAllPaymentResource
 } from "../../../actions/order.action";
 import "./OrderStepFourth.component.css";
 class OrderStepFourth extends Component {
@@ -86,6 +87,7 @@ class OrderStepFourth extends Component {
       return null;
     });
     this.setState({ sum });
+    this.props.getAllPaymentResource();
   }
 
   handleRemoveDiscount = order_discount_token => {
@@ -101,7 +103,8 @@ class OrderStepFourth extends Component {
       handleSubmitAPaymentInLord,
       current_order,
       handleChangePosition,
-      history
+      history,
+      all_payment_resource
     } = this.props;
     const { customer_info, order_discount_list, trip_list, order_note_list } = order_detail_in_payment;
     const { coupon, loaded } = this.state;
@@ -242,9 +245,10 @@ class OrderStepFourth extends Component {
               >
                 <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Payment Information</h3>
               </div>
-              {loaded && (
+              {loaded && all_payment_resource && (
                 <CreditCard
                   history={history}
+                  all_payment_resource={all_payment_resource}
                   handleChangePosition={handleChangePosition}
                   order_token={current_order.order_token}
                   finalizeOrder={finalizeOrder}
@@ -264,7 +268,8 @@ const mapStateToProps = state => {
   return {
     round_trip_locally: state.localReducer.round_trip_locally,
     current_order: state.orderReducer.current_order,
-    order_detail_in_payment: state.orderReducer.order_detail_in_payment
+    order_detail_in_payment: state.orderReducer.order_detail_in_payment,
+    all_payment_resource: state.orderReducer.all_payment_resource
   };
 };
 
@@ -273,7 +278,8 @@ const mapDispatchToProps = {
   applyCouponToOrder,
   removeCouponToOrder,
   finalizeOrder,
-  handleSubmitAPaymentInLord
+  handleSubmitAPaymentInLord,
+  getAllPaymentResource
 };
 
 export default connect(

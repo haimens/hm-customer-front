@@ -28,9 +28,10 @@ export default class CreditCard extends Component {
     ]);
   };
   componentDidMount() {
+    console.log(this.props);
     const config = {
-      applicationId: `${process.env.REACT_APP_SQUARE_APPLICATION_ID}`,
-      locationId: `${process.env.REACT_APP_SQUARE_LOCATION_ID}`,
+      applicationId: this.props.all_payment_resource.payment_resource_info.square_application_id,
+      locationId: this.props.all_payment_resource.payment_resource_info.square_location_id,
       inputClass: "sq-input",
       autoBuild: false,
       inputStyles: [

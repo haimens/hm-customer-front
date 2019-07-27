@@ -40,6 +40,12 @@ const initialState = {
     record_list: [],
     count: 0,
     end: 0
+  },
+  all_payment_resource: {
+    payment_resource_info: {
+      square_application_id: "",
+      square_location_id: ""
+    }
   }
 };
 
@@ -109,6 +115,9 @@ export default (state = initialState, action) => {
       };
     case constants.FLIGHT_LIST_IN_LORD:
       return { ...state, flight_list_in_lord: action.payload };
+    case constants.ALL_RESOURCE_IN_CUSTOMER:
+      return { ...state, all_payment_resource: action.payload };
+
     default:
       return state;
   }
