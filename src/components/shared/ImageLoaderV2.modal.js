@@ -19,9 +19,7 @@ export default class ImageLoaderModal extends Component {
     this.handleClose();
   };
 
-  handleCrop = data => {
-    console.log(data);
-  };
+  handleCrop = data => {};
 
   render() {
     return (

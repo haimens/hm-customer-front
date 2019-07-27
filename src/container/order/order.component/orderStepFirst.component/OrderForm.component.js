@@ -151,6 +151,7 @@ export default class OrderForm extends Component {
                 <a
                   className="hm-main-text-12"
                   target="_blank"
+                  rel="noopener noreferrer"
                   href="https://www.iata.org/publications/Pages/code-search.aspx"
                 >
                   search here.

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import alertify from "alertifyjs";
 import TripSignIn from "./orderStepThird.component/tripSignIn.modal";
 import { saveContact } from "../../../actions/contact.action";
 import { createACustomerIn, createCustomerNote } from "../../../actions/customer.action";

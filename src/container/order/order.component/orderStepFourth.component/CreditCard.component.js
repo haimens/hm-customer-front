@@ -28,7 +28,6 @@ export default class CreditCard extends Component {
     ]);
   };
   componentDidMount() {
-    console.log(this.props);
     const config = {
       applicationId: this.props.all_payment_resource.payment_resource_info.square_application_id,
       locationId: this.props.all_payment_resource.payment_resource_info.square_location_id,

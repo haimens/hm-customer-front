@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../components/shared";
-import alertify from "alertifyjs";
 import GAutoComplete from "../../../../components/shared/GAutoComplete";
 import { DatePicker, TimePicker } from "antd";
 import moment from "moment";
@@ -39,7 +38,6 @@ export default class UpdateModal extends Component {
 
   handleUpdateTrip = async () => {
     const { date, time, pickup_location, dropoff_location } = this.state;
-    console.log(this.props.num);
     if (date !== "" && time !== "" && pickup_location !== "" && dropoff_location !== "") {
       if (this.props.num === 1) {
         this.props.setFirstMapToFalse();

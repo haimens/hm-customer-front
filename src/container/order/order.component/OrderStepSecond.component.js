@@ -24,7 +24,7 @@ class OrderStepSecond extends Component {
   };
   handleContinue = () => {
     const { selected, selected_again } = this.state;
-    const { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, round_trip, login } = this.props;
+    const { saveFirstTripQuoteLocally, saveSecondTripQuoteLocally, round_trip } = this.props;
     if (selected) {
       if (round_trip && selected_again) {
         Promise.all([saveFirstTripQuoteLocally(selected), saveSecondTripQuoteLocally(selected_again)]);

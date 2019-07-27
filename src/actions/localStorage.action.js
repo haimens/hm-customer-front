@@ -10,7 +10,6 @@ export const loadUserInfo = type => {
 
 export const saveUserInfo = user_info => {
   try {
-    console.log(user_info);
     const { instance_token, user_token, username, customer_token, email, name, cell } = user_info;
     localStorage.setItem("instance_token", instance_token);
     localStorage.setItem("user_token", user_token);

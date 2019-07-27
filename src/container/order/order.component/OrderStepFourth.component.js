@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import OrderStepFourthDetail from "./orderStepFourth.component/OrderStepFourthDetail.component";
-import alertify from "alertifyjs";
-import { parsePrice, parseAmount } from "../../../actions/utilities.action";
+import { parseAmount } from "../../../actions/utilities.action";
 import CreditCard from "./orderStepFourth.component/CreditCard.component";
 import TripDetail from "./orderDetail.share/tripDetail.component";
 import {
@@ -79,7 +77,7 @@ class OrderStepFourth extends Component {
   };
 
   async componentDidMount() {
-    const { getOrderDetail, current_order, getOrderNoteFromCustomer } = this.props;
+    const { getOrderDetail, current_order } = this.props;
     await getOrderDetail(current_order.order_token);
     let sum = 0;
     this.props.order_detail_in_payment.trip_list.map(tri => {

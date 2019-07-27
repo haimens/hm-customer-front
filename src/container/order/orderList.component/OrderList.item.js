@@ -1,5 +1,5 @@
 import React from "react";
-import { convertUTCtoLocal, parseAmount } from "../../../actions/utilities.action";
+import { convertUTCtoLocal } from "../../../actions/utilities.action";
 
 /**
  * @onClick

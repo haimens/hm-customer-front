@@ -2,7 +2,6 @@ import React from "react";
 
 class MyFancyComponent extends React.Component {
   render() {
-    console.log("here");
     return (
       <MapWithAMarkerWithLabel
         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${

@@ -1,7 +1,6 @@
 import userConstants from "../constant/constant";
 import { processLogout } from "./auth.action";
 import { callApi, startLoader, stopLoader, launchSuccess } from "./utilities.action";
-import { setBothMapToTrue, setMapToFalse } from "./local.action";
 
 export const findOrderLocationPrice = location => async dispatch => {
   try {

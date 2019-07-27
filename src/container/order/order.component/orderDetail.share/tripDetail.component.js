@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { GMapLocation } from "../../../../components/shared";
 import VehicleCard from "./vehicle.card";
 import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.action";
-import moment from "moment";
 export default class TripDetail extends Component {
   state = {
     selected: "",

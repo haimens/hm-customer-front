@@ -46,7 +46,6 @@ class OrderStepFourthDetail extends Component {
     }
   };
   render() {
-    console.log(this.props.parentProps);
     const { first_trip, firstTrip } = this.props.parentProps;
     const { pickup_time, from_formatted, to_formatted, from_lat, from_lng, to_lat, to_lng } = first_trip.basic_info;
     const { tip, custom_tip, alreadyAddedTips, finalTip, totalAmount } = this.state;
