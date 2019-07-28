@@ -171,36 +171,37 @@ class OrderStepFourth extends Component {
                 </div>
               </div>
             </div>
-            <div>
-              <div
-                className="d-flex align-items-center justify-content-between border-bottom"
-                style={{ height: "86px" }}
-              >
-                <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Coupon</h3>
-              </div>
-              <div className="row">
-                <div className="col-6 mt-4">
-                  <label className="text-main-textColor hm-main-text-14 font-weight-bold">Coupon Code</label>
-                  <div className="d-flex">
-                    <input
-                      className={`form-control hm-input-height`}
-                      placeholder="Coupon"
-                      id="coupon"
-                      type="text"
-                      value={coupon}
-                      onChange={this.handleInputChange}
-                    />
-                    <button
-                      className="btn hm-main-bgColor text-white stepFour-button-custom ml-4"
-                      onClick={this.handleApplyCouponToOrder}
-                    >
-                      Apply
-                    </button>
+            {order_discount_list && order_discount_list.length === 0 && (
+              <div>
+                <div
+                  className="d-flex align-items-center justify-content-between border-bottom"
+                  style={{ height: "86px" }}
+                >
+                  <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Coupon</h3>
+                </div>
+                <div className="row">
+                  <div className="col-6 mt-4">
+                    <label className="text-main-textColor hm-main-text-14 font-weight-bold">Coupon Code</label>
+                    <div className="d-flex">
+                      <input
+                        className={`form-control hm-input-height`}
+                        placeholder="Coupon"
+                        id="coupon"
+                        type="text"
+                        value={coupon}
+                        onChange={this.handleInputChange}
+                      />
+                      <button
+                        className="btn hm-main-bgColor text-white stepFour-button-custom ml-4"
+                        onClick={this.handleApplyCouponToOrder}
+                      >
+                        Apply
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
+            )}
             <div>
               <div
                 className="d-flex align-items-center justify-content-between border-bottom"
@@ -251,7 +252,7 @@ class OrderStepFourth extends Component {
                       Order Total Due:
                     </div>
                     <div className="hm-title-sub-size font-weight-bold text-modal-color">
-                      {order_discount_list && this.getSum(order_discount_list)}
+                      ${order_discount_list && this.getSum(order_discount_list)}
                     </div>
                   </div>
                 </div>
