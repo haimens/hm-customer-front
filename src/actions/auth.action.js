@@ -80,9 +80,9 @@ export const processLogout = rawError => async dispatch => {
     alertify.alert("LOGIN MESSAGE", "YOUR SESSION HAS EXPIRED.");
     dispatch(logoutFromSystem());
   } else if (err.includes("USERNAME NOT FOUND")) {
-    alertify.alert("LOGIN MESSAGE", "用户名不正确");
+    alertify.alert("LOGIN MESSAGE", "Wrong Username");
   } else if (err.includes("PASS")) {
-    alertify.alert("LOGIN MESSAGE", "密码输入错误");
+    alertify.alert("LOGIN MESSAGE", "Wrong Password");
   } else if (err.includes("Logging out")) {
     dispatch(logoutFromSystem());
   } else {

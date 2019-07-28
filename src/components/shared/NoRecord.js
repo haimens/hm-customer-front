@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 /**
  * NoRecord
@@ -9,9 +9,11 @@ class NoRecord extends Component {
   render() {
     return (
       <tr>
-        <td colSpan={this.props.howManyCol} className="text-left text-muted"><small>暂无数据</small></td>
+        <td colSpan={this.props.howManyCol} className="text-left text-muted">
+          <small>No Record</small>
+        </td>
       </tr>
-    )
+    );
   }
 }
 

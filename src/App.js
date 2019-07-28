@@ -13,7 +13,7 @@ import { UnProtectedRoute } from "./components/shared";
 import OrderList from "./container/order/Order.list";
 import OrderDetail from "./container/order/OrderDetail.container";
 
-const Order = lazy(() => import("./container/order/Order.container"));
+import Order from "./container/order/Order.container";
 
 class App extends Component {
   componentDidMount() {

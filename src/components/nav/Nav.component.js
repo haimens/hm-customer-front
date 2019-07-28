@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { logoutFromSystem } from "../../actions/auth.action";
 import "./Nav.css";
 class Nav extends Component {
   signIn = () => {
     this.props.history.push("/login");
+  };
+  handleLogOut = () => {
+    this.props.logoutFromSystem();
   };
   render() {
     return (
@@ -35,25 +39,34 @@ class Nav extends Component {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0 mr-5">
             <li className="nav-item mr-5">
-              <a className={`nav-link text-center hm-main-text-16 mobile-nav-text ${this.props.navTextColor}`} href="/">
+              <div
+                className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
+                  this.props.navTextColor
+                }`}
+                onClick={() => this.props.history.push("/")}
+              >
                 Book A Trip
-              </a>
+              </div>
             </li>
             <li className="nav-item mr-5">
-              <a
-                className={`nav-link hm-main-text-16 text-center mobile-nav-text ${this.props.navTextColor}`}
-                href="/about"
+              <div
+                className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
+                  this.props.navTextColor
+                }`}
+                onClick={() => this.props.history.push("/about")}
               >
                 About Us
-              </a>
+              </div>
             </li>
             <li className="nav-item mr-5">
-              <a
-                className={`nav-link hm-main-text-16 text-center mobile-nav-text ${this.props.navTextColor}`}
-                href="/contact"
+              <div
+                className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
+                  this.props.navTextColor
+                }`}
+                onClick={() => this.props.history.push("/contact")}
               >
                 Contact Us
-              </a>
+              </div>
             </li>
             <li className="nav-item mr-md-5 mr-0 d-flex justify-content-end ">
               {!this.props.login && (
@@ -137,7 +150,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  logoutFromSystem
+};
 
 export default connect(
   mapStateToProps,

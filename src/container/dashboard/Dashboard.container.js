@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { DatePicker, TimePicker } from "antd";
 import alertify from "alertifyjs";
 import moment from "moment";
+import { clearUserInfo } from "../../actions/localStorage.action";
 
 import "./Dashboard.container.css";
 
