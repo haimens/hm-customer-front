@@ -160,11 +160,7 @@ export const sendEmailToCustomer = (customer_token, name, username) => async dis
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
               <tr>
                 <td align="center" valign="top" style="padding: 36px 24px;">
-                  <a href="https://sendgrid.com" target="_blank" style="display: inline-block;">
-                    <img src=${localStorage.getItem(
-                      "logo_path"
-                    )} alt="Logo" border="0" width="48" style="display: block; width: 48px; max-width: 48px; min-width: 48px;">
-                  </a>
+             
                 </td>
               </tr>
             </table>
@@ -274,7 +270,7 @@ export const sendEmailToCustomer = (customer_token, name, username) => async dis
     </html>`;
     await startLoader(dispatch);
     await callApi(`email/send/customer/${customer_token}`, "POST", {
-      title: `Welcome To ${localStorage.getItem("company_name")}`,
+      title: `Welcome`,
       msg
     });
     await launchSuccess(dispatch);
