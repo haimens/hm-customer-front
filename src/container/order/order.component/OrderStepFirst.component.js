@@ -272,7 +272,7 @@ class OrderStepFirst extends Component {
           <div className="pb-5">
             <div className="container">
               <div className="d-flex align-items-center justify-content-between " style={{ height: "86px" }}>
-                <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Contact Information</h3>
+                <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Trip Detail</h3>
               </div>
               <OrderForm
                 trip={first_trip}
