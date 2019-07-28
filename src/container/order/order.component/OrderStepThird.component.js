@@ -46,7 +46,8 @@ class OrderStepThird extends Component {
           {
             customer_info: { name, email, cell: `${area} ${cell}` }
           },
-          history
+          history,
+          name
         );
       }
       if (localStorage.getItem("instance_token")) {

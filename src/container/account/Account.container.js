@@ -31,7 +31,8 @@ export class Account extends React.Component {
             address_token: token.address_token
           }
         },
-        history
+        history,
+        name
       );
     } else {
       alertify.alert("Warning", "Please Finish The Form Before Signin");
