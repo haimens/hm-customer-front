@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy } from "react";
+import React, { Component, Suspense } from "react";
 import alertify from "alertifyjs";
 import { Switch, Redirect, Route } from "react-router-dom";
 import LoaderAlt from "./components/shared/LoaderAlt";

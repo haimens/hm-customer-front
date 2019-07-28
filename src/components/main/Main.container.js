@@ -14,9 +14,9 @@ class Main extends Component {
           />
         </div>
         <div className="pb-5">{this.props.children}</div>
-        {/* <div className="fixed-bottom">
+        <div className="fixed-bottom">
           <Footer />
-        </div> */}
+        </div>
       </section>
     );
   }
