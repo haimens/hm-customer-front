@@ -17,7 +17,7 @@ export default class TripDetail extends Component {
   };
 
   render() {
-    const { trip, num, hideVehicleCard } = this.props;
+    const { trip, num, hideVehicleCard, hideEditButton } = this.props;
     const { basic_info, quote_list, showMap } = trip;
     const { selected, selected_amount } = this.state;
     return (
@@ -70,12 +70,14 @@ export default class TripDetail extends Component {
             <div className="mt-4">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="text-grey hm-main-text-14 font-weight-500">Pickup Date/Time</div>
-                <img
-                  src={`${process.env.PUBLIC_URL}/img/icon_edit.svg`}
-                  className="hm-pointer-cursor"
-                  alt="icon"
-                  onClick={this.handleEditTripDetail}
-                />
+                {!hideEditButton && (
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/icon_edit.svg`}
+                    className="hm-pointer-cursor"
+                    alt="icon"
+                    onClick={this.handleEditTripDetail}
+                  />
+                )}
               </div>
               <div className="text-main-textColor hm-main-text-14 font-weight-bold">
                 {convertUTCtoLocal(basic_info.pickup_time)}

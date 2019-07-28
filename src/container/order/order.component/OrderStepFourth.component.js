@@ -112,6 +112,7 @@ class OrderStepFourth extends Component {
           {order_detail_in_payment.trip_list.map((trip, index) => (
             <div className="pb-5" key={index}>
               <TripDetail
+                hideEditButton={true}
                 hideVehicleCard={true}
                 num={index + 1}
                 handleOnButtonSelected={this.handleOnButtonSelected}
