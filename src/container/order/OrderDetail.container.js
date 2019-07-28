@@ -57,6 +57,8 @@ class OrderDetail extends Component {
         return null;
       });
       this.setState({ sum });
+    } else {
+      this.props.history.push("/");
     }
   }
 

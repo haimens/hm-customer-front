@@ -12,6 +12,7 @@ import {
   handleSubmitAPaymentInLord,
   getAllPaymentResource
 } from "../../../actions/order.action";
+import alertify from "alertifyjs";
 import "./OrderStepFourth.component.css";
 class OrderStepFourth extends Component {
   constructor(props) {
@@ -70,9 +71,28 @@ class OrderStepFourth extends Component {
 
   handleApplyCouponToOrder = () => {
     const { coupon } = this.state;
+    const { order_discount_list } = this.props.order_detail_in_payment;
+    let counter = true;
+    if (order_discount_list) {
+      order_discount_list.map(discount => {
+        if (discount.code === coupon) {
+          counter = false;
+        } else {
+          counter = true;
+        }
+        return null;
+      });
+    }
     if (coupon) {
-      const { current_order } = this.props;
-      this.props.applyCouponToOrder(current_order.order_token, { code: coupon });
+      if (counter) {
+        const { current_order } = this.props;
+        this.props.applyCouponToOrder(current_order.order_token, { code: coupon });
+        this.setState({ coupon: "" });
+      } else {
+        alertify.alert("Warnning", "Coupon already used");
+      }
+    } else {
+      alertify.alert("Please Enter Valid Coupon Code");
     }
   };
 
