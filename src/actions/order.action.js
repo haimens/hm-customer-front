@@ -3,7 +3,6 @@ import { processLogout } from "./auth.action";
 import { callApi, startLoader, stopLoader, launchSuccess } from "./utilities.action";
 
 export const findOrderLocationPrice = location => async dispatch => {
-  console.log(location);
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`quote/detail/${process.env.REACT_APP_REALM_TOKEN}`, "POST", {

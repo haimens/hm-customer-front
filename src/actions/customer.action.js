@@ -37,9 +37,6 @@ export const createCustomerNote = (order_token, body = {}) => async dispatch => 
 };
 
 export const sendEmailToCustomer = (customer_token, name, username) => async dispatch => {
-  console.log(customer_token);
-  console.log(name);
-  console.log(username);
   try {
     let msg = `<!DOCTYPE html>
     <html>
@@ -271,6 +268,21 @@ export const sendEmailToCustomer = (customer_token, name, username) => async dis
     await startLoader(dispatch);
     await callApi(`email/send/customer/${customer_token}`, "POST", {
       title: `Welcome`,
+      msg
+    });
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const sendReceiptEmailToCustomer = (customer_token, msg) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    await callApi(`email/send/customer/${customer_token}`, "POST", {
+      title: `Email Receipt`,
       msg
     });
     await launchSuccess(dispatch);
