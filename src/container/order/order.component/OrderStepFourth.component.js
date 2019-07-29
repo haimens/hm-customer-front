@@ -124,7 +124,7 @@ class OrderStepFourth extends Component {
       history,
       all_payment_resource
     } = this.props;
-    const { customer_info, order_discount_list, trip_list, order_note_list } = order_detail_in_payment;
+    const { customer_info, order_discount_list, trip_list, order_info } = order_detail_in_payment;
     const { coupon, loaded } = this.state;
     return (
       <section className="pb-5">
@@ -166,7 +166,7 @@ class OrderStepFourth extends Component {
                 <div className="mt-4">
                   <div className="text-grey hm-main-text-14 font-weight-500">Special Instruction</div>
                   <div className="text-main-textColor hm-main-text-14 font-weight-bold">
-                    {order_note_list && order_note_list.length > 0 ? order_note_list[0].note : "N/A"}
+                    {order_info && order_info.note ? order_info.note : "N/A"}
                   </div>
                 </div>
               </div>

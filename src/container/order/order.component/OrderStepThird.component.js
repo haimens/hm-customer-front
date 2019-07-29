@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TripSignIn from "./orderStepThird.component/tripSignIn.modal";
 import { saveContact } from "../../../actions/contact.action";
-import { createACustomerIn, createCustomerNote } from "../../../actions/customer.action";
+import { createACustomerIn } from "../../../actions/customer.action";
 import { createAOrder } from "../../../actions/order.action";
 import alertify from "alertifyjs";
 class OrderStepThird extends Component {
@@ -33,7 +33,6 @@ class OrderStepThird extends Component {
       login,
       createACustomerIn,
       history,
-      createCustomerNote,
       round_trip_locally,
       first_local_trip,
       second_local_trip,
@@ -50,24 +49,23 @@ class OrderStepThird extends Component {
           name
         );
       }
-      if (localStorage.getItem("instance_token")) {
+      if (localStorage.getItem("instance_token") && localStorage.getItem("customer_token")) {
         if (round_trip_locally) {
           await createAOrder({
             customer_token: localStorage.getItem("customer_token"),
             quote_list: [
               { flight_str: first_local_trip.flight_str, quote_token: first_local_trip.selected_quote },
               { flight_str: second_local_trip.flight_str, quote_token: second_local_trip.selected_quote }
-            ]
+            ],
+            note: special_instruction
           });
         } else {
           await createAOrder({
             customer_token: localStorage.getItem("customer_token"),
-            quote_list: [{ flight_str: first_local_trip.flight_str, quote_token: first_local_trip.selected_quote }]
+            quote_list: [{ flight_str: first_local_trip.flight_str, quote_token: first_local_trip.selected_quote }],
+            note: special_instruction
           });
         }
-      }
-      if (special_instruction) {
-        createCustomerNote(this.props.current_order.order_token, { note: special_instruction, type: 1 });
       }
       this.props.handleChangePosition(1);
     } else {
@@ -243,7 +241,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   saveContact,
   createACustomerIn,
-  createCustomerNote,
   createAOrder
 };
 
