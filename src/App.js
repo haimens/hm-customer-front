@@ -44,7 +44,7 @@ class App extends Component {
             <Switch>
               <UnProtectedRoute exact path="/order" component={Order} />
               <Route exact path="/order/list" component={OrderList} />
-              <Route exact path="/order/detail/:order_token" component={OrderDetail} />
+              <UnProtectedRoute exact path="/order/detail/:order_token" component={OrderDetail} />
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />
               <Route component={NoMatch} />

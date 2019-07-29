@@ -42,7 +42,7 @@ class OrderList extends Component {
                   </div>
                   <div className="d-flex mr-5 align-items-center">
                     <button
-                      className={`btn mr-5 shadow-sm ${
+                      className={`btn mr-2 shadow-sm ${
                         status === 3 ? "bg-purple text-white" : "bg-white text-purple border-purple"
                       }`}
                       onClick={() => this.handleSetStatus(3)}
@@ -50,7 +50,7 @@ class OrderList extends Component {
                       Confirmed
                     </button>
                     <button
-                      className={`btn mr-3 shadow-sm ${
+                      className={`btn shadow-sm ${
                         status === 4 ? "bg-purple text-white" : "bg-white text-purple border-purple"
                       }`}
                       onClick={() => this.handleSetStatus(4)}

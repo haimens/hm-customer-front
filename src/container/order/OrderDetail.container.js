@@ -653,8 +653,8 @@ class OrderDetail extends Component {
                 <div className="custom-radius-top">
                   <div className="container">
                     <div className="text-main-textColor hm-main-text-24" style={{ wordBreak: "break-all" }}>
-                      <span className="hm-main-text-24" style={{ color: "#5aad00" }}>
-                        Order Complete!
+                      <span className="hm-main-text-24 mr-2" style={{ color: "#5aad00" }}>
+                        Order {order_info && order_info.status_str}!
                       </span>
                       Your confirmation number is: {order_info && order_info.receipt ? order_info.receipt : "N/A"}
                     </div>
