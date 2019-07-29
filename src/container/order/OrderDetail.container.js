@@ -88,6 +88,7 @@ class OrderDetail extends Component {
                   <div className="pb-5" key={index}>
                     <TripDetail
                       hideVehicleCard={true}
+                      hideEditButton={true}
                       num={index + 1}
                       handleOnButtonSelected={this.handleOnButtonSelected}
                       trip={{
