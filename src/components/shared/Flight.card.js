@@ -7,8 +7,8 @@ export default function Flight(props) {
       <div className="row mb-3">
         <div className="col-6">
           <div className="row">
-            <div className="col-4 hm-text-12 text-main-color font-weight-500 ">Departure date</div>
-            <div className="col-8 hm-text-12 text-modal-color font-weight-bold">
+            <div className="col-6 hm-text-12 text-main-color font-weight-500 ">Departure date</div>
+            <div className="col-6 hm-text-12 text-modal-color font-weight-bold">
               {convertUTCtoLocal(props.flight.dep_date)}
             </div>
           </div>
