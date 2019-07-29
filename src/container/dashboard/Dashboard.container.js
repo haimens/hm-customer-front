@@ -42,7 +42,7 @@ class Dashboard extends Component {
   };
 
   handleSubmitOrder = async () => {
-    const { date, time, pickup_location, dropoff_location } = this.state;
+    const { date, time } = this.state;
     let from = document.getElementById("from_address").value;
     let to = document.getElementById("to_address").value;
     if (date && time && from && to) {

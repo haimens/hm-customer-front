@@ -5,9 +5,18 @@ import { getOrderHistoryFromCustomer } from "../../actions/order.action";
 import { ListView } from "../../components/shared";
 import OrderListItem from "./orderList.component/OrderList.item";
 class OrderList extends Component {
+  state = {
+    status: 4
+  };
+
+  handleSetStatus = async status => {
+    this.props.getOrderHistoryFromCustomer({ status });
+    await this.setState({ status });
+  };
+
   componentDidMount() {
     if (this.props.login) {
-      this.props.getOrderHistoryFromCustomer();
+      this.props.getOrderHistoryFromCustomer({ status: 4 });
     } else {
       this.props.history.push("/");
     }
@@ -17,6 +26,7 @@ class OrderList extends Component {
   };
   render() {
     const { order_history_from_customer, history } = this.props;
+    const { status } = this.state;
     return (
       <section className="pb-5">
         <div className="trip-tab ">
@@ -26,14 +36,34 @@ class OrderList extends Component {
           <div className="container-fluid pb-5">
             <div className="row pb-5">
               <div className="col-10 px-0 bg-white mx-auto custom-shadow">
-                <div className="custom-radius-top px-5 tab bg-white font-weight-bold hm-main-textColor hm-main-text-20 d-flex align-items-center">
-                  Booking History
+                <div className="d-flex justify-content-between">
+                  <div className="custom-radius-top px-5 tab bg-white font-weight-bold hm-main-textColor hm-main-text-20 d-flex align-items-center">
+                    Booking History
+                  </div>
+                  <div className="d-flex mr-5 align-items-center">
+                    <button
+                      className={`btn mr-5 shadow-sm ${
+                        status === 3 ? "bg-purple text-white" : "bg-white text-purple border-purple"
+                      }`}
+                      onClick={() => this.handleSetStatus(3)}
+                    >
+                      Confirmed
+                    </button>
+                    <button
+                      className={`btn mr-3 shadow-sm ${
+                        status === 4 ? "bg-purple text-white" : "bg-white text-purple border-purple"
+                      }`}
+                      onClick={() => this.handleSetStatus(4)}
+                    >
+                      Completed
+                    </button>
+                  </div>
                 </div>
 
                 <ListView
                   totalCount={order_history_from_customer.count}
                   title="Earning List"
-                  fieldNames={["Order Date", "Confirmation Number", "Status", "Detai;"]}
+                  fieldNames={["Order Date", "Confirmation Number", "Status", "Detail"]}
                   hideHeader={true}
                   onPageChange={this.handlePageChange}
                 >
