@@ -251,7 +251,7 @@ class OrderStepFourth extends Component {
                     <div className="text-secondary-color hm-text-14 font-weight-bold hm-title-sub-size">
                       Order Total Due:
                     </div>
-                    <div className="hm-title-sub-size font-weight-bold text-modal-color">
+                    <div className="hm-main-text-20 font-weight-bold text-modal-color">
                       ${order_discount_list && this.getSum(order_discount_list)}
                     </div>
                   </div>
