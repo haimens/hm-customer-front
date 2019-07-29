@@ -23,7 +23,7 @@ export default class FlightDetail extends Component {
         onClose={this.handleClose}
         position="center"
         getWidth={"700px"}
-        getHeight={"570px"}
+        getHeight={"340px"}
       >
         <div className="container-fluid">
           <div className="row">
@@ -36,6 +36,7 @@ export default class FlightDetail extends Component {
                   flight={flight}
                 />
               ))}
+
             {flight_list_in_lord.record_list.length === 0 && <FlightCardNoRecord />}
           </div>
         </div>

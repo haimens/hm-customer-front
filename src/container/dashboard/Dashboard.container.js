@@ -12,7 +12,7 @@ import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
 
 import { saveTempOrder, resetOrder } from "../../actions/order.action";
-
+import { resetLocalOrder } from "../../actions/local.action";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -43,8 +43,10 @@ class Dashboard extends Component {
 
   handleSubmitOrder = async () => {
     const { date, time, pickup_location, dropoff_location } = this.state;
-    if (date && time && pickup_location && dropoff_location) {
-      await this.props.saveTempOrder({ date, time, pickup_location, dropoff_location });
+    let from = document.getElementById("from_address").value;
+    let to = document.getElementById("to_address").value;
+    if (date && time && from && to) {
+      await this.props.saveTempOrder({ date, time, pickup_location: from, dropoff_location: to });
       await this.props.history.push("/order");
     } else {
       alertify.alert("Something Wrong", "Please Finished the Form Before Submit!");
@@ -59,6 +61,7 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.props.resetOrder();
+    this.props.resetLocalOrder();
   }
 
   render() {
@@ -210,7 +213,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   saveTempOrder,
-  resetOrder
+  resetOrder,
+  resetLocalOrder
 };
 
 export default connect(

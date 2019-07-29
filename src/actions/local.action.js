@@ -98,3 +98,14 @@ export const setTripCreated = payload => async dispatch => {
     console.log(err);
   }
 };
+
+export const resetLocalOrder = () => async dispatch => {
+  console.log("local");
+  try {
+    await dispatch({
+      type: userConstants.RESET_LOCAL_STORAGE
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};

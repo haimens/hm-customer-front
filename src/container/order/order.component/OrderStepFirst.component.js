@@ -39,8 +39,21 @@ class OrderStepFirst extends Component {
     airline_code_again: ""
   };
 
-  handleTripType = () => {
-    this.setState(state => ({ roundTrip: !state.roundTrip }));
+  handleTripType = async () => {
+    await this.setState(state => ({ roundTrip: !state.roundTrip }));
+    if (
+      this.state.roundTrip &&
+      this.state.second_trip.pickup_location === "" &&
+      this.state.second_trip.dropoff_location === ""
+    ) {
+      this.setState(state => ({
+        second_trip: {
+          ...state.second_trip,
+          pickup_location: state.first_trip.dropoff_location,
+          dropoff_location: state.first_trip.pickup_location
+        }
+      }));
+    }
   };
 
   setUpFirstTrip = type => async detail => {
@@ -114,8 +127,6 @@ class OrderStepFirst extends Component {
         first_trip.dropoff_location &&
         first_trip.date &&
         first_trip.time &&
-        second_trip.pickup_location &&
-        second_trip.dropoff_location &&
         second_trip.date &&
         second_trip.time
       ) {
@@ -142,8 +153,8 @@ class OrderStepFirst extends Component {
             flight_str: `${airline_code} ${flight_number}`
           }),
           this.props.findOrderLocationPriceAgain({
-            from_address_str: second_trip.pickup_location,
-            to_address_str: second_trip.dropoff_location,
+            from_address_str: document.getElementById("pickup_giveId_again").value,
+            to_address_str: document.getElementById("dropoff_giveId_again").value,
             pickup_time: convertLocalToUTC(
               `${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`
             ),
@@ -152,8 +163,8 @@ class OrderStepFirst extends Component {
             )}`
           }),
           this.props.saveSecondTripLocally({
-            from_address_str: second_trip.pickup_location,
-            to_address_str: second_trip.dropoff_location,
+            from_address_str: document.getElementById("pickup_giveId_again").value,
+            to_address_str: document.getElementById("dropoff_giveId_again").value,
             pickup_time: convertLocalToUTC(
               `${moment(second_trip.date).format("YYYY-MM-DD")} ${moment(second_trip.time).format("HH:mm:ss")}`
             ),

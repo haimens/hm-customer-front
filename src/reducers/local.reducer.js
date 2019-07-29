@@ -21,6 +21,8 @@ export default (state = initialState, action) => {
       return { ...state, round_trip_locally: action.payload };
     case constants.SET_TRIP_CREATED:
       return { ...state, trip_been_created: action.payload };
+    case constants.RESET_LOCAL_STORAGE:
+      return { first_local_trip: "", second_local_trip: "", round_trip_locally: false, trip_been_created: false };
     default:
       return state;
   }

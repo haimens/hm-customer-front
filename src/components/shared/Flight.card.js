@@ -3,7 +3,7 @@ import { convertUTCtoLocal } from "../../actions/utilities.action";
 
 export default function Flight(props) {
   return (
-    <div className="col-12 border-bottom-custom p-4">
+    <div className="col-12 border-bottom p-4">
       <div className="row mb-3">
         <div className="col-6">
           <div className="row">
