@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import EditCustomer from "./EditCustomer.modal";
 import { LoaderAlt, SuccessModal } from "../shared";
-import { logoutFromSystem } from "../../actions/auth.action";
+import { logoutFromSystem, resetPassword } from "../../actions/auth.action";
 import { getCustomerDetail, updateCustomerInfo } from "../../actions/customer.action";
 import "./Nav.css";
 import alertify from "alertifyjs";
@@ -15,7 +15,7 @@ class Nav extends Component {
     this.props.history.push("/login");
   };
   handleChangePassword = () => {
-    this.props.parentProps.resetPassword(localStorage.getItem("username"));
+    this.props.resetPassword(localStorage.getItem("username"));
     alertify.notify(
       "The password reset email has been sent to your on-file email address.",
       "The password reset email has been sent to your on-file email address.",
@@ -126,7 +126,7 @@ class Nav extends Component {
                     <div className="pb-2">Welcome!</div>
                     <div>
                       <button
-                        className="dropdown-item px-0 d-flex justify-content-center align-items-center"
+                        className="dropdown-item px-0 d-flex justify-content-start align-items-center"
                         type="button"
                         onClick={() => {
                           this.props.history.push("/order/list");
@@ -136,6 +136,7 @@ class Nav extends Component {
                           <img
                             src={`${process.env.PUBLIC_URL}/img/icon_history.svg`}
                             alt={`${process.env.PUBLIC_URL}/img/icon_history.svg`}
+                            style={{ width: "12.25px" }}
                             className="mr-3"
                           />
                         </small>
@@ -144,14 +145,28 @@ class Nav extends Component {
                     </div>
                     <div>
                       <button
-                        className="dropdown-item px-0 d-flex justify-content-center align-items-center"
+                        className="dropdown-item px-0 d-flex justify-content-start align-items-center"
                         type="button"
                         onClick={this.handleShowEditInfo}
                       >
                         <small>
-                          <i className="fas fa-user" />
+                          <i className="fas fa-user mr-3" />
                         </small>
                         Edit Info
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        className="dropdown-item px-0"
+                        type="button"
+                        onClick={() => {
+                          this.handleChangePassword();
+                        }}
+                      >
+                        <small>
+                          <i className="fas fa-unlock-alt mr-3" />
+                        </small>
+                        Change Password
                       </button>
                     </div>
                     <div>
@@ -198,7 +213,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   logoutFromSystem,
   getCustomerDetail,
-  updateCustomerInfo
+  updateCustomerInfo,
+  resetPassword
 };
 
 export default connect(

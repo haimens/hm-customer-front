@@ -78,9 +78,15 @@ export default class EditCustomer extends Component {
         )}
         {showPreview && <ImagePreviewModal image={img_path} onClose={() => this.setState({ showPreview: false })} />}
 
-        <Modal title="Update Info" onClose={this.handleClose} position="center" getWidth={"467px"} getHeight={"520px"}>
+        <Modal title="Update Info" onClose={this.handleClose} position="center" getWidth={"467px"} getHeight={"500px"}>
           <div className="container">
             <div className="p-3">
+              <div className="form-group mb-4">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Cell">
+                  Email
+                </label>
+                <div>{email}</div>
+              </div>
               <div className="form-group mb-4">
                 <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Cell">
                   Name
@@ -119,20 +125,6 @@ export default class EditCustomer extends Component {
                     />
                   </div>
                 </div>
-              </div>
-
-              <div className="form-group mb-4">
-                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Cell">
-                  Email
-                </label>
-                <input
-                  className="form-control hm-input-height"
-                  name="email"
-                  id="email"
-                  placeholder={"Email"}
-                  value={email}
-                  onChange={this.handleInputChange}
-                />
               </div>
 
               <AddingImage
