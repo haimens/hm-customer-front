@@ -139,7 +139,6 @@
 
 .orange-ball-2{
   position: absolute;
-  right: -4vh;
   top: 60vh;
   width: 71px;
 }
@@ -187,9 +186,4 @@
   .dashboard-form{
     margin-top: 40px
   }
-}
-
-html,body
-{
-    overflow-x: hidden; 
 }
