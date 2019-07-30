@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import EditCustomer from "./EditCustomer.modal";
-import { LoaderAlt, SuccessModal } from "../shared";
+import { SuccessModal } from "../shared";
 import { logoutFromSystem, resetPassword } from "../../actions/auth.action";
 import { getCustomerDetail, updateCustomerInfo } from "../../actions/customer.action";
 import "./Nav.css";

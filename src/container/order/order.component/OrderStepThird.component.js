@@ -201,7 +201,7 @@ class OrderStepThird extends Component {
                   <button
                     type="button"
                     className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
-                    onClick={this.handleChangePosition}
+                    onClick={() => window.Tawk_API.toggle()}
                   >
                     <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
                     <div>Contact Sales</div>
