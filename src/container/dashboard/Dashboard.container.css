@@ -140,6 +140,7 @@
 .orange-ball-2{
   position: absolute;
   top: 60vh;
+  right: 0;
   width: 71px;
 }
 .blue-ball{
