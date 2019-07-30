@@ -111,7 +111,7 @@ class Nav extends Component {
 
               {this.props.login && (
                 <div className="btn-group mr-2">
-                  <div className="d-flex flex-column justify-content-center d-md-none d-flex">
+                  <div className="d-flex flex-column justify-content-center d-lg-none d-flex">
                     <div
                       className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
                         this.props.navTextColor
@@ -151,7 +151,7 @@ class Nav extends Component {
                       Log Out
                     </div>
                   </div>
-                  <div className=" d-none d-md-block ">
+                  <div className=" d-none d-lg-block ">
                     <button
                       type="button"
                       className="btn dropdown-toggle hm-main-text-16 mobile-nav-text  ml-2 d-flex align-items-center"

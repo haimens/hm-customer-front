@@ -9,6 +9,15 @@ function Background() {
   return (
     <div className="container">
       <animated.div style={props}>
+        <img className="main-wave wave-top" src={`${process.env.PUBLIC_URL}/img/middle.png`} alt="" />
+      </animated.div>
+      <animated.div style={props}>
+        <img className="main-wave wave-middle" src={`${process.env.PUBLIC_URL}/img/top.png`} alt="" />
+      </animated.div>
+      <animated.div style={props}>
+        <img className="main-wave" src={`${process.env.PUBLIC_URL}/img/bottom.png`} alt="" />
+      </animated.div>
+      <animated.div style={props}>
         <img className="orange-ball" src={`${process.env.PUBLIC_URL}/img/icon_bg_1.svg`} alt="" />
       </animated.div>
       <animated.div style={props}>

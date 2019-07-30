@@ -6,10 +6,6 @@ import { convertUTCtoLocal, parseAmount } from "../../../actions/utilities.actio
 import { getTripDetail } from "../../../actions/order.action";
 
 class TripDetail extends Component {
-  state = {
-    selected: "",
-    selected_amount: ""
-  };
   async componentDidMount() {
     const { getTripDetail, trip } = this.props;
     if (trip.basic_info.trip_token) {
@@ -17,16 +13,15 @@ class TripDetail extends Component {
     }
   }
   render() {
-    const { trip, num, hideEditButton, trip_detail_in_customer } = this.props;
+    const { trip, num, trip_detail_in_customer } = this.props;
     const { basic_info, showMap } = trip;
-    const { selected_amount } = this.state;
     return (
       <div className="container">
         <div className="d-flex align-items-center justify-content-between border-bottom" style={{ height: "86px" }}>
           <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Trip {num}</h3>
           <h3 className="mt-3">
             <span className="text-grey hm-text-22 font-weight-bold">
-              Trip {num} Subtotal: {parseAmount(basic_info.amount || selected_amount, 2)}
+              Trip {num} Subtotal: {parseAmount(basic_info.amount)}
             </span>
           </h3>
         </div>
@@ -54,17 +49,6 @@ class TripDetail extends Component {
             )}
           </div>
           <div className="col-md-6 col-12  mt-4">
-            <div className="d-flex justify-content-between align-items-center">
-              <div className="text-grey hm-main-text-14 font-weight-500">Pickup Date/Time</div>
-              {!hideEditButton && (
-                <img
-                  src={`${process.env.PUBLIC_URL}/img/icon_edit.svg`}
-                  className="hm-pointer-cursor"
-                  alt="icon"
-                  onClick={this.handleEditTripDetail}
-                />
-              )}
-            </div>
             <div className="text-main-textColor hm-main-text-14 font-weight-bold">
               {convertUTCtoLocal(basic_info.pickup_time)}
             </div>
@@ -119,6 +103,68 @@ class TripDetail extends Component {
             </div>
           </div>
         </div>
+        <section className="mb-4">
+          <div
+            className="d-flex align-items-center justify-content-between border-bottom mb-4"
+            style={{ height: "86px" }}
+          >
+            <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Timeline</h3>
+          </div>
+          <div className="row">
+            <div className="col-lg-3 mt-4 mt-md-0 col-6 d-flex justify-content-center align-items-center flex-column">
+              <img
+                src={`${process.env.PUBLIC_URL}/img/start.svg`}
+                alt="timeline"
+                style={{ height: "41px", width: "51px" }}
+              />
+              <div className="text-secondary-color hm-text-14 font-weight-500 mt-4">Driver Start Trip</div>
+              <div className="text-modal-color hm-text-14 font-weight-500 mt-2">
+                {trip_detail_in_customer.basic_info && trip_detail_in_customer.basic_info.start_time
+                  ? convertUTCtoLocal(trip_detail_in_customer.basic_info.start_time)
+                  : "N/A"}
+              </div>
+            </div>
+            <div className="col-lg-3 mt-4 mt-md-0 col-6 d-flex justify-content-center align-items-center flex-column">
+              <img
+                src={`${process.env.PUBLIC_URL}/img/pickup.svg`}
+                alt="timeline"
+                style={{ height: "41px", width: "51px" }}
+              />
+              <div className="text-secondary-color hm-text-14 font-weight-500 mt-4">Driver Arrival Pickup Location</div>
+              <div className="text-modal-color hm-text-14 font-weight-500 mt-2">
+                {trip_detail_in_customer.basic_info && trip_detail_in_customer.basic_info.eta_time
+                  ? convertUTCtoLocal(trip_detail_in_customer.basic_info.eta_time)
+                  : "N/A"}
+              </div>
+            </div>
+            <div className="col-lg-3 mt-4 mt-md-0 col-6 d-flex justify-content-center align-items-center flex-column">
+              <img
+                src={`${process.env.PUBLIC_URL}/img/ongoing.svg`}
+                alt="timeline"
+                style={{ height: "41px", width: "51px" }}
+              />
+              <div className="text-secondary-color hm-text-14 font-weight-500 mt-4">Customer On Board</div>
+              <div className="text-modal-color hm-text-14 font-weight-500 mt-2">
+                {trip_detail_in_customer.basic_info && trip_detail_in_customer.basic_info.cob_time
+                  ? convertUTCtoLocal(trip_detail_in_customer.basic_info.cob_time)
+                  : "N/A"}
+              </div>
+            </div>
+            <div className="col-lg-3 mt-4 mt-md-0 col-6 d-flex justify-content-center align-items-center flex-column">
+              <img
+                src={`${process.env.PUBLIC_URL}/img/finish.svg`}
+                alt="timeline"
+                style={{ height: "41px", width: "51px" }}
+              />
+              <div className="text-secondary-color hm-text-14 font-weight-500 mt-4">Customer Arrival Destination</div>
+              <div className="text-modal-color hm-text-14 font-weight-500 mt-2">
+                {trip_detail_in_customer.basic_info && trip_detail_in_customer.basic_info.arrive_time
+                  ? convertUTCtoLocal(trip_detail_in_customer.basic_info.arrive_time)
+                  : "N/A"}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }

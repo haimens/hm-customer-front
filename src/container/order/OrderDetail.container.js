@@ -772,10 +772,40 @@ class OrderDetail extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="d-flex justify-content-center">
-                      <button className="btn round-trip-button text-white" onClick={this.handleSendEmail}>
-                        Send Receipt To Email
-                      </button>
+
+                    <div className="row pt-5">
+                      <div className="col-md-4 col-12 mt-3">
+                        <button
+                          className="btn back-button w-100 hm-input-height d-flex justify-content-between align-items-center"
+                          onClick={this.handleSendEmail}
+                        >
+                          <i className="fas fa-envelope" style={{ fontSize: "19px" }} />
+                          <div>Send Receipt</div>
+                          <div style={{ width: "20px" }} />
+                        </button>
+                      </div>
+                      <div className="col-md-4 col-12 mt-3">
+                        <button
+                          type="button"
+                          className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+                          onClick={() => window.Tawk_API.toggle()}
+                        >
+                          <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
+                          <div>Contact Sales</div>
+                          <div style={{ width: "20px" }} />
+                        </button>
+                      </div>
+                      <div className="col-md-4 col-12 mt-3">
+                        <button
+                          type="button"
+                          className="btn round-trip-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+                          onClick={() => this.props.history.push("/")}
+                        >
+                          <div style={{ width: "20px" }} />
+                          <div>Book Again</div>
+                          <img src={`${process.env.PUBLIC_URL}/img/icon_continue.svg`} alt="roundTrip" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
