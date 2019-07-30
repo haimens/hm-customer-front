@@ -36,7 +36,6 @@ class Nav extends Component {
         className={`navbar navbar-expand-lg navbar-light nav-bg p-3 mobile-nav-bacground  ${this.props.outerClass}`}
         style={{ zIndex: 1 }}
       >
-        {isLoading && <LoaderAlt />}
         {isSuccess && <SuccessModal />}
         {showEditUserInfo && (
           <EditCustomer
