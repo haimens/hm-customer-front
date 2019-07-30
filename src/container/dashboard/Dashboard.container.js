@@ -68,18 +68,26 @@ class Dashboard extends Component {
     return (
       <main>
         <section className="header-container">
-          <div>
+          <div className="main" style={{ height: "967px" }}>
             <img
-              src={`${process.env.PUBLIC_URL}/img/haimensMain.jpg`}
-              alt="main-bg"
-              style={{ width: "100%", height: "967px" }}
+              className="main-bg"
+              src={`${process.env.PUBLIC_URL}/img/color_bg.png`}
+              alt=""
+              style={{ width: "100%" }}
             />
+            <img className="main-wave wave-top" src={`${process.env.PUBLIC_URL}/img/top.png`} alt="" />
+            <img className="main-wave" src={`${process.env.PUBLIC_URL}/img/bottom.png`} alt="" />
+            <img className="orange-ball" src={`${process.env.PUBLIC_URL}/img/icon_bg_1.svg`} alt="" />
+            <img className="orange-ball" src={`${process.env.PUBLIC_URL}/img/icon_bg_1.svg`} alt="" />
           </div>
           <Nav outerClass={"main-nav"} outlineButton={`hm-main-button-outline`} />
           <div className="container-fluid main-info">
             <div className="row">
               <div className="col-md-6 d-none d-lg-block">
-                <h1 className="hm-main-textColor header-text">Shuttle Service Made Easier</h1>
+                <h1 className="hm-main-textColor header-text">
+                  Shuttle Service <br />
+                  Made Easier
+                </h1>
               </div>
 
               <div className="col-sm-12 col-lg-6">

@@ -104,3 +104,27 @@
 .ant-calendar-picker-icon svg{
   color: rgba(136, 152, 170, 0.5) !important
 }
+
+.main-bg{
+  position: absolute;
+}
+
+.main-wave{
+  position: absolute;
+  right: 0;
+  width: 120vh !important;
+}
+
+.wave-top{
+  position: absolute;
+  right: 0;
+  width: 108vh !important;
+  height: 35vh;
+}
+
+.orange-ball{
+  position: absolute;
+  right: 98vh;
+  top: 15vh;
+  width: 67px;
+}
