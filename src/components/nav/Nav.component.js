@@ -66,8 +66,8 @@ class Nav extends Component {
         </div>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul className="navbar-nav ml-auto mt-2 mt-lg-0 mr-5">
-            <li className="nav-item mr-5">
+          <ul className="navbar-nav ml-sm-auto mt-2 mt-lg-0 mr-sm-5 mx-0">
+            <li className="nav-item mr-sm-5 mr-0">
               <div
                 className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
                   this.props.navTextColor
@@ -77,7 +77,7 @@ class Nav extends Component {
                 Book A Trip
               </div>
             </li>
-            <li className="nav-item mr-5">
+            <li className="nav-item mr-sm-5 mr-0">
               <div
                 className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
                   this.props.navTextColor
@@ -87,7 +87,7 @@ class Nav extends Component {
                 About Us
               </div>
             </li>
-            <li className="nav-item mr-5">
+            <li className="nav-item mr-sm-5 mr-0">
               <div
                 className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
                   this.props.navTextColor
@@ -97,7 +97,7 @@ class Nav extends Component {
                 Contact Us
               </div>
             </li>
-            <li className="nav-item mr-md-5 mr-0 d-flex justify-content-center ">
+            <li className="nav-item mr-sm-5 mr-0 d-flex justify-content-center ">
               {!this.props.login && (
                 <button
                   className={`btn ${this.props.outlineButton} px-4 hm-main-text-16 mobile-nav-text ${
@@ -111,83 +111,124 @@ class Nav extends Component {
 
               {this.props.login && (
                 <div className="btn-group mr-2">
-                  <button
-                    type="button"
-                    className="btn dropdown-toggle hm-main-text-16 mobile-nav-text  ml-2 d-flex align-items-center"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    {localStorage.getItem("username").toUpperCase()}
-                  </button>
-
-                  <div className="dropdown-menu shadow-sm p-3">
-                    <div className="pb-2">Welcome!</div>
-                    <div>
-                      <button
-                        className="dropdown-item px-0 d-flex justify-content-start align-items-center"
-                        type="button"
-                        onClick={() => {
-                          this.props.history.push("/order/list");
-                        }}
-                      >
-                        <small>
-                          <img
-                            src={`${process.env.PUBLIC_URL}/img/icon_history.svg`}
-                            alt={`${process.env.PUBLIC_URL}/img/icon_history.svg`}
-                            style={{ width: "12.25px" }}
-                            className="mr-3"
-                          />
-                        </small>
-                        Booking history
-                      </button>
+                  <div className="d-flex flex-column justify-content-center d-md-none d-flex">
+                    <div
+                      className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
+                        this.props.navTextColor
+                      }`}
+                      onClick={() => {
+                        this.props.history.push("/order/list");
+                      }}
+                    >
+                      Booking History
                     </div>
-                    <div>
-                      <button
-                        className="dropdown-item px-0 d-flex justify-content-start align-items-center"
-                        type="button"
-                        onClick={this.handleShowEditInfo}
-                      >
-                        <small>
-                          <i className="fas fa-user mr-3" />
-                        </small>
-                        Edit Info
-                      </button>
+                    <div
+                      className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
+                        this.props.navTextColor
+                      }`}
+                      onClick={this.handleShowEditInfo}
+                    >
+                      Edit Info
                     </div>
-                    <div>
-                      <button
-                        className="dropdown-item px-0"
-                        type="button"
-                        onClick={() => {
-                          this.handleChangePassword();
-                        }}
-                      >
-                        <small>
-                          <i className="fas fa-unlock-alt mr-3" />
-                        </small>
-                        Change Password
-                      </button>
+                    <div
+                      className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
+                        this.props.navTextColor
+                      }`}
+                      onClick={() => {
+                        this.handleChangePassword();
+                      }}
+                    >
+                      Change Password
                     </div>
-                    <div>
-                      <hr />
-                      <button
-                        className="dropdown-item p-0"
-                        type="button"
-                        onClick={() => {
-                          this.handleLogOut();
-                        }}
-                      >
-                        <div className="d-flex align-items-center">
+                    <div
+                      className={`nav-link text-center hm-main-text-16 mobile-nav-text hm-pointer-cursor ${
+                        this.props.navTextColor
+                      }`}
+                      onClick={() => {
+                        this.handleLogOut();
+                      }}
+                    >
+                      Log Out
+                    </div>
+                  </div>
+                  <div className=" d-none d-md-block ">
+                    <button
+                      type="button"
+                      className="btn dropdown-toggle hm-main-text-16 mobile-nav-text  ml-2 d-flex align-items-center"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      {localStorage.getItem("username").toUpperCase()}
+                    </button>
+                    <div className="dropdown-menu shadow-sm p-3">
+                      <div className="pb-2">Welcome!</div>
+                      <div>
+                        <button
+                          className="dropdown-item px-0 d-flex justify-content-start align-items-center"
+                          type="button"
+                          onClick={() => {
+                            this.props.history.push("/order/list");
+                          }}
+                        >
                           <small>
                             <img
-                              src={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
-                              alt={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
+                              src={`${process.env.PUBLIC_URL}/img/icon_history.svg`}
+                              alt={`${process.env.PUBLIC_URL}/img/icon_history.svg`}
+                              style={{ width: "12.25px" }}
                               className="mr-3"
                             />
                           </small>
-                          Log Out
-                        </div>
-                      </button>
+                          Booking history
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          className="dropdown-item px-0 d-flex justify-content-start align-items-center"
+                          type="button"
+                          onClick={this.handleShowEditInfo}
+                        >
+                          <small>
+                            <i className="fas fa-user mr-3" />
+                          </small>
+                          Edit Info
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          className="dropdown-item px-0"
+                          type="button"
+                          onClick={() => {
+                            this.handleChangePassword();
+                          }}
+                        >
+                          <small>
+                            <i className="fas fa-unlock-alt mr-3" />
+                          </small>
+                          Change Password
+                        </button>
+                      </div>
+                      <div>
+                        <hr />
+                        <button
+                          className="dropdown-item p-0"
+                          type="button"
+                          onClick={() => {
+                            this.handleLogOut();
+                          }}
+                        >
+                          <div className="d-flex align-items-center">
+                            <small>
+                              <img
+                                src={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
+                                alt={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
+                                className="mr-3"
+                              />
+                            </small>
+                            Log Out
+                          </div>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
