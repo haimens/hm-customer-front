@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { parseAmount, convertUTCtoLocal } from "../../actions/utilities.action";
 import { getOrderDetail } from "../../actions/order.action";
 import { sendReceiptEmailToCustomer } from "../../actions/customer.action";
-import TripDetail from "./order.component/orderDetail.share/tripDetail.component";
+import TripDetail from "./orderDetail.component/TripDetail.container";
 
 class OrderDetail extends Component {
   state = {
@@ -651,11 +651,11 @@ class OrderDetail extends Component {
             <div className="row pb-5">
               <div className="col-10 px-0 bg-white mx-auto custom-shadow py-4 p-3">
                 <div className="custom-radius-top">
-                  <div className="container">
+                  <div className="container text-center">
+                    <div className="text-main-textColor hm-main-text-24" style={{ color: "#5aad00" }}>
+                      Order {order_info && order_info.status_str}!
+                    </div>
                     <div className="text-main-textColor hm-main-text-24" style={{ wordBreak: "break-all" }}>
-                      <span className="hm-main-text-24 mr-2" style={{ color: "#5aad00" }}>
-                        Order {order_info && order_info.status_str}!
-                      </span>
                       Your confirmation number is: {order_info && order_info.receipt ? order_info.receipt : "N/A"}
                     </div>
                   </div>

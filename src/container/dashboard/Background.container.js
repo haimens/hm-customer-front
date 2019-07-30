@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { useSpring, animated } from "react-spring";
 
 function Background() {
