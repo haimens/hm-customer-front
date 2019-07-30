@@ -6,13 +6,21 @@ import { LoaderAlt, SuccessModal } from "../shared";
 import { logoutFromSystem } from "../../actions/auth.action";
 import { getCustomerDetail, updateCustomerInfo } from "../../actions/customer.action";
 import "./Nav.css";
-
+import alertify from "alertifyjs";
 class Nav extends Component {
   state = {
     showEditUserInfo: false
   };
   signIn = () => {
     this.props.history.push("/login");
+  };
+  handleChangePassword = () => {
+    this.props.parentProps.resetPassword(localStorage.getItem("username"));
+    alertify.notify(
+      "The password reset email has been sent to your on-file email address.",
+      "The password reset email has been sent to your on-file email address.",
+      5
+    );
   };
   handleLogOut = () => {
     this.props.logoutFromSystem();
