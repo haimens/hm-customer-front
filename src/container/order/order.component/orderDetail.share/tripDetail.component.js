@@ -52,21 +52,6 @@ export default class TripDetail extends Component {
                 />
               </div>
             )}
-          </div>
-          {!hideVehicleCard && (
-            <div className="col-md-6 col-12  mt-4" style={{ maxHeight: "264px" }}>
-              {quote_list.length > 0 &&
-                quote_list.map((quote, index) => (
-                  <VehicleCard
-                    clicked={selected}
-                    key={index}
-                    quote={quote}
-                    onButtonSelected={() => this.handleOnButtonSelected(quote)}
-                  />
-                ))}
-            </div>
-          )}
-          <div className="col-md-6 col-12">
             <div className="mt-4">
               <div className="d-flex justify-content-between align-items-center">
                 <div className="text-grey hm-main-text-14 font-weight-500">Pickup Date/Time</div>
@@ -96,6 +81,19 @@ export default class TripDetail extends Component {
               </div>
             </div>
           </div>
+          {!hideVehicleCard && (
+            <div className="col-md-6 col-12  mt-4" style={{ maxHeight: "476px", overflow: "auto" }}>
+              {quote_list.length > 0 &&
+                quote_list.map((quote, index) => (
+                  <VehicleCard
+                    clicked={selected}
+                    key={index}
+                    quote={quote}
+                    onButtonSelected={() => this.handleOnButtonSelected(quote)}
+                  />
+                ))}
+            </div>
+          )}
         </div>
       </div>
     );
