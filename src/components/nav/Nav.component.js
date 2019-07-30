@@ -56,14 +56,14 @@ class Nav extends Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <a className={`navbar-brand text-purple`} href="/">
+        <div className={`navbar-brand text-purple hm-pointer-cursor`} onClick={() => this.props.history.push("/")}>
           <img
             src={`${process.env.REACT_APP_LOGO_PATH}`}
             alt={`${process.env.REACT_APP_LOGO_PATH}`}
             className="ml-5"
             style={{ height: "40px" }}
           />
-        </a>
+        </div>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0 mr-5">
