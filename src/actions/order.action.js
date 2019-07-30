@@ -87,7 +87,7 @@ export const createAOrder = (body = {}) => async dispatch => {
   }
 };
 
-export const getOrderDetail = order_token => async dispatch => {
+export const getOrderDetail = (order_token, bool) => async dispatch => {
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`order/detail/${order_token}`, "GET");
@@ -96,7 +96,9 @@ export const getOrderDetail = order_token => async dispatch => {
       payload,
       showMap: true
     });
-    await stopLoader(dispatch);
+    if (!bool) {
+      await stopLoader(dispatch);
+    }
   } catch (err) {
     await stopLoader(dispatch);
     dispatch(processLogout(err));

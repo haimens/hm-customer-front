@@ -626,7 +626,7 @@ class OrderDetail extends Component {
   async componentDidMount() {
     if (this.props.login) {
       const { getOrderDetail, match } = this.props;
-      await getOrderDetail(match.params.order_token);
+      await getOrderDetail(match.params.order_token, true);
       let sum = 0;
       this.props.order_detail_in_payment.trip_list.map(tri => {
         sum += tri.amount;
