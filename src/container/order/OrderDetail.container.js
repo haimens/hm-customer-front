@@ -660,21 +660,19 @@ class OrderDetail extends Component {
                     </div>
                   </div>
                 </div>
-                {order_detail_in_payment.trip_list.map((trip, index) => (
-                  <div className="pb-5" key={index}>
-                    <TripDetail
-                      hideVehicleCard={true}
-                      hideEditButton={true}
-                      num={index + 1}
-                      handleOnButtonSelected={this.handleOnButtonSelected}
-                      trip={{
-                        basic_info: trip,
-                        quote_list: "",
-                        showMap: order_detail_in_payment.showMap
-                      }}
-                    />
-                  </div>
-                ))}
+                {order_detail_in_payment.showMap &&
+                  order_detail_in_payment.trip_list.map((trip, index) => (
+                    <div className="pb-5" key={index}>
+                      <TripDetail
+                        num={index + 1}
+                        trip={{
+                          basic_info: trip,
+                          quote_list: "",
+                          showMap: order_detail_in_payment.showMap
+                        }}
+                      />
+                    </div>
+                  ))}
                 <div className="container">
                   <div
                     className="d-flex align-items-center justify-content-between border-bottom"

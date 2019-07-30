@@ -1,22 +1,23 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { GMapLocation } from "../../../components/shared";
 import { convertUTCtoLocal, parseAmount } from "../../../actions/utilities.action";
-export default class TripDetail extends Component {
+import { getTripDetail } from "../../../actions/order.action";
+
+class TripDetail extends Component {
   state = {
     selected: "",
     selected_amount: ""
   };
-  handleOnButtonSelected = quote => {
-    this.setState({ selected: quote.quote_token, selected_amount: quote.amount });
-    this.props.handleOnButtonSelected(quote.quote_token);
-  };
-
-  handleEditTripDetail = () => {
-    this.props.handleEditTripDetail(this.props.num);
-  };
-
+  async componentDidMount() {
+    const { getTripDetail, trip } = this.props;
+    if (trip.basic_info.trip_token) {
+      await getTripDetail(trip.basic_info.trip_token);
+    }
+  }
   render() {
-    const { trip, num, hideEditButton } = this.props;
+    const { trip, num, hideEditButton, trip_detail_in_customer } = this.props;
     const { basic_info, showMap } = trip;
     const { selected_amount } = this.state;
     return (
@@ -89,9 +90,50 @@ export default class TripDetail extends Component {
                 {basic_info.status_str}
               </div>
             </div>
+            <div className="mt-4">
+              <div className="text-grey hm-main-text-14 font-weight-500">Driver</div>
+              <div className="text-main-textColor hm-main-text-14 font-weight-bold d-flex align-items-center mt-1">
+                <img
+                  src={trip_detail_in_customer.driver_info && trip_detail_in_customer.driver_info.img_path}
+                  alt=""
+                  className="rounded-circle mr-3"
+                  style={{ height: "40px", width: "40px" }}
+                />
+                {trip_detail_in_customer.driver_info && trip_detail_in_customer.driver_info.name}
+              </div>
+            </div>
+            <div className="mt-4">
+              <div className="text-grey hm-main-text-14 font-weight-500">Vehicle</div>
+              <div className="text-main-textColor hm-main-text-14 font-weight-bold d-flex align-items-center mt-1">
+                <img
+                  src={trip_detail_in_customer.car_info && trip_detail_in_customer.car_info.img_path}
+                  alt=""
+                  className="rounded-circle mr-3"
+                  style={{ height: "40px", width: "40px" }}
+                />
+                <div>
+                  <div>{trip_detail_in_customer.car_info && trip_detail_in_customer.car_info.identifier}</div>
+                  <div>{trip_detail_in_customer.car_info && trip_detail_in_customer.car_info.plate_num}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    trip_detail_in_customer: state.orderReducer.trip_detail_in_customer
+  };
+};
+
+const mapDispatchToProps = {
+  getTripDetail
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(TripDetail));

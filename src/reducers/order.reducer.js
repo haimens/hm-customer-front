@@ -127,7 +127,8 @@ export default (state = initialState, action) => {
           record_list: [],
           count: 0,
           end: 0
-        }
+        },
+        trip_detail_in_customer: {}
       };
     case constants.FLIGHT_LIST_IN_LORD:
       return { ...state, flight_list_in_lord: action.payload };
@@ -135,6 +136,8 @@ export default (state = initialState, action) => {
       return { ...state, all_payment_resource: action.payload };
     case constants.CUSTOMER_DETAIL_IN_CUSTOMER:
       return { ...state, customer_detail_in_customer: action.payload };
+    case constants.TRIP_DETAIL_IN_CUSTOMER:
+      return { ...state, trip_detail_in_customer: action.payload };
     default:
       return state;
   }

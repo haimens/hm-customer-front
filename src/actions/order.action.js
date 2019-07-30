@@ -225,3 +225,18 @@ export const getAllPaymentResource = () => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const getTripDetail = trip_token => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`trip/detail/${trip_token}`, "GET");
+    await dispatch({
+      type: userConstants.TRIP_DETAIL_IN_CUSTOMER,
+      payload
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
