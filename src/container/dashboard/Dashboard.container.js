@@ -13,6 +13,7 @@ import Footer from "../../components/nav/Footer.component";
 
 import { saveTempOrder, resetOrder } from "../../actions/order.action";
 import { resetLocalOrder } from "../../actions/local.action";
+import Background from "./Background.container";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -75,10 +76,9 @@ class Dashboard extends Component {
               alt=""
               style={{ width: "100%" }}
             />
-            <img className="main-wave wave-top" src={`${process.env.PUBLIC_URL}/img/top.png`} alt="" />
+            <img className="main-wave wave-top" src={`${process.env.PUBLIC_URL}/img/middle.png`} alt="" />
+            <img className="main-wave wave-middle" src={`${process.env.PUBLIC_URL}/img/top.png`} alt="" />
             <img className="main-wave" src={`${process.env.PUBLIC_URL}/img/bottom.png`} alt="" />
-            <img className="orange-ball" src={`${process.env.PUBLIC_URL}/img/icon_bg_1.svg`} alt="" />
-            <img className="orange-ball" src={`${process.env.PUBLIC_URL}/img/icon_bg_1.svg`} alt="" />
           </div>
           <Nav outerClass={"main-nav"} outlineButton={`hm-main-button-outline`} />
           <div className="container-fluid main-info">
@@ -91,10 +91,13 @@ class Dashboard extends Component {
               </div>
 
               <div className="col-sm-12 col-lg-6">
+                <Background />
+
                 <div className="col-lg-9 col-12 dashboard-form bg-white px-0">
                   <div className="d-flex justify-content-center align-items-center dashboard-form-header">
                     <h3 className="hm-main-textColor font-weight-bold ">BOOK A TRIP NOW</h3>
                   </div>
+
                   <div className="col-12">
                     <div className="mt-4">
                       <GAutoComplete

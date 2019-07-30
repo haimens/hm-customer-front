@@ -122,6 +122,13 @@
   height: 35vh;
 }
 
+.wave-middle{
+  position: absolute;
+  right: 0;
+  width: 108vh !important;
+  height: 35vh;
+}
+
 .orange-ball{
   position: absolute;
   right: 98vh;
@@ -129,6 +136,46 @@
   width: 67px;
 }
 
+.orange-ball-2{
+  position: absolute;
+  right: -4vh;
+  top: 60vh;
+  width: 71px;
+}
+.blue-ball{
+  position: absolute;
+  right: 88vh;
+  top: 60vh;
+  width: 71px;
+}
+
+.sm-ball{
+  position: absolute;
+  right: 76vh;
+  top: 22vh;
+  width: 20px;
+}
+
+.sm-ball-1{
+  position: absolute;
+  right: 10vh;
+  top: 96vh;
+  width: 20px;
+}
+
+.md-ball{
+  position: absolute;
+  right: 120vh;
+  top: 90vh;
+  width: 38px;
+}
+
+.md-ball-1{
+  position: absolute;
+  right: 10vh;
+  top: 17vh;
+  width: 38px;
+}
 
 @media only screen and (max-width: 992px) {
   .header-text {
@@ -139,4 +186,9 @@
   .dashboard-form{
     margin-top: 40px
   }
+}
+
+html,body
+{
+    overflow-x: hidden; 
 }
