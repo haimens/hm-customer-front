@@ -68,11 +68,13 @@ class Dashboard extends Component {
     return (
       <main>
         <section className="header-container">
-          <img
-            src={`${process.env.PUBLIC_URL}/img/haimensMain.jpg`}
-            alt="main-bg"
-            style={{ width: "100%", height: "967px" }}
-          />
+          <div>
+            <img
+              src={`${process.env.PUBLIC_URL}/img/haimensMain.jpg`}
+              alt="main-bg"
+              style={{ width: "100%", height: "967px" }}
+            />
+          </div>
           <Nav outerClass={"main-nav"} outlineButton={`hm-main-button-outline`} />
           <div className="container-fluid main-info">
             <div className="row">

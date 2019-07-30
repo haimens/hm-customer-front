@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>icon_md_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="84.7916632%" y1="100%" x2="16.3873078%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#54BFEC" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.85" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Customer-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Customer-V2-Slices-Copy" transform="translate(-1242.000000, -372.000000)">
+            <g id="icon_md_2" transform="translate(1242.000000, 372.000000)">
+                <circle id="Oval-Copy-6" fill="url(#linearGradient-1)" cx="25" cy="25" r="25"></circle>
+                <g id="up-arrow" transform="translate(25.000000, 26.000000) scale(1, -1) translate(-25.000000, -26.000000) translate(15.000000, 17.000000)" fill="#FFFFFF" fill-opacity="0.65" fill-rule="nonzero">
+                    <path d="M19.9942276,16.9646351 C19.9942276,17.5294054 19.5351626,17.9872297 18.9688618,17.9872297 L9.99715447,14.1525811 L1.02536585,17.9872703 C0.45902439,17.9872703 0,17.5294054 0,16.9646351 L9.22808943,0.347837838 C9.22808943,0.347837838 9.99711382,-0.419108108 10.7660569,0.347837838 C11.535122,1.11482432 19.9942276,16.9646351 19.9942276,16.9646351 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -6,7 +6,7 @@ class Contact extends Component {
       <section className="pb-5">
         <div className="trip-tab ">
           <div className="d-flex justify-content-center align-items-center" style={{ height: "141px" }}>
-            <h1 className="text-center text-white trip-header">About Us</h1>
+            <h1 className="text-center text-white trip-header">Contact Us</h1>
           </div>
           <div className="container-fluid pb-5">
             <div className="row pb-5">

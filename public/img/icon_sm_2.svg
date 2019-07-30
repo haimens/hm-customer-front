@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>icon_sm_2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="100%" x2="0%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#5BDAFF" offset="0%"></stop>
+            <stop stop-color="#0072FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Customer-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.546502976">
+        <g id="Customer-V2-Slices-Copy" transform="translate(-1312.000000, -301.000000)" fill="url(#linearGradient-1)">
+            <circle id="icon_sm_2" cx="1322" cy="311" r="10"></circle>
+        </g>
+    </g>
+</svg>
