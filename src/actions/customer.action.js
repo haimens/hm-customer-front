@@ -7,7 +7,6 @@ export const createACustomerIn = (body = {}, history, name) => async dispatch =>
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`customer/detail/${process.env.REACT_APP_REALM_TOKEN}`, "POST", body);
-    console.log(payload);
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
     await dispatch(
@@ -54,7 +53,6 @@ export const getCustomerDetail = customer_token => async dispatch => {
 };
 
 export const updateCustomerInfo = (customer_token, body = {}) => async dispatch => {
-  console.log(body);
   try {
     await startLoader(dispatch);
     await callApi(`customer/detail/${process.env.REACT_APP_REALM_TOKEN}/${customer_token}`, "PATCH", body);
