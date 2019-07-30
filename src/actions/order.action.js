@@ -169,7 +169,7 @@ export const handleSubmitAPaymentInLord = (order_token, body = {}, history) => a
 export const getOrderHistoryFromCustomer = (query = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`order/all/detail/customer/`, "GET", null, {
+    const { payload } = await callApi(`order/all/detail/customer`, "GET", null, {
       order_key: "udate",
       order_direction: "DESC",
       ...query
@@ -178,7 +178,6 @@ export const getOrderHistoryFromCustomer = (query = {}) => async dispatch => {
       type: userConstants.ORDER_HISTORY_FROM_CUSTOMER,
       payload
     });
-    await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);

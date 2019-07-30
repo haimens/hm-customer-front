@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import Modal from "../shared/Modal";
+import Modal from "./Modal";
 
+/**
+ * @image
+ */
 export default class ImagePreview extends Component {
   handleClose = () => {
     if (this.props.onClose) this.props.onClose();
@@ -8,14 +11,15 @@ export default class ImagePreview extends Component {
   render() {
     return (
       <Modal
-        title="图片预览"
-        zIndex={this.props.zIndex || "1080"}
+        title="Image Preview"
+        zIndex="2000"
         position={"center"}
-        getWidth={"480px"}
+        getWidth={"600px"}
+        getHeight={"600px"}
         onClose={this.handleClose}
       >
-        <section>
-          <img src={this.props.image_url} alt="alt" width="100%" />
+        <section className="d-flex justify-content-center align-items-center">
+          <img src={this.props.image} alt="alt" width="100%" />
         </section>
       </Modal>
     );

@@ -1,11 +1,12 @@
 import { callApi, startLoader, stopLoader, launchSuccess } from "./utilities.action";
 import { processLogout } from "./auth.action";
+import userConstants from "../constant/constant";
+
 import { processLogin } from "../actions/auth.action";
 export const createACustomerIn = (body = {}, history, name) => async dispatch => {
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`customer/detail/${process.env.REACT_APP_REALM_TOKEN}`, "POST", body);
-    console.log(payload);
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
     await dispatch(
@@ -28,6 +29,33 @@ export const createCustomerNote = (order_token, body = {}) => async dispatch => 
   try {
     await startLoader(dispatch);
     await callApi(`note/detail/order/${order_token}`, "POST", body);
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const getCustomerDetail = customer_token => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`customer/detail/${process.env.REACT_APP_REALM_TOKEN}/${customer_token}`, "GET");
+    dispatch({
+      type: userConstants.CUSTOMER_DETAIL_IN_CUSTOMER,
+      payload
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const updateCustomerInfo = (customer_token, body = {}) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    await callApi(`customer/detail/${process.env.REACT_APP_REALM_TOKEN}/${customer_token}`, "PATCH", body);
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {

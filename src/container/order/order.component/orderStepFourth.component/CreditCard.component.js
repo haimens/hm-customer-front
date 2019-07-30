@@ -159,20 +159,20 @@ export default class CreditCard extends Component {
                 <div id="sq-card-number" className="border" />
                 <input type="hidden" id="card-nonce" name="nonce" />
               </div>
-              <div className="d-flex">
-                <div className="col-4">
+              <div className="d-flex flex-md-row flex-column">
+                <div className="col-12 col-md-4">
                   <label htmlFor="card" className="hm-text-14 text-main-color font-weight-bold">
                     Expiration Date (MM/YY)
                   </label>
                   <div id="sq-expiration-date" className="border" />
                 </div>
-                <div className="col-4">
+                <div className="col-12 col-md-4">
                   <label htmlFor="card" className="hm-text-14 text-main-color font-weight-bold">
                     CVV (3 digits)
                   </label>
                   <div id="sq-cvv" className="border" />
                 </div>
-                <div className="col-4">
+                <div className="col-12 col-md-4">
                   <label htmlFor="card" className="hm-text-14 text-main-color font-weight-bold">
                     Zip Code
                   </label>
@@ -200,6 +200,7 @@ export default class CreditCard extends Component {
               <button
                 type="button"
                 className="btn contact-sales-button text-white w-100 hm-input-height d-flex justify-content-between align-items-center"
+                onClick={() => window.Tawk_API.toggle()}
               >
                 <img src={`${process.env.PUBLIC_URL}/img/icon_phone_white.svg`} alt="roundTrip" />
                 <div> Contact Sales</div>

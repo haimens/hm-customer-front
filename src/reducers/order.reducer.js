@@ -46,6 +46,12 @@ const initialState = {
       square_application_id: "",
       square_location_id: ""
     }
+  },
+  customer_detail_in_customer: {
+    name: "",
+    cell: "",
+    email: "",
+    img_path: ""
   }
 };
 
@@ -127,7 +133,8 @@ export default (state = initialState, action) => {
       return { ...state, flight_list_in_lord: action.payload };
     case constants.ALL_RESOURCE_IN_CUSTOMER:
       return { ...state, all_payment_resource: action.payload };
-
+    case constants.CUSTOMER_DETAIL_IN_CUSTOMER:
+      return { ...state, customer_detail_in_customer: action.payload };
     default:
       return state;
   }

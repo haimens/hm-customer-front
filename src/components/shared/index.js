@@ -10,13 +10,15 @@ import SuccessModal from "./SuccessModal";
 import NoRecord from "./NoRecord";
 import IconButton from "./IconButton";
 import LoaderAlt from "./LoaderAlt";
-import ImagePreview from "./ImagePreview.modal";
 import GMapLocation from "./GMapLocation";
 import UnProtectedRoute from "./UnProtectedRoute";
 import FlightCard from "./Flight.card";
 import FlightCardNoRecord from "./FlightCardNoRecord.modal";
+import AddingImage from "./AddingImage";
+import ImageLoaderModal from "./ImageLoader.modal";
+import ImagePreviewModal from "./ImagePreview.modal";
 export {
-  ImagePreview,
+  ImagePreviewModal,
   LoaderAlt,
   IconButton,
   NoRecord,
@@ -32,5 +34,7 @@ export {
   GMapLocation,
   UnProtectedRoute,
   FlightCard,
-  FlightCardNoRecord
+  FlightCardNoRecord,
+  AddingImage,
+  ImageLoaderModal
 };
