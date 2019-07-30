@@ -153,7 +153,7 @@ class Dashboard extends Component {
 
         <section>
           <div className="container">
-            <h1 className="hm-main-textColor header-text-sub my-2">Why choose us</h1>
+            <h1 className="hm-main-textColor header-text-sub my-2 mt-5">Why choose us</h1>
           </div>
           <div className="card-margin-top card-margin-fix-bottom-sub">
             <div className="container">
