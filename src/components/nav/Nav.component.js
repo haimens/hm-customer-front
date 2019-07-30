@@ -30,7 +30,7 @@ class Nav extends Component {
   };
   render() {
     const { showEditUserInfo } = this.state;
-    const { getCustomerDetail, customer_detail_in_customer, updateCustomerInfo, isLoading, isSuccess } = this.props;
+    const { getCustomerDetail, customer_detail_in_customer, updateCustomerInfo, isSuccess } = this.props;
     return (
       <nav
         className={`navbar navbar-expand-lg navbar-light nav-bg p-3 mobile-nav-bacground  ${this.props.outerClass}`}
