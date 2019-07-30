@@ -8,7 +8,7 @@ function Background() {
     from: { opacity: 0, color: "red" }
   });
   return (
-    <div class="container">
+    <div className="container">
       <animated.div style={props}>
         <img className="orange-ball" src={`${process.env.PUBLIC_URL}/img/icon_bg_1.svg`} alt="" />
       </animated.div>
