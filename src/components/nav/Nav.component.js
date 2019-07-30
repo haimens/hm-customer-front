@@ -97,7 +97,7 @@ class Nav extends Component {
                 Contact Us
               </div>
             </li>
-            <li className="nav-item mr-md-5 mr-0 d-flex justify-content-end ">
+            <li className="nav-item mr-md-5 mr-0 d-flex justify-content-center ">
               {!this.props.login && (
                 <button
                   className={`btn ${this.props.outlineButton} px-4 hm-main-text-16 mobile-nav-text ${
@@ -113,7 +113,7 @@ class Nav extends Component {
                 <div className="btn-group mr-2">
                   <button
                     type="button"
-                    className="btn dropdown-toggle hm-main-text-16 text-white ml-2 d-flex align-items-center"
+                    className="btn dropdown-toggle hm-main-text-16 mobile-nav-text  ml-2 d-flex align-items-center"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"

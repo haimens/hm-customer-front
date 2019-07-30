@@ -178,7 +178,6 @@ export const getOrderHistoryFromCustomer = (query = {}) => async dispatch => {
       type: userConstants.ORDER_HISTORY_FROM_CUSTOMER,
       payload
     });
-    await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
