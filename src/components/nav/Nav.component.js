@@ -1,21 +1,43 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import EditCustomer from "./EditCustomer.modal";
+import { LoaderAlt, SuccessModal } from "../shared";
 import { logoutFromSystem } from "../../actions/auth.action";
+import { getCustomerDetail, updateCustomerInfo } from "../../actions/customer.action";
 import "./Nav.css";
+
 class Nav extends Component {
+  state = {
+    showEditUserInfo: false
+  };
   signIn = () => {
     this.props.history.push("/login");
   };
   handleLogOut = () => {
     this.props.logoutFromSystem();
   };
+  handleShowEditInfo = () => {
+    this.setState(state => ({ showEditUserInfo: !state.showEditUserInfo }));
+  };
   render() {
+    const { showEditUserInfo } = this.state;
+    const { getCustomerDetail, customer_detail_in_customer, updateCustomerInfo, isLoading, isSuccess } = this.props;
     return (
       <nav
         className={`navbar navbar-expand-lg navbar-light nav-bg p-3 mobile-nav-bacground  ${this.props.outerClass}`}
         style={{ zIndex: 1 }}
       >
+        {isLoading && <LoaderAlt />}
+        {isSuccess && <SuccessModal />}
+        {showEditUserInfo && (
+          <EditCustomer
+            updateCustomerInfo={updateCustomerInfo}
+            customer_detail_in_customer={customer_detail_in_customer}
+            getCustomerDetail={getCustomerDetail}
+            onClose={this.handleShowEditInfo}
+          />
+        )}
         <button
           className="navbar-toggler bg-white"
           type="button"
@@ -113,6 +135,18 @@ class Nav extends Component {
                       </button>
                     </div>
                     <div>
+                      <button
+                        className="dropdown-item px-0 d-flex justify-content-center align-items-center"
+                        type="button"
+                        onClick={this.handleShowEditInfo}
+                      >
+                        <small>
+                          <i className="fas fa-user" />
+                        </small>
+                        Edit Info
+                      </button>
+                    </div>
+                    <div>
                       <hr />
                       <button
                         className="dropdown-item p-0"
@@ -146,12 +180,17 @@ class Nav extends Component {
 
 const mapStateToProps = state => {
   return {
-    login: state.authReducer.login
+    login: state.authReducer.login,
+    customer_detail_in_customer: state.orderReducer.customer_detail_in_customer,
+    isLoading: state.loadReducer.loading,
+    isSuccess: state.loadReducer.is_success
   };
 };
 
 const mapDispatchToProps = {
-  logoutFromSystem
+  logoutFromSystem,
+  getCustomerDetail,
+  updateCustomerInfo
 };
 
 export default connect(
