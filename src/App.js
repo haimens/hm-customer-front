@@ -36,18 +36,18 @@ class App extends Component {
     return (
       <Suspense fallback={<LoaderAlt />}>
         <Switch>
-          <Route exact path="/" component={Dashboard} />
+          <UnProtectedRoute exact path="/" component={Dashboard} />
           <UnProtectedRoute exact path="/login" component={Login} />
           <UnProtectedRoute exact path="/create" component={Account} />
-          <Route exact path="/nomatch" component={Page404} />
+          <UnProtectedRoute exact path="/nomatch" component={Page404} />
           <Main>
             <Switch>
               <UnProtectedRoute exact path="/order" component={Order} />
-              <Route exact path="/order/list" component={OrderList} />
+              <UnProtectedRoute exact path="/order/list" component={OrderList} />
               <UnProtectedRoute exact path="/order/detail/:order_token" component={OrderDetail} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/contact" component={Contact} />
-              <Route component={NoMatch} />
+              <UnProtectedRoute exact path="/about" component={About} />
+              <UnProtectedRoute exact path="/contact" component={Contact} />
+              <UnProtectedRoute component={NoMatch} />
             </Switch>
           </Main>
         </Switch>

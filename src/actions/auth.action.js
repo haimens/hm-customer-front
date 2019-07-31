@@ -81,16 +81,16 @@ export const processLogout = rawError => async dispatch => {
     err.includes("CANNOT FIND VALID TOKEN") ||
     err.includes("TOKEN EXPIRED")
   ) {
-    alertify.alert("LOGIN MESSAGE", "YOUR SESSION HAS EXPIRED.");
+    alert("YOUR SESSION HAS EXPIRED.");
     dispatch(logoutFromSystem());
   } else if (err.includes("USERNAME NOT FOUND")) {
-    alertify.alert("LOGIN MESSAGE", "Wrong Username");
+    alert("Wrong Username");
   } else if (err.includes("PASS")) {
-    alertify.alert("LOGIN MESSAGE", "Wrong Password");
+    alert("Wrong Password");
   } else if (err.includes("Logging out")) {
     dispatch(logoutFromSystem());
   } else {
-    alertify.alert("ERROR MESSAGE", err.message || err);
+    alert(err.message || err);
   }
 };
 

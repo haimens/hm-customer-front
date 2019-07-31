@@ -17,8 +17,7 @@ export const findOrderLocationPrice = location => async dispatch => {
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
-    console.log(err);
-    checkLogoutStatus(err, dispatch);
+    dispatch(processLogout(err));
   }
 };
 
@@ -37,8 +36,7 @@ export const findOrderLocationPriceAgain = location => async dispatch => {
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
-    console.log(err);
-    checkLogoutStatus(err, dispatch);
+    dispatch(processLogout(err));
   }
 };
 
@@ -50,8 +48,7 @@ export const setRoundTrip = bool => async dispatch => {
     });
   } catch (err) {
     await stopLoader(dispatch);
-    console.log(err);
-    checkLogoutStatus(err, dispatch);
+    dispatch(processLogout(err));
   }
 };
 
@@ -63,13 +60,8 @@ export const saveTempOrder = data => async dispatch => {
     });
   } catch (err) {
     await stopLoader(dispatch);
-    console.log(err);
-    checkLogoutStatus(err, dispatch);
+    dispatch(processLogout(err));
   }
-};
-
-const checkLogoutStatus = async (err, dispatch) => {
-  dispatch(processLogout(err.message || err));
 };
 
 export const createAOrder = (body = {}) => async dispatch => {

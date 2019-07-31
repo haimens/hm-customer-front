@@ -98,7 +98,7 @@ class Nav extends Component {
               </div>
             </li>
             <li className="nav-item mr-sm-5 mr-0 d-flex justify-content-center ">
-              {!this.props.login && (
+              {!localStorage.getItem("user_token") && (
                 <button
                   className={`btn ${this.props.outlineButton} px-4 hm-main-text-16 mobile-nav-text ${
                     this.props.navTextColor
@@ -109,7 +109,7 @@ class Nav extends Component {
                 </button>
               )}
 
-              {this.props.login && (
+              {localStorage.getItem("user_token") && (
                 <div className="btn-group mr-2">
                   <div className="d-flex flex-column justify-content-center d-lg-none d-flex">
                     <div
@@ -243,7 +243,6 @@ class Nav extends Component {
 
 const mapStateToProps = state => {
   return {
-    login: state.authReducer.login,
     customer_detail_in_customer: state.orderReducer.customer_detail_in_customer,
     isLoading: state.loadReducer.loading,
     isSuccess: state.loadReducer.is_success

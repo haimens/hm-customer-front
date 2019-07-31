@@ -15,11 +15,7 @@ class OrderList extends Component {
   };
 
   componentDidMount() {
-    if (this.props.login) {
-      this.props.getOrderHistoryFromCustomer({ status: 4 });
-    } else {
-      this.props.history.push("/");
-    }
+    this.props.getOrderHistoryFromCustomer({ status: 4 });
   }
   handlePageChange = start => {
     this.props.getOrderHistoryFromCustomer({ start });
@@ -81,7 +77,6 @@ class OrderList extends Component {
 }
 const mapStateToProps = state => {
   return {
-    login: state.authReducer.login,
     order_history_from_customer: state.orderReducer.order_history_from_customer
   };
 };

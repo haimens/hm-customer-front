@@ -624,18 +624,14 @@ class OrderDetail extends Component {
   };
 
   async componentDidMount() {
-    if (this.props.login) {
-      const { getOrderDetail, match } = this.props;
-      await getOrderDetail(match.params.order_token, true);
-      let sum = 0;
-      this.props.order_detail_in_payment.trip_list.map(tri => {
-        sum += tri.amount;
-        return null;
-      });
-      this.setState({ sum });
-    } else {
-      this.props.history.push("/");
-    }
+    const { getOrderDetail, match } = this.props;
+    await getOrderDetail(match.params.order_token, true);
+    let sum = 0;
+    this.props.order_detail_in_payment.trip_list.map(tri => {
+      sum += tri.amount;
+      return null;
+    });
+    this.setState({ sum });
   }
 
   render() {
@@ -819,7 +815,6 @@ class OrderDetail extends Component {
 }
 const mapStateToProps = state => {
   return {
-    login: state.authReducer.login,
     round_trip_locally: state.localReducer.round_trip_locally,
     current_order: state.orderReducer.current_order,
     order_detail_in_payment: state.orderReducer.order_detail_in_payment

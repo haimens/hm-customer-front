@@ -30,7 +30,6 @@ class OrderStepThird extends Component {
 
   handleChangePosition = async position => {
     const {
-      login,
       createACustomerIn,
       history,
       round_trip_locally,
@@ -40,15 +39,13 @@ class OrderStepThird extends Component {
     } = this.props;
     const { name, area, cell, email, special_instruction } = this.state;
     if (name !== "" && area !== "" && cell !== "" && email !== "") {
-      if (!login) {
-        await createACustomerIn(
-          {
-            customer_info: { name, email, cell: `${area} ${cell}` }
-          },
-          history,
-          name
-        );
-      }
+      await createACustomerIn(
+        {
+          customer_info: { name, email, cell: `${area} ${cell}` }
+        },
+        history,
+        name
+      );
       if (localStorage.getItem("instance_token") && localStorage.getItem("customer_token")) {
         if (round_trip_locally) {
           await createAOrder({
@@ -78,7 +75,7 @@ class OrderStepThird extends Component {
   };
 
   componentDidMount() {
-    if (this.props.login) {
+    if (localStorage.getItem("name")) {
       this.setState({
         name: localStorage.getItem("name"),
         area: localStorage.getItem("cell").split(" ")[0],
@@ -230,7 +227,6 @@ class OrderStepThird extends Component {
 
 const mapStateToProps = state => {
   return {
-    login: state.authReducer.login,
     round_trip_locally: state.localReducer.round_trip_locally,
     first_local_trip: state.localReducer.first_local_trip,
     second_local_trip: state.localReducer.second_local_trip,

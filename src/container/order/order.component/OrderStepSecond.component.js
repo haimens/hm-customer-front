@@ -155,7 +155,6 @@ class OrderStepSecond extends Component {
 
 const mapStateToProps = state => {
   return {
-    login: state.authReducer.login,
     first_trip: state.orderReducer.first_trip,
     second_trip: state.orderReducer.second_trip,
     round_trip: state.orderReducer.round_trip,
