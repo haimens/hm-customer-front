@@ -25,10 +25,9 @@
   height: 352px;
   position: absolute;
   margin: auto;
-  top: 0;
+  top: 240px;
   left: 0;
   right: 0;
-  bottom: 0;
   background-color: #f7fafc ;
 }
 
