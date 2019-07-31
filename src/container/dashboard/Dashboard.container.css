@@ -182,10 +182,13 @@
   .header-text {
     margin-top: 200px;
     margin-right:0px !important;
-    text-align: center
+    text-align: center;
   }
   .dashboard-form{
-    margin-top: 40px;
+    margin-top: 160px;
     width:100% !important;
+  }
+  .main-bg{
+    height: 800px;
   }
 }
