@@ -10,7 +10,7 @@ import GAutoComplete from "../../components/shared/GAutoComplete";
 import Nav from "../../components/nav/Nav.component";
 import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
-
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import { saveTempOrder, resetOrder } from "../../actions/order.action";
 import { resetLocalOrder } from "../../actions/local.action";
 import Background from "./Background.container";
@@ -63,6 +63,7 @@ class Dashboard extends Component {
   componentDidMount() {
     this.props.resetOrder();
     this.props.resetLocalOrder();
+    this.targetElement = document.querySelector("#time");
   }
 
   render() {
@@ -76,9 +77,6 @@ class Dashboard extends Component {
               alt=""
               style={{ width: "100%" }}
             />
-            <img className="main-wave wave-top" src={`${process.env.PUBLIC_URL}/img/middle.png`} alt="" />
-            <img className="main-wave wave-middle" src={`${process.env.PUBLIC_URL}/img/top.png`} alt="" />
-            <img className="main-wave" src={`${process.env.PUBLIC_URL}/img/bottom.png`} alt="" />
             <Background />
           </div>
           <Nav outerClass={"main-nav"} outlineButton={`hm-main-button-outline`} />
@@ -120,6 +118,7 @@ class Dashboard extends Component {
                         onChange={this.onDateChange}
                         disabledDate={this.disabledDate}
                         id="date"
+                        inputReadOnly={true}
                         placeholder={"Date"}
                       />
                     </div>
@@ -131,6 +130,9 @@ class Dashboard extends Component {
                         placeholder={"Time"}
                         format="HH:mm"
                         id="time"
+                        use12Hours={true}
+                        inputReadOnly={true}
+                        onOpenChange={this.handleWhenTimePickerOpen}
                       />
                     </div>
                     <hr />

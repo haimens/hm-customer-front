@@ -114,6 +114,7 @@ export default class OrderForm extends Component {
               onChange={this.handleDatePicker}
               id="date"
               size="large"
+              inputReadOnly={true}
             />
           </div>
         </div>
@@ -122,7 +123,15 @@ export default class OrderForm extends Component {
             Time
           </label>
           <div className="border rounded p-1">
-            <TimePicker value={time} onChange={this.handleTimePicker} size="large" format="HH:mm" id="time" />
+            <TimePicker
+              use12Hours={true}
+              inputReadOnly={true}
+              value={time}
+              onChange={this.handleTimePicker}
+              size="large"
+              format="HH:mm"
+              id="time"
+            />
           </div>
         </div>
         <div className="col-lg-6 col-12 mt-4">
