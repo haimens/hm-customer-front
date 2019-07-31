@@ -51,13 +51,11 @@ export const processLogin = (user_login_nfo, history) => async dispatch => {
   try {
     await startLoader(dispatch);
     const { payload, verify_info } = await callApi("login", "POST", user_login_nfo);
-    console.log(verify_info.realm_token);
-    console.log(process.env.REACT_APP_REALM_TOKEN);
+
+    saveUserInfo({ ...payload, ...verify_info });
     if (verify_info.realm_token !== process.env.REACT_APP_REALM_TOKEN) {
-      console.log("im here");
       await dispatch(logoutFromSystem());
     }
-    saveUserInfo({ ...payload, ...verify_info });
     await dispatch({
       type: constant.CURRENT_USER,
       payload: payload.verify_info
