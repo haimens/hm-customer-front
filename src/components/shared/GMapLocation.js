@@ -15,12 +15,12 @@ class GMapLocation extends Component {
   }
 
   render() {
-    return <MapWithADirectionsRenderer position={this.state.position} />;
+    return <MapWithADirectionsRenderer driver_info={this.props.driver_info} position={this.state.position} />;
   }
 }
 
 const { compose, withProps, lifecycle } = require("recompose");
-const { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer } = require("react-google-maps");
+const { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer, Marker, InfoWindow } = require("react-google-maps");
 
 const MapWithADirectionsRenderer = compose(
   withProps({
@@ -61,7 +61,6 @@ const MapWithADirectionsRenderer = compose(
   <GoogleMap
     defaultZoom={14}
     defaultCenter={new window.google.maps.LatLng(props.position.center.lat, props.position.center.lng)}
-    options={{ disableDefaultUI: true }}
     defaultOptions={{
       styles: [
         {
@@ -145,7 +144,27 @@ const MapWithADirectionsRenderer = compose(
       ]
     }}
   >
-    {props.directions && <DirectionsRenderer directions={props.directions} />}
+    {props.directions && (
+      <div>
+        <DirectionsRenderer directions={props.directions} />
+        {props.driver_info && (
+          <Marker
+            icon={{
+              url: props.driver_info.img_path,
+              scaledSize: new window.google.maps.Size(30, 30)
+            }}
+            position={{ lat: props.driver_info.lat, lng: props.driver_info.lng }}
+          >
+            <InfoWindow>
+              <div className="d-flex justify-content-center align-items-center">
+                <img src={props.driver_info.img_path} style={{ width: "30px", height: "30px" }} alt="driver" />
+                <div className="ml-2 text-modal-color">{props.driver_info.name}</div>
+              </div>
+            </InfoWindow>
+          </Marker>
+        )}
+      </div>
+    )}
   </GoogleMap>
 ));
 

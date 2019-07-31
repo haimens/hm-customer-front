@@ -34,6 +34,7 @@ class TripDetail extends Component {
             {showMap && (
               <div style={{ height: "230px" }}>
                 <GMapLocation
+                  driver_info={trip_detail_in_customer.driver_info}
                   position={{
                     center: {
                       lat: basic_info.from_lat,
