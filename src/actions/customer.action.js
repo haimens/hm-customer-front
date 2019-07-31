@@ -237,7 +237,7 @@ export const sendEmailToCustomer = (customer_token, name, username) => async dis
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
               <p style="margin: 0;">Welcome to ${localStorage.getItem(
                 "company_name"
-              )}. We have received your registration. Your Username is <span class="font-bold">${username}</span> Thank you again for registration. If you have any questions, please let us know!
+              )}. We have received your registration. Your Username is <span class="font-bold">${username}</span>. The password is the as Username. Thank you again for registration. If you have any questions, please let us know!
             </td>
           </tr>
           <!-- end copy -->
