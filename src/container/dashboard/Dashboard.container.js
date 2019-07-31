@@ -10,7 +10,6 @@ import GAutoComplete from "../../components/shared/GAutoComplete";
 import Nav from "../../components/nav/Nav.component";
 import MainCard from "../../components/shared/MainCard";
 import Footer from "../../components/nav/Footer.component";
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import { saveTempOrder, resetOrder } from "../../actions/order.action";
 import { resetLocalOrder } from "../../actions/local.action";
 import Background from "./Background.container";
