@@ -54,6 +54,7 @@ export const processLogin = (user_login_nfo, history) => async dispatch => {
     await saveUserInfo({ ...payload, ...verify_info });
     if (verify_info.realm_token !== process.env.REACT_APP_REALM_TOKEN) {
       await dispatch(logoutFromSystem());
+      alertify.alert("Warning", "You are not belong to this company!");
     }
     await dispatch({
       type: constant.CURRENT_USER,

@@ -20,9 +20,13 @@ class TripDetail extends Component {
         <div className="d-flex align-items-center justify-content-between border-bottom" style={{ height: "86px" }}>
           <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Trip {num}</h3>
           <h3 className="mt-3">
-            <span className="text-grey hm-text-22 font-weight-bold">
-              Trip {num} Subtotal: {parseAmount(basic_info.amount)}
-            </span>
+            <div className="text-grey hm-text-22 font-weight-bold">
+              <span className="text-grey hm-text-22 font-weight-bold d-none d-lg-inline-flex">
+                Trip {num}
+                Subtotal:
+              </span>
+              {parseAmount(basic_info.amount, 2)}
+            </div>
           </h3>
         </div>
         <div className="row">
@@ -111,7 +115,7 @@ class TripDetail extends Component {
             <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Timeline</h3>
           </div>
           <div className="row">
-            <div className="col-lg-3 mt-4 mt-md-0 col-6 d-flex justify-content-center align-items-center flex-column">
+            <div className="col-lg-3 mt-4 mt-md-0 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column">
               <img
                 src={`${process.env.PUBLIC_URL}/img/start.svg`}
                 alt="timeline"
@@ -124,7 +128,7 @@ class TripDetail extends Component {
                   : "N/A"}
               </div>
             </div>
-            <div className="col-lg-3 mt-4 mt-md-0 col-6 d-flex justify-content-center align-items-center flex-column">
+            <div className="col-lg-3 mt-4 mt-md-0 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column">
               <img
                 src={`${process.env.PUBLIC_URL}/img/pickup.svg`}
                 alt="timeline"
@@ -137,7 +141,7 @@ class TripDetail extends Component {
                   : "N/A"}
               </div>
             </div>
-            <div className="col-lg-3 mt-4 mt-md-0 col-6 d-flex justify-content-center align-items-center flex-column">
+            <div className="col-lg-3 mt-4 mt-md-0 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column">
               <img
                 src={`${process.env.PUBLIC_URL}/img/ongoing.svg`}
                 alt="timeline"
@@ -150,7 +154,7 @@ class TripDetail extends Component {
                   : "N/A"}
               </div>
             </div>
-            <div className="col-lg-3 mt-4 mt-md-0 col-6 d-flex justify-content-center align-items-center flex-column">
+            <div className="col-lg-3 mt-4 mt-md-0 col-md-6 col-12 d-flex justify-content-center align-items-center flex-column">
               <img
                 src={`${process.env.PUBLIC_URL}/img/finish.svg`}
                 alt="timeline"

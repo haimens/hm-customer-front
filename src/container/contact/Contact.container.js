@@ -33,7 +33,9 @@ class Contact extends Component {
                       <i className="fas fa-map-marker-alt hm-main-textColor hm-main-text-14" />
                       <div>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4 font-weight-bold">Email:</h4>
-                        <h4 className="hm-main-textColor hm-main-text-14 ml-4">service@sunshireshuttle.com</h4>
+                        <h4 className="hm-main-textColor hm-main-text-14 ml-4" style={{ wordBreak: "break-all" }}>
+                          service@sunshireshuttle.com
+                        </h4>
                       </div>
                     </div>
 

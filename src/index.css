@@ -254,3 +254,15 @@ button{
   border-left: solid 6px transparent;
   border-right: solid 6px transparent;
 }
+
+@media only screen and (max-width: 992px) {
+  .hm-main-text-24 {
+    font-size: 14px !important;
+  }
+  .trip-header{
+    font-size: 22px !important;
+  }
+  .footer-copyright{
+    font-size: 8px;
+  }
+}

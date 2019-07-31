@@ -69,7 +69,7 @@ class Dashboard extends Component {
     return (
       <main>
         <section className="header-container">
-          <div className="main" style={{ height: "967px" }}>
+          <div className="main">
             <img
               className="main-bg"
               src={`${process.env.PUBLIC_URL}/img/color_bg.png`}

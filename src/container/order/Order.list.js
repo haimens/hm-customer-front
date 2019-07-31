@@ -36,11 +36,11 @@ class OrderList extends Component {
           <div className="container-fluid pb-5">
             <div className="row pb-5">
               <div className="col-10 px-0 bg-white mx-auto custom-shadow">
-                <div className="d-flex justify-content-between">
-                  <div className="custom-radius-top px-5 tab bg-white font-weight-bold hm-main-textColor hm-main-text-20 d-flex align-items-center">
+                <div className="d-flex justify-content-between flex-column flex-md-row">
+                  <div className="custom-radius-top px-5 tab bg-white font-weight-bold hm-main-textColor hm-main-text-20 d-flex align-items-center justify-content-center">
                     Booking History
                   </div>
-                  <div className="d-flex mr-5 align-items-center">
+                  <div className="d-flex mr-md-5 mr-0 px-0 px-md-5 align-items-center justify-content-center">
                     <button
                       className={`btn mr-2 shadow-sm ${
                         status === 3 ? "bg-purple text-white" : "bg-white text-purple border-purple"

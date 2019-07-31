@@ -178,6 +178,10 @@
   width: 38px;
 }
 
+.main{
+ height: 967px;
+}
+
 @media only screen and (max-width: 992px) {
   .header-text {
     margin-top: 200px;
@@ -191,4 +195,7 @@
   .main-bg{
     height: 800px;
   }
+  .main{
+    height: 800px ;
+   }
 }
