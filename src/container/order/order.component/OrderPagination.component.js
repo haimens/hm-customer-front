@@ -76,7 +76,7 @@ export default class OrderPagination extends Component {
                 </div>
               </div>
               <div
-                className={`col-3 d-flex justify-content-center align-items-center custom-radius-top-right tab border-right hm-pointer-cursor ${position ===
+                className={`col-3 d-flex justify-content-center align-items-center custom-radius-top-right tab hm-pointer-cursor ${position ===
                   3 && "bg-purple"}`}
               >
                 <div className={`${position === 3 ? "text-white" : "hm-main-textColor"} font-weight-bold hm-text-12`}>

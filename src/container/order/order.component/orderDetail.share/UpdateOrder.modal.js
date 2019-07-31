@@ -150,7 +150,15 @@ export default class UpdateModal extends Component {
               Time
             </label>
             <div className="border rounded p-1">
-              <TimePicker value={time} onChange={this.handleTimePicker} size="large" format="HH:mm" id="time" />
+              <TimePicker
+                use12Hours={true}
+                inputReadOnly={true}
+                value={time}
+                onChange={this.handleTimePicker}
+                size="large"
+                format="HH:mm"
+                id="time"
+              />
             </div>
           </div>
           <div className="form-group text-right pt-3">

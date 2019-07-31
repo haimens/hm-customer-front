@@ -24,8 +24,8 @@ export default function VehicleCard(props) {
           </div>
         </div>
         <div className="col-6">
-          <div className="row d-flex justify-content-center align-items-center">
-            <div className="col-ld-5 col-12  d-flex justify-content-center align-items-center">
+          <div className="row d-flex justify-content-center align-items-center ">
+            <div className="col-md-5 col-12  d-flex justify-content-center align-items-center">
               <div className="hm-main-textColor font-weight-bold hm-main-text-16">{parseAmount(amount, 2)}</div>
             </div>
             <div className="col-md-7 col-12  d-flex justify-content-center align-items-center">

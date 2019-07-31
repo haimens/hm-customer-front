@@ -20,7 +20,12 @@ class Contact extends Component {
                 <div className="row">
                   <div className="col-12">
                     <div className="d-flex align-items-center hm-header-margin">
-                      <i className="fas fa-map-marker-alt hm-main-text-16" />
+                      <img
+                        src={`${process.env.PUBLIC_URL}/img/icon_address_contactus.svg`}
+                        alt="error404"
+                        className="mr-3"
+                        style={{ height: "23px", width: "23px" }}
+                      />
                       <div>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4 font-weight-bold">Address:</h4>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4">
@@ -30,7 +35,12 @@ class Contact extends Component {
                     </div>
 
                     <div className="d-flex align-items-center hm-header-margin">
-                      <i className="fas fa-map-marker-alt hm-main-textColor hm-main-text-14" />
+                      <img
+                        src={`${process.env.PUBLIC_URL}/img/icon_email_contactus.svg`}
+                        alt="error404"
+                        className="mr-3"
+                        style={{ height: "23px", width: "23px" }}
+                      />
                       <div>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4 font-weight-bold">Email:</h4>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4" style={{ wordBreak: "break-all" }}>
@@ -40,7 +50,12 @@ class Contact extends Component {
                     </div>
 
                     <div className="d-flex align-items-center hm-header-margin">
-                      <i className="fas fa-map-marker-alt hm-main-textColor hm-main-text-14" />
+                      <img
+                        src={`${process.env.PUBLIC_URL}/img/icon_tel_contactus.svg`}
+                        alt="error404"
+                        className="mr-3"
+                        style={{ height: "23px", width: "23px" }}
+                      />
                       <div>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4 font-weight-bold">Tel:</h4>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4">8663981138</h4>
@@ -48,7 +63,12 @@ class Contact extends Component {
                     </div>
 
                     <div className="d-flex align-items-center hm-header-margin">
-                      <i className="fas fa-map-marker-alt hm-main-textColor hm-main-text-14" />
+                      <img
+                        src={`${process.env.PUBLIC_URL}/img/icon_fax_contactus.svg`}
+                        alt="error404"
+                        className="mr-3"
+                        style={{ height: "23px", width: "23px" }}
+                      />
                       <div>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4 font-weight-bold">Fax:</h4>
                         <h4 className="hm-main-textColor hm-main-text-14 ml-4">8663981138</h4>

@@ -9,7 +9,7 @@ import alertify from "alertifyjs";
 class OrderStepThird extends Component {
   state = {
     name: "",
-    area: "",
+    area: "+1",
     cell: "",
     email: "",
     special_instruction: ""

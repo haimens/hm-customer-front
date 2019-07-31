@@ -150,7 +150,7 @@ export default class CreditCard extends Component {
               </div>
             </div>
           </div>
-          <div className="px-2 py-3 border">
+          <div className="px-2 py-3 border container-fluid">
             <div id="cc-field-wrapper">
               <div className="col-12 my-2">
                 <label htmlFor="card" className="hm-text-14 text-main-color font-weight-bold">
