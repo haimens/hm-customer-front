@@ -13,7 +13,7 @@
 
 .dashboard-form{
   margin-top: 263px;
-  width: 400px;
+  width: 400px !important;
   height: 506px;
   text-align: center;
 }
@@ -107,7 +107,7 @@
 
 .main-bg{
   position: absolute;
-  height: 120vh;
+  height: 967px;
 }
 
 .main-wave{
@@ -185,6 +185,7 @@
     text-align: center
   }
   .dashboard-form{
-    margin-top: 40px
+    margin-top: 40px;
+    width:100% !important;
   }
 }
