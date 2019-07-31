@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from "react";
 import alertify from "alertifyjs";
-import { Switch, Redirect, Route } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import LoaderAlt from "./components/shared/LoaderAlt";
 
 import Dashboard from "./container/dashboard/Dashboard.container";
