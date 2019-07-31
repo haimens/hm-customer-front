@@ -81,7 +81,7 @@ class Dashboard extends Component {
           <Nav outerClass={"main-nav"} outlineButton={`hm-main-button-outline`} />
           <div className="container-fluid main-info">
             <div className="row">
-              <div className="col-lg-6 col-12">
+              <div className="col-lg-6 col-12 d-none d-md-block">
                 <h1 className="hm-main-textColor header-text">
                   Shuttle Service <br />
                   Made Easier
