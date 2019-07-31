@@ -180,7 +180,7 @@ class OrderStepFourth extends Component {
                   <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Coupon</h3>
                 </div>
                 <div className="row">
-                  <div className="col-6 mt-4">
+                  <div className="col-md-6 col-12 mt-4">
                     <label className="text-main-textColor hm-main-text-14 font-weight-bold">Coupon Code</label>
                     <div className="d-flex">
                       <input
