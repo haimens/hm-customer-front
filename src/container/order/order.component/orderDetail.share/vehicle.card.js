@@ -25,10 +25,10 @@ export default function VehicleCard(props) {
         </div>
         <div className="col-6">
           <div className="row d-flex justify-content-center align-items-center">
-            <div className="col-5">
+            <div className="col-ld-5 col-12  d-flex justify-content-center align-items-center">
               <div className="hm-main-textColor font-weight-bold hm-main-text-16">{parseAmount(amount, 2)}</div>
             </div>
-            <div className="col-7">
+            <div className="col-md-7 col-12  d-flex justify-content-center align-items-center">
               {clicked === quote_token ? (
                 <button className="btn purple-border-button hm-text-12 text-purple">
                   <i className="fas fa-check mr-3 hm-text-12" />

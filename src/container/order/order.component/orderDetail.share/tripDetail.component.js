@@ -25,9 +25,10 @@ export default class TripDetail extends Component {
         <div className="d-flex align-items-center justify-content-between border-bottom" style={{ height: "86px" }}>
           <h3 className="mt-3 hm-main-textColor hm-text-22 font-weight-bold">Trip {num}</h3>
           <h3 className="mt-3">
-            <span className="text-grey hm-text-22 font-weight-bold">
-              Trip {num} Subtotal: {parseAmount(basic_info.amount || selected_amount, 2)}
-            </span>
+            <div className="text-grey hm-text-22 font-weight-bold">
+              <span className="text-grey hm-text-22 font-weight-bold d-none d-lg-inline-flex">Trip {num}</span>
+              Subtotal: {parseAmount(basic_info.amount || selected_amount, 2)}
+            </div>
           </h3>
         </div>
         <div className="row">
